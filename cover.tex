@@ -1,0 +1,53 @@
+%------- 封面 -----------
+
+\begin{titlepage}
+    \pdfbookmark[0]{标~~题}{cover}
+    % 取消标题页上的页眉和页脚
+    \centering   % 将所有内容放在标题页的中心
+    \scshape     % 对标题页上的所有文本使用小写字母
+    \vspace*{\baselineskip}   % 页面顶部的空白
+
+    %------------------------------------------------
+    %	题目
+    %------------------------------------------------
+	
+    \rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt} % Thick horizontal rule
+    \rule{\textwidth}{0.4pt}  % Thin horizontal rule
+	
+    \vspace{0.75\baselineskip} % Whitespace above the title
+
+    {\LARGE\heiti 这是一个书籍的 \\ \LaTeX ~ 模板\\} % Title
+	
+	\vspace{0.75\baselineskip} % Whitespace below the title
+	
+	\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} % Thin horizontal rule
+	\rule{\textwidth}{1.6pt} % Thick horizontal rule
+	
+	\vspace{2\baselineskip} % Whitespace after the title block
+	
+    %------------------------------------------------
+    %	作者
+    %------------------------------------------------
+	
+	% {\scshape\Large 某某某  \quad 编著\\} % Editor list
+    {\fangsong\Large 某某某~编著 \\[10pt] } % Editor list
+	
+    {\fangsong\large 2021年3月\\} % Editor list
+
+	\vspace{0.5\baselineskip} % Whitespace below the editor list
+	
+	%\textit{机构的名字 \\ 地点} % Editor affiliation
+	
+	\vfill % Whitespace between editor names and publisher logo
+	
+	%------------------------------------------------
+	%	出版社
+	%------------------------------------------------
+	
+	\plogo % Publisher logo
+	
+	\vspace{0.3\baselineskip} % Whitespace under the publisher logo
+	
+	2021 % Publication year
+	{\large publisher} % Publisher
+\end{titlepage}
