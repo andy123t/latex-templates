@@ -11,14 +11,14 @@
 \geometry{a4paper,left=1.25in,right=1.25in,top=1in,bottom=1in,includehead,includefoot}
 %\geometry{b5paper,text={125mm,195mm},centering,left=1in,right=1in,top=1in,bottom=1in}
 %\geometry{a4paper,left=2.5cm,right=2.5cm,top=1.7cm,bottom=1.8cm,includehead,includefoot}
-\usepackage{amsmath,amsthm,amssymb,version,bm}
-\usepackage{fancybox,mathrsfs,multirow}
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{fancybox,mathrsfs,version,bm}
 \usepackage{epsfig,graphicx}
 \usepackage{url,hyperref}
 \hypersetup{colorlinks=true,linkcolor=black,citecolor=black} % 去掉目录红框
 %\usepackage[notcite,notref]{showkeys}
 \usepackage{color,xcolor}
-\usepackage{tabularx,booktabs}
+\usepackage{tabularx,booktabs,multirow}
 \usepackage{xstring}
 \usepackage{subfig}
 %\usepackage[american]{babel}
@@ -75,6 +75,7 @@
 \cfoot{}
 \rfoot{}
 
+% -------- 定理设置 ---------
 \theoremstyle{plain}
 \newtheorem{definition}{\heiti 定义}[chapter]
 \newtheorem{proposition}{\heiti 命题}[chapter]
@@ -103,18 +104,18 @@
 %\setlength{\itemsep}{3pt plus1pt minus2pt}
 
 
-%% ----- 重新设置图表autoref -------
+% ----- 重新设置图表autoref -------
 \renewcommand{\figureautorefname}{图}
 \renewcommand{\tableautorefname}{表}
 
 
-% --- 使用 tabularx库并定义新的左右中格式 ----
+%--- 使用 tabularx库并定义新的左右中格式 ----
 \newcolumntype{L}{X}
 \newcolumntype{C}{>{\centering \arraybackslash}X}
 \newcolumntype{R}{>{\raggedright \arraybackslash}X}
 \newcolumntype{P}[1]{>{\centering \arraybackslash}p{#1}}
 
-% ----- 设置浮动体间距 ------
+%----- 设置浮动体间距 ------
 \setlength{\textfloatsep}{0pt}
 \setlength{\floatsep}{10pt plus 3pt minus 2pt}
 \setlength{\intextsep}{10pt}
@@ -123,7 +124,7 @@
 %\setlength{\itemsep}{3pt plus1pt minus2pt}
 
 
-%% ----- 设置公式间距为零 ------
+%----- 设置公式间距为零 ------
 \AtBeginDocument{
 	\setlength{\abovedisplayskip}{4pt plus1pt minus1pt}
 	\setlength{\belowdisplayskip}{4pt plus1pt minus1pt}
@@ -131,7 +132,6 @@
 	\setlength{\belowdisplayshortskip}{2pt}
 	\setlength{\arraycolsep}{2pt}   % array中列之间空白长度
 }
-
 
 
 %\renewcommand{\chaptername}{第\chinese{chapter}章}
@@ -143,7 +143,7 @@
 
 
 \newcommand{\chpzihao}{\fontsize{20pt}{20pt}\selectfont}
-%%---------- 定义章节标题格式 ------------
+%---------- 定义章节标题格式 ------------
 \titleformat{\chapter}[hang]{\heiti \chpzihao \filcenter}
     {\chpzihao \chaptername}{20pt}{\chpzihao}
 \titlespacing{\chapter}{0pt}{-1.5ex  plus .1ex minus .2ex}{3ex plus .1ex minus .2ex}
@@ -248,7 +248,8 @@
 \renewcommand\contentsname{目~录}
 \cleardoublepage
 \phantomsection
-\pdfbookmark[chapter]{\contentsname}{toc}
+\addcontentsline{toc}{chapter}{目~录}
+%\pdfbookmark[chapter]{\contentsname}{toc}
 \tableofcontents
 
 
