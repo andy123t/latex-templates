@@ -433,7 +433,7 @@
 	\vspace*{3ex}
 	% \chapter*{前~~~言}
 }{
-	\clearpage
+	\cleardoublepage
 }
 
 
