@@ -12,4 +12,6 @@ book-cn: 中文书籍模板
 
 homework: 中文作业模板
 
+note-temp: 笔记模板
+
 zhbook: 中文书籍模板 (定制)
