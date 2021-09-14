@@ -6,6 +6,7 @@
 \usepackage{amssymb,version,graphicx,fancybox,mathrsfs,multirow}
 %\usepackage[notcite,notref]{showkeys}
 \usepackage{fontspec}
+\usepackage{array}
 \usepackage{diagbox}
 \usetikzlibrary{arrows,shapes}
 
@@ -33,23 +34,21 @@
 \newcommand\HUGE{\@setfontsize\Huge{32}{36}}
 \makeatother
 
-
-
 \title{\LaTeX{} 笔记模板}
 
-\author{邓东升}
-\institute{Elegant\LaTeX{} Program}
+\author{作者}
+%\institute{组织名称}
 
-\version{2.30}
-\date{\zhtoday}
+%\version{2.30}
+%\date{2021}%\zhtoday
+
 
 \makeatletter
 \let\newtitle\@title
 \let\newauthor\@author
-\let\newdate\@date
+%\let\newdate\@date
 \makeatother
 
-\usepackage{array}
 
 \begin{document}
 %\maketitle
@@ -63,9 +62,11 @@
 %\newpage\null\thispagestyle{empty}\newpage \addtocounter{page}{-1}
 %\addtocounter{page}{-1}
 
-\vskip -2em
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{section}{目~录}
 \tableofcontents
-\clearpage
+\cleardoublepage
 \setlist[itemize]{label=$\circ$}
 
 \pagenumbering{arabic}  % 页码为阿拉伯数字

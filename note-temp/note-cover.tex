@@ -2,6 +2,7 @@
 % Note Cover
 
 \begin{titlepage}
+\pdfbookmark[1]{封~面}{cover}
 \begin{tikzpicture}[remember picture, overlay]
 \fill[cyan!20](current page.north west) rectangle (current page.south east);
 \fill[hong!90](current page.north west) rectangle ([xshift=0.8cm,yshift=-7cm]current page.north west);
@@ -11,11 +12,12 @@
 \node[circle,fill,inner sep=5pt]at([xshift=10.7cm,yshift=-8.1cm]current page.north west)
 {};
 \node[dart,fill=white,inner sep=2pt]at([xshift=10.7cm,yshift=-8.1cm]current page.north west){};
-\node[right] at ([xshift=11.2cm,yshift=-8.1cm]current page.north west){\Large\fangsong 机构名称 \quad 作者 \quad 编写};
-\node[opacity=0.45,right] at ([xshift=3.5cm,yshift=-22cm]current page.north west)
-{\includegraphics[scale=1.6]{titlefig01.png}};
+\node[right] at ([xshift=11.2cm,yshift=-8.1cm]current page.north west){\Large\fangsong 组织名称 \quad \newauthor \quad 编写};
 \node[opacity=0.45,right] at ([xshift=10.5cm,yshift=-13cm]current page.north west)
 {\includegraphics[scale=2.4]{titlefig02.png}};
+\node[opacity=0.45,right] at ([xshift=3.5cm,yshift=-22cm]current page.north west)
+{\includegraphics[scale=1.6]{titlefig01.png}};
+\node[right] at ([xshift=9.1cm,yshift=-27.6cm]current page.north west){\Large \citshape Version 1.00};
 \end{tikzpicture}
 \end{titlepage}
 
