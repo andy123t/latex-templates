@@ -10,6 +10,8 @@ article-en: 英文论文模板
 
 book-cn: 中文书籍模板
 
+book-en: 英文书籍模板
+
 homework: 中文作业模板
 
 note-temp: 笔记模板
