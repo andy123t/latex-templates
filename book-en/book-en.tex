@@ -1,0 +1,371 @@
+% !Tex Program = pdflatex
+
+\documentclass[openany,twoside,12pt]{book}
+%\documentclass[twoside,12pt]{book}
+
+%----- usepackage for tempalate -----
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{mathrsfs,bm}
+%\usepackage[notcite,notref]{showkeys}
+\usepackage{geometry}
+\geometry{left=2.5cm,right=2.5cm,top=1.7cm,bottom=1.8cm,includehead,includefoot}
+%\geometry{left=1in,right=1in,top=1in,bottom=1in}
+%\geometry{left=2.5cm,right=2.1cm,top=1.7cm,bottom=2cm,includehead,includefoot}
+%\geometry{b5paper,text={125mm,195mm},centering,left=1in,right=1in,top=1in,bottom=1in}
+\usepackage{url,hyperref}
+\hypersetup{colorlinks=true,linkcolor=black,citecolor=black} % 去掉目录红框
+\usepackage[english]{babel}
+\usepackage{imakeidx}
+\usepackage{color,xcolor}
+\usepackage{graphicx}
+\usepackage{epsfig}
+\usepackage{tabularx,array}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{fancybox}
+\usepackage{makecell}
+\usepackage{xstring}
+%\usepackage[english]{babel}
+\usepackage{listings}
+\usepackage{titletoc}
+\usepackage{titlesec}
+\usepackage{mathtools}
+\usepackage{float}
+\usepackage{bookmark}
+\usepackage[numbers]{natbib}
+
+%\usepackage{indentfirst}
+\usepackage[perpage,symbol]{footmisc}   % footnote control
+
+%\usepackage{appendix}
+
+\makeindex
+%\bibliographystyle{plain}
+
+%---- header and footer position -----
+\addtolength{\headsep}{-0.1cm}
+\addtolength{\footskip}{-0.1cm}
+%---- Contents Setting -----
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+
+%\newcommand{\makeheadrule}{%
+%    \makebox[-3pt][l]{\rule[.7\baselineskip]{\headwidth}{0.4pt}}
+%    \rule[0.85\baselineskip]{\headwidth}{1.5pt}\vskip-.8\baselineskip}
+%
+%\makeatletter
+%\renewcommand{\headrule}{%
+%    {\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
+%     \makeheadrule}}
+%\pagestyle{fancyplain}
+
+
+
+\usepackage[cleardoublepage=plain]{scrextend}
+
+\usepackage{fancyhdr,fancyref}
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter ~ #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection ~ #1}{}}
+\fancyhf{}  % remove the original style
+\fancyhead[RO,LE]{~\thepage~}
+\fancyhead[LO]{\rmfamily \rightmark}
+\fancyhead[RE]{\rmfamily \leftmark}
+
+%\setlength{\parskip}{3pt plus1pt minus1pt}
+
+\renewcommand{\baselinestretch}{1.2}
+
+%----- theorem setting -----
+\theoremstyle{plain}
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{proposition}{Proposition}[chapter]
+\newtheorem{lemma}{Lemma}[chapter]
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{example}{Example}[chapter]
+\newtheorem{corollary}{Corollary}[chapter]
+\newtheorem{remark}{Remarks}[chapter]
+\newtheorem{exercise}{Exercise}[chapter]
+\newtheorem{assumption}{Assumption}[chapter]
+\newtheorem{axiom}{Axiom}[chapter]
+\newtheorem{property}{Property}[chapter]
+\newtheorem{conjecture}{Conjecture}[chapter]
+%\renewcommand{\proofname}{Proof}
+
+
+% number of equation, figure and table
+\numberwithin{equation}{chapter}
+\numberwithin{figure}{chapter}
+\numberwithin{table}{chapter}
+
+% define new command
+\newcommand{\CC}{\ensuremath{\mathbb{C}}}
+\newcommand{\RR}{\ensuremath{\mathbb{R}}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\ii}{\bm{\mathrm{i}}\,}  % imaginary part
+\newcommand{\md}{\mathrm{d}\,}
+\newcommand{\bA}{\boldsymbol{A}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+
+\newcommand{\plogo}{\fbox{$\mathcal{PL}$}} % Generic dummy publisher logo
+
+\graphicspath{{./figure/}{./figures/}{./image/}{./images/}}
+
+
+%----- book information -----
+
+\title{\bfseries LaTeX Book Sample}
+\author{Edited by John Smith}
+\date{\today}
+
+
+\begin{document}
+
+\maketitle
+
+\thispagestyle{empty}
+
+\frontmatter
+
+
+\chapter{Preface}
+
+The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
+
+
+The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
+
+
+
+%\clearpage
+\cleardoublepage
+\phantomsection
+\pdfbookmark[chapter]{\contentsname}{toc}
+\tableofcontents
+
+
+\mainmatter
+
+
+
+\chapter{The first chapter}
+
+\section{The first section}\label{my label}
+LaTeX is a high-quality typesetting system; it includes features designed for the production of technical and scientific documentation. LaTeX is the de facto standard for the communication and publication of scientific documents.
+
+\subsection{A sub section}
+LaTeX is not a word processor! Instead, LaTeX encourages authors not to worry too much about the appearance of their documents but to concentrate on getting the right content. For example consider this document:
+\begin{equation}\label{eqn:trifun}
+\sin^2{\theta}+\cos^2{\theta}=1.
+\end{equation}
+
+LaTeX is based on the idea that it is better to leave document design to document designers, and to let authors get on with writing documents. So, in LaTeX you would input this document as:
+$ \Rightarrow $
+\begin{align}
+a & = b + c \\
+& = d + e.
+\end{align}
+
+Assuming that the disturbance errors of $f$ and $u_{N,0}$ are $\tilde{f}$ and $\tilde{u}_{N,0}$ respectively, the error of the numerical solution $u_N$ is $\tilde{u}_N$.
+
+An example of the \verb|\cite| command to cite within the book:
+
+This statement requires citation \cite{Adams2003} and \cite{Shen1994,Tadmor2012,TreWei2014}
+
+
+The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
+
+
+The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
+
+
+\section{The second section}
+LaTeX is a high-quality typesetting system; it includes features designed for the production of technical and scientific documentation. LaTeX is the de facto standard for the communication and publication of scientific documents.
+
+\subsection{A sub section}
+LaTeX is not a word processor! Instead, LaTeX encourages authors not to worry too much about the appearance of their documents but to concentrate on getting the right content. For example consider this document:
+
+LaTeX is based on the idea that it is better to leave document design to document designers, and to let authors get on with writing documents. So, in LaTeX you would input this document as:
+$ \Rightarrow $
+
+Assuming that the disturbance errors of $f$ and $u_{N,0}$ are $\tilde{f}$ and $\tilde{u}_{N,0}$ respectively, the error of the numerical solution $u_N$ is $\tilde{u}_N$.
+
+
+\begin{definition}
+This is a definition environment.
+\end{definition}
+
+\begin{lemma}
+This is a lemma environment.
+\end{lemma}
+
+\begin{theorem}
+This is a theorem environment.
+\end{theorem}
+
+\begin{proposition}
+This is a proposition environment.
+\end{proposition}
+
+\begin{theorem}[Mass--energy]
+This is a theorem environment.
+\end{theorem}
+\begin{proof}
+  This is a proof environment.
+\end{proof}
+
+
+The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
+
+
+The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
+
+\section{The third section}
+LaTeX is a high-quality typesetting system; it includes features designed for the production of technical and scientific documentation. LaTeX is the de facto standard for the communication and publication of scientific documents.
+
+\subsection{A sub section}
+LaTeX is not a word processor! Instead, LaTeX encourages authors not to worry too much about the appearance of their documents but to concentrate on getting the right content. For example consider this document:
+
+LaTeX is based on the idea that it is better to leave document design to document designers, and to let authors get on with writing documents. So, in LaTeX you would input this document as:
+$ \Rightarrow $
+
+Assuming that the disturbance errors of $f$ and $u_{N,0}$ are $\tilde{f}$ and $\tilde{u}_{N,0}$ respectively, the error of the numerical solution $u_N$ is $\tilde{u}_N$.
+
+
+The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
+
+The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
+
+
+\chapter{The second chapter}
+
+\section{The first section}
+LaTeX is a high-quality typesetting system; it includes features designed for the production of technical and scientific documentation. LaTeX is the de facto standard for the communication and publication of scientific documents.
+
+\subsection{A sub section}
+LaTeX is not a word processor! Instead, LaTeX encourages authors not to worry too much about the appearance of their documents but to concentrate on getting the right content. For example consider this document:
+
+LaTeX is based on the idea that it is better to leave document design to document designers, and to let authors get on with writing documents. So, in LaTeX you would input this document as:
+$ \Rightarrow $
+
+\begin{equation}\label{eqn:1}
+\left\{\begin{aligned}
+  &-\frac{\mathrm{d}^{2} u}{\mathrm{d} x^{2}}+\frac{\mathrm{d} u}{\mathrm{d} x}=\pi^{2} \sin (\pi x)+\pi \cos (\pi x),\quad x \in [0,1], \\
+  &u(0)=0,\quad u(1)=0.
+\end{aligned} \right.
+\end{equation}
+
+
+Assuming that the disturbance errors of $f$ and $u_{N,0}$ are $\tilde{f}$ and $\tilde{u}_{N,0}$ respectively, the error of the numerical solution $u_N$ is $\tilde{u}_N$.
+
+
+The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
+
+The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
+
+
+\section{The second section}
+LaTeX is a high-quality typesetting system; it includes features designed for the production of technical and scientific documentation. \index{LaTeX} is the de facto standard for the communication and publication of scientific documents.
+
+\subsection{A sub section}
+LaTeX is not a word processor! Instead, LaTeX encourages authors not to worry too much about the appearance of their documents but to concentrate on getting the right content. For example consider this document:
+
+LaTeX is based on the idea that it is better to leave document design to document designers, and to let authors get on with writing documents. So, in LaTeX you would input this document as:
+$ \Rightarrow $
+
+Assuming that the disturbance errors of $f$ and $u_{N,0}$ are $\tilde{f}$ and $\tilde{u}_{N,0}$ respectively, the error of the numerical solution $u_N$ is $\tilde{u}_N$.
+
+
+The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
+
+
+The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
+
+
+
+\appendix
+
+\chapter{This is the first appendix}
+\section{A sub section}
+
+The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
+
+The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
+
+
+The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
+
+
+The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
+
+
+The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. Thequick brown \index{fox} jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
+
+
+The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
+
+
+The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
+
+\section{A sub section}
+
+The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
+
+The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
+
+
+The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
+
+
+
+\chapter{This is the second appendix}
+\section{A sub section}
+
+The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
+
+
+\section{A sub section}
+
+The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
+
+
+
+\backmatter
+
+\renewcommand{\bibname}{References}
+
+% add References to contents
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{\bibname}
+
+\bibliographystyle{plain}
+\bibliography{mybib}
+
+
+%\begin{thebibliography}{99}
+%\bibitem{Adams2003} Adams~R~A, Fournier~J~J~F. Sobolev spaces[M]. Elsevier, 2003.
+%
+%\bibitem{Shen1994} Shen~J. Efficient spectral-Galerkin method I. Direct solvers of second- and fourth-order equations using Legendre polynomials[J]. SIAM J. Sci. Comput., 1994, 15(6): 1489-1505.
+%
+%\bibitem{Tadmor2012} Tadmor~E. A review of numerical methods for nonlinear partial differential
+%  equations[J]. Bull. Amer. Math. Soc., 2012, 49(4): 507-554.
+%
+%\bibitem{TreWei2014} Trefethen~L~N, Weideman~J~A~C. The exponentially convergent trapezoidal rule[J]. SIAM Rev., 2014, 56(3): 385-458.
+%
+%\end{thebibliography}
+
+
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{\indexname}
+\printindex
+
+
+
+
+\end{document}
+
+

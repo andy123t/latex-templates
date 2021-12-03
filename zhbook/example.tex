@@ -1,7 +1,7 @@
 % !TEX program = xelatex
 % 使用 texlive完整编译:
 % xelatex -> bibtex -> xelatex -> xelatex
-% zhbook 中文书籍模板 
+% zhbook 中文书籍模板
 
 \documentclass{zhbook}
 % print 用于打印, 封面等生成空白页, 可省略
@@ -629,6 +629,8 @@ N  & A       & B    & C       & D      & E       & F   \\
 %\setcounter{chapter}{0}
 %\setcounter{page}{1} % 如果需要可以自行重置页码
 \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+
+%%%%%%%%%%% 附录内容  %%%%%%%%%%
 
 \chapter{附录 A ~ 这是第一个附录}
 \renewcommand{\thesection}{A.\arabic{section}}
