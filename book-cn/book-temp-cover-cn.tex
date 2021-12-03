@@ -134,6 +134,8 @@
 \titlespacing{\subsubsection}%
     {0pt}{1.2ex plus .1ex minus .2ex}{\wordsep}
 
+
+%-----设置章节在页眉处的格式-----
 \makeatletter
 \renewcommand{\chaptermark}[1]{\markboth{\ifnum \value{secnumdepth}>-1
 \if@mainmatter \chaptername ~ \fi\fi #1}{}}
@@ -159,11 +161,6 @@
 \newtheorem{conjecture}{猜想}[chapter]
 \renewcommand{\proofname}{证明}
 
-%-----设置章节在页眉处的格式-----
-\makeatletter
-\renewcommand{\chaptermark}[1]{\markboth{\ifnum \value{secnumdepth}>-1
-\if@mainmatter \chaptername ~ \fi\fi #1}{}}
-\makeatother
 
 %-----定制图形和表格标题的样式-----
 \usepackage{caption}
@@ -328,7 +325,7 @@
 	\vspace{0.3\baselineskip} % Whitespace under the publisher logo
 	
 	2021 % Publication year
-    
+
 	{\large publisher} % Publisher
 \end{titlepage}
 
