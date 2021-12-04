@@ -1,34 +1,28 @@
 %
-%   This is file `zhbook.cls',
+%	This is file `zhbook.cls',
 %	@author andy123t
-% 	@date 2021/12/04
+%	@date 2021/12/05
 %	@version v1.0.0
 %	@address https://github.com/andy123t/zhbook
-%   This template is based on HUSTPaperTemp
+%	This template is based on HUSTPaperTemp
 %
 
 % ---------- 定义的新的Class ----------
-\ProvidesClass{zhbook}[2021/12/04 v1.0.0]
+\ProvidesClass{zhbook}[2021/12/05 v1.0.0]
 \NeedsTeXFormat{LaTeX2e}
-
-
-% ---------- 载入学校logo ----------
-\def\logopic{shnu.eps}   %logo
-\DeclareOption{SHNULogo} {
-	\def\logopic{shnu.eps}
-}
-\ProcessOptions\relax
 
 \newif\ifprint\printfalse
 \DeclareOption{print}{\printtrue}
-\ProcessOptions
+
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
+\ProcessOptions \relax
 
 % ---------- 载入Class ----------
 \LoadClass[a4paper,openany,twoside]{book}
 
 
 % ---------- 中文字体宏包 ----------
-\RequirePackage[UTF8,zihao=-4]{ctex}
+\RequirePackage[UTF8]{ctex}
 
 
 % --------- 定义不同编译方式 ----------
@@ -276,19 +270,19 @@
 
 %------------- 数学定理设置 ---------------
 \theoremstyle{plain} 
-\newtheorem{definition}{定义}[chapter]
-\newtheorem{proposition}{命题}[chapter]
-\newtheorem{lemma}{引理}[chapter]
-\newtheorem{theorem}{定理}[chapter]
-\newtheorem{example}{例}[chapter]
-\newtheorem{corollary}{推论}[chapter]
-\newtheorem{remark}{注}[chapter]
-\newtheorem{exercise}{练习}[chapter]
-\newtheorem{assumption}{假设}[chapter]
-\newtheorem{axiom}{公理}[chapter]
-\newtheorem{property}{性质}[chapter]
-\newtheorem{conjecture}{猜想}[chapter]
-\renewcommand{\proofname}{证明}
+\newtheorem{definition}{\heiti 定义}[chapter]
+\newtheorem{proposition}{\heiti 命题}[chapter]
+\newtheorem{lemma}{\heiti 引理}[chapter]
+\newtheorem{theorem}{\heiti 定理}[chapter]
+\newtheorem{example}{\heiti 例}[chapter]
+\newtheorem{corollary}{\heiti 推论}[chapter]
+\newtheorem{remark}{\heiti 注}[chapter]
+\newtheorem{exercise}{\heiti 练习}[chapter]
+\newtheorem{assumption}{\heiti 假设}[chapter]
+\newtheorem{axiom}{\heiti 公理}[chapter]
+\newtheorem{property}{\heiti 性质}[chapter]
+\newtheorem{conjecture}{\heiti 猜想}[chapter]
+\renewcommand{\proofname}{\heiti 证明}
 %\renewcommand{\qedsymbol}{$\blacksquare$}
 
 
@@ -363,12 +357,36 @@
 }
 
 
+
+% ------------ 定义新的声明页面 --------------
+
+% 定义三个条件语句
+% \newcommand{\encryption}[1]{
+% 	\IfStrEqCase{#1}{{empty}{$\square$}
+% 		{true}{$\text{\rlap{\checkmark}}\square$ }
+% 		{false}{$\square$}}
+% 	[$\square$]
+% }
+% \newcommand{\nonencryption}[1]{
+% 	\IfStrEqCase{#1}{{empty}{$\square$}
+% 		{true}{$\square$}
+% 		{false}{$\text{\rlap{\checkmark}}\square$}}
+% 	[$\square$]
+% }
+% \newcommand{\encryptionyear}[2]{
+% 	\IfStrEqCase{#1}{{empty}{}
+% 		{true}{#2}
+% 		{false}{}}
+% }
+
+
+
 % ------------------ 中文摘要环境 -------------
 \newenvironment{cnabstract}[1]{
 	\def \cnkeyword {#1}
 	\clearpage
 	\phantomsection
-	\addcontentsline{toc}{chapter}{摘~~要}
+	\addcontentsline{toc}{chapter}{摘~要}
 	\chaptermark{摘~~要}
 	\vspace*{-2ex}
 	\begin{center} \heiti \chpzihao 摘~~~要 \end{center}
@@ -398,11 +416,12 @@
 
 
 % ------------------ 前言环境 -------------
+
 \newenvironment{preface}{
 	\clearpage
 	\phantomsection
-	\addcontentsline{toc}{chapter}{前~~言}
-	\chaptermark{前~~言}
+	\addcontentsline{toc}{chapter}{前~言}
+	\chaptermark{前~言}
 	\vspace*{-1ex}
 	\begin{center} \chpzihao \bfseries 前~~言 \end{center} 
 	\vspace*{3ex}
@@ -445,7 +464,7 @@
 	\IfStrEqCase{#1}{{nopagenum}{}
 		{pagenum}{}
 		{pagenumtoc}{\phantomsection
-			\addcontentsline{toc}{chapter}{目~~录}}}
+			\addcontentsline{toc}{chapter}{目~录}}}
 }
 
 

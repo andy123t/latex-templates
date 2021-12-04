@@ -3,7 +3,7 @@
 % xelatex -> bibtex -> xelatex -> xelatex
 % zhbook 中文书籍模板
 
-\documentclass{zhbook}
+\documentclass[12pt]{zhbook}
 % print 用于打印, 封面等生成空白页, 可省略
 
 % 进行个人信息设置
@@ -435,7 +435,7 @@ XeLaTeX 环境下可以使用 EPS、PDF、PNG、JPEG、BMP 格式的图片, 当�
 插入一个图形并居中放置, 如图~\ref{fig:sinx}.
 \begin{figure}[htp!]
   \centering
-  \includegraphics[width=0.5\linewidth]{Image1.eps}
+  \includegraphics[width=0.5\linewidth]{image1.eps}
   \caption{函数 $y=\sin(x)$ 的图像}\label{fig:sinx}
 \end{figure}
 
@@ -443,9 +443,9 @@ XeLaTeX 环境下可以使用 EPS、PDF、PNG、JPEG、BMP 格式的图片, 当�
 两个图左右并排放置, 共用一个标题. 通过 \verb|autoref| 引用图片: \autoref{fig:Image1} 与 \autoref{fig:Image2}.
 \begin{figure}[htp!]
 \centering
-  \includegraphics[width=0.45\linewidth]{Image1.eps}
+  \includegraphics[width=0.45\linewidth]{image1.eps}
   \hfill
-  \includegraphics[width=0.45\linewidth]{Image2.eps}
+  \includegraphics[width=0.45\linewidth]{image2.eps}
   \caption{左: 图一的描述;~ 右:图二的描述.}
   \label{fig:image}
 \end{figure}
@@ -455,14 +455,14 @@ XeLaTeX 环境下可以使用 EPS、PDF、PNG、JPEG、BMP 格式的图片, 当�
 \begin{figure}[htp!]
 \begin{minipage}[t]{0.48\linewidth}
 \centering
-  \includegraphics[width=0.9\linewidth]{Image1.eps}
+  \includegraphics[width=0.9\linewidth]{image1.eps}
     \caption{图一的描述.}
     \label{fig:Image1}
 \end{minipage}
   \hfill
 \begin{minipage}[t]{0.48\linewidth}
 \centering
-   \includegraphics[width=0.9\linewidth]{Image1.eps}
+   \includegraphics[width=0.9\linewidth]{image2.eps}
    \caption{图二的描述.}
    \label{fig:Image2}
 \end{minipage}
@@ -471,16 +471,16 @@ XeLaTeX 环境下可以使用 EPS、PDF、PNG、JPEG、BMP 格式的图片, 当�
 使用 subfig 宏包实现多图并排.
 \begin{figure}[htp!]
 \centering
-\subfloat[Subcaption A]{\includegraphics[width=0.3\linewidth]{Image1}}
+\subfloat[Subcaption A]{\includegraphics[width=0.3\linewidth]{image1}}
 \hfill
-\subfloat[Subcaption B]{\includegraphics[width=0.3\linewidth]{Image1}}
+\subfloat[Subcaption B]{\includegraphics[width=0.3\linewidth]{image1}}
 \hfill
-\subfloat[Subcaption C]{\includegraphics[width=0.3\linewidth]{Image1}} \\
-\subfloat[Subcaption D]{\includegraphics[width=0.3\linewidth]{Image2}}
+\subfloat[Subcaption C]{\includegraphics[width=0.3\linewidth]{image1}} \\
+\subfloat[Subcaption D]{\includegraphics[width=0.3\linewidth]{image2}}
 \hfill
-\subfloat[Subcaption E]{\includegraphics[width=0.3\linewidth]{Image2}}
+\subfloat[Subcaption E]{\includegraphics[width=0.3\linewidth]{image2}}
 \hfill
-\subfloat[Subcaption F]{\includegraphics[width=0.3\linewidth]{Image2}}
+\subfloat[Subcaption F]{\includegraphics[width=0.3\linewidth]{image2}}
 \caption{六个图并排.}
 \end{figure}
 
@@ -629,8 +629,6 @@ N  & A       & B    & C       & D      & E       & F   \\
 %\setcounter{chapter}{0}
 %\setcounter{page}{1} % 如果需要可以自行重置页码
 \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
-
-%%%%%%%%%%% 附录内容  %%%%%%%%%%
 
 \chapter{附录 A ~ 这是第一个附录}
 \renewcommand{\thesection}{A.\arabic{section}}
