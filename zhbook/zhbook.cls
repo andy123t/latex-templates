@@ -1,14 +1,14 @@
 %
 %   This is file `zhbook.cls',
 %	@author andy123t
-% 	@date 2021/03/26
+% 	@date 2021/12/04
 %	@version v1.0.0
 %	@address https://github.com/andy123t/zhbook
 %   This template is based on HUSTPaperTemp
 %
 
 % ---------- 定义的新的Class ----------
-\ProvidesClass{zhbook}[2021/03/26 v1.0.0]
+\ProvidesClass{zhbook}[2021/12/04 v1.0.0]
 \NeedsTeXFormat{LaTeX2e}
 
 
