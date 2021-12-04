@@ -49,8 +49,7 @@
 %-----设置章节标题和目录-----
 \usepackage{titletoc}
 \usepackage{titlesec}
-%-----盒子扩展-----
-\usepackage{fancybox}
+
 
 %-----数学公式扩展-----
 \usepackage{mathtools}
@@ -144,6 +143,7 @@
 \if@mainmatter \chaptername ~ \fi\fi #1}{}}
 \makeatother
 
+
 %-----设置章节目录的深度-----
 %\setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{3}
@@ -175,7 +175,7 @@
 \setlength{\intextsep}{10pt}
 \setlength{\abovecaptionskip}{2pt plus1pt minus1pt}
 \setlength{\belowcaptionskip}{3pt plus1pt minus2pt}
-%\setlength{\itemsep}{3pt plus1pt minus2pt}
+\setlength{\itemsep}{3pt plus1pt minus2pt}
 
 
 %-----重新设置图表 autoref-----
@@ -207,33 +207,6 @@
 	\setlength{\arraycolsep}{2pt}   % array中列之间空白长度
 }
 
-%-----定义新的目录页面 -----
-\usepackage{tocloft}
-\renewcommand{\cfttoctitlefont}{\hfill \bfseries \chpzihao}
-\renewcommand{\cftchappresnum}{第}
-\renewcommand{\cftchapaftersnum}{章}
-\renewcommand{\cftchapaftersnumb}{\hspace{5ex}}
-\renewcommand{\contentsname}{目~~录}
-\renewcommand{\cftaftertoctitle}{\hfill}
-\setlength{\cftbeforetoctitleskip}{1.5ex}
-\setlength{\cftaftertoctitleskip}{5ex}
-%\setlength{\cftbeforechapskip}{10pt}
-\setlength{\cftbeforesecskip}{0.5ex}
-\renewcommand{\cftdot}{$\cdot$}
-\renewcommand{\cftdotsep}{3}
-\renewcommand{\cftchapdotsep}{\cftdotsep}
-\renewcommand\cftchapleader{\cftdotfill{\cftchapdotsep}}
-\renewcommand{\cftsecdotsep}{\cftdotsep}  % 设置Section引导点
-
-%-----设置附录在目录的格式-----
-\makeatletter
-\g@addto@macro\appendix{%
-  \addtocontents{toc}{%
-    \protect\renewcommand{\protect\cftchappresnum}{附录}
-    \protect\renewcommand{\protect\cftchapaftersnum}{}
-  }%
-}
-\makeatother
 
 %-----制作目录-----
 \makeindex
@@ -247,7 +220,6 @@
 \setlength{\parskip}{4pt plus1pt minus1pt}   % 段落之间的竖直距离
 \renewcommand{\baselinestretch}{1.35}        % 定义行距
 
-\newcommand{\plogo}{\fbox{$\mathcal{PL}$}} % Generic dummy publisher logo
 
 %-----自定义命令-----
 \newcommand{\CC}{\ensuremath{\mathbb{C}}}
@@ -267,71 +239,12 @@
 
 \title{\bfseries LaTeX 书籍样例}
 \author{\fangsong 某某某~~编著}
-\date{2021年12月}
+\date{\fangsong 2021年12月}
 
 
 \begin{document}
 
-%\maketitle  % 生成封面
-
-%------- 自定义封面 -----------
-
-\begin{titlepage}
-    \pdfbookmark[0]{封~~面}{cover}
-    % 取消标题页上的页眉和页脚
-    \centering   % 将所有内容放在标题页的中心
-    \scshape     % 对标题页上的所有文本使用小写字母
-    \vspace*{2\baselineskip}   % 页面顶部的空白
-
-    %------------------------------------------------
-    %	题目
-    %------------------------------------------------
-	
-    \rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}  % 粗水平线
-    \rule{\textwidth}{0.4pt}   % 细水平线
-	
-    \vspace{0.75\baselineskip} % 标题上方的空白
-
-    \makeatletter
-    {\LARGE\bfseries \@title \\} % 题目
-
-	\vspace{0.75\baselineskip} % 标题下方的空白
-	
-	\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} % 细水平线
-	\rule{\textwidth}{1.6pt}  % 粗水平线
-	
-	\vspace{2\baselineskip}   % 标题栏后的空白
-	
-    %------------------------------------------------
-    %	作者
-    %------------------------------------------------
-	
-	% {\scshape\Large 某某某  \quad 编著 \\}
-    {\fangsong\large \@author \\[10pt] }
-	
-    {\fangsong\large \@date \\}
-
-    \makeatother
-
-	%\vspace{2\baselineskip}
-
-	%\textit{机构的名字 \\ 地点}
-	
-	\vfill % Whitespace between editor names and publisher logo
-	
-	%------------------------------------------------
-	%	出版社
-	%------------------------------------------------
-	
-	\plogo % Publisher logo
-	
-	\vspace{0.3\baselineskip} % Whitespace under the publisher logo
-	
-	2021 % Publication year
-
-	{\large publisher} % Publisher
-\end{titlepage}
-
+\maketitle  % 生成封面
 
 \thispagestyle{empty}
 
@@ -711,9 +624,6 @@ XeLaTeX 环境下可以使用 EPS、PDF、PNG、JPEG、BMP 格式的图片, 当�
   \includegraphics[width=0.45\linewidth]{image1.eps}
   \caption{函数 $y=\sin(x)$ 的图像}\label{fig:sinx}
 \end{figure}
-
-
-\clearpage
 
 两个图左右并排放置, 共用一个标题. 通过 \verb|autoref| 引用图片: \autoref{fig:Image1} 与 \autoref{fig:Image2}.
 \begin{figure}[htp!]

@@ -1,6 +1,10 @@
     
     文件说明
-	
+    
+    book-temp.tex
+    中文书籍模板 (目录简单)
+    XeLaTeX 编译
+    
     book-temp-cn.tex
     中文书籍模板
     XeLaTeX 编译
