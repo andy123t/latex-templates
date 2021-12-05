@@ -3,17 +3,20 @@
 % xelatex -> bibtex -> xelatex -> xelatex
 % zhbook 中文书籍模板
 
-\documentclass[12pt]{zhbook}
+\documentclass[openany,twoside,12pt]{zhbook}
 % print 用于打印, 封面等生成空白页, 可省略
 
 % 进行个人信息设置
 \title{这是一个标题}
-\subtitle{English Book Title}
 \college{上海师范大学}
 \author{某~~某~~某}        % 作者姓名
 \date{2\,0\,2\,1~年~3~月}  % 完成日期
+\bioinfo{其他信息}
+\pubyear{2021} % 出版年
+\publisher{出版社}
 
-%\bioinfo{上海}
+%通用虚拟出版商标志
+\newcommand{\plogo}{\fbox{$\mathcal{PL}$}}
 
 %\usepackage[cleardoublepage=plain]{scrextend}
 %\usepackage[titletoc]{appendix}
@@ -626,10 +629,8 @@ N  & A       & B    & C       & D      & E       & F   \\
 
 % 添加附录, 如不需要可以注释掉
 \appendix
-%\setcounter{chapter}{0}
-%\setcounter{page}{1} % 如果需要可以自行重置页码
-\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
 
+% 附录正文
 \chapter{附录 A ~ 这是第一个附录}
 \renewcommand{\thesection}{A.\arabic{section}}
 \section{附录A的小节}

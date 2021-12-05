@@ -2,14 +2,14 @@
 %%	This is file `zhbook.cls',
 %%
 %%	@author andy123t
-%%	@date 2021/12/05
+%%	@date 2021/12/06
 %%	@version v1.0.0
 %%	@address https://github.com/andy123t/zhbook
 %%	This template is based on HUSTPaperTemp
 %%
 
 % ---------- 定义的新的Class ----------
-\ProvidesClass{zhbook}[2021/12/05 v1.0.0]
+\ProvidesClass{zhbook}[2021/12/06 v1.0.0]
 \NeedsTeXFormat{LaTeX2e}
 
 \newif\ifprint\printfalse
@@ -19,7 +19,7 @@
 \ProcessOptions \relax
 
 % ---------- 载入Class ----------
-\LoadClass[a4paper,openany,twoside]{book}
+\LoadClass[a4paper]{book}
 
 
 % ---------- 中文字体宏包 ----------
@@ -317,9 +317,13 @@
 % ------ 添加几个新的文档属性 ------
 \def \defsubtitle {}
 \def \defcollege {}
+\def \defpubyear {}
 \def \defbioinfo {}
+\def \defpublisher {}
 \newcommand{\subtitle}[1]{\def \defsubtitle {#1}}
 \newcommand{\college}[1]{\def \defcollege {#1}}
+\newcommand{\pubyear}[1]{\def \defpubyear {#1}}
+\newcommand{\publisher}[1]{\def \defpublisher {#1}}
 \newcommand\bioinfo[1]{\def \defbioinfo {#1}}
 
 
@@ -327,32 +331,46 @@
 \renewcommand{\maketitle}[1][15em]{
 	\begin{titlepage}
 	\pdfbookmark[0]{封~面}{cover}
-		\begin{center}
-			\vspace*{20mm}
-			\rule{\textwidth}{2pt}\\%
-			%{\fontsize{40}{40}\selectfont 硕~士~学~位~论~文}\\ %\bfseries
-			\vspace{10mm}
-			\begin{center}
-			\parbox[t]{15cm}{\centering \fontsize{30pt}{30pt}\selectfont \heiti \@title}
-			\end{center}
-			\vspace{4mm}%
-            \begin{center}
-			\parbox[t]{15cm}{\centering \zihao{1} \heiti \defsubtitle}
-			\end{center}
-            \vspace{4mm}%
-             \rule{\textwidth}{2pt}\\%
-			\vspace{20mm}
-    		{\zihao{-2}\textsl{\@author}}\\
-    		\vspace{6mm}
-    		%\vskip\stretch{1}%
-    		{\zihao{-2}\textsl{\defcollege}}\\
-    		\vspace{6mm}%
-    		{\zihao{3}{\@date}} \\
-    		\vspace{6mm}%
-    		{\zihao{3}\textsl{\defbioinfo}} \\
-    		\vspace{6mm}%
+			\centering
+			\scshape  % 对标题页上的所有文本使用小写字母
 
-		\end{center}
+			\vspace*{20mm}
+			\rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}  % 粗水平线
+    	\rule{\textwidth}{0.4pt}   % 细水平线
+
+			\vspace{0.75\baselineskip} % 标题上方的空白
+
+			\begin{center}
+			\parbox[t]{15cm}{\centering \zihao{1} \heiti \@title}
+			\end{center}
+
+			\vspace{0.75\baselineskip} % 标题下方的空白
+	
+			\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} % 细水平线
+			\rule{\textwidth}{1.6pt}   % 粗水平线
+
+			\vspace{1\baselineskip}  % 标题栏后的空白
+
+    	\large 
+
+    	\@author
+    	\vspace{0.1\baselineskip}
+
+    	\defcollege
+    	\vspace{0.1\baselineskip}
+    	
+    	\defbioinfo
+    	\vspace{0.1\baselineskip}
+    	
+    	\vfill
+
+    	\plogo % Publisher logo
+	
+			\vspace{0.3\baselineskip} % Whitespace under the publisher logo
+	
+			\defpubyear % Publication year
+
+			{\large \defpublisher} % Publisher
 	\end{titlepage}
 	\cleardoublepage
 }
