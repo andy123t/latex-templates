@@ -1,11 +1,12 @@
-%
-%	This is file `zhbook.cls',
-%	@author andy123t
-%	@date 2021/12/05
-%	@version v1.0.0
-%	@address https://github.com/andy123t/zhbook
-%	This template is based on HUSTPaperTemp
-%
+%%
+%%	This is file `zhbook.cls',
+%%
+%%	@author andy123t
+%%	@date 2021/12/05
+%%	@version v1.0.0
+%%	@address https://github.com/andy123t/zhbook
+%%	This template is based on HUSTPaperTemp
+%%
 
 % ---------- 定义的新的Class ----------
 \ProvidesClass{zhbook}[2021/12/05 v1.0.0]
@@ -233,7 +234,7 @@
 % --- 使用tabularx库并定义新的左右中格式 ----
 \newcolumntype{L}{X}
 \newcolumntype{C}{>{\centering \arraybackslash}X}
-\newcolumntype{R}{>{\raggedright \arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft \arraybackslash}X}
 \newcolumntype{P}[1]{>{\centering \arraybackslash}p{#1}}
 
 % ------------ 设置三线表格式 ------

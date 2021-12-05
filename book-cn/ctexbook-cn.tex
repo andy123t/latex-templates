@@ -100,14 +100,13 @@
 \renewcommand{\figureautorefname}{图}
 \renewcommand{\tableautorefname}{表}
 
-
-% --- 使用tabularx库并定义新的左右中格式 ----
+% --- 使用 tabularx库并定义新的左右中格式 ----
 \newcolumntype{L}{X}
 \newcolumntype{C}{>{\centering \arraybackslash}X}
-\newcolumntype{R}{>{\raggedright \arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft \arraybackslash}X}
 \newcolumntype{P}[1]{>{\centering \arraybackslash}p{#1}}
 
-
+%----- 设置章节标题格式 -----
 %\renewcommand{\chaptername}{第\chinese{chapter}章}
 \ctexset{chapter={
 format ={\bfseries \filcenter \LARGE},

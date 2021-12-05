@@ -182,11 +182,10 @@
 \renewcommand{\figureautorefname}{图}
 \renewcommand{\tableautorefname}{表}
 
-
 %-----使用 tabularx宏包并定义新的对齐格式-----
 \newcolumntype{L}{X}
 \newcolumntype{C}{>{\centering \arraybackslash}X}
-\newcolumntype{R}{>{\raggedright \arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft \arraybackslash}X}
 \newcolumntype{P}[1]{>{\centering \arraybackslash}p{#1}}
 
 %-----设置浮动体间距 -----
@@ -715,7 +714,7 @@ XeLaTeX 环境下可以使用 EPS、PDF、PNG、JPEG、BMP 格式的图片, 当�
 
 \clearpage
 
-两个图左右并排放置, 共用一个标题. 通过 \verb|autoref| 引用图片: \autoref{fig:Image1} 与 \autoref{fig:Image2}.
+两个图左右并排放置, 共用一个标题. 通过 \verb|autoref| 引用图片: \autoref{fig:image1} 与 \autoref{fig:image2}.
 \begin{figure}[htp!]
 \centering
   \includegraphics[width=0.45\linewidth]{image1.eps}
@@ -732,14 +731,14 @@ XeLaTeX 环境下可以使用 EPS、PDF、PNG、JPEG、BMP 格式的图片, 当�
 \centering
   \includegraphics[width=0.9\linewidth]{image1.eps}
     \caption{图一的描述.}
-    \label{fig:Image1}
+    \label{fig:image1}
 \end{minipage}
   \hfill
 \begin{minipage}[t]{0.48\linewidth}
 \centering
    \includegraphics[width=0.9\linewidth]{image1.eps}
    \caption{图二的描述.}
-   \label{fig:Image2}
+   \label{fig:image2}
 \end{minipage}
 \end{figure}
 
@@ -766,14 +765,14 @@ LaTeX 的 Table 环境一个浮动体环境, 浮动体排版与 Figure 环境类
 \label{tab:heightweight}
 \begin{tabularx}{0.9\textwidth}{lCCC}
    \toprule
-	序号&年龄&身高&体重\\
+	序号 & 年龄 & 身高 & 体重\\
 	\midrule
-	1&14&156&42\\
-	2&16&158&45\\
-	3&14&162&48\\
-	4&15&163&50\\
+	001 & 14 & 156 & 42 \\
+	002 & 16 & 158 & 45 \\
+	003 & 14 & 162 & 48 \\
+	004 & 15 & 163 & 50 \\
     \cmidrule{2-4}
-	平均&15&159.75&46.25\\
+	平均 & 15 & 159.75 & 46.25 \\
 	\bottomrule
 \end{tabularx}
 \end{table}
