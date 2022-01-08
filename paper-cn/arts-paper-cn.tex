@@ -1,0 +1,274 @@
+% !TEX program = xelatex
+\documentclass[a4paper,12pt]{article}
+
+%-----中文宏包-----
+\usepackage[UTF8]{ctex}
+
+%-----数学宏包-----
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{mathrsfs,bm}
+%-----draft下 label提示-----
+%\usepackage[notcite,notref]{showkeys}
+%-----页面布局-----
+\usepackage{geometry}
+\geometry{left=1.25in,right=1.25in,top=1in,bottom=1in}
+%\geometry{left=1in,right=1in,top=1in,bottom=1in}
+%\geometry{left=2.5cm,right=2.1cm,top=1.7cm,bottom=2cm,includehead,includefoot}
+
+%-----设置超链接-----
+\usepackage{url,hyperref}
+\hypersetup{colorlinks=true,linkcolor=black,citecolor=black} % 去掉目录红框
+%-----制作目录-----
+\usepackage{imakeidx}
+% 设置颜色
+\usepackage{color,xcolor}
+% 插入图片
+\usepackage{graphicx}
+\usepackage{epsfig}
+%-----设置表格-----
+\usepackage{tabularx,array}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{fancybox}
+%-----调整单元格格式-----
+\usepackage{makecell}
+%-----操作字符串-----
+\usepackage{xstring}
+%-----多语种处理-----
+%\usepackage[english]{babel}
+%-----设置代码环境-----
+\usepackage{listings}
+%-----设置章节标题和目录-----
+\usepackage{titletoc}
+\usepackage{titlesec}
+%-----数学公式扩展-----
+\usepackage{mathtools}
+%-----浮动体设置-----
+\usepackage{float}
+%-----书签设置-----
+\usepackage{bookmark}
+%-----参考文献格式-----
+\usepackage[numbers]{natbib}
+%-----设置页眉页脚格式-----
+\usepackage{fancyhdr}
+%-----设置行间距 -----
+\renewcommand*{\baselinestretch}{1.5}
+
+%\setmainfont{Times New Roman}
+%\setmonofont{Courier New}
+%\setsansfont{Arial}
+%\setCJKfamilyfont{kai}[AutoFakeBold]{simkai.ttf}
+%\newcommand*{\kai}{\CJKfamily{kai}}
+%\setCJKfamilyfont{song}[AutoFakeBold]{SimSun}
+%\newcommand*{\song}{\CJKfamily{song}}
+
+\newcommand{\upcite}[1]{\textsuperscript{\textsuperscript{\cite{#1}}}}
+
+\renewcommand{\thesection}{\chinese{section}、}
+\renewcommand{\thesubsection}{（\chinese{subsection}）}
+\renewcommand{\thesubsubsection}{\arabic{subsubsection}.}
+\titleformat{\section}{\bfseries \zihao{-3}}{\chinese{section}、}{0em}{}
+\titleformat{\subsection}{\bfseries \zihao{4}}{（\chinese{subsection}）}{0.2em}{}
+\titleformat{\subsubsection}{\bfseries \zihao{-4}}{\arabic{subsubsection}、}{0.2em}{}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\stunum}[1]{\def\defstunum{#1}}
+\newcommand{\class}[1]{\def\defclass{#1}}
+
+\makeatletter
+\renewcommand\maketitle{
+{\raggedright
+\vspace*{12pt}
+\begin{center}
+{\fontsize{20pt}{20pt}\selectfont \bfseries \@title }\\[1.5em]
+  姓名: \@author \quad 学号: \defstunum \\
+  班级: \defclass \\[10pt]
+%{\fontsize{20pt}{20pt}\selectfont \bfseries \@title }\\[16pt]
+%  \defclass \quad \@author \quad \defstunum \\[10pt]
+\end{center}}
+}
+\makeatother
+
+% ----- 设置浮动体间距 ------
+\setlength{\textfloatsep}{0pt}
+\setlength{\floatsep}{10pt plus 3pt minus 2pt}
+\setlength{\intextsep}{10pt}
+\setlength{\abovecaptionskip}{2pt plus1pt minus1pt}
+\setlength{\belowcaptionskip}{3pt plus1pt minus2pt}
+%\setlength{\itemsep}{3pt plus1pt minus2pt}
+
+% ----- 设置公式间距为零 ------
+\AtBeginDocument{
+	\setlength{\abovedisplayskip}{4pt plus1pt minus1pt}
+	\setlength{\belowdisplayskip}{4pt plus1pt minus1pt}
+	\setlength{\abovedisplayshortskip}{2pt}
+	\setlength{\belowdisplayshortskip}{2pt}
+	\setlength{\arraycolsep}{2pt}   % array中列之间空白长度
+}
+
+
+% --- 算法宏包及设置 ---
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\floatname{algorithm}{算法}
+\algrenewcommand\algorithmicrequire{\textbf{输入:}}
+\algrenewcommand\algorithmicensure{\textbf{输出:}}
+
+%----- 定义 maketitle, abstract -----
+\makeatletter
+\renewcommand\maketitle{
+{\raggedright
+\vspace*{12pt}
+\begin{center}
+{\fontsize{20pt}{20pt}\selectfont \bfseries \@title }\\[1.5em]
+  姓名: \@author \quad 学号: \defstunum \\
+  班级: \defclass \\[10pt]
+\end{center}}
+}
+%----- abstract -------
+\renewenvironment{abstract}{
+\phantomsection
+\addcontentsline{toc}{section}{\textbf{Abstract}}
+\noindent\rule[0.1\baselineskip]{\textwidth}{0.5pt}
+%\centerline{\large \textbf{摘 \ 要}}\\[5pt]
+\textbf{摘~要：}
+}{\par
+\noindent\rule[0.3\baselineskip]{\textwidth}{0.5pt}
+}
+\makeatother
+
+% ---- 定义列表项的样式 -----
+\usepackage{enumitem}
+\setlist{nolistsep}
+% \setlength{\itemsep}{3pt plus1pt minus2pt}
+
+% --- 证明结束黑框 ----
+% \renewcommand{\qedsymbol}{$\blacksquare$}
+
+% --- 设置英文字体 -----
+\usepackage{newtxtext}  % for text fonts
+
+% --- 设置数学字体 -----
+% \usepackage{newtxmath}
+% \usepackage{mathptmx}
+
+% --- 直接插入 pdf 文件 ----
+% \usepackage{pdfpages}
+
+% --- 自定义命令 -----
+\newcommand{\CC}{\ensuremath{\mathbb{C}}}
+\newcommand{\RR}{\ensuremath{\mathbb{R}}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\ii}{\bm{\mathrm{i}}\,}  % 虚部
+\newcommand{\md}{\mathrm{d}\,}
+\newcommand{\bA}{\boldsymbol{A}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+
+
+\graphicspath{{./figures/}}
+
+
+%%%%%%%%%%%%%% 题目等信息   %%%%%%%%%%%%%%%%%%
+
+\title{文科小论文题目}
+\author{某某某}
+\stunum{123000678}
+\class{20XX\,级XX专业\,1\,班}
+
+\begin{document}
+
+\maketitle
+
+%----- 摘要 -----
+\begin{abstract}
+摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容. 摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容.
+
+\noindent \textbf{关键词：} 关键词 1 ~ 关键词 2 ~ 关键词 3
+\end{abstract}
+
+
+%%%%%%%%%%%%%%%%%%%% 目录 %%%%%%%%%%%%%%%%%%%
+
+%\tableofcontents
+
+
+%%%%%%%%%%%%%%%%%%% 正文  %%%%%%%%%%%%%%%%%%
+
+
+\section{引言}
+
+这部分是引言这部分是引言这部分是引言这部分是引言这部分是引言这部分是引言这部分是引言这部分是引言这部分是引言这部分是引言这部分是引言这部分是引言这部分是引言这部分是引言这部分是引言这部分是引言这部分是引言这部分是引言这部分是引言。
+
+这是一个引用的示例 \cite{Mittelbach2004}和 \cite{Wright2009,Liu2013}.
+
+这是一个引用的示例 \upcite{Mittelbach2004}和 \upcite{Wright2009,Liu2013}.
+
+\section{第一节}
+
+\subsection{第一小节}
+
+这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字.
+
+\subsection{第二小节}
+
+这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字.
+
+
+
+
+\section{列表的使用}
+
+这是一个计数的列表.
+\begin{enumerate}%[label={\rm (\arabic*)}]%\roman
+	\item 第一项
+		\begin{enumerate}
+			\item 第一项中的第一项
+			\item 第一项中的第二项
+		\end{enumerate}
+	\item 第二项
+\end{enumerate}
+
+
+这是一个不计数的列表.
+\begin{itemize}%[label={$\bullet$}]
+	\item 第一项
+	\begin{itemize}
+		\item 第一项中的第一项
+		\item 第一项中的第二项
+	\end{itemize}
+	\item 第二项
+\end{itemize}
+
+
+
+
+
+
+% -----------参考文献 -------------------
+\phantomsection
+\addcontentsline{toc}{section}{参考文献} % 添加  "参考文献 " 到目录
+
+%\setlength{\bibsep}{6pt plus 2pt}
+\begin{thebibliography}{99}
+\bibitem{Mittelbach2004}
+Mittelbach~F, Goossens~M, Braams~J, et~al., The {\LaTeX} Companion, 2nd ed., Reading, MA, USA: Addison-Wesley, 107-109, 2004.
+
+\bibitem{Wright2009}
+Wright~J, {\LaTeX}3 programming: External perspective, TUGboat, 30\penalty0 (1):\penalty0 107-109, 2009.
+
+\bibitem{Liu2013} 刘海洋. {\LaTeX}入门\allowbreak[M]. 电子工业出版社, 2013.
+
+\end{thebibliography}
+
+
+
+\section*{附录 ~ 这是一个附录}
+
+这是附录的内容
+
+
+\end{document} 

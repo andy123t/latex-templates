@@ -1,0 +1,430 @@
+% !TEX program = xelatex
+\documentclass[a4paper,12pt]{article}
+\usepackage{ctex}
+
+\usepackage{geometry}
+% 数学宏包
+\usepackage{amsmath,amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{titletoc}
+% 设置颜色
+\usepackage{xcolor}
+% 插入图片
+\usepackage{graphicx}
+% 表格
+\usepackage{array}
+%% 长表格
+\usepackage{longtable}
+%% booktabs 提供了\toprule 等命令.
+\usepackage{booktabs}
+%% multirow 支持在表格中跨行
+\usepackage{multirow}
+%% 调整间隔, 让表格更好看些
+\usepackage{bigstrut}
+%% 在跨行表格中输入定界符
+\usepackage{bigdelim}
+% 保护脆落命令
+\usepackage{cprotect}
+% 设置代码环境
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.58}
+
+
+\lstset{
+  xleftmargin=10pt,
+  xrightmargin=10pt,
+  frame=tlbr, framesep=4pt, framerule=0.5pt, %frame=tb,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  framerule=1pt,
+  rulecolor=\color{gray!35},
+  backgroundcolor=\color{gray!5},
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3,
+}
+% 首行缩进
+\usepackage{indentfirst}
+% 设置浮动体的标题
+\usepackage{caption}
+% 定制列表环境
+\usepackage{enumitem}
+% 下划线
+\usepackage{ulem}
+% 尺寸计算
+\usepackage{calc}
+
+% 超链接 hyperref 的设置
+%\usepackage{hyperref}
+%% Document Layout
+% 页面布局
+\geometry{top=25mm,bottom=25mm,left=25mm,right=25mm}
+\renewcommand*{\baselinestretch}{1.35}
+
+%\setmainfont{Times New Roman}
+%\setmonofont{Courier New}
+\setsansfont{Arial}
+\setCJKfamilyfont{kai}[AutoFakeBold]{simkai.ttf}
+\newcommand*{\kai}{\CJKfamily{kai}}
+\setCJKfamilyfont{song}[AutoFakeBold]{SimSun}
+\newcommand*{\song}{\CJKfamily{song}}
+
+
+\theoremstyle{plain}
+\newtheorem{definition}{定义}[section]
+\newtheorem{proposition}{命题}[section]
+\newtheorem{lemma}{引理}[section]
+\newtheorem{theorem}{定理}[section]
+\newtheorem{example}{例}[section]
+\newtheorem{corollary}{推论}[section]
+\newtheorem{remark}{注}[section]
+\newtheorem{exercise}{练习}[section]
+\newtheorem{assumption}{假设}[section]
+\newtheorem{axiom}{公理}[section]
+\newtheorem{property}{性质}[section]
+\newtheorem{conjecture}{猜想}[section]
+\renewcommand{\proofname}{\textbf{证明}}
+
+\usepackage[urlcolor=blue]{hyperref}
+\usepackage{threeparttable}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{float}
+\newcommand{\upcite}[1]{\textsuperscript{\textsuperscript{\cite{#1}}}}
+\usepackage{fancyhdr}
+\titleformat{\section}{\bfseries \Large}{\arabic{section}}{1em}{}
+\titleformat{\subsection}{\bfseries\large}{\thesubsection}{1em}{}
+
+
+% ----- 设置浮动体间距 ------
+\setlength{\textfloatsep}{0pt}
+\setlength{\floatsep}{10pt plus 3pt minus 2pt}
+\setlength{\intextsep}{10pt}
+\setlength{\abovecaptionskip}{2pt plus1pt minus1pt}
+\setlength{\belowcaptionskip}{3pt plus1pt minus2pt}
+%\setlength{\itemsep}{3pt plus1pt minus2pt}
+
+% ----- 设置公式间距为零 ------
+\AtBeginDocument{
+	\setlength{\abovedisplayskip}{4pt plus1pt minus1pt}
+	\setlength{\belowdisplayskip}{4pt plus1pt minus1pt}
+	\setlength{\abovedisplayshortskip}{2pt}
+	\setlength{\belowdisplayshortskip}{2pt}
+	\setlength{\arraycolsep}{2pt}   % array中列之间空白长度
+}
+
+
+% 添加自己要用的其他宏包
+\usepackage[numbers]{natbib}
+\usepackage{subfig}
+% \usepackage{xltxtra}
+
+%\usepackage[cleardoublepage=plain]{scrextend}
+
+% --- 算法宏包及设置 ---
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\floatname{algorithm}{算法}
+\algrenewcommand\algorithmicrequire{\textbf{输入:}}
+\algrenewcommand\algorithmicensure{\textbf{输出:}}
+
+
+\makeatletter
+\renewcommand\maketitle{
+{\raggedright
+\vspace*{12pt}
+\begin{center}
+{\fontsize{20pt}{20pt}\selectfont \bfseries \@title }\\[1.5em]
+  \@author  \\
+  \@date \\[10pt]
+\end{center}}
+}
+%----- abstract -------
+\renewenvironment{abstract}{
+\phantomsection
+\addcontentsline{toc}{section}{\textbf{摘要}}
+\noindent\rule[0.1\baselineskip]{\textwidth}{0.5pt}
+%\centerline{\large \textbf{摘 \ 要}}\\[5pt]
+\textbf{摘~要：}
+}{\par
+\noindent\rule[0.3\baselineskip]{\textwidth}{0.5pt}
+}
+\makeatother
+
+
+% ---- 定义列表项的样式 -----
+\usepackage{enumitem}
+\setlist{nolistsep}
+% \setlength{\itemsep}{3pt plus1pt minus2pt}
+
+% --- 证明结束黑框 ----
+% \renewcommand{\qedsymbol}{$\blacksquare$}
+
+% --- 设置英文字体 -----
+\usepackage{newtxtext}  % for text fonts
+
+% --- 设置数学字体 -----
+% \usepackage{newtxmath}
+% \usepackage{mathptmx}
+
+% --- 直接插入 pdf 文件 ----
+% \usepackage{pdfpages}
+
+% --- 自定义命令 -----
+\newcommand{\CC}{\ensuremath{\mathbb{C}}}
+\newcommand{\RR}{\ensuremath{\mathbb{R}}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\ii}{\bm{\mathrm{i}}\,}  % 虚部
+\newcommand{\md}{\mathrm{d}\,}
+\newcommand{\bA}{\boldsymbol{A}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+
+
+\graphicspath{{./figures/}}
+
+\title{小论文的题目}
+\author{作者}
+\date{\today}
+
+
+\begin{document}
+
+%----- 题目作者及摘要  -----
+\maketitle
+
+\begin{abstract}
+摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容. 摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容.
+
+\noindent \textbf{关键词：} 关键词 1 ~ 关键词 2 ~ 关键词 3
+\end{abstract}
+
+
+%%%%%%%%%%%%%%%%%%% 正文  %%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LaTeX 常用环境  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\section{LaTeX 常用环境}
+
+\section{列表的使用}
+
+\subsection{计数}
+
+这是一个计数的列表.
+\begin{enumerate}%[label={\rm (\arabic*)}]%\roman
+	\item 第一项
+		\begin{enumerate}
+			\item 第一项中的第一项
+			\item 第一项中的第二项
+		\end{enumerate}
+	\item 第二项
+	\item 第三项
+\end{enumerate}
+
+
+这是一个不计数的列表.
+\begin{itemize}%[label={$\bullet$}]
+	\item 第一项
+	\begin{itemize}
+		\item 第一项中的第一项
+		\item 第一项中的第二项
+	\end{itemize}
+	\item 第二项
+	\item 第三项
+\end{itemize}
+
+
+\section{文献引用}
+
+参考文献采用 BibLaTeX 的方式生成 (内容写在文件 \verb|mybib.bib| 中), 参考文献的样式 \verb|shnuthesis-numeric| 参考了 清华大学 LaTeX 模板 \href{https://github.com/tuna/thuthesis}{\fbox{thuthesis}} 的文献样式, 去掉了文献的标号 [J], [M]等, 如果想要文献的标号可以选择  \verb|thuthesis-numeric| 格式. 参考文献的样式还可以选择 BibLaTeX 的标准样式: \verb|plain|、\verb|abbrv|、\verb|unsrt| 与 \verb|siam| 等.
+
+文献引用示例 \upcite{Adams2003, Tadmor2012}和 \cite{LiLiu1997}.
+
+
+
+\section{数学公式}
+
+\subsection{公式}
+数学公式的使用请参考公式手册 symbols-a4, 或者 《一份(不太)简短的 \LaTeX~2$\varepsilon$ 介绍》 (lshort-zh-cn).
+
+自定义命令表示的几个数学符号 $\RR$, $\CC$, $\A$, $\ii$, $\md$, $\bA$.
+
+在文中行内公式可以这么写: $a^2+b^2=c^2$, 这是勾股定理, 它还可以表示为 $c=\sqrt{a^2+b^2}$, 还可以让公式单独一段并且加上编号
+\begin{equation}\label{eqn:trifun}
+\sin^2{\theta}+\cos^2{\theta}=1.
+\end{equation}
+还可以通过添加标签在正文中引用公式, 如等式~\eqref{eqn:trifun} 或者 \ref{eqn:trifun}.
+
+读者可能阅读过其它手册或者资料, 知道 LaTeX 提供了 eqnarray 环境. 它按照等号左边—等号—等号右边呈三列对齐, 但等号周围的空隙过大, 加上公式编号等一些 bug, 目前已不推荐使用. (摘自 lshort-zh-cn)
+
+多行公式常用 align 环境, 公式通过 \verb|&| 对齐. 分隔符通常放在等号左边:
+\begin{align}
+a & = b + c \\
+& = d + e.
+\end{align}
+
+align 环境会给每行公式都编号. 我们仍然可以用 \verb|\notag| 或 \verb|\nonumber| 去掉某行的编号. 在以下的例子,
+为了对齐等号, 我们将分隔符放在右侧, 并且此时需要在等号后添加一对括号 \verb|{}| 以产生正常的间距:
+\begin{align}
+a ={} & b + c \\
+={} & d + e + f + g + h + i + j \notag \\
+& + m + n + o \\
+={} & p + q + r + s.
+\end{align}
+
+如果我们不需要按等号对齐, 只需罗列数个公式, gather 将是一个很好用的环境:
+\begin{gather}
+a = b + c \\
+d = e + f + g \\
+h + i = j + k \notag \\
+l + m = n
+\end{gather}
+
+align 和 gather 有对应的不带编号的版本 align* 和 gather*.
+对于 align、 gather、align* 与 gather* 等环境, 若添加命令 \verb|\allowdisplaybreaks| 后 (已添加), 公式可以跨页显示.
+
+多个公式组在一起公用一个编号, 编号位于公式的居中位置, amsmath 宏包提供了诸如 aligned、gathered 等环境, 与 equation 环境套用.
+
+这个公式使用 aligned 环境 (\textbf{推荐使用})
+\begin{equation}\label{eqn:1}
+\left\{\begin{aligned}
+  &-\frac{\mathrm{d}^{2} u}{\mathrm{d} x^{2}}+\frac{\mathrm{d} u}{\mathrm{d} x}=\pi^{2} \sin (\pi x)+\pi \cos (\pi x),\quad x \in [0,1], \\
+  &u(0)=0,\quad u(1)=0.
+\end{aligned} \right.
+\end{equation}
+
+这个公式使用 array 环境
+\begin{equation}\label{eqn:2}
+\left\{\begin{array}{l}
+\displaystyle
+-\frac{\mathrm{d}^{2} u}{\mathrm{d} x^{2}}+\frac{\mathrm{d} u}{\mathrm{d} x}=\pi^{2} \sin (\pi x)+\pi \cos (\pi x),\quad x \in [0,1], \\[6pt]
+u(0)=0,\quad u(1)=0.
+\end{array} \right.
+\end{equation}
+
+aligned 与 equation 环境套用, 公式间距是自动调节的, 如果有分式, 分式也是行间显示. 如果用 array 与 equation 环境套用, 有时候需要手动调整公式行间距和行间显示.
+
+
+
+\section{定理环境}
+
+\begin{definition}
+这是一个定义.
+\end{definition}
+
+\begin{proposition}
+这是一个命题.
+\end{proposition}
+
+\begin{lemma}[Lemma] \label{lemma1}
+这是一个引理.
+\end{lemma}
+
+\begin{theorem}[Theorem]
+这是一个定理.
+\end{theorem}
+\begin{proof}
+这是证明环境.
+\end{proof}
+
+\begin{proposition}[Proposition]
+这是一个命题.
+\end{proposition}
+
+\begin{lemma}\label{lemma-convergence} {\rm (\textit{参考文献}\cite{LiLiu1997})}
+假设单步法具有 $p$ 阶精度, 且増量函数 $\varphi(x_{n}, u_{n}, h)$ 关于 $u$ 满足 {\rm Lipschitz} 条件
+\begin{equation}\label{eqn:3}
+|\varphi(x, u, h)-\varphi(x, \bar{u}, h)| \leqslant L_{\varphi}|u-\bar{u}|.
+\end{equation}
+\end{lemma}
+
+\begin{theorem}\label{theorem-convergence}
+假设单步法具有 $p$ 阶精度, 且増量函数 $\varphi(x_{n}, u_{n}, h)$ 关于 $u$ 满足 {\rm Lipschitz} 条件
+\begin{equation}\label{eqn:4}
+|\varphi(x, u, h)-\varphi(x, \bar{u}, h)| \leqslant L_{\varphi}|u-\bar{u}|.
+\end{equation}
+\end{theorem}
+\begin{proof}
+由定理 \ref{lemma1} 和 \eqref{eqn:1} 式可以推出以上结论.
+\end{proof}
+
+\begin{corollary}\label{col-convergence}
+假设单步法具有 $p$ 阶精度, 且増量函数 $\varphi(x_{n}, u_{n}, h)$ 关于 $u$ 满足 {\rm Lipschitz} 条件
+\begin{equation}\label{eqn:5}
+|\varphi(x, u, h)-\varphi(x, \bar{u}, h)| \leqslant L_{\varphi}|u-\bar{u}|.
+\end{equation}
+\end{corollary}
+
+
+\begin{remark}\label{remark1}
+这是一个 remark.
+\end{remark}
+
+\begin{example}
+这是一个例子.
+\end{example}
+
+
+%\clearpage
+%\section{算法环境}
+%
+%如下是算法~\ref{alg:euclid}.
+%\begin{algorithm}[H]
+%    \small
+%    \caption{Euclid's algorithm}\label{alg:euclid}
+%    \begin{algorithmic}[1]
+%        \Procedure{Euclid}{$a,b$}\Comment{The g.c.d. of a and b}
+%        \State $r\gets a\bmod b$
+%        \While{$r\not=0$}\Comment{We have the answer if r is 0}
+%        \State $a\gets b$
+%        \State $b\gets r$
+%        \State $r\gets a\bmod b$
+%        \EndWhile\label{euclidendwhile}
+%        \State \Return $b$\Comment{The gcd is b}
+%        \EndProcedure
+%    \end{algorithmic}
+%\end{algorithm}
+
+
+% -----------参考文献 -------------------
+
+\begin{thebibliography}{99}
+\bibitem{Adams2003} Adams~R~A, Fournier~J~J~F. Sobolev spaces[M]. Elsevier, 2003.
+
+\bibitem{Shen1994} Shen~J. Efficient spectral-Galerkin method I. Direct solvers of second- and fourth-order equations using Legendre polynomials[J]. SIAM J. Sci. Comput., 1994, 15(6): 1489-1505.
+
+\bibitem{Tadmor2012} Tadmor~E. A review of numerical methods for nonlinear partial differential
+  equations[J]. Bull. Amer. Math. Soc., 2012, 49(4): 507-554.
+
+\bibitem{TreWei2014} Trefethen~L~N, Weideman~J~A~C. The exponentially convergent trapezoidal rule[J]. SIAM Rev., 2014, 56(3): 385-458.
+
+\bibitem{LiLiu1997} 李荣华, 刘播. 微分方程数值解法[M]. 东南大学出版社, 1997.
+
+\end{thebibliography}
+
+
+
+\section*{MATLAB 源程序}
+\begin{lstlisting}[language=matlab]
+clc;clear;
+row = size(A)
+row = size(A,1)
+column = size(A,2)
+[row,column] = size(A)
+\end{lstlisting}
+\end{document}
+
+
