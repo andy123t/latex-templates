@@ -57,17 +57,18 @@
 \RequirePackage{mathrsfs}   % 数学英文花体
 \RequirePackage{booktabs}
 \RequirePackage{float}
-\RequirePackage{cite}
+%\RequirePackage{cite}
 \RequirePackage{longtable}  % 长表格
 \RequirePackage{multirow}   % 表格多行合并
 \RequirePackage{enumerate}  % 改变列表标号样式
 \RequirePackage{color,xcolor}
 \RequirePackage{fancyhdr}
 \RequirePackage{setspace}
-\RequirePackage{tikz}       % 绘制图形
+\RequirePackage{indentfirst}
 \RequirePackage{titlesec}   % 设置标题样式
 \RequirePackage{tabularx}
 \RequirePackage{makecell}
+\RequirePackage{tikz}       % 绘制图形
 \RequirePackage{xstring}    % 使用条件语句
 
 
@@ -149,9 +150,8 @@
 \newcommand{\headstyle}{
 	% \fancyhead[R]{\color{black}\fangsong \leftmark}
 	% \fancyhead[L]{\color{black} 上海师范大学硕士论文}
-	\fancyhead[RO,LE]{\color{black}\zihao{5} ~\thepage~}
-	\fancyhead[LO,RE]{\color{black} \zihao{5} \leftmark}
-	% \fancyhead[L]{\fangsong \zihao{5} 上海师范大学硕士论文}
+	\fancyhead[RO,LE]{\fangsong\zihao{5} ~\thepage~}
+	\fancyhead[LO,RE]{\fangsong\zihao{5} \leftmark}
 }
 
 
@@ -410,6 +410,7 @@
 	\vspace*{-2ex}
 	\begin{center} \heiti \chpzihao 摘~~~要 \end{center}
 	\vspace*{3ex}
+	\par
 }{
 	\vspace{-1ex}
 	\paragraph{\heiti 关键词：} \cnkeyword
@@ -427,6 +428,7 @@
 	\vspace*{-3ex}
 	\begin{center} \chpzihao \bfseries Abstract \end{center} 
 	\vspace*{3ex}
+	\par
 }{
 	\vspace{-1ex}
 	\paragraph{\bfseries Key Words: } \enkeyword
