@@ -49,8 +49,7 @@
 %-----设置章节标题和目录-----
 \usepackage{titletoc}
 \usepackage{titlesec}
-%-----盒子扩展-----
-\usepackage{fancybox}
+
 
 %-----数学公式扩展-----
 \usepackage{mathtools}
@@ -60,6 +59,7 @@
 \usepackage{bookmark}
 %-----参考文献格式-----
 \usepackage[numbers]{natbib}
+\def\bibfont{\small}  % 修改参考文献字体
 
 %-----附录设置-----
 %\usepackage[title,titletoc]{appendix}
@@ -144,6 +144,7 @@
 \if@mainmatter \chaptername ~ \fi\fi #1}{}}
 \makeatother
 
+
 %-----设置章节目录的深度-----
 %\setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{3}
@@ -167,15 +168,17 @@
 
 %-----定制图形和表格标题的样式-----
 \usepackage{caption}
-\captionsetup{font={normalsize,singlespacing},labelformat={default},labelsep=quad}
+\captionsetup{font={small,singlespacing},labelformat={default},labelsep=quad}
 \captionsetup[figure]{position=bottom,skip={5pt},name={图}}
 \captionsetup[table]{position=top,skip={2pt},name={表}}
-\setlength{\textfloatsep}{0pt}
-\setlength{\floatsep}{10pt plus 3pt minus 2pt}
-\setlength{\intextsep}{10pt}
-\setlength{\abovecaptionskip}{2pt plus1pt minus1pt}
-\setlength{\belowcaptionskip}{3pt plus1pt minus2pt}
-%\setlength{\itemsep}{3pt plus1pt minus2pt}
+
+%-----设置浮动体间距 -----
+\setlength{\textfloatsep}{12pt plus 2pt minus 2pt}
+\setlength{\floatsep}{10pt plus 2pt minus 2pt}
+\setlength{\intextsep}{10pt plus 2pt minus 2pt}
+\setlength{\abovecaptionskip}{2pt plus 1pt minus 1pt}
+\setlength{\belowcaptionskip}{3pt plus 1pt minus 2pt}
+\setlength{\itemsep}{3pt plus1pt minus2pt}
 
 
 %-----重新设置图表 autoref-----
@@ -188,19 +191,11 @@
 \newcolumntype{R}{>{\raggedleft \arraybackslash}X}
 \newcolumntype{P}[1]{>{\centering \arraybackslash}p{#1}}
 
-%-----设置浮动体间距 -----
-\setlength{\textfloatsep}{0pt}
-\setlength{\floatsep}{10pt plus 3pt minus 2pt}
-\setlength{\intextsep}{10pt}
-\setlength{\abovecaptionskip}{2pt plus1pt minus1pt}
-\setlength{\belowcaptionskip}{3pt plus1pt minus2pt}
-%\setlength{\itemsep}{3pt plus1pt minus2pt}
-
 
 %-----设置公式间距-----
 \AtBeginDocument{
-	\setlength{\abovedisplayskip}{4pt plus1pt minus1pt}
-	\setlength{\belowdisplayskip}{4pt plus1pt minus1pt}
+	\setlength{\abovedisplayskip}{4pt plus 1pt minus 1pt}
+	\setlength{\belowdisplayskip}{4pt plus 1pt minus 1pt}
 	\setlength{\abovedisplayshortskip}{2pt}
 	\setlength{\belowdisplayshortskip}{2pt}
 	\setlength{\arraycolsep}{2pt}   % array中列之间空白长度
@@ -239,14 +234,13 @@
 %\bibliographystyle{plain}
 
 %-----设置行间距-----
+\renewcommand{\baselinestretch}{1.35}
 %\renewcommand{\baselinestretch}{1.2}
 
 %------中文段落缩进和行距-----
-\setlength{\parindent}{2em}                  % 首行两个汉字的缩进量
-\setlength{\parskip}{4pt plus1pt minus1pt}   % 段落之间的竖直距离
-\renewcommand{\baselinestretch}{1.35}        % 定义行距
+\setlength{\parindent}{2em}                   % 首行两个汉字的缩进量
+\setlength{\parskip}{4pt plus 1pt minus 1pt}  % 段落之间的竖直距离
 
-\newcommand{\plogo}{\fbox{$\mathcal{PL}$}} % Generic dummy publisher logo
 
 %-----自定义命令-----
 \newcommand{\CC}{\ensuremath{\mathbb{C}}}
@@ -261,12 +255,14 @@
 %-----设置图片的路径-----
 \graphicspath{{./figure/}{./figures/}{./image/}{./images/}}
 
+% Generic dummy publisher logo
+\newcommand{\plogo}{\fbox{$\mathcal{PL}$}}
 
 %----书籍标题作者等信息 -----
 
 \title{\bfseries LaTeX 书籍样例}
 \author{\fangsong 某某某~~编著}
-\date{2021年12月}
+\date{\fangsong 2021年12月}
 
 
 \begin{document}
@@ -334,6 +330,7 @@
 
 \thispagestyle{empty}
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \frontmatter   %页码罗马数字, 章节不编号
@@ -381,13 +378,13 @@
 
 自定义了一个命令 \verb|\red{文字}| 可以\red{加红文字}, 可以在论文修改阶段方便标记.
 
-这是一个引用的示例 \cite{Adams2003}和 \cite{Shen1994,Tadmor2012,TreWei2014}.
+这是一个引用的示例 \cite{Tadmor2012} 和 \cite{LiLiu1997,Adams2003,TreWei2014}.
 
-这是一大段文字这是一大段文字中英文混排 Numerical Methods. 这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字.
+这是一大段文字这是一大段文字中英文混排 Numerical Methods. 这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字.
 
 \section{主要结论}
 
-这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字.
+这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字.
 
 
 
@@ -439,9 +436,9 @@
 
 \section{文献引用}
 
-参考文献采用 BibLaTeX 的方式生成 (内容写在文件 \verb|mybib.bib| 中), 参考文献的样式 \verb|shnuthesis-numeric| 参考了 清华大学 LaTeX 模板 \href{https://github.com/tuna/thuthesis}{\fbox{thuthesis}} 的文献样式, 去掉了文献的标号 [J], [M]等, 如果想要文献的标号可以选择  \verb|thuthesis-numeric| 格式. 参考文献的样式还可以选择 BibLaTeX 的标准样式: \verb|plain|、\verb|abbrv|、\verb|unsrt| 与 \verb|siam| 等.
+参考文献采用 BibTeX 的方式生成 (内容写在文件 \verb|mybib.bib| 中), 参考文献的样式为 \verb|thuthesis-numeric|, 符合国家标准《信息与文献参考文献著录规则》GB/T7714-2015, 论文中引用和参考的文献必须列出. 参考文献序号按所引文献在论文中出现的先后次序排列. 引用文献应在论文中的引用处加注文献序号, 并加注方括弧.
 
-文献引用示例 \cite{Adams2003, Tadmor2012}和 \cite{LiLiu1997}.
+文献引用示例 \cite{LiLiu1997} 和 \cite{Adams2003,Shen1994}.
 
 
 
@@ -707,23 +704,20 @@ XeLaTeX 环境下可以使用 EPS、PDF、PNG、JPEG、BMP 格式的图片, 当�
 插入一个图形并居中放置, 如图~\ref{fig:sinx}.
 \begin{figure}[htp!]
   \centering
-  \includegraphics[width=0.45\linewidth]{image1.eps}
+  \includegraphics[width=0.48\linewidth]{image1.eps}
   \caption{函数 $y=\sin(x)$ 的图像}\label{fig:sinx}
 \end{figure}
 
-
 \clearpage
-
 两个图左右并排放置, 共用一个标题. 通过 \verb|autoref| 引用图片: \autoref{fig:image1} 与 \autoref{fig:image2}.
 \begin{figure}[htp!]
 \centering
-  \includegraphics[width=0.45\linewidth]{image1.eps}
+  \includegraphics[width=0.48\linewidth]{image1.eps}
   \hfill
-  \includegraphics[width=0.45\linewidth]{image2.eps}
+  \includegraphics[width=0.48\linewidth]{image2.eps}
   \caption{左: 图一的描述;~ 右:图二的描述.}
   \label{fig:image}
 \end{figure}
-
 
 使用 minipage 排版并排插图, 每个图都有单独的标题.
 \begin{figure}[htp!]
@@ -881,38 +875,34 @@ N  & A       & B    & C       & D      & E       & F   \\
 \clearpage
 \phantomsection
 \addcontentsline{toc}{chapter}{参考文献} % 添加  "参考文献 " 到目录
+
 % 第一种方式, 使用 bib 文件
 
 %\nocite{*}  % 可以暂时显示全部参考文献, 包括未引用的
 
 % 使用方法:\bibliography{参考文件1文件名, 参考文献2文件名, ...}
 % 参考文献格式可选  plain, abbrv, unsrt, siam
-% \bibliographystyle{plain}
-\setlength{\bibsep}{1ex}
+%\bibliographystyle{plain}
 \bibliographystyle{thuthesis-numeric}
-%\bibliographystyle{shnuthesis-numeric}
 \bibliography{mybib}
 
 
+%----------------------------------------------------------------
 
 % 第二种方式, 按照格式直接写文献信息, 使用第二种请把第一种全部注释
-% 注意： 第二种方式需要加下面三行命令才能把  "参考文献 " 加到目录
-%\clearpage
-%\phantomsection
-%\addcontentsline{toc}{chapter}{参考文献} % 添加  "参考文献 " 到目录
-%
+% 注意： 参考文献序号按所引文献在论文中出现的先后次序排列
+
 %\begin{thebibliography}{99}
-%
-%\bibitem{Adams2003} Adams~R~A, Fournier~J~J~F. Sobolev spaces. Elsevier, 2003.
-%
-%\bibitem{Shen1994} Shen~J. Efficient spectral-Galerkin method I. Direct solvers of second- and fourth-order equations using Legendre polynomials. SIAM J. Sci. Comput., 1994, 15(6): 1489-1505.
-%
 %\bibitem{Tadmor2012} Tadmor~E. A review of numerical methods for nonlinear partial differential
-%  equations. Bull. Amer. Math. Soc., 2012, 49(4): 507-554.
+%  equations\allowbreak[J]. Bull. Amer. Math. Soc., 2012, 49(4): 507-554.
 %
-%\bibitem{TreWei2014}Trefethen~L~N, Weideman~J~A~C. The exponentially convergent trapezoidal rule. SIAM Rev., 2014, 56(3): 385-458.
+%\bibitem{LiLiu1997} 李荣华, 刘播. 微分方程数值解法\allowbreak[M]. 东南大学出版社, 1997.
 %
-%\bibitem{LiLiu1997} 李荣华, 刘播. 微分方程数值解法. 东南大学出版社, 1997.
+%\bibitem{Adams2003} Adams~R~A, Fournier~J~J~F. Sobolev spaces\allowbreak[M]. Elsevier, 2003.
+%
+%\bibitem{TreWei2014}Trefethen~L~N, Weideman~J~A~C. The exponentially convergent trapezoidal rule\allowbreak[J]. SIAM Rev., 2014, 56(3): 385-458.
+%
+%\bibitem{Shen1994} Shen~J. Efficient spectral-Galerkin method I. Direct solvers of second- and fourth-order equations using Legendre polynomials\allowbreak[J]. SIAM J. Sci. Comput., 1994, 15(6): 1489-1505.
 %
 %\end{thebibliography}
 

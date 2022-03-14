@@ -2,14 +2,14 @@
 %%	This is file `zhbook.cls',
 %%
 %%	@author andy123t
-%%	@date 2021/12/06
+%%	@date 2022/03/14
 %%	@version v1.0.0
 %%	@address https://github.com/andy123t/zhbook
 %%	This template is based on HUSTPaperTemp
 %%
 
 % ---------- 定义的新的Class ----------
-\ProvidesClass{zhbook}[2021/12/06 v1.0.0]
+\ProvidesClass{zhbook}[2022/03/14 v1.0.0]
 \NeedsTeXFormat{LaTeX2e}
 
 \newif\ifprint\printfalse
@@ -187,7 +187,7 @@
 
 % ----------- 中文段落缩进和行距 ------------
 \setlength{\parindent}{2em}                 % 首行两个汉字的缩进量
-\setlength{\parskip}{3pt plus1pt minus1pt}  % 段落之间的竖直距离
+\setlength{\parskip}{3pt plus 1pt minus 1pt}  % 段落之间的竖直距离
 \renewcommand{\baselinestretch}{1.35}        % 定义行距
 %\topskip=15pt   % 书写区域顶部空白
 %\parskip=5pt
@@ -215,15 +215,15 @@
 
 % --------- 定制图形和表格标题的样式 --------------
 \RequirePackage{caption}
-\captionsetup{font={normalsize,singlespacing},labelformat={default},labelsep=quad}
+\captionsetup{font={small,singlespacing},labelformat={default},labelsep=quad}
 \captionsetup[figure]{position=bottom,skip={5pt},name={图}}
 \captionsetup[table]{position=top,skip={2pt},name={表}}
-\setlength{\textfloatsep}{0pt}
-\setlength{\floatsep}{10pt plus 3pt minus 2pt}
-\setlength{\intextsep}{10pt}
-\setlength{\abovecaptionskip}{2pt plus1pt minus1pt}
-\setlength{\belowcaptionskip}{3pt plus1pt minus2pt}
-%\setlength{\itemsep}{3pt plus1pt minus2pt}
+\setlength{\textfloatsep}{12pt plus 2pt minus 2pt}
+\setlength{\floatsep}{10pt plus 2pt minus 2pt}
+\setlength{\intextsep}{10pt plus 2pt minus 2pt}
+\setlength{\abovecaptionskip}{2pt plus 1pt minus 1pt}
+\setlength{\belowcaptionskip}{3pt plus 1pt minus 2pt}
+%\setlength{\itemsep}{3pt plus 1pt minus 2pt}
 
 
 % ----- 重新设置图表autoref -------
@@ -290,7 +290,7 @@
 % -------------- 数学公式设置 ---------------
 \allowdisplaybreaks[4]   % \eqnarray 如果很长，影响分栏、换行和分页
 
-% ----- 设置公式间距为零 ------
+% ----- 设置公式间距 ------
 \AtBeginDocument{
 	\setlength{\abovedisplayskip}{4pt}
 	\setlength{\belowdisplayskip}{4pt}

@@ -60,11 +60,11 @@
 
 
 % ----- 设置浮动体间距 ------
-%\setlength{\textfloatsep}{0pt}
-%\setlength{\floatsep}{10pt plus 3pt minus 2pt}
-%\setlength{\intextsep}{10pt}
-%\setlength{\abovecaptionskip}{2pt plus1pt minus1pt}
-%\setlength{\belowcaptionskip}{3pt plus1pt minus2pt}
+%\setlength{\textfloatsep}{12pt plus 2pt minus 2pt}
+%\setlength{\floatsep}{10pt plus 2pt minus 2pt}
+%\setlength{\intextsep}{10pt plus 2pt minus 2pt}
+%\setlength{\abovecaptionskip}{2pt plus 1pt minus 1pt}
+%\setlength{\belowcaptionskip}{3pt plus 1pt minus 2pt}
 
 %\setlength{\parindent}{2em}                 % 首行两个汉字的缩进量
 %\setlength{\parskip}{3pt plus1pt minus1pt}  % 段落之间的竖直距离
@@ -85,13 +85,13 @@
 
 %----- 数学定理设置 -----
 \theoremstyle{plain}
-\newtheorem{definition}{\heiti 定义}[section]
-\newtheorem{proposition}{\heiti 命题}[section]
-\newtheorem{lemma}{\heiti 引理}[section]
-\newtheorem{theorem}{\heiti 定理}[section]
-\newtheorem{example}{\heiti 例}
-\newtheorem{corollary}{\heiti 推论}[section]
-\newtheorem{remark}{\heiti 注}[section]
+\newtheorem{definition}{定义}[section]
+\newtheorem{proposition}{命题}[section]
+\newtheorem{lemma}{引理}[section]
+\newtheorem{theorem}{定理}[section]
+\newtheorem{example}{例}
+\newtheorem{corollary}{推论}[section]
+\newtheorem{remark}{注}[section]
 %\renewcommand{\proofname}{\heiti 证明}
 
 
@@ -168,7 +168,7 @@
 
 自定义了一个命令 \verb|\red{文字}| 可以\red{加红文字}, 可以在论文修改阶段方便标记.
 
-这是一个引用的示例 \cite{Adams2003}和 \cite{Shen1994,Tadmor2012,TreWei2014}.
+这是一个引用的示例 \cite{Tadmor2012} 和 \cite{LiLiu1997,Adams2003,TreWei2014}.
 
 这是一大段文字这是一大段文字中英文混排 Numerical Methods. 这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字.
 
@@ -202,7 +202,7 @@
 
 %参考文献采用 BibLaTeX 的方式生成 (内容写在文件 \verb|mybib.bib| 中), 参考文献的样式可以选择 BibLaTeX 的标准样式: \verb|plain|、\verb|abbrv|、\verb|unsrt| 与 \verb|siam| 等.
 
-%文献引用示例 \cite{Adams2003, Tadmor2012}和 \cite{LiLiu1997}.
+%文献引用示例 \cite{LiLiu1997} 和 \cite{Adams2003,Shen1994}.
 
 
 
@@ -591,16 +591,16 @@ N  & A       & B    & C       & D      & E     \\
 
 %% 另一种方式
 \begin{thebibliography}{99}
-\bibitem{Adams2003} Adams~R~A, Fournier~J~J~F. Sobolev spaces[M]. Elsevier, 2003.
-
-\bibitem{Shen1994} Shen~J. Efficient spectral-Galerkin method I. Direct solvers of second- and fourth-order equations using Legendre polynomials[J]. SIAM J. Sci. Comput., 1994, 15(6): 1489-1505.
-
 \bibitem{Tadmor2012} Tadmor~E. A review of numerical methods for nonlinear partial differential
-  equations[J]. Bull. Amer. Math. Soc., 2012, 49(4): 507-554.
-
-\bibitem{TreWei2014} Trefethen~L~N, Weideman~J~A~C. The exponentially convergent trapezoidal rule[J]. SIAM Rev., 2014, 56(3): 385-458.
+  equations\allowbreak[J]. Bull. Amer. Math. Soc., 2012, 49(4): 507-554.
 
 \bibitem{LiLiu1997} 李荣华, 刘播. 微分方程数值解法\allowbreak[M]. 东南大学出版社, 1997.
+
+\bibitem{Adams2003} Adams~R~A, Fournier~J~J~F. Sobolev spaces\allowbreak[M]. Elsevier, 2003.
+
+\bibitem{TreWei2014} Trefethen~L~N, Weideman~J~A~C. The exponentially convergent trapezoidal rule\allowbreak[J]. SIAM Rev., 2014, 56(3): 385-458.
+
+\bibitem{Shen1994} Shen~J. Efficient spectral-Galerkin method I. Direct solvers of second- and fourth-order equations using Legendre polynomials\allowbreak[J]. SIAM J. Sci. Comput., 1994, 15(6): 1489-1505.
 
 \end{thebibliography}
 

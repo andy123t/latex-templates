@@ -1,3 +1,7 @@
+% !TEX program = xelatex
+% 使用 texlive完整编译:
+% xelatex -> bibtex -> xelatex -> xelatex
+% 中文书籍 LaTeX 模板
 
 \documentclass[UTF8,openany,twoside,12pt]{ctexbook}
 %\documentclass[UTF8,openany,twoside,zihao=-4]{ctexbook}
@@ -35,6 +39,7 @@
 \usepackage{float}
 \usepackage{bookmark}
 \usepackage[numbers]{natbib}
+%\def\bibfont{\small}  % 修改参考文献字体
 
 %\usepackage[title,titletoc]{appendix}
 %\renewcommand{\appendixname}{附录}
@@ -220,7 +225,7 @@ afterskip = {1ex plus 0.2ex minus 0.2ex},
 
 自定义了一个命令 \verb|\red{文字}| 可以\red{加红文字}, 可以在论文修改阶段方便标记.
 
-这是一个引用的示例 \cite{Adams2003}和 \cite{Shen1994,Tadmor2012,TreWei2014}.
+这是一个引用的示例 \cite{Tadmor2012} 和 \cite{LiLiu1997,Adams2003,TreWei2014}.
 
 这是一大段文字这是一大段文字中英文混排 Numerical Methods. 这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字.
 
@@ -254,7 +259,7 @@ afterskip = {1ex plus 0.2ex minus 0.2ex},
 
 %参考文献采用 BibLaTeX 的方式生成 (内容写在文件 \verb|mybib.bib| 中), 参考文献的样式可以选择 BibLaTeX 的标准样式: \verb|plain|、\verb|abbrv|、\verb|unsrt| 与 \verb|siam| 等.
 
-%文献引用示例 \cite{Adams2003, Tadmor2012}和 \cite{LiLiu1997}.
+%文献引用示例 \cite{LiLiu1997} 和 \cite{Adams2003,Shen1994}.
 
 
 
@@ -302,8 +307,6 @@ l + m = n
 
 align 和 gather 有对应的不带编号的版本 align* 和 gather*.
 对于 align、 gather、align* 与 gather* 等环境, 若添加命令 \verb|\allowdisplaybreaks| 后 (已添加), 公式可以跨页显示.
-
-
 
 多个公式组在一起公用一个编号, 编号位于公式的居中位置, amsmath 宏包提供了诸如 aligned、gathered 等环境, 与 equation 环境套用.
 
@@ -488,35 +491,38 @@ aligned 与 equation 环境套用, 公式间距是自动调节的, 如果有分�
 
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\backmatter  % 结束章节自动编号
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 \appendix
 
-\renewcommand{\chaptername}{附录 \Alph{chapter}}
-\renewcommand{\thesection}{\Alph{chapter}.\arabic{section}}
+\chapter{附录~A~~这是第一个附录}
 
+\section*{A.1~~附录A的小节}
 
-%\setcounter{page}{1} % 如果需要可以自行重置页码
-%\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
-\chapter{这是第一个附录}
-\section{附录A的小节}
 \clearpage
-\section{附录A的小节}
+\section*{A.2~~附录A的小节}
 
 
-\chapter{这是第二个附录}
-\section{附录B的小节}
+\chapter{附录~B~~这是第二个附录}
+
+\section*{B.1~~附录B的小节}
 
 
 内容附录内容附录内容附录\index{内容}附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容正文内容正文.内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容文内容正文内容正文内容正文\index{内容}
 
 
-\backmatter
+%%%%%%%%%%%%%%%%%%%%%%%% 生成参考文献 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \renewcommand{\bibname}{参考文献}
 
-\clearpage
-% 生成参考文献
-\phantomsection
-\addcontentsline{toc}{chapter}{参考文献} % 添加  "参考文献 " 到目录
+% 生成参考文献, 使用第一种请把第二种全部注释
+
+% 第一种方式, 使用 bib 文件
 
 %\nocite{*}  % 可以暂时显示全部参考文献, 包括未引用的
 
@@ -527,20 +533,30 @@ aligned 与 equation 环境套用, 公式间距是自动调节的, 如果有分�
 \bibliography{mybib}
 
 
-% 另一种方式
+%----------------------------------------------------------------
+
+% 第二种方式, 按照格式直接写文献信息, 使用第二种请把第一种全部注释
+% 注意： 参考文献序号按所引文献在论文中出现的先后次序排列
+% 第二种方式需要加下面三行命令才能把  "参考文献 " 加到目录
+
+%\clearpage
+%\phantomsection
+%\addcontentsline{toc}{chapter}{参考文献} % 添加  "参考文献 " 到目录
+%
 %\begin{thebibliography}{99}
-%\bibitem{Adams2003} Adams~R~A, Fournier~J~J~F. Sobolev spaces[M]. Elsevier, 2003.
-%
-%\bibitem{Shen1994} Shen~J. Efficient spectral-Galerkin method I. Direct solvers of second- and fourth-order equations using Legendre polynomials[J]. SIAM J. Sci. Comput., 1994, 15(6): 1489-1505.
-%
 %\bibitem{Tadmor2012} Tadmor~E. A review of numerical methods for nonlinear partial differential
-%  equations[J]. Bull. Amer. Math. Soc., 2012, 49(4): 507-554.
-%
-%\bibitem{TreWei2014} Trefethen~L~N, Weideman~J~A~C. The exponentially convergent trapezoidal rule[J]. SIAM Rev., 2014, 56(3): 385-458.
+%  equations\allowbreak[J]. Bull. Amer. Math. Soc., 2012, 49(4): 507-554.
 %
 %\bibitem{LiLiu1997} 李荣华, 刘播. 微分方程数值解法\allowbreak[M]. 东南大学出版社, 1997.
 %
+%\bibitem{Adams2003} Adams~R~A, Fournier~J~J~F. Sobolev spaces\allowbreak[M]. Elsevier, 2003.
+%
+%\bibitem{TreWei2014}Trefethen~L~N, Weideman~J~A~C. The exponentially convergent trapezoidal rule\allowbreak[J]. SIAM Rev., 2014, 56(3): 385-458.
+%
+%\bibitem{Shen1994} Shen~J. Efficient spectral-Galerkin method I. Direct solvers of second- and fourth-order equations using Legendre polynomials\allowbreak[J]. SIAM J. Sci. Comput., 1994, 15(6): 1489-1505.
+%
 %\end{thebibliography}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%% 索引  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

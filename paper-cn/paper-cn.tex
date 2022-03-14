@@ -111,11 +111,11 @@
 
 
 % ----- 设置浮动体间距 ------
-\setlength{\textfloatsep}{0pt}
-\setlength{\floatsep}{10pt plus 3pt minus 2pt}
-\setlength{\intextsep}{10pt}
-\setlength{\abovecaptionskip}{2pt plus1pt minus1pt}
-\setlength{\belowcaptionskip}{3pt plus1pt minus2pt}
+\setlength{\textfloatsep}{12pt plus 2pt minus 2pt}
+\setlength{\floatsep}{10pt plus 2pt minus 2pt}
+\setlength{\intextsep}{10pt plus 2pt minus 2pt}
+\setlength{\abovecaptionskip}{2pt plus 1pt minus 1pt}
+\setlength{\belowcaptionskip}{3pt plus 1pt minus 2pt}
 %\setlength{\itemsep}{3pt plus1pt minus2pt}
 
 % ----- 设置公式间距为零 ------
@@ -249,10 +249,7 @@
 
 \section{文献引用}
 
-参考文献采用 BibLaTeX 的方式生成 (内容写在文件 \verb|mybib.bib| 中), 参考文献的样式 \verb|shnuthesis-numeric| 参考了 清华大学 LaTeX 模板 \href{https://github.com/tuna/thuthesis}{\fbox{thuthesis}} 的文献样式, 去掉了文献的标号 [J], [M]等, 如果想要文献的标号可以选择  \verb|thuthesis-numeric| 格式. 参考文献的样式还可以选择 BibLaTeX 的标准样式: \verb|plain|、\verb|abbrv|、\verb|unsrt| 与 \verb|siam| 等.
-
-文献引用示例 \upcite{Adams2003, Tadmor2012}和 \cite{LiLiu1997}.
-
+这是一个引用的示例 \cite{Tadmor2012} 和 \cite{LiLiu1997,Adams2003,TreWei2014}.
 
 
 \section{数学公式}
@@ -402,19 +399,18 @@ aligned 与 equation 环境套用, 公式间距是自动调节的, 如果有分�
 % -----------参考文献 -------------------
 
 \begin{thebibliography}{99}
-\bibitem{Adams2003} Adams~R~A, Fournier~J~J~F. Sobolev spaces[M]. Elsevier, 2003.
-
-\bibitem{Shen1994} Shen~J. Efficient spectral-Galerkin method I. Direct solvers of second- and fourth-order equations using Legendre polynomials[J]. SIAM J. Sci. Comput., 1994, 15(6): 1489-1505.
-
 \bibitem{Tadmor2012} Tadmor~E. A review of numerical methods for nonlinear partial differential
-  equations[J]. Bull. Amer. Math. Soc., 2012, 49(4): 507-554.
+  equations\allowbreak[J]. Bull. Amer. Math. Soc., 2012, 49(4): 507-554.
 
-\bibitem{TreWei2014} Trefethen~L~N, Weideman~J~A~C. The exponentially convergent trapezoidal rule[J]. SIAM Rev., 2014, 56(3): 385-458.
+\bibitem{LiLiu1997} 李荣华, 刘播. 微分方程数值解法\allowbreak[M]. 东南大学出版社, 1997.
 
-\bibitem{LiLiu1997} 李荣华, 刘播. 微分方程数值解法[M]. 东南大学出版社, 1997.
+\bibitem{Adams2003} Adams~R~A, Fournier~J~J~F. Sobolev spaces\allowbreak[M]. Elsevier, 2003.
+
+\bibitem{TreWei2014}Trefethen~L~N, Weideman~J~A~C. The exponentially convergent trapezoidal rule\allowbreak[J]. SIAM Rev., 2014, 56(3): 385-458.
+
+\bibitem{Shen1994} Shen~J. Efficient spectral-Galerkin method I. Direct solvers of second- and fourth-order equations using Legendre polynomials\allowbreak[J]. SIAM J. Sci. Comput., 1994, 15(6): 1489-1505.
 
 \end{thebibliography}
-
 
 
 \section*{MATLAB 源程序}

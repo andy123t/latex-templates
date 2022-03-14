@@ -22,6 +22,7 @@
 %\usepackage[titletoc]{appendix}
 % 添加自己要用的其他宏包
 \usepackage[numbers]{natbib}
+\def\bibfont{\small}  % 修改参考文献字体
 \usepackage{subfig}
 % \usepackage{xltxtra}
 
@@ -111,14 +112,14 @@
 
 自定义了一个命令 \verb|\red{文字}| 可以\red{加红文字}, 可以在论文修改阶段方便标记.
 
-这是一个引用的示例 \cite{Adams2003}和 \cite{Shen1994,Tadmor2012,TreWei2014}.
+这是一个引用的示例 \cite{Tadmor2012} 和 \cite{LiLiu1997,Adams2003,TreWei2014}.
 
 这是一大段文字这是一大段文字中英文混排 Numerical Methods. 这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字.
+
 
 \section{主要结论}
 
 这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字.
-
 
 
 \section{结构安排}
@@ -137,7 +138,7 @@
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LaTeX 常用环境  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LaTeX 常用环境 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{LaTeX 常用环境}
 
@@ -154,7 +155,6 @@
 	\item 第三项
 \end{enumerate}
 
-
 这是一个不计数的列表.
 \begin{itemize}%[label={$\bullet$}]
 	\item 第一项
@@ -169,10 +169,9 @@
 
 \section{文献引用}
 
-参考文献采用 BibLaTeX 的方式生成 (内容写在文件 \verb|mybib.bib| 中), 参考文献的样式 \verb|shnuthesis-numeric| 参考了 清华大学 LaTeX 模板 \href{https://github.com/tuna/thuthesis}{\fbox{thuthesis}} 的文献样式, 去掉了文献的标号 [J], [M]等, 如果想要文献的标号可以选择  \verb|thuthesis-numeric| 格式. 参考文献的样式还可以选择 BibLaTeX 的标准样式: \verb|plain|、\verb|abbrv|、\verb|unsrt| 与 \verb|siam| 等.
+参考文献采用 BibTeX 的方式生成 (内容写在文件 \verb|mybib.bib| 中), 参考文献的样式为 \verb|thuthesis-numeric|, 符合国家标准《信息与文献参考文献著录规则》GB/T7714-2015, 论文中引用和参考的文献必须列出. 参考文献序号按所引文献在论文中出现的先后次序排列. 引用文献应在论文中的引用处加注文献序号, 并加注方括弧.
 
-文献引用示例 \cite{Adams2003, Tadmor2012}和 \cite{LiLiu1997}.
-
+文献引用示例 \cite{LiLiu1997} 和 \cite{Adams2003,Shen1994}.
 
 
 \section{数学公式}
@@ -248,14 +247,14 @@ aligned 与 equation 环境套用, 公式间距是自动调节的, 如果有分�
 这是一个命题.
 \end{proposition}
 
-\begin{lemma}[Lemma] \label{lemma1}
+\begin{lemma}[Lemma]\label{lemma1}
 这是一个引理.
 \end{lemma}
 
 \begin{theorem}[Theorem]
 这是一个定理.
 \end{theorem}
-\begin{proof}
+\begin{proof}[\normalfont\bfseries 证明\,:\nopunct]
 这是证明环境.
 \end{proof}
 
@@ -276,7 +275,7 @@ aligned 与 equation 环境套用, 公式间距是自动调节的, 如果有分�
 |\varphi(x, u, h)-\varphi(x, \bar{u}, h)| \leqslant L_{\varphi}|u-\bar{u}|.
 \end{equation}
 \end{theorem}
-\begin{proof}
+\begin{proof}[\normalfont\bfseries 证明\,:\nopunct]
 由定理 \ref{lemma1} 和 \eqref{eqn:1} 式可以推出以上结论.
 \end{proof}
 
@@ -301,7 +300,7 @@ aligned 与 equation 环境套用, 公式间距是自动调节的, 如果有分�
 \section{算法环境}
 
 如下是算法~\ref{alg:euclid}.
-\begin{algorithm}[!htbp]
+\begin{algorithm}[H]
     \small
     \caption{Euclid's algorithm}\label{alg:euclid}
     \begin{algorithmic}[1]
@@ -319,9 +318,12 @@ aligned 与 equation 环境套用, 公式间距是自动调节的, 如果有分�
 
 
 \clearpage
-如下是算法~\ref{algo}.
-\begin{algorithm}[!htbp]
-\caption{算法的名字}\label{algo}  % 算法的名字
+如下是算法~\ref{alg:name}, 算法宽度可以通过 minipage 宏包调节.
+\begin{center}
+\vspace{-2ex}
+\begin{minipage}{.9\linewidth}
+\begin{algorithm}[H]
+\caption{算法的名字}\label{alg:name}  % 算法的名字
 \begin{algorithmic}[1]
 \Require  input parameters A, B, C  % 算法的输入
 \Ensure  output result   % 算法的结果输出
@@ -340,10 +342,12 @@ aligned 与 equation 环境套用, 公式间距是自动调节的, 如果有分�
 \State \Return result
 \end{algorithmic}
 \end{algorithm}
+\end{minipage}
+\end{center}
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%% 微分方程的数值方法  %%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% 微分方程的数值方法 %%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{微分方程的数值方法}
 
@@ -425,7 +429,7 @@ aligned 与 equation 环境套用, 公式间距是自动调节的, 如果有分�
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 插图环境  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 插图环境 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{插图环境}
 
@@ -453,7 +457,7 @@ XeLaTeX 环境下可以使用 EPS、PDF、PNG、JPEG、BMP 格式的图片, 当�
   \label{fig:image}
 \end{figure}
 
-
+\clearpage
 使用 minipage 排版并排插图, 每个图都有单独的标题.
 \begin{figure}[htp!]
 \begin{minipage}[t]{0.48\linewidth}
@@ -489,7 +493,7 @@ XeLaTeX 环境下可以使用 EPS、PDF、PNG、JPEG、BMP 格式的图片, 当�
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 表格环境  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 表格环境 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{表格环境}
 
@@ -579,12 +583,11 @@ N  & A       & B    & C       & D      & E       & F   \\
 
 
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \backmatter  % 结束章节自动编号
 
-%%%%%%%%%%%%%%%%%%%%%%%% 生成参考文献  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%% 生成参考文献 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % 生成参考文献, 使用第一种请把第二种全部注释
 
@@ -594,38 +597,39 @@ N  & A       & B    & C       & D      & E       & F   \\
 
 % 使用方法:\bibliography{参考文件1文件名, 参考文献2文件名, ...}
 % 参考文献格式可选  plain, abbrv, unsrt, siam
-% \bibliographystyle{plain}
-% \bibliographystyle{shnuthesis-numeric}
+%\bibliographystyle{plain}
 \bibliographystyle{thuthesis-numeric}
 \bibliography{mybib}
 
 
+%----------------------------------------------------------------
+
 % 第二种方式, 按照格式直接写文献信息, 使用第二种请把第一种全部注释
-% 注意： 第二种方式需要加下面三行命令才能把  "参考文献 " 加到目录
+% 注意： 参考文献序号按所引文献在论文中出现的先后次序排列
+% 第二种方式需要加下面三行命令才能把  "参考文献 " 加到目录
+
 %\clearpage
 %\phantomsection
 %\addcontentsline{toc}{chapter}{参考文献} % 添加  "参考文献 " 到目录
 %
 %\begin{thebibliography}{99}
-%
-%\bibitem{Adams2003} Adams~R~A, Fournier~J~J~F. Sobolev spaces. Elsevier, 2003.
-%
-%\bibitem{Shen1994} Shen~J. Efficient spectral-Galerkin method I. Direct solvers of second- and fourth-order equations using Legendre polynomials. SIAM J. Sci. Comput., 1994, 15(6): 1489-1505.
-%
 %\bibitem{Tadmor2012} Tadmor~E. A review of numerical methods for nonlinear partial differential
-%  equations. Bull. Amer. Math. Soc., 2012, 49(4): 507-554.
+%  equations\allowbreak[J]. Bull. Amer. Math. Soc., 2012, 49(4): 507-554.
 %
-%\bibitem{TreWei2014}Trefethen~L~N, Weideman~J~A~C. The exponentially convergent trapezoidal rule. SIAM Rev., 2014, 56(3): 385-458.
+%\bibitem{LiLiu1997} 李荣华, 刘播. 微分方程数值解法\allowbreak[M]. 东南大学出版社, 1997.
 %
-%\bibitem{LiLiu1997} 李荣华, 刘播. 微分方程数值解法. 东南大学出版社, 1997.
+%\bibitem{Adams2003} Adams~R~A, Fournier~J~J~F. Sobolev spaces\allowbreak[M]. Elsevier, 2003.
+%
+%\bibitem{TreWei2014}Trefethen~L~N, Weideman~J~A~C. The exponentially convergent trapezoidal rule\allowbreak[J]. SIAM Rev., 2014, 56(3): 385-458.
+%
+%\bibitem{Shen1994} Shen~J. Efficient spectral-Galerkin method I. Direct solvers of second- and fourth-order equations using Legendre polynomials\allowbreak[J]. SIAM J. Sci. Comput., 1994, 15(6): 1489-1505.
 %
 %\end{thebibliography}
 
 
 
 
-
-%%%%%%%%%%%%%%%%%%%%%%%% 附录  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%% 附录 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % 添加附录, 如不需要可以注释掉
 \appendix
@@ -637,11 +641,14 @@ N  & A       & B    & C       & D      & E       & F   \\
 
 这里是附录环境, 手动设置了 chapter 和 section 的样式, 并且加入到了目录.
 
+
+
 \chapter{附录 B ~ 这是第二个附录}
 \renewcommand{\thesection}{B.\arabic{section}}
 \section{附录B的小节}
 
 这里是附录环境, 手动设置了 chapter 和 section 的样式, 并且加入到了目录.
+
 
 
 \end{document}
