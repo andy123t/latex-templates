@@ -46,10 +46,10 @@
 
 % ---------- 定义页边距 ----------
 \RequirePackage{geometry}
-\geometry{left=2.5cm,right=2.5cm,top=1.7cm,bottom=1.8cm,includehead,includefoot}
+\geometry{left=2.5cm,right=2.5cm,top=2.0cm,bottom=2.0cm,includehead,includefoot}
 \setlength{\headheight}{15pt}
-%\addtolength{\headsep}{-0.1cm}     % 页眉位置
-%\addtolength{\footskip}{-0.1cm}    % 页脚位置
+\setlength{\headsep}{18pt}     % 页眉位置
+%\setlength{\footskip}{25pt}    % 页脚位置
 
 % ---------- 常用宏包 ----------
 \RequirePackage{amsmath,amssymb,amsthm,amsfonts}  % AMS公式
@@ -123,7 +123,6 @@
     \makebox[-3pt][l]{\rule[.7\baselineskip]{\headwidth}{0pt}}
     \rule[0.85\baselineskip]{\headwidth}{0.5pt}\vskip-.8\baselineskip}
 
-\makeatletter
 \renewcommand{\headrule}{%
     {\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
      \makeheadrule}}
@@ -292,10 +291,10 @@
 
 % ----- 设置公式间距 ------
 \AtBeginDocument{
-	\setlength{\abovedisplayskip}{4pt}
-	\setlength{\belowdisplayskip}{4pt}
-	\setlength{\abovedisplayshortskip}{2pt}
-	\setlength{\belowdisplayshortskip}{2pt}
+	\setlength{\abovedisplayskip}{4pt plus 1pt minus 1pt}
+	\setlength{\belowdisplayskip}{4pt plus 1pt minus 1pt}
+	\setlength{\abovedisplayshortskip}{2pt plus 1pt minus 1pt}
+	\setlength{\belowdisplayshortskip}{2pt plus 1pt minus 1pt}
 	\setlength{\arraycolsep}{2pt}   % array中列之间空白长度
 }
 
@@ -407,9 +406,9 @@
 	\phantomsection
 	\addcontentsline{toc}{chapter}{摘~要}
 	\chaptermark{摘~~要}
-	\vspace*{-2ex}
+	\vspace*{-3ex}
 	\begin{center} \heiti \chpzihao 摘~~~要 \end{center}
-	\vspace*{3ex}
+	\vspace*{2.5ex}
 	\par
 }{
 	\vspace{-1ex}
@@ -427,7 +426,7 @@
 	\chaptermark{Abstract}
 	\vspace*{-3ex}
 	\begin{center} \chpzihao \bfseries Abstract \end{center} 
-	\vspace*{3ex}
+	\vspace*{2.5ex}
 	\par
 }{
 	\vspace{-1ex}
