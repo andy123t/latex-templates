@@ -46,7 +46,7 @@
 
 % ---------- 定义页边距 ----------
 \RequirePackage{geometry}
-\geometry{left=2.5cm,right=2.5cm,top=2.0cm,bottom=2.0cm,includehead,includefoot}
+\geometry{left=2.5cm,right=2.5cm,top=1.7cm,bottom=1.8cm,includehead,includefoot}
 \setlength{\headheight}{15pt}
 \setlength{\headsep}{18pt}     % 页眉位置
 %\setlength{\footskip}{25pt}    % 页脚位置
@@ -205,7 +205,6 @@
 
 
 % ---------------- 设置图表格式 ---------------
-
 \renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}
 \renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
 \renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
@@ -406,9 +405,9 @@
 	\phantomsection
 	\addcontentsline{toc}{chapter}{摘~要}
 	\chaptermark{摘~~要}
-	\vspace*{-3ex}
+	\vspace*{-2ex}
 	\begin{center} \heiti \chpzihao 摘~~~要 \end{center}
-	\vspace*{2.5ex}
+	\vspace*{3ex}
 	\par
 }{
 	\vspace{-1ex}
@@ -424,9 +423,9 @@
 	\phantomsection
 	\addcontentsline{toc}{chapter}{\textbf{Abstract}}
 	\chaptermark{Abstract}
-	\vspace*{-3ex}
+	\vspace*{-2ex}
 	\begin{center} \chpzihao \bfseries Abstract \end{center} 
-	\vspace*{2.5ex}
+	\vspace*{3ex}
 	\par
 }{
 	\vspace{-1ex}
@@ -436,7 +435,6 @@
 
 
 % ------------------ 前言环境 -------------
-
 \newenvironment{preface}{
 	\clearpage
 	\phantomsection
@@ -528,6 +526,4 @@
 }
 
 
-
 % End of file `zhbook.cls'.
-
