@@ -2,14 +2,14 @@
 %%	This is file `zhbook.cls',
 %%
 %%	@author andy123t
-%%	@date 2022/03/14
-%%	@version v1.0.0
+%%	@date 2022/04/03
+%%	@version v2.0.0
 %%	@address https://github.com/andy123t/zhbook
 %%	This template is based on HUSTPaperTemp
 %%
 
 % ---------- 定义的新的Class ----------
-\ProvidesClass{zhbook}[2022/03/14 v1.0.0]
+\ProvidesClass{zhbook}[2022/04/03 v2.0.0]
 \NeedsTeXFormat{LaTeX2e}
 
 \newif\ifprint\printfalse
@@ -21,10 +21,8 @@
 % ---------- 载入Class ----------
 \LoadClass[a4paper]{book}
 
-
 % ---------- 中文字体宏包 ----------
 \RequirePackage[UTF8]{ctex}
-
 
 % --------- 定义不同编译方式 ----------
 \RequirePackage{ifpdf,ifxetex}
@@ -43,13 +41,12 @@
   \fi
 \fi
 
-
 % ---------- 定义页边距 ----------
 \RequirePackage{geometry}
-\geometry{left=2.5cm,right=2.5cm,top=1.7cm,bottom=1.8cm,includehead,includefoot}
-\setlength{\headheight}{15pt}
+\geometry{left=2.5cm,right=2.5cm,top=2.7cm,bottom=3.0cm}
+\setlength{\headheight}{18pt}
 \setlength{\headsep}{18pt}     % 页眉位置
-%\setlength{\footskip}{25pt}    % 页脚位置
+\setlength{\footskip}{28pt}    % 页脚位置
 
 % ---------- 常用宏包 ----------
 \RequirePackage{amsmath,amssymb,amsthm,amsfonts}  % AMS公式
@@ -71,10 +68,8 @@
 \RequirePackage{tikz}       % 绘制图形
 \RequirePackage{xstring}    % 使用条件语句
 
-
 % --------设置图片的路径 ---------
 \graphicspath{{./figure/}{./figures/}{./image/}{./images/}}
-
 
 % ---------- 定义章节的编号格式 ----------
 \renewcommand{\chaptername}{第\arabic{chapter}章}
@@ -83,33 +78,28 @@
 \renewcommand{\thesubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}}
 \renewcommand{\thesubsubsection}{\arabic{subsubsection}.}
 
-
 \newcommand{\chpzihao}{\fontsize{20pt}{20pt}\selectfont}
 
 %---------- 定义章节标题格式 ------------
 \titleformat{\chapter}[hang]{\normalfont \heiti \chpzihao \filcenter }
     {\chpzihao \chaptertitlename}{20pt}{\chpzihao}
-\titlespacing{\chapter}{0pt}{-1.5ex  plus .1ex minus .2ex}{3ex plus .1ex minus .2ex}
+\titlespacing{\chapter}{0pt}{-0.5ex  plus .1ex minus .2ex}{3.5ex plus .1ex minus .2ex}
 
 \titleformat{\section}[hang]{\heiti \zihao{-3}}
     {\zihao{-3} \thesection}{1em}{\zihao{-3}}
-\titlespacing{\section}{0pt}{1.5ex plus .1ex minus .2ex}{1.5ex plus .1ex minus .2ex}
+\titlespacing{\section}{0pt}{2.5ex plus .1ex minus .2ex}{1.0ex plus .1ex minus .2ex}
 
 \titleformat{\subsection}[hang]{\heiti \zihao{4}}
     {\zihao{4} \thesubsection}{1em}{\zihao{4}}
-\titlespacing{\subsection}%
-    {0pt}{1.5ex plus .1ex minus .2ex}{\wordsep}
+\titlespacing{\subsection}{0pt}{1.5ex plus .1ex minus .2ex}{\wordsep}
 
 \titleformat{\subsubsection}[hang]{\heiti}
     {\thesubsubsection }{1em}{}{}
-\titlespacing{\subsubsection}%
-    {0pt}{1.2ex plus .1ex minus .2ex}{\wordsep}
-
+\titlespacing{\subsubsection}{0pt}{1.2ex plus .1ex minus .2ex}{\wordsep}
 
 %---------- 设置章节目录的深度 -------------
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{3} 
-
 
 % ------------- 设置附录 -----------
 \RequirePackage{titletoc}
@@ -117,7 +107,6 @@
 %\renewcommand{\appendixname}{附录}
 
 %-------------- 定义页眉页脚 -------------------
-
 % 定义页眉和页脚 使用fancyhdr 宏包
 \newcommand{\makeheadrule}{%
     \makebox[-3pt][l]{\rule[.7\baselineskip]{\headwidth}{0pt}}
@@ -130,7 +119,6 @@
 % ------------ 画单隔线 ------------
 \renewcommand{\headrulewidth}{0.5pt}    % 在页眉下画一个0.5pt宽的分隔线
 \renewcommand{\footrulewidth}{0pt}      % 在页脚不画分隔线。
-
 
 % ------- 重新定义 cleardoublepage --------
 \def\cleardoublepage{%
@@ -153,7 +141,6 @@
 	\fancyhead[LO,RE]{\fangsong\zihao{5} \leftmark}
 }
 
-
 % ------- 设置页脚样式 ----------
 %\newcommand{\footstyle}{\fancyfoot[C]{\fangsong \thepage}}
 \newcommand{\footstyle}{}
@@ -163,7 +150,6 @@
 \headstyle
 \footstyle
 
-
 % ------ 定义一种新的格式叫做main ------------
 \fancypagestyle{main}{%
     \pagestyle{fancyplain} 
@@ -171,7 +157,6 @@
 	\headstyle
 	\footstyle
 }
-
 
 \renewcommand\chaptermark[1]{%
   \markboth{%
@@ -183,7 +168,6 @@
     #1}{}%
 }
 
-
 % ----------- 中文段落缩进和行距 ------------
 \setlength{\parindent}{2em}                 % 首行两个汉字的缩进量
 \setlength{\parskip}{3pt plus 1pt minus 1pt}  % 段落之间的竖直距离
@@ -194,7 +178,6 @@
 %\baselineskip=5pt
 %\setlength{\baselineskip}{24pt}
 
-
 % ------------------- 浮动对象设置 ---------------------
 % 浮动对象的缺省值稍微宽松一点，从而防止幅度对象占据过多的文本页面
 % 也可以防止在很大空白的浮动页上放置很小的图形
@@ -203,13 +186,10 @@
 \renewcommand{\bottomfraction}{0.65}
 \renewcommand{\floatpagefraction}{0.60}
 
-
 % ---------------- 设置图表格式 ---------------
 \renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}
 \renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
 \renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
-
-
 
 % --------- 定制图形和表格标题的样式 --------------
 \RequirePackage{caption}
@@ -223,11 +203,9 @@
 \setlength{\belowcaptionskip}{3pt plus 1pt minus 2pt}
 %\setlength{\itemsep}{3pt plus 1pt minus 2pt}
 
-
 % ----- 重新设置图表autoref -------
 \newcommand{\figureautorefname}{图}
 \newcommand{\tableautorefname}{表}
-
 
 % --- 使用tabularx库并定义新的左右中格式 ----
 \newcolumntype{L}{X}
@@ -243,7 +221,6 @@
 % \setlength{\belowrulesep}{0pt}
 % \setlength{\abovetopsep}{0pt}
 % \setlength{\belowbottomsep}{0pt}
-
 
 % -------- 重新定义图和表的浮动环境 ---------
 \newenvironment{generalfig}[3][htbp]{
@@ -266,24 +243,32 @@
 	\end{table}
 }
 
-
 %------------- 数学定理设置 ---------------
 \theoremstyle{plain} 
-\newtheorem{definition}{\heiti 定义}[chapter]
-\newtheorem{proposition}{\heiti 命题}[chapter]
-\newtheorem{lemma}{\heiti 引理}[chapter]
-\newtheorem{theorem}{\heiti 定理}[chapter]
-\newtheorem{example}{\heiti 例}[chapter]
-\newtheorem{corollary}{\heiti 推论}[chapter]
-\newtheorem{remark}{\heiti 注}[chapter]
-\newtheorem{exercise}{\heiti 练习}[chapter]
-\newtheorem{assumption}{\heiti 假设}[chapter]
-\newtheorem{axiom}{\heiti 公理}[chapter]
-\newtheorem{property}{\heiti 性质}[chapter]
-\newtheorem{conjecture}{\heiti 猜想}[chapter]
-\renewcommand{\proofname}{\heiti 证明}
+\newtheorem{definition}{定义}[chapter]
+\newtheorem{proposition}{命题}[chapter]
+\newtheorem{lemma}{引理}[chapter]
+\newtheorem{theorem}{定理}[chapter]
+\newtheorem{example}{例}[chapter]
+\newtheorem{corollary}{推论}[chapter]
+\newtheorem{remark}{注}[chapter]
+\newtheorem{exercise}{练习}[chapter]
+\newtheorem{assumption}{假设}[chapter]
+\newtheorem{axiom}{公理}[chapter]
+\newtheorem{property}{性质}[chapter]
+\newtheorem{conjecture}{猜想}[chapter]
 %\renewcommand{\qedsymbol}{$\blacksquare$}
-
+\renewcommand{\proofname}{证明}
+\renewenvironment{proof}[1][\proofname]{\par
+  \pushQED{\qed}%
+  \normalfont \topsep6\p@\@plus6\p@\relax
+  \trivlist
+  \item[\hskip\labelsep
+        \bfseries
+    #1\@addpunct{\,:\,}]\ignorespaces
+}{%
+	\popQED\endtrivlist\@endpefalse
+}
 
 % -------------- 数学公式设置 ---------------
 \allowdisplaybreaks[4]   % \eqnarray 如果很长，影响分栏、换行和分页
@@ -303,12 +288,10 @@
 % 重新设置公式autoref
 \newcommand{\equationautorefname}{等式}
 
-
 % ---- 定义列表项的样式 -----
 \RequirePackage{enumitem}
 \setlist{nolistsep}
 % \setitemize{itemsep=3pt}
-
 
 %------------- 定义新的标题页面 -------------------
 
@@ -323,7 +306,6 @@
 \newcommand{\pubyear}[1]{\def \defpubyear {#1}}
 \newcommand{\publisher}[1]{\def \defpublisher {#1}}
 \newcommand\bioinfo[1]{\def \defbioinfo {#1}}
-
 
 % ------- 重置命令 maketitle -------
 \renewcommand{\maketitle}[1][15em]{
@@ -369,11 +351,12 @@
 			\defpubyear % Publication year
 
 			{\large \defpublisher} % Publisher
+
+			\vspace{0.3\baselineskip}
+
 	\end{titlepage}
 	\cleardoublepage
 }
-
-
 
 % ------------ 定义新的声明页面 --------------
 
@@ -396,8 +379,6 @@
 % 		{false}{}}
 % }
 
-
-
 % ------------------ 中文摘要环境 -------------
 \newenvironment{cnabstract}[1]{
 	\def \cnkeyword {#1}
@@ -414,7 +395,6 @@
 	\paragraph{\heiti 关键词：} \cnkeyword
 	\clearpage
 }
-
 
 % ----------------- 英文摘要环境 ----------------
 \newenvironment{enabstract}[1]{
@@ -433,7 +413,6 @@
 	\clearpage
 }
 
-
 % ------------------ 前言环境 -------------
 \newenvironment{preface}{
 	\clearpage
@@ -448,7 +427,6 @@
 	\cleardoublepage
 }
 
-
 % ------------- 定义新的目录页面 ----------------
 \RequirePackage{tocloft}
 \RequirePackage{hyperref}
@@ -458,14 +436,21 @@
 	citecolor = black
 } % 去掉目录红框
 \renewcommand{\cfttoctitlefont}{\hfill \heiti \chpzihao}
+\renewcommand{\cftchappresnum}{第}
+\renewcommand{\cftchapaftersnum}{章}
+\renewcommand{\cftchapaftersnumb}{\hspace{28pt}}
 \renewcommand{\contentsname}{目~~录}
 \renewcommand{\cftaftertoctitle}{\hfill}
-\setlength{\cftbeforetoctitleskip}{1.5ex}
-\setlength{\cftaftertoctitleskip}{5ex}
+\setlength{\cftbeforetoctitleskip}{8pt}
+\setlength{\cftaftertoctitleskip}{20pt}
+\setlength{\cftbeforechapskip}{12pt}
+\setlength{\cftbeforesecskip}{3pt}
+\setlength{\cftbeforesubsecskip}{3pt}
+\renewcommand{\cftdot}{$\cdot$}
+\renewcommand{\cftdotsep}{3}
+\renewcommand{\cftchapdotsep}{\cftdotsep}
+\renewcommand\cftchapleader{\cftdotfill{\cftchapdotsep}}
 \renewcommand{\cftsecdotsep}{\cftdotsep}  % 设置Section引导点
-% \renewcommand\cftbeforechapskip{2ex}
-\renewcommand{\cftbeforesecskip}{0.5ex} % 设置Part字体
-\renewcommand{\cftsecfont}{\songti}   % 设置Section字体
 
 % 使用条件语句
 \RequirePackage{xstring}
@@ -484,7 +469,6 @@
 		{pagenumtoc}{\phantomsection
 			\addcontentsline{toc}{chapter}{目~录}}}
 }
-
 
 % ----------- 设置新的生成目录命令 -------------
 \let \oldtableofcontens \tableofcontents
@@ -524,6 +508,5 @@
 	\addcontentsline{toc}{chapter}{参考文献}
 	\oldbibliography{#1}
 }
-
 
 % End of file `zhbook.cls'.
