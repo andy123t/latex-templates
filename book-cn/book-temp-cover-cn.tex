@@ -16,7 +16,7 @@
 %\usepackage[notcite,notref]{showkeys}
 %-----页面布局-----
 \usepackage{geometry}
-\geometry{left=2.5cm,right=2.5cm,top=1.7cm,bottom=1.8cm,includehead,includefoot}
+\geometry{left=2.5cm,right=2.5cm,top=3.0cm,bottom=3.0cm}
 %\geometry{left=1in,right=1in,top=1in,bottom=1in}
 %\geometry{left=2.5cm,right=2.1cm,top=1.7cm,bottom=2cm,includehead,includefoot}
 %\geometry{b5paper,text={125mm,195mm},centering,left=1in,right=1in,top=1in,bottom=1in}
@@ -121,21 +121,19 @@
 %%---------- 定义章节标题格式 ------------
 \titleformat{\chapter}[hang]{\bfseries \chpzihao \filcenter}
     {\chpzihao \chaptername}{20pt}{}
-\titlespacing{\chapter}{0pt}{-1.5ex  plus .1ex minus .2ex}{3ex plus .1ex minus .2ex}
+\titlespacing{\chapter}{0pt}{-0.5ex  plus .1ex minus .2ex}{4.5ex plus .1ex minus .2ex}
 
 \titleformat{\section}[hang]{\bfseries \zihao{3}}
     {\zihao{3} \thesection}{1em}{}
-\titlespacing{\section}{0pt}{1.5ex plus .1ex minus .2ex}{1.5ex plus .1ex minus .2ex}
+\titlespacing{\section}{0pt}{2.5ex plus .1ex minus .2ex}{1.0ex plus .1ex minus .2ex}
 
 \titleformat{\subsection}[hang]{\bfseries \zihao{4}}
     {\zihao{4} \thesubsection}{1em}{}
-\titlespacing{\subsection}%
-    {0pt}{1.5ex plus .1ex minus .2ex}{\wordsep}
+\titlespacing{\subsection}{0pt}{1.5ex plus .1ex minus .2ex}{\wordsep}
 
 \titleformat{\subsubsection}[hang]{\bfseries}
     {\thesubsubsection }{1em}{}{}
-\titlespacing{\subsubsection}%
-    {0pt}{1.2ex plus .1ex minus .2ex}{\wordsep}
+\titlespacing{\subsubsection}{0pt}{1.2ex plus .1ex minus .2ex}{\wordsep}
 
 
 %-----设置章节在页眉处的格式-----
@@ -164,7 +162,18 @@
 \newtheorem{property}{性质}[chapter]
 \newtheorem{conjecture}{猜想}[chapter]
 \renewcommand{\proofname}{证明}
-
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{\par
+  \pushQED{\qed}%
+  \normalfont \topsep6\p@\@plus6\p@\relax
+  \trivlist
+  \item[\hskip\labelsep
+        \bfseries
+    #1\@addpunct{\,:\,}]\ignorespaces
+}{%
+  \popQED\endtrivlist\@endpefalse
+}
+\makeatother
 
 %-----定制图形和表格标题的样式-----
 \usepackage{caption}
@@ -206,13 +215,14 @@
 \renewcommand{\cfttoctitlefont}{\hfill \bfseries \chpzihao}
 \renewcommand{\cftchappresnum}{第}
 \renewcommand{\cftchapaftersnum}{章}
-\renewcommand{\cftchapaftersnumb}{\hspace{5ex}}
+\renewcommand{\cftchapaftersnumb}{\hspace{28pt}}
 \renewcommand{\contentsname}{目~~录}
 \renewcommand{\cftaftertoctitle}{\hfill}
-\setlength{\cftbeforetoctitleskip}{1.5ex}
-\setlength{\cftaftertoctitleskip}{5ex}
-%\setlength{\cftbeforechapskip}{10pt}
-\setlength{\cftbeforesecskip}{0.5ex}
+\setlength{\cftbeforetoctitleskip}{8pt}
+\setlength{\cftaftertoctitleskip}{20pt}
+\setlength{\cftbeforechapskip}{12pt}
+\setlength{\cftbeforesecskip}{3pt}
+\setlength{\cftbeforesubsecskip}{3pt}
 \renewcommand{\cftdot}{$\cdot$}
 \renewcommand{\cftdotsep}{3}
 \renewcommand{\cftchapdotsep}{\cftdotsep}
@@ -543,7 +553,7 @@ aligned 与 equation 环境套用, 公式间距是自动调节的, 如果有分�
 |\varphi(x, u, h)-\varphi(x, \bar{u}, h)| \leqslant L_{\varphi}|u-\bar{u}|.
 \end{equation}
 \end{theorem}
-\begin{proof}
+\begin{proof}[\normalfont\bfseries 证明~\nopunct]
 由定理 \ref{lemma1} 和 \eqref{eqn:1} 式可以推出以上结论.
 \end{proof}
 
