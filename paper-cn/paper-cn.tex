@@ -111,11 +111,11 @@
 
 
 % ----- 设置浮动体间距 ------
-\setlength{\textfloatsep}{12pt plus 2pt minus 2pt}
-\setlength{\floatsep}{10pt plus 2pt minus 2pt}
-\setlength{\intextsep}{10pt plus 2pt minus 2pt}
-\setlength{\abovecaptionskip}{2pt plus 1pt minus 1pt}
-\setlength{\belowcaptionskip}{3pt plus 1pt minus 2pt}
+\setlength{\textfloatsep}{0pt}
+\setlength{\floatsep}{10pt plus 3pt minus 2pt}
+\setlength{\intextsep}{10pt}
+\setlength{\abovecaptionskip}{2pt plus1pt minus1pt}
+\setlength{\belowcaptionskip}{3pt plus1pt minus2pt}
 %\setlength{\itemsep}{3pt plus1pt minus2pt}
 
 % ----- 设置公式间距为零 ------
@@ -129,7 +129,7 @@
 
 
 % 添加自己要用的其他宏包
-\usepackage[numbers]{natbib}
+\usepackage[numbers,sort&compress]{natbib}
 \usepackage{subfig}
 % \usepackage{xltxtra}
 
@@ -249,7 +249,11 @@
 
 \section{文献引用}
 
-这是一个引用的示例 \cite{Tadmor2012} 和 \cite{LiLiu1997,Adams2003,TreWei2014}.
+参考文献采用 BibTeX 的方式生成 (内容写在文件 \verb|mybib.bib| 中), 参考文献的样式为 \verb|shnuthesis-numeric|, 符合国家标准《信息与文献参考文献著录规则》GB/T7714-2015, 论文中引用和参考的文献必须列出. 参考文献序号按所引文献在论文中出现的先后次序排列. 引用文献应在论文中的引用处加注文献序号, 并加注方括弧.
+
+文献引用示例 \cite{Tadmor2012} 和 \cite{LiLiu1997,Adams2003,TreWei2014}.
+
+文献引用示例 \cite{LiLiu1997} 和 \cite{Adams2003,Shen1994}.
 
 
 \section{数学公式}
@@ -398,19 +402,35 @@ aligned 与 equation 环境套用, 公式间距是自动调节的, 如果有分�
 
 % -----------参考文献 -------------------
 
-\begin{thebibliography}{99}
-\bibitem{Tadmor2012} Tadmor~E. A review of numerical methods for nonlinear partial differential
-  equations\allowbreak[J]. Bull. Amer. Math. Soc., 2012, 49(4): 507-554.
+% 生成参考文献
+\phantomsection
+\addcontentsline{toc}{section}{参考文献} % 添加  "参考文献 " 到目录
 
-\bibitem{LiLiu1997} 李荣华, 刘播. 微分方程数值解法\allowbreak[M]. 东南大学出版社, 1997.
+%\nocite{*}  % 可以暂时显示全部参考文献, 包括未引用的
 
-\bibitem{Adams2003} Adams~R~A, Fournier~J~J~F. Sobolev spaces\allowbreak[M]. Elsevier, 2003.
+% 使用方法:\bibliography{参考文件1文件名, 参考文献2文件名, ...}
+% 参考文献格式可选  plain, abbrv, unsrt, siam
+% \bibliographystyle{plain} 
+\bibliographystyle{thuthesis-numeric}
+%\bibliographystyle{thuthesis-author-year}
+\bibliography{mybib}
 
-\bibitem{TreWei2014}Trefethen~L~N, Weideman~J~A~C. The exponentially convergent trapezoidal rule\allowbreak[J]. SIAM Rev., 2014, 56(3): 385-458.
 
-\bibitem{Shen1994} Shen~J. Efficient spectral-Galerkin method I. Direct solvers of second- and fourth-order equations using Legendre polynomials\allowbreak[J]. SIAM J. Sci. Comput., 1994, 15(6): 1489-1505.
+%% 另一种方式
+%\begin{thebibliography}{99}
+%\bibitem{Tadmor2012} Tadmor~E. A review of numerical methods for nonlinear partial differential
+%  equations\allowbreak[J]. Bull. Amer. Math. Soc., 2012, 49(4): 507-554.
+%
+%\bibitem{LiLiu1997} 李荣华, 刘播. 微分方程数值解法\allowbreak[M]. 东南大学出版社, 1997.
+%
+%\bibitem{Adams2003} Adams~R~A, Fournier~J~J~F. Sobolev spaces\allowbreak[M]. Elsevier, 2003.
+%
+%\bibitem{TreWei2014} Trefethen~L~N, Weideman~J~A~C. The exponentially convergent trapezoidal rule\allowbreak[J]. SIAM Rev., 2014, 56(3): 385-458.
+%
+%\bibitem{Shen1994} Shen~J. Efficient spectral-Galerkin method I. Direct solvers of second- and fourth-order equations using Legendre polynomials\allowbreak[J]. SIAM J. Sci. Comput., 1994, 15(6): 1489-1505.
+%
+%\end{thebibliography}
 
-\end{thebibliography}
 
 
 \section*{MATLAB 源程序}
@@ -421,6 +441,9 @@ row = size(A,1)
 column = size(A,2)
 [row,column] = size(A)
 \end{lstlisting}
+
+
+
 \end{document}
 
 
