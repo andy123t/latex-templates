@@ -12,15 +12,20 @@
 
 
 \usepackage{tocloft}
-\renewcommand{\cfttoctitlefont}{\hfill \bfseries \LARGE}
-\renewcommand{\contentsname}{\centerline{\color{ecolor}目~~录}}
+\renewcommand{\cfttoctitlefont}{\hfill\bfseries\LARGE\color{ecolor}}
+\renewcommand{\contentsname}{目~~录}
 \renewcommand{\cftaftertoctitle}{\hfill}
-\setlength{\cftbeforetoctitleskip}{10ex}
-\setlength{\cftaftertoctitleskip}{5ex}
+\setlength{\cftbeforetoctitleskip}{8pt}
+\setlength{\cftaftertoctitleskip}{20pt}
+\setlength{\cftbeforesecskip}{16pt}
+\setlength{\cftbeforesubsecskip}{5pt}
+\renewcommand{\cftdot}{\color{ecolor}$\cdot$}
+\renewcommand{\cftdotsep}{3}
 \renewcommand{\cftsecdotsep}{\cftdotsep}  % 设置Section引导点
-\renewcommand{\cftbeforesecskip}{3ex}
-\renewcommand{\cftbeforesubsecskip}{1ex}
-% \renewcommand{\cftsecfont}{\songti}   % 设置Section字体
+%\renewcommand{\cftsecfont}{\songti}   % 设置 Section字体
+%\renewcommand{\cftsecpagefont}{\bfseries\color{ecolor}}
+%\renewcommand{\cftsubsecpagefont}{\color{ecolor}}
+%\renewcommand{\cftsubsubsecpagefont}{\color{ecolor}}
 
 
 
@@ -59,14 +64,17 @@
 \clearpage
 
 % ----- generate a empty page -----
-%\newpage\null\thispagestyle{empty}\newpage \addtocounter{page}{-1}
-%\addtocounter{page}{-1}
+%\clearpage%
+%\thispagestyle{empty}%
+%\addtocounter{page}{-1}%
+%\null%
+%\clearpage
 
-\cleardoublepage
+\clearpage
 \phantomsection
 \addcontentsline{toc}{section}{目~录}
 \tableofcontents
-\cleardoublepage
+\clearpage
 \setlist[itemize]{label=$\circ$}
 
 \pagenumbering{arabic}  % 页码为阿拉伯数字

@@ -7,18 +7,25 @@
 \usepackage{fontspec}
 \usepackage{tabularx}
 \usepackage{diagbox}
+\usepackage{bookmark}
 \usetikzlibrary{arrows,shapes}
 
 \usepackage{tocloft}
-\renewcommand{\cfttoctitlefont}{\hfill \bfseries \LARGE}
-\renewcommand{\contentsname}{\centerline{\color{ecolor}目~~录}}
+\renewcommand{\cfttoctitlefont}{\hfill\bfseries\LARGE\color{ecolor}}
+\renewcommand{\contentsname}{目~~录}
 \renewcommand{\cftaftertoctitle}{\hfill}
-\setlength{\cftbeforetoctitleskip}{10ex}
-\setlength{\cftaftertoctitleskip}{5ex}
-\renewcommand{\cftsecdotsep}{\cftdotsep}  % 设置 Section引导点
-\renewcommand{\cftbeforesecskip}{3ex}
-\renewcommand{\cftbeforesubsecskip}{1ex}
-% \renewcommand{\cftsecfont}{\songti}   % 设置 Section字体
+\setlength{\cftbeforetoctitleskip}{8pt}
+\setlength{\cftaftertoctitleskip}{20pt}
+\setlength{\cftbeforesecskip}{16pt}
+\setlength{\cftbeforesubsecskip}{5pt}
+\renewcommand{\cftdot}{\color{ecolor}$\cdot$}
+\renewcommand{\cftdotsep}{3}
+\renewcommand{\cftsecdotsep}{\cftdotsep}  % 设置Section引导点
+%\renewcommand{\cftsecfont}{\songti}   % 设置 Section字体
+%\renewcommand{\cftsecpagefont}{\bfseries\color{ecolor}}
+%\renewcommand{\cftsubsecpagefont}{\color{ecolor}}
+%\renewcommand{\cftsubsubsecpagefont}{\color{ecolor}}
+
 
 %---------- 定义表格新命令 ----------
 \newcolumntype{P}[1]{>{\centering \arraybackslash}p{#1}}
@@ -88,6 +95,8 @@
 
 
 \numberwithin{equation}{section}
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
 
 \newcommand{\red}[1]{\textcolor{red}{#1}}
 \newcommand{\blue}[1]{\textcolor{blue}{#1}}
@@ -109,6 +118,7 @@
 
 \begin{titlepage}
     % 取消标题页上的页眉和页脚
+    \pdfbookmark[1]{封~面}{cover}
     \centering   % 将所有内容放在标题页的中心
     %\scshape     % 对标题页上的所有文本使用小写字母
     \vspace*{5\baselineskip}   % 页面顶部的空白
@@ -121,7 +131,8 @@
     \vspace{0.75\baselineskip} % 标题上方的空白
 
     {%\zihao{3}\bfseries Lecture notes\\[1.5em]
-    \zihao{-1}\bfseries \LaTeX{} 笔记模板   % 题目
+    \zihao{-1}\bfseries \LaTeX{} 笔记模板   \\[20pt]
+    \zihao{2}\bfseries 笔记副标题
     }
 
 	\vspace{0.75\baselineskip} % 标题下方的空白
@@ -139,12 +150,17 @@
 \end{titlepage}
 
 
-\clearpage
-
 % ----- generate a empty page -----
-%\newpage\null\thispagestyle{empty}\newpage \addtocounter{page}{-1}
-%\addtocounter{page}{-1}
+%\clearpage%
+%\thispagestyle{empty}%
+%\addtocounter{page}{-1}%
+%\null%
+%\clearpage
 
+
+\clearpage
+\phantomsection
+\pdfbookmark[section]{\contentsname}{toc}
 \tableofcontents
 \clearpage
 \setlist[itemize]{label=$\circ$}
@@ -158,6 +174,8 @@
 \section{第一节}
 
 \subsection{第一小节}
+
+\subsubsection{第一小小节}
 正文内容
 
 \section{第二节}
