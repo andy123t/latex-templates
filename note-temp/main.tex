@@ -7,7 +7,7 @@
 \usepackage{fontspec}
 \usepackage{tabularx}
 \usepackage{diagbox}
-\usepackage{bookmark}
+%\usepackage{bookmark}
 \usetikzlibrary{arrows,shapes}
 
 \usepackage{tocloft}
@@ -158,7 +158,8 @@
 
 
 \clearpage
-\pdfbookmark[section]{目录}{toc}
+%\phantomsection
+\pdfbookmark[1]{目录}{toc}
 \tableofcontents
 \clearpage
 \setlist[itemize]{label=$\circ$}
