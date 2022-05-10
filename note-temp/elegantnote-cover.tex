@@ -8,6 +8,7 @@
 \usepackage{fontspec}
 \usepackage{array}
 \usepackage{diagbox}
+\usepackage{bookmark}
 \usetikzlibrary{arrows,shapes}
 
 \usepackage{tocloft}
@@ -68,8 +69,9 @@
 %\clearpage
 
 \clearpage
-\phantomsection
-\addcontentsline{toc}{section}{目~录}
+%\phantomsection
+%\addcontentsline{toc}{section}{目~录}
+\pdfbookmark[section]{目录}{toc}
 \tableofcontents
 \clearpage
 \setlist[itemize]{label=$\circ$}
