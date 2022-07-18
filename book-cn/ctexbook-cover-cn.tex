@@ -17,7 +17,9 @@
 %\geometry{left=2.5cm,right=2.1cm,top=1.7cm,bottom=2cm,includehead,includefoot}
 %\geometry{b5paper,text={125mm,195mm},centering,left=1in,right=1in,top=1in,bottom=1in}
 \usepackage{url,hyperref}
-\hypersetup{colorlinks=true,linkcolor=black,citecolor=black} % 去掉目录红框
+\hypersetup{colorlinks=true,
+linkcolor=black,
+citecolor=black} % 去掉目录红框
 %\usepackage[english]{babel}
 \usepackage{imakeidx}
 \usepackage{color,xcolor}
@@ -33,7 +35,7 @@
 \usepackage{xstring}
 \usepackage{listings}
 \usepackage{titletoc}
-\usepackage{titlesec}
+%\usepackage{titlesec}
 \usepackage{mathtools}
 \usepackage{float}
 \usepackage{bookmark}
@@ -212,17 +214,79 @@
 \newcommand{\red}[1]{\textcolor{red}{#1}}
 
 
+%-----设置图片的路径-----
 \graphicspath{{./figure/}{./figures/}{./image/}{./images/}}
 
+% Generic dummy publisher logo
+\newcommand{\plogo}{\fbox{$\mathcal{PL}$}}
 
-\title{\bfseries LaTeX 书籍样例}
+\title{\bfseries \LaTeX{} 书籍样例}
 \author{\fangsong 某某某~~编著}
 \date{2021年12月}
 
 
 \begin{document}
 
-\maketitle
+%\maketitle  % 生成封面
+
+%------- 自定义封面 -----------
+
+\begin{titlepage}
+    \pdfbookmark[0]{封~~面}{cover}
+    % 取消标题页上的页眉和页脚
+    \centering   % 将所有内容放在标题页的中心
+    \scshape     % 对标题页上的所有文本使用小写字母
+    \vspace*{2\baselineskip}   % 页面顶部的空白
+
+    %------------------------------------------------
+    %	题目
+    %------------------------------------------------
+	
+    \rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}  % 粗水平线
+    \rule{\textwidth}{0.4pt}   % 细水平线
+	
+    \vspace{0.75\baselineskip} % 标题上方的空白
+
+    \makeatletter
+    {\LARGE\bfseries \@title \\} % 题目
+
+	\vspace{0.75\baselineskip} % 标题下方的空白
+	
+	\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} % 细水平线
+	\rule{\textwidth}{1.6pt}  % 粗水平线
+	
+	\vspace{2\baselineskip}   % 标题栏后的空白
+	
+    %------------------------------------------------
+    %	作者
+    %------------------------------------------------
+	
+	% {\scshape\Large 某某某  \quad 编著 \\}
+    {\fangsong\large \@author \\[10pt] }
+	
+    {\fangsong\large \@date \\}
+
+    \makeatother
+
+	%\vspace{2\baselineskip}
+
+	%\textit{机构的名字 \\ 地点}
+	
+	\vfill % Whitespace between editor names and publisher logo
+	
+	%------------------------------------------------
+	%	出版社
+	%------------------------------------------------
+	
+	\plogo % Publisher logo
+	
+	\vspace{0.3\baselineskip} % Whitespace under the publisher logo
+	
+	2021 % Publication year
+
+	{\large publisher} % Publisher
+\end{titlepage}
+
 
 \thispagestyle{empty}
 

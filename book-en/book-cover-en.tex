@@ -77,6 +77,16 @@
 
 %\setlength{\parskip}{3pt plus1pt minus1pt}
 
+\usepackage{tocloft,calc}
+\renewcommand{\cftchappresnum}{\chaptername\space}
+\setlength{\cftchapnumwidth}{\widthof{\textbf{Appendix~999~}}}
+\makeatletter
+\g@addto@macro\appendix{%
+  \addtocontents{toc}{%
+    \protect\renewcommand{\protect\cftchappresnum}{\appendixname\space}%
+  }%
+}
+
 \renewcommand{\baselinestretch}{1.2}
 
 %----- theorem setting -----

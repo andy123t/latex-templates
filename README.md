@@ -17,5 +17,3 @@ homework: 中文作业模板
 note-temp: 笔记模板
 
 paper-cn: 中文论文模板
-
-zhbook: 中文书籍模板 (定制)
