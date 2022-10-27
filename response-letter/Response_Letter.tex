@@ -1,0 +1,119 @@
+% LaTeX response letter template
+
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+%\usepackage{lipsum} % to generate some filler text
+\usepackage{fullpage}
+%\usepackage[letterpaper,margin=1in]{geometry}
+
+% Package needed for optional arguments
+\usepackage{xifthen}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{amsfonts,bm,version}
+\usepackage{graphicx,fancybox,mathrsfs}
+\usepackage{color,xcolor}
+\usepackage{mathtools}
+\usepackage{enumerate}
+\usepackage{caption}
+\allowdisplaybreaks
+
+% define counters for reviewers and their points
+\newcounter{reviewer}
+\setcounter{reviewer}{0}
+\newcounter{point}[reviewer]
+\setcounter{point}{0}
+
+% Command declarations for reviewer comments and our responses
+\newcommand{\reviewersection}{\stepcounter{reviewer} \bigskip \hrule \section*{Reviewer \thereviewer}}
+
+% Comments to the Author
+\newenvironment{comments}{\medskip \noindent {\textbf{Comments}}:\ \itshape}{\par}
+
+\newenvironment{point}{\refstepcounter{point} \bigskip \noindent {\textbf{Comment~\arabic{point}}}:\ }{\par }
+
+% Author's Reply
+\newenvironment{reply}{\medskip \noindent \textbf{Reply}:\ }{\medskip}
+
+% define the new command
+\newcommand{\dx}[1][x]{\,{\rm d}#1}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+
+\graphicspath{{./figures/}}
+
+\begin{document}
+
+\section*{Response to the reviewers}
+% General intro text goes here
+The authors thank the reviewers for their critical assessment of our work.
+In the following we address their concerns point by point.
+
+% Let's start point-by-point with Reviewer 1
+\reviewersection
+
+% Point one description
+\begin{comments}
+This is comments of Reviewer \thereviewer. With some more words foo bar foo bar ...
+\begin{enumerate}
+  \item Point one
+  \item Point two
+  \item Point three
+\end{enumerate}
+Suggestion: it's better to test a case with ...
+\end{comments}
+
+\vskip 8pt
+% Our reply
+\begin{reply}
+We agree with the reviewer on this important point. This is what we did to fix it.
+\begin{enumerate}
+  \item Reply one
+  \item Reply two
+  \item Reply three
+\end{enumerate}
+\begin{equation}\label{eq:abc}
+  a^2+b^2=c^2.
+\end{equation}
+Please see Page 5 line 10 of the revised version.
+\end{reply}
+
+% Begin a new reviewer section
+\reviewersection
+
+% comment 2
+\begin{point}
+This is comment 1 of Reviewer \thereviewer.
+\end{point}
+
+\vskip 5pt
+\begin{reply}
+Our reply to This is comment 1 of Reviewer \thereviewer.
+\end{reply}
+
+% comment 2
+\begin{point}
+This is comment 2 of Reviewer \thereviewer.
+\end{point}
+
+\vskip 5pt
+\begin{reply}
+Our reply to This is comment 2 of Reviewer \thereviewer.
+\end{reply}
+
+% Begin a new reviewer section
+\reviewersection
+
+\begin{comments}
+This is comments of Reviewer \thereviewer. With some more words foo bar foo bar ...
+\end{comments}
+
+\vskip 5pt
+\begin{reply}
+	Our reply to it with reference to one of our points above using the \LaTeX's
+	label/ref system (see also \ref{eq:abc}).
+\end{reply}
+
+
+\end{document}
+
+

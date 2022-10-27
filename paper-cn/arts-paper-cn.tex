@@ -74,25 +74,6 @@
 \titleformat{\subsubsection}{\bfseries \zihao{-4}}{\arabic{subsubsection}、}{0.2em}{}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\newcommand{\stunum}[1]{\def\defstunum{#1}}
-\newcommand{\class}[1]{\def\defclass{#1}}
-
-\makeatletter
-\renewcommand\maketitle{
-{\raggedright
-\vspace*{12pt}
-\begin{center}
-{\fontsize{20pt}{20pt}\selectfont \bfseries \@title }\\[1.5em]
-  姓名: \@author \quad 学号: \defstunum \\
-  班级: \defclass \\[10pt]
-%{\fontsize{20pt}{20pt}\selectfont \bfseries \@title }\\[16pt]
-%  \defclass \quad \@author \quad \defstunum \\[10pt]
-\end{center}}
-}
-\makeatother
-
 % ----- 设置浮动体间距 ------
 \setlength{\textfloatsep}{0pt}
 \setlength{\floatsep}{10pt plus 3pt minus 2pt}
@@ -117,6 +98,10 @@
 \floatname{algorithm}{算法}
 \algrenewcommand\algorithmicrequire{\textbf{输入:}}
 \algrenewcommand\algorithmicensure{\textbf{输出:}}
+
+%----- 定义命令 -----
+\newcommand{\stunum}[1]{\def\defstunum{#1}}
+\newcommand{\class}[1]{\def\defclass{#1}}
 
 %----- 定义 maketitle, abstract -----
 \makeatletter

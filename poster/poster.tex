@@ -1,0 +1,184 @@
+%======================================================%
+%   Poster LaTeX Template
+%   compile using XeLaTeX
+%======================================================%
+
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[UTF8,indent]{ctex}
+\usepackage{indentfirst}
+\renewcommand{\indent}{\hspace*{2em}}
+
+\bibliographystyle{plain}
+\usepackage[orientation=portrait,size=a4,scale=2.3]{beamerposter} %1.68
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamersize{text margin left=1.5cm, text margin right=1.5cm}
+
+\renewcommand{\baselinestretch}{1.15}
+
+
+%\usetheme{LLT-poster}
+%\usecolortheme{ComingClean}
+%\footimage{\includegraphics[width=.35\textwidth]{authors}}
+
+
+\setmainfont{Times New Roman}
+%\setmonofont{Courier New}
+\setsansfont{Arial}
+\setCJKfamilyfont{kai}[AutoFakeBold]{simkai.ttf}
+\newcommand*{\kai}{\CJKfamily{kai}}
+\setCJKfamilyfont{song}[AutoFakeBold]{SimSun}
+\newcommand*{\song}{\CJKfamily{song}}
+
+\newcommand*{\xinwei}{\CJKfamily{STXinwei}}
+
+
+\makeatletter
+\setbeamertemplate{frametitle}{%
+  \nointerlineskip%
+  \vskip0.4cm%
+  \begin{beamercolorbox}[wd=\paperwidth,leftskip=.3cm,rightskip=.3cm plus1fil,vmode]{frametitle}%
+  \hspace*{4pt} \includegraphics[height=1.5cm]{\logopic}%SHNU_Logo2.png}%
+  \begin{center}
+    \usebeamerfont{frametitle}
+	\insertframetitle
+  \end{center}
+  \end{beamercolorbox}%
+  %\vskip-6pt
+  \begin{beamercolorbox}[wd=\paperwidth,leftskip=.3cm,rightskip=.3cm plus1fil,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}
+    \parbox[t]{15cm}{\centering \inserttitle}
+  \end{beamercolorbox}%
+  \vskip16pt
+  \begin{beamercolorbox}[wd=\paperwidth,leftskip=.3cm,rightskip=.3cm plus1fil,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertauthor
+  \end{beamercolorbox}%
+  \vskip-12pt
+  \begin{beamercolorbox}[wd=\paperwidth,leftskip=.3cm,rightskip=.3cm plus1fil,center]{author in head/foot}%
+    \usebeamerfont{institute in head/foot}\insertinstitute
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[colsep=1.5pt,wd=14cm,leftskip=.3cm,rightskip=.3cm]{lower separation line head}
+  \end{beamercolorbox}
+}
+\makeatother
+
+\newlength\columnheight \columnheight=5cm % needed to define \columnheight,
+                                          % don't have it here
+\def\postercolumn{
+    \leavevmode
+    \vtop to \columnheight\bgroup
+    \hsize.5\textwidth
+    \noindent
+    \ignorespaces
+}
+
+\def\endpostercolumn{
+    \egroup
+}
+
+
+\setbeamerfont{frametitle}{family=\kai,size=\LARGE,series=\bfseries}
+\setbeamerfont{title in head/foot}{family=\rmfamily,size=\Large}
+\setbeamerfont{author in head/foot}{family=\kai,size=\large}
+\setbeamerfont{institute in head/foot}{family=\kai,size=\large}
+
+\setbeamercolor{frametitle}{fg=black}
+\setbeamercolor{author in head/foot}{fg=black}
+
+% set block font
+\setbeamerfont{block title}{family=\kai,series=\bfseries}
+\setbeamerfont{block body}{family=\rmfamily}
+\setbeamercolor{block title}{fg=black}
+%\setbeamercolor{block body}{size=black}
+
+\setbeamerfont{normal text}{family=\rmfamily}
+\AtBeginDocument{\usebeamerfont{normal text}}
+
+
+\def\logopic{UnivLogo.png}   %logo
+\title{这是学术报告的题目这是学术报告的题目 \\ This is a LaTeX template of poster
+}
+\author{报告人~~~ 教授}
+\institute{报告人所在单位}
+
+
+\begin{document}
+
+% only change the spacing of body text
+%\setlength{\baselineskip}{16pt}
+
+
+\begin{frame}
+\frametitle{\Huge\kai 学术报告}
+
+
+\vskip-5em
+
+\begin{columns}[t] %c
+
+\column{0.75\textwidth}
+
+\begin{block}{报告人简介：}
+\indent 报告人的简介报告人的简介报告人的简介.报告人的简介报告人的简介报告人的简介报告人的简介. 报告人的简介报告人的简介报告人的简介. 报告人的简介报告人的简介报告人的简介. 报告人的简介报告人的简介报告人的简介.
+
+This is a brief introduction to the author.
+
+\end{block}
+
+\column{0.1\textwidth}
+\vspace{4ex}
+\begin{center}
+\hspace{-6ex}\includegraphics[width=1.5\textwidth]{author.jpg}
+\end{center}
+
+\end{columns}
+
+
+%\begin{postercolumn}
+%   hello world hello world hello world hello world
+%   hello world hello world hello world hello world
+%\end{postercolumn}
+
+\vskip1em
+
+\begin{block}{摘要：}
+\indent 摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容. 摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容.
+\end{block}
+
+\vskip1em
+
+
+{\kai \textbf{\large 报告时间：}} 2021年X月X日 ~~ 9:00--10:00   \\[5pt]
+
+{\kai \textbf{\large 报告地点：}} X号楼X室   \\[5pt]
+
+{\kai \textbf{\large 会\hspace{8.5pt}议\hspace{8.5pt}号：}} 111 222 333   \\[5pt]
+
+{\kai \textbf{\large 会议密码：}} 123456   \\[5pt]
+
+\vskip1em
+
+
+\begin{center}
+\kai\LARGE\bfseries 欢迎老师和同学们参加！
+\end{center}
+
+\vskip2em
+
+\begin{flushright}
+XX大学XX学院  \\
+2021年X月X日
+\end{flushright}
+\vskip-2em
+
+\end{frame}
+
+
+\end{document}
+
+
+
+
