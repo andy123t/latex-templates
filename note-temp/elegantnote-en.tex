@@ -1,53 +1,17 @@
-
-%\documentclass[en,hazy,screen,blue,14pt]{elegantnote}
-
-\documentclass[en,normal,11pt,blue]{elegantnote}
-\usepackage{epsfig,amssymb,amsmath,version}
-\usepackage{amssymb,version,graphicx,fancybox,mathrsfs,multirow}
-%\usepackage[notcite,notref]{showkeys}
-\usepackage{diagbox}
-\usetikzlibrary{arrows,shapes}
-
-
-\usepackage{tocloft}
-\renewcommand{\cfttoctitlefont}{\hfill \bfseries \LARGE}
-\renewcommand{\contentsname}{\centerline{\color{ecolor}Contents}}
-\renewcommand{\cftaftertoctitle}{\hfill}
-\setlength{\cftbeforetoctitleskip}{10ex}
-\setlength{\cftaftertoctitleskip}{5ex}
-\renewcommand{\cftsecdotsep}{\cftdotsep} 
-\renewcommand{\cftbeforesecskip}{3ex}
-\renewcommand{\cftbeforesubsecskip}{1ex}
-
-
-
+\documentclass[en,hazy,screen,blue,14pt]{elegantnote}
 
 \title{ElegantNote: An Elegant \LaTeX{} Template for Notes}
 
 \author{Dongsheng Deng}
 \institute{Elegant\LaTeX{} Program}
 
-\version{2.30}
+\version{2.40}
 \date{\today}
 
 \begin{document}
 \maketitle
-
-\pagenumbering{Roman}
-
-%\input{Cover.tex}
-%\clearpage
-
-% ----- generate a empty page -----
-%\newpage\null\thispagestyle{empty}\newpage \addtocounter{page}{-1}
-%\addtocounter{page}{-1}
-
-\vskip -2em
-\tableofcontents
-\clearpage
-
-\pagenumbering{arabic}  % 页码为阿拉伯数字
-
+% logo
+\centerline{\includegraphics[width=0.2\textwidth]{logo-blue}}
 
 \section{ElegantNote Instructions}
 \thispagestyle{empty}
@@ -67,12 +31,10 @@ The new template has the following features:
   \item change the citation style with \lstinline{cite} option: \lstinline{authoryear}, \lstinline{numbers} and \lstinline{super}.
 \end{itemize}
 
-This update is to resolve \TeX{} Live 2020 compilation errors caused by \lstinline{gbt7714} compatibility issues.
-
 \subsection{Optional Modes}
 
 This template provides optional modes: good for eye mode (geye) and hazy mode, while the paper color is green for the former and light blue for the latter. you can use the following code to activate the desired mode:
-\begin{lstlisting}[frame=none]
+\begin{lstlisting}[frame=none]  
   \documentclass[geye]{elegantnote} % or
   \documentclass[mode=geye]{elegantnote}
   \documentclass[hazy]{elegantnote} % or
@@ -90,15 +52,15 @@ This template provides optional modes: good for eye mode (geye) and hazy mode, w
 
 \subsection{Device Options}
 
-To make the notes more comfortable to read, we designed four output options (of different sizes) that correspond to different reading devices: Pad (default), Kindle, PC and A4paper.
+To make the notes more comfortable to read, we designed four output options (of different sizes) that correspond to different reading devices: Pad (default), Kindle, PC and A4paper. 
 
 \textcolor{red}{New}: For the convenience of notes presentation, version 2.20 offers a new option for device, i.e. \lstinline{device=screen}, which is similar to the size of MS Powerpoint with ratio aspect of 4:3 (2019/12/06).
 
 The options of output for different devices are
-\begin{lstlisting}[frame=none]
+\begin{lstlisting}[frame=none]  
   \documentclass[device=pad]{elegantnote}    % ipad screen size
   \documentclass[device=kindle]{elegantnote} % kindle screen size
-  \documentclass[device=pc]{elegantnote}     % double pages for pc
+  \documentclass[device=pc]{elegantnote}     % double pages for pc 
   \documentclass[device=normal]{elegantnote} % a4 normal page
   \documentclass[device=screen]{elegantnote} % 4:3 PPT size
 \end{lstlisting}
@@ -107,7 +69,7 @@ The options of output for different devices are
 You can also select the device by using a direct assignment method, such as:
 \end{note}
 
-\begin{lstlisting}[frame=none]
+\begin{lstlisting}[frame=none]  
   \documentclass[pad]{elegantnote}
   \documentclass[kindle]{elegantnote}
   \documentclass[pc]{elegantnote}
@@ -133,7 +95,7 @@ This template defines a new option (\lstinline{math}), with three options:
 \subsection[Color Themes]{Color Themes\footnote{Test for chapter footnote.}}
 
 This template contains 5 color themes, \textcolor{egreen}{green}, \textcolor{ecyan}{cyan}, \textcolor{eblue}{blue}(default), \textcolor{sakura}{sakura} and \textcolor{black}{black}. If you don't need color, you can choose black theme. The color theme is enabled in the same way as before:
-\begin{lstlisting}[frame=none]
+\begin{lstlisting}[frame=none]  
   \documentclass[green]{elegantnote}
   \documentclass[color=green]{elegantnote}
   ....
@@ -145,7 +107,7 @@ This template contains 5 color themes, \textcolor{egreen}{green}, \textcolor{ecy
 \subsection{Languages}
 
 This template contains two sets of language environments, changing the language environment will change the title of table/figure (figure, table), article structure words (such as the table of contents, references, etc.), and the environment Introductory words (such as Theorem, Lemma, etc.). The different language modes are enabled as follows:
-\begin{lstlisting}[frame=none]
+\begin{lstlisting}[frame=none]  
   \documentclass[cn]{elegantnote}
   \documentclass[lang=cn]{elegantnote}
   \documentclass[en]{elegantnote}
@@ -206,7 +168,7 @@ Let $z$ be some element of $xH \cap yH$.  Then $z = xa$ for some $a \in H$, and 
 
 Regression analysis is a powerful statistical method that allows you to examine the relationship between two or more variables of interest. While there are many types of regression analysis, at their core they all examine the influence of one or more independent variables on a dependent variable. The process of performing a regression allows you to confidently determine which factors matter most, which factors can be ignored, and how these factors influence each other.
 
-Let's continue using our application training example. In this case, we'd want to measure the historical levels of satisfaction with the events from the past three years or so, as well as any information possible in regards to the independent variables.
+Let's continue using our application training example. In this case, we'd want to measure the historical levels of satisfaction with the events from the past three years or so, as well as any information possible in regards to the independent variables. 
 
 \begin{table}[htbp]
   \small
@@ -233,7 +195,7 @@ Let's continue using our application training example. In this case, we'd want t
 
 \begin{itemize}[noitemsep]
   \item Routing and resource discovery;
-    \begin{itemize}
+    \begin{itemize} 
       \item Language Models
       \item Vector Space Models
     \end{itemize}
@@ -242,79 +204,9 @@ Let's continue using our application training example. In this case, we'd want t
 \end{itemize}
 
 
-\section{Recruit Support Members}
-
-Recruit support members for Elegant\LaTeX{} to translate template official guide, maintain wiki entries, update Wechat articles. No deadline for this recruitment.
-
-So far, Elegant\LaTeX{} has four support members:
-\begin{itemize}
-	\item OG Translator: \href{https://github.com/peggy2006xzyz}{YPY};
-	\item Wiki Maintainer: \href{https://github.com/izinngo}{Ingo Zinngo}, \href{https://github.com/xiaohao890809}{Xiaohao890809};
-	\item QQ Group Manager: \href{https://github.com/sikouhjw}{Sikouhjw}.
-\end{itemize}
-
-Thank them all!!!
-
 \section{Acknowledgement}
-The number of stars on GitHub for ElegantPaper reached 176 on April 12, 2020 at the release of ElegantNote v2.20.
-Thank China\TeX{} and \href{http://www.latexstudio.net/}{\LaTeX{} studio} for their promotion.
 
-If you like our templates, star on GitHub.
-\begin{figure}[!ht]
-	\centering
-	\includegraphics[width=\textwidth]{star.png}
-	\caption{Twinkle, Twinkle, Little Star}
-\end{figure}
-
-\section{Donation}
-To express your love for our templates and/or our developers, please do not hesitate to tip us.
-\begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=0.4\textwidth]{donate.jpg}
-\end{figure}
-
-\textbf{The explanation right of the tip usage belongs to Elegant\LaTeX{} with no supervision. Feel free to tip us.} Those who donate more than 10 RMB will be recorded in the donation list and will receive a donation certificate. Thank all the tippers!
-
-\begin{table}[htbp]
-  \centering
-  \scriptsize
-  \caption{Donation List}
-    \begin{tabular}{cccccccc}
-    \toprule
-    \textbf{Tipper} & \textbf{Amount} & \textbf{Date} & \textbf{Channel} & \textbf{Tipper} & \textbf{Amount} & \textbf{Date} & \textbf{Channel} \\
-    \midrule
-    Lerh  & 10 RMB & 2019/05/15 & Wechat    & yueguodipingxian & 10 RMB & 2019/05/15 & Wechat \\
-	  yinsang    & 20 RMB & 2019/05/27 & Wechat    & *kong    & 10 RMB & 2019/05/30 & Wechat \\
-	  latexstudio.net & 666 RMB & 2019/06/05 & Alipay   & A*n   & 40 RMB & 2019/06/15 & Wechat \\
-	  * xia   & 22 RMB & 2019/06/15 & Wechat    & * qian  & 21 RMB  & 2019/06/15 & Wechat \\
-	  Cassis & 11 RMB & 2019/06/30 & Wechat    & * jun    & 10 RMB & 2019/07/23 & Wechat \\
-	  P*u   & 50 RMB & 2019/07/30 & Wechat    & * meng    & 19 RMB & 2019/08/28 & Wechat \\
-	  Qu Doudou   & 10 RMB & 2019/08/28 & Wechat    & Li Bo    & 100 RMB & 2019/10/06 & Wechat \\
-	  Njustsll & 10 RMB & 2019/10/11 & Wechat    & Liu Zhikuo   & 99.99 RMB & 2019/10/15 & Alipay \\
-	  * tao   & 16 RMB & 2019/10/17 & Wechat    & Chini    & 12 RMB & 2019/10/17 & Alipay \\
-	  yuanfengjing & 10 RMB & 2019/10/28 & Wechat    & Guo Deliang   & 88 RMB & 2019/11/03 & Wechat \\
-	  ziqiangbuxi  & 20 RMB & 2019/11/04 & Alipay   & dushuzhichong  & 20 RMB & 2019/11/18 & Wechat \\
-	  * deng    & 10 RMB & 2019/11/18 & Wechat    & * zhe   & 20 RMB & 2019/11/18 & Wechat \\
-	  anonymous    & 10 RMB & 2019/11/24 & Wechat    & Jiye Qian & 66 RMB & 2019/12/04 & Wechat \\
-	  * yang   & 20 RMB & 2019/12/05 & Wechat    & Catcher & 11 RMB & 2019/12/08 & Alipay \\
-	  xierbotementu & 10 RMB & 2019/12/09 & Alipay   & * wei   & 10 RMB & 2019/12/09 & Wechat \\
-	  Simon & 20 RMB & 2019/12/11 & Alipay   & liushangqianyi & 66.60 RMB & 2019/12/18 & Alipay \\
-	  yu     & 10 RMB & 2019/12/20 & Alipay   & *chen   & 15 RMB & 2019/12/20 & Wechat \\
-	  suifeng   & 20 RMB & 2019/12/27 & Alipay   & Ws    & 23.30 RMB & 2019/12/28 & Wechat \\
-	  chuba    & 100 RMB  & 2020/01/02 & Alipay   & p*e   & 20 RMB & 2020/01/03 & Wechat \\
-	  Shunmx & 100 RMB & 2020/01/03 & Wechat    & hj    & 10 RMB & 2020/01/03 & Wechat \\
-	  F*5   & 10 RMB & 2020/01/03 & Wechat    & S*m   & 20.20 RMB & 2020/01/03 & Wechat \\
-	  erdaiqingzhi  & 13 RMB & 2020/01/14 & Alipay   & *?    & 66 RMB & 2020/01/15 & Wechat \\
-	  Mr. Xiong & 20 RMB & 2020/01/17 & Wechat    & *bo    & 15 RMB & 2020/01/18 & Wechat \\
-	  *Zhe    & 10 RMB & 2020/02/02 & Wechat    &  Jackie &  88.80 RMB  &  2020/02/09 & Wechat \\
-	  Henry\_Sun & 50 RMB & 2020/02/14 & Alipay & * Qiao  & 50 RMB & 2020/02/21 & Wechat \\
-	  YunLian & 10 RMB & 2020/03/02 & Alipay & S*y  &  10 RMB  &  2020/03/15 & Wechat \\
-	  * Ge  & 66.66 RMB & 2020/03/17 & Wechat    &   K*e & 30 RMB & 2020/03/30 & Wechat\\
-	  * Yang  &  20 RMB  &  2020/04/02 & Wechat & Shi*n  & 30 RMB & 2020/04/11 & Wechat \\
-\bottomrule
-\end{tabular}%
-  \label{tab:donation}%
-\end{table}%
+Thank \href{https://github.com/sikouhjw}{sikouhjw} and \href{https://github.com/syvshc}{syvshc} for their quick response to Github issues and continuously support work for ElegantLaTeX. Thank ChinaTeX and \href{http://www.latexstudio.net/}{LaTeX Studio} for their promotion. 
 
 
 \section{FAQ}
@@ -331,5 +223,7 @@ To express your love for our templates and/or our developers, please do not hesi
     \end{lstlisting}
 \end{enumerate}
 
+
+%\printbibliography[heading=bibintoc, title=\ebibname]
 
 \end{document}

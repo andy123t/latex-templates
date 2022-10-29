@@ -1,0 +1,344 @@
+%!TEX program = xelatex
+%\documentclass[en,hazy,normal,blue,11pt]{elegantnote}
+\documentclass[en,normal,12pt,blue]{elegantnote}
+\usepackage{amssymb,mathrsfs,multirow}
+%\usepackage[notcite,notref]{showkeys}
+%\usepackage{epsfig}
+%\usepackage{tabularx}
+\usepackage{diagbox}
+%\usepackage{bookmark}
+\usetikzlibrary{arrows,shapes}
+\usepackage{array,makecell}
+%\usepackage{tikz}
+%\usepackage{tikzpagenodes}
+%\usetikzlibrary{shapes.geometric,shapes.symbols,shapes.callouts,decorations.markings,shapes.misc,shapes.arrows}
+
+\usepackage[numbers,sort&compress]{natbib}
+\def\bibfont{\small}      % 修改参考文献字体
+\setlength{\bibsep}{8pt}  % 调整参考文献间距
+%\usepackage{subfig}
+
+% --- 算法宏包及设置 ---
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\floatname{algorithm}{Algorithm}
+\algrenewcommand\algorithmicrequire{\textbf{Input:}}
+\algrenewcommand\algorithmicensure{\textbf{Output:}}
+
+
+% --- 代码高亮 ---
+%\input{matlab-style.tex}
+
+%\definecolor{hong}{RGB}{199,21,133}
+%\definecolor{huang}{RGB}{255,164,0}
+
+%\makeatletter
+%\newcommand\HUGE{\@setfontsize\Huge{32}{36}}
+%\makeatother
+
+
+%\bibliographystyle{thuthesis-numeric}
+\bibliographystyle{plain}
+
+% --- 自定义命令 -----
+\newcommand{\CC}{\ensuremath{\mathbb{C}}}
+\newcommand{\RR}{\ensuremath{\mathbb{R}}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\ii}{\bm{\mathrm{i}}\,}  % 虚部
+\newcommand{\bA}{\boldsymbol{A}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\mT}{\mathrm{T}}
+\newcommand{\md}{\mathrm{d}}
+
+%\title{\LaTeX 笔记模板}
+%\author{某某某}
+%\institute{}
+%\version{1.3}
+%\date{\zhtoday}
+%\date{}
+
+\begin{document}
+%\maketitle
+
+\pagenumbering{Roman} % 页码为大写罗马数字
+
+\input{cover2.tex}
+
+
+% ----- generate a empty page -----
+%\clearpage%
+%\thispagestyle{empty}%
+%\addtocounter{page}{-1}%
+%\null%
+%\clearpage
+
+
+\clearpage
+%\phantomsection
+\pdfbookmark[1]{Contents}{toc}
+\tableofcontents
+\clearpage
+\setlist[itemize]{label=$\circ$}
+
+\pagenumbering{arabic}  % 页码为阿拉伯数字
+
+
+%==========================================%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 正文内容从这里开始  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{ElegantNote Instructions}
+\thispagestyle{empty}
+The brand new ElegantNote is redesigned on the basis of \LaTeX{} article, a more elegant note template! You can use either \hologo{pdfLaTeX} or \hologo{XeLaTeX} to compile\footnote{The test environment is Win10 + \TeX{} Live 2019.}. It is recommended that \hologo{pdfLaTeX} be used for notes in English while \hologo{XeLaTeX} be used for notes in Chinese.
+
+The new template has the following features:
+\begin{itemize}
+  \item two modes: good for eye mode (geye) and hazy mode;
+  \item different devices: Pad (default), Screen(beamer size), Kindle, PC (double-page) and normal (A4);
+  \item 5 color themes: \textcolor{eblue}{blue} (default),  \textcolor{egreen}{green}, \textcolor{ecyan}{cyan}, \textcolor{sakura}{sakura} and \textcolor{black}{black};
+  \item languages support: Chinese (default), English;
+  \item support \hologo{pdfLaTeX} and \hologo{XeLaTeX};
+  \item prettier captions, list environments, and unified fonts;
+  \item custmized global font size: 8pt, 9pt, 10pt, 11pt, 12pt, 14pt, 17pt and 20pt;
+  \item support for math font options for \lstinline{newtx} and \lstinline{mtpro2};
+  \item with the option of \lstinline{bibstyle} (default: apalike) for changing style of bibliography;
+  \item change the citation style with \lstinline{cite} option: \lstinline{authoryear}, \lstinline{numbers} and \lstinline{super}.
+\end{itemize}
+
+\subsection{Optional Modes}
+
+This template provides optional modes: good for eye mode (geye) and hazy mode, while the paper color is green for the former and light blue for the latter. you can use the following code to activate the desired mode:
+\begin{lstlisting}[frame=none]
+  \documentclass[geye]{elegantnote} % or
+  \documentclass[mode=geye]{elegantnote}
+  \documentclass[hazy]{elegantnote} % or
+  \documentclass[mode=hazy]{elegantnote}
+\end{lstlisting}
+
+\begin{remark}
+  If you are expected to customize background, use:
+  \begin{lstlisting}
+    \definecolor{geyecolor}{RGB}{199,237,204}
+    \pagecolor{geyecolor}
+  \end{lstlisting}
+\end{remark}
+
+
+\subsection{Device Options}
+
+To make the notes more comfortable to read, we designed four output options (of different sizes) that correspond to different reading devices: Pad (default), Kindle, PC and A4paper.
+
+\textcolor{red}{New}: For the convenience of notes presentation, version 2.20 offers a new option for device, i.e. \lstinline{device=screen}, which is similar to the size of MS Powerpoint with ratio aspect of 4:3 (2019/12/06).
+
+The options of output for different devices are
+\begin{lstlisting}[frame=none]
+  \documentclass[device=pad]{elegantnote}    % ipad screen size
+  \documentclass[device=kindle]{elegantnote} % kindle screen size
+  \documentclass[device=pc]{elegantnote}     % double pages for pc
+  \documentclass[device=normal]{elegantnote} % a4 normal page
+  \documentclass[device=screen]{elegantnote} % 4:3 PPT size
+\end{lstlisting}
+
+\begin{note}
+You can also select the device by using a direct assignment method, such as:
+\end{note}
+
+\begin{lstlisting}[frame=none]
+  \documentclass[pad]{elegantnote}
+  \documentclass[kindle]{elegantnote}
+  \documentclass[pc]{elegantnote}
+  \documentclass[normal]{elegantnote}
+  \documentclass[screen]{elegantnote}
+\end{lstlisting}
+
+\begin{note}
+To get a normal A4paper size PDF, please select \lstinline{device=normal}.
+\end{note}
+
+\subsection{Math Fonts}
+
+This template defines a new option (\lstinline{math}), with three options:
+
+\begin{enumerate}
+  \item \lstinline{math=cm} (default), use \LaTeX{} default math font (recommended).
+  \item \lstinline{math=newtx}, use \lstinline{newtxmath} math font (may bring about bugs).
+  \item \lstinline{math=mtpro2}, use \lstinline{mtpro2} package to set math font.
+\end{enumerate}
+
+
+\subsection[Color Themes]{Color Themes\footnote{Test for chapter footnote.}}
+
+This template contains 5 color themes, \textcolor{egreen}{green}, \textcolor{ecyan}{cyan}, \textcolor{eblue}{blue}(default), \textcolor{sakura}{sakura} and \textcolor{black}{black}. If you don't need color, you can choose black theme. The color theme is enabled in the same way as before:
+\begin{lstlisting}[frame=none]
+  \documentclass[green]{elegantnote}
+  \documentclass[color=green]{elegantnote}
+  ....
+  \documentclass[black]{elegantnote}
+  \documentclass[color=black]{elegantnote}
+\end{lstlisting}
+
+
+\subsection{Languages}
+
+This template contains two sets of language environments, changing the language environment will change the title of table/figure (figure, table), article structure words (such as the table of contents, references, etc.), and the environment Introductory words (such as Theorem, Lemma, etc.). The different language modes are enabled as follows:
+\begin{lstlisting}[frame=none]
+  \documentclass[cn]{elegantnote}
+  \documentclass[lang=cn]{elegantnote}
+  \documentclass[en]{elegantnote}
+  \documentclass[lang=en]{elegantnote}
+\end{lstlisting}
+
+\begin{note}
+Chinese characters are allowed in Chinese mode only. To type in Chinese characters in English mode, please include \lstinline{ctex}\footnote{Please use \lstinline{scheme=plain} to retain headlines in English.} or \lstinline{xeCJK} package.
+\end{note}
+
+
+\subsection{Theorem Class Environments}
+
+This template used the \lstinline{amsthm} to create theorems, there are 4 types of theorem environments
+\begin{itemize}
+  \item \textbf{Theorem-Class}: theorem, lemma, proposition, corollary;
+  \item \textbf{Definition-Class}: definition, conjecture, example;
+  \item \textbf{Remark-Class}: remark, note, case;
+  \item \textbf{Proof-Class}: proof.
+\end{itemize}
+
+\begin{remark}
+With the option \lstinline{lang=cn} , the introductory words of the theorem class environments will be changed to Chinese.
+\end{remark}
+
+
+\section{Writing Sample}
+
+We will define the integral of a measurable function in three steps. First, we define the integral of a nonnegative simple function. Let $E$ be the measurable set in $\mathcal{R}^N$.
+
+% source: https://www.maths.tcd.ie/~dwilkins/LaTeXPrimer/Theorems.html
+
+\begin{definition}[Left Coset]
+Let $H$ be a subgroup of a group~$G$.  A \emph{left coset} of $H$ in $G$ is a subset of $G$ that is of the form $xH$, where $x \in G$ and $xH = \{ xh : h \in H \}$. Similarly a \emph{right coset} of $H$ in $G$ is a subset of $G$ that is of the form $Hx$, where $Hx = \{ hx : h \in H \}$
+\end{definition}
+
+Note that a subgroup~$H$ of a group $G$ is itself a left coset of $H$ in $G$.
+
+\begin{lemma}[Size Of Left Coset]
+Let $H$ be a finite subgroup of a group $G$.  Then each left
+coset of $H$ in $G$ has the same number of elements as $H$.
+\end{lemma}
+
+\begin{theorem}[Lagrange's Theorem]
+Let $G$ be a finite group, and let $H$ be a subgroup
+of $G$.  Then the order of $H$ divides the order of $G$.
+\end{theorem}
+
+\begin{proof}
+Let $z$ be some element of $xH \cap yH$.  Then $z = xa$ for some $a \in H$, and $z = yb$ for some $b \in H$. If $h$ is any element of $H$ then $ah \in H$ and $a^{-1}h \in H$, since $H$ is a subgroup of $G$. But $zh = x(ah)$ and $xh = z(a^{-1}h)$ for all $h \in H$. Therefore $zH \subset xH$ and $xH \subset zH$, and thus $xH = zH$.  Similarly $yH = zH$, and thus $xH = yH$, as required.
+\end{proof}
+
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=0.6\textwidth]{scatter.pdf}
+	\caption{Matplotlib: Scatter Plot Example\label{fig:mpg}}
+\end{figure}
+
+Regression analysis is a powerful statistical method that allows you to examine the relationship between two or more variables of interest. While there are many types of regression analysis, at their core they all examine the influence of one or more independent variables on a dependent variable. The process of performing a regression allows you to confidently determine which factors matter most, which factors can be ignored, and how these factors influence each other.
+
+Let's continue using our application training example. In this case, we'd want to measure the historical levels of satisfaction with the events from the past three years or so, as well as any information possible in regards to the independent variables.
+
+\begin{table}[htbp]
+  \small
+  \centering
+  \caption{Auto MPG and Price \label{tab:reg}}
+    \begin{tabular}{lcc}
+    \toprule
+                    &       (1)         &        (2)      \\
+    \midrule
+    mpg             &    -238.90***     &      -49.51     \\
+                    &     (53.08)       &      (86.16)    \\
+    weight          &                   &      1.75***    \\
+                    &                   &      (0.641)    \\
+    constant        &     11,253***     &       1,946     \\
+                    &     (1,171)       &      (3,597)   \\
+    obs             &        74         &         74     \\
+    $R^2$           &      0.220        &       0.293    \\
+    \bottomrule
+    \multicolumn{3}{l}{\scriptsize Standard errors in parentheses} \\
+    \multicolumn{3}{l}{\scriptsize *** p<0.01, ** p<0.05, * p<0.1} \\
+    \end{tabular}%
+\end{table}%
+
+
+\begin{itemize}[noitemsep]
+  \item Routing and resource discovery;
+    \begin{itemize}
+      \item Language Models
+      \item Vector Space Models
+    \end{itemize}
+  \item Resilient and scalable computer networks;
+  \item Distributed storage and search.
+\end{itemize}
+
+
+Citation \cite{Tadmor2012} and \cite{Adams2003,TreWei2014}.  Citation \cite{Adams2003,Shen1994}.
+
+\section{Acknowledgement}
+
+Thank \href{https://github.com/sikouhjw}{sikouhjw} and \href{https://github.com/syvshc}{syvshc} for their quick response to Github issues and continuously support work for ElegantLaTeX. Thank ChinaTeX and \href{http://www.latexstudio.net/}{LaTeX Studio} for their promotion.
+
+
+\section{FAQ}
+
+\begin{enumerate}[label=\arabic*).]
+	\item \textit{How to remove the information of version?}\\
+    Please comment \lstinline|\version{x.xx}|.
+	\item \textit{How to remove the information of date?}\\
+	  Please type in \lstinline|\date{}|.
+	\item \textit{How to add several authors?}\\
+	  Use \lstinline{\and} in \lstinline{\author} and use \lstinline{\\} to start a new line.
+    \begin{lstlisting}
+      \author{author 1\\ org. 1 \and author 2 \\ org. 2 }
+    \end{lstlisting}
+\end{enumerate}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%% 参考文献 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\clearpage
+\phantomsection
+\addcontentsline{toc}{section}{References} % 添加  "参考文献 " 到目录
+
+% 生成参考文献, 使用第一种请把第二种全部注释
+
+% 第一种方式, 使用 bib 文件
+
+%\nocite{*}  % 可以暂时显示全部参考文献, 包括未引用的
+
+\bibliography{reference}
+
+
+% 第二种方式, 按照格式直接写文献信息, 使用第二种请把第一种全部注释
+
+%\begin{thebibliography}{99}
+%\bibitem{Tadmor2012} Tadmor~E. A review of numerical methods for nonlinear partial differential
+%  equations\allowbreak[J]. Bull. Amer. Math. Soc., 2012, 49(4): 507-554.
+%
+%\bibitem{LiLiu1997} 李荣华, 刘播. 微分方程数值解法\allowbreak[M]. 东南大学出版社, 1997.
+%
+%\bibitem{Adams2003} Adams~R~A, Fournier~J~J~F. Sobolev spaces\allowbreak[M]. Elsevier, 2003.
+%
+%\bibitem{TreWei2014}Trefethen~L~N, Weideman~J~A~C. The exponentially convergent trapezoidal rule\allowbreak[J]. SIAM Rev., 2014, 56(3): 385-458.
+%
+%\bibitem{Shen1994} Shen~J. Efficient spectral-Galerkin method I. Direct solvers of second- and fourth-order equations using Legendre polynomials\allowbreak[J]. SIAM J. Sci. Comput., 1994, 15(6): 1489-1505.
+%
+%\end{thebibliography}
+
+
+%\printbibliography[heading=bibintoc, title=\ebibname]
+
+\end{document}
+
+
