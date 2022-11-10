@@ -24,4 +24,8 @@ paper-cn: Chinese paper template | 中文论文模板
 
 poster: Academic poster template | 学术海报模板
 
+readme: README template | 说明文档模板
+
+refs: References list template | 参考文献列表模板
+
 response-letter: Response letter template | 回复审稿人意见模板
