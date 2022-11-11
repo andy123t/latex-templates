@@ -63,7 +63,7 @@ filecolor=blue,citecolor=black,urlcolor=cyan}
 %--- command of paper ---
 \newcommand{\titled}[1]{\noindent{\large\color{blue}\sc Title:} #1 \par\vspace{6pt}} %\hangpara{2.0em}{1}
 \newcommand{\info}[1]{\noindent{\large\color{blue}\sc Info:} #1 \par\vspace{6pt}}
-\newcommand{\abst}[1]{\noindent{\large\color{blue}\sc Abstract:} #1 \par\vspace{6pt}}
+\renewcommand{\abstract}[1]{\noindent{\large\color{blue}\sc Abstract:} #1 \par\vspace{6pt}}
 \newcommand{\keywords}[1]{\noindent{\large\color{blue}\sc Keywords:} #1 \par\vspace{6pt}}
 \newcommand{\summary}[1]{\noindent{\large\color{red}\sc Summary:} #1 \par\vspace{6pt}}
 \newcommand{\problem}[1]{\noindent{\large\color{blue}\sc Problem:} #1 \par\vspace{6pt}}
@@ -98,9 +98,9 @@ filecolor=blue,citecolor=black,urlcolor=cyan}
 
 % main body of document
 
-\subsection*{XXX}
+\section*{Research Topic}
 
-% Paper 2
+% Paper 1
 
 \begin{paper}
 
@@ -108,11 +108,13 @@ filecolor=blue,citecolor=black,urlcolor=cyan}
 
 \info{Author, Journal, 1998}
 
-\abst{Abstract here.}
+\abstract{Abstract here.}
 
 \keywords{Keyword 1, keyword 2.}
 
 \summary{Summary here. Note: When writing a summary, remember that you need to describe it in your own words through your own thinking. Ctrl + C is taboo.}
+
+\problem{The objective of the paper and the problem studied in the paper.}
 
 \method{The method for solving the model problem.}
 
@@ -126,12 +128,12 @@ interdum dictum suscipit magna molestie. Vestibulum nulla egestas aliquam.
 
 \note{Note here.}
 
-\refs{
+\refs{List the literature with high relevance.
 \begin{enumerate}[label={[\arabic*]}]
+\setlength{\itemsep}{0pt}
   \item Literature 1
   \item Literature 2
 \end{enumerate}
-
 }
 
 \end{paper}
@@ -144,11 +146,14 @@ interdum dictum suscipit magna molestie. Vestibulum nulla egestas aliquam.
 
 \info{Author, Journal, 1998}
 
-\abst{Abstract here.}
+\abstract{Abstract here.}
 
 \keywords{Keyword 1, keyword 2.}
 
 \summary{Summary here. Note: When writing a summary, remember that you need to describe it in your own words through your own thinking. Ctrl + C is taboo.}
+
+\problem{The objective of the paper and the problem studied in the paper.}
+
 
 \method{The method for solving the model problem.}
 
@@ -163,9 +168,9 @@ interdum dictum suscipit magna molestie. Vestibulum nulla egestas aliquam.
 \note{Note here.}
 
 \end{paper}
-
 
 
 
 
 \end{document}
+

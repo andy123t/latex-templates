@@ -61,7 +61,7 @@ filecolor=blue,citecolor=black,urlcolor=cyan}
 %--- command of paper ---
 \newcommand{\titled}[1]{\noindent{\large\color{blue} 题目:} #1 \par\vspace{6pt}} %\hangpara{2.0em}{1}
 \newcommand{\info}[1]{\noindent{\large\color{blue} 信息:} #1 \par\vspace{6pt}}
-\newcommand{\abst}[1]{\noindent{\large\color{blue} 摘要:} #1 \par\vspace{6pt}}
+\renewcommand{\abstract}[1]{\noindent{\large\color{blue} 摘要:} #1 \par\vspace{6pt}}
 \newcommand{\keywords}[1]{\noindent{\large\color{blue} 关键词:} #1 \par\vspace{6pt}}
 \newcommand{\summary}[1]{\noindent{\large\color{red} 总结:} #1 \par\vspace{6pt}}
 \newcommand{\problem}[1]{\noindent{\large\color{blue} 问题:} #1 \par\vspace{6pt}}
@@ -96,74 +96,73 @@ filecolor=blue,citecolor=black,urlcolor=cyan}
 
 % main body of document
 
-\subsection*{XXX}
+\section*{研究方向或主题}
 
-% Paper 2
+% Paper 1
 
 \begin{paper}
 
-\titled{Title of paper}
+\titled{文章标题}
 
-\info{Author, Journal, 1998}
+\info{作者, 杂志和发表时间}
 
-\abst{Abstract here.}
+\abstract{摘要内容}
 
-\keywords{Keyword 1, keyword 2.}
+\keywords{关键词1; 关键词2. }
 
-\summary{Summary here. Note: When writing a summary, remember that you need to describe it in your own words through your own thinking. Ctrl + C is taboo.}
+\summary{写完笔记之后最后填, 概述文章的内容, 以后查阅笔记的时候先看这一段. 注: 写文章 summary 切记需要通过自己的思考, 用自己的语言描述. 忌讳直接 Ctrl + C 原文.}
 
-\method{The method for solving the model problem.}
+\problem{作者的研究目标, 需要解决的问题是什么 ?}
 
-\intro{Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-Proin eu tempor velit. Fusce accumsan ultrices fringilla. Praesent
-sed odio mi. Mauris non ligula turpis. Duis posuere lacus nec diam
-interdum dictum suscipit magna molestie. Vestibulum nulla egestas aliquam.
+\method{作者解决问题的方法算法是什么？是否基于前人的方法 ?}
+
+\intro{论文的主要内容. 论文的主要内容. 论文的主要内容. 论文的主要内容. 论文的主要内容. 论文的主要内容. 论文的主要内容.
 }
 
-\conclusion{Conclusion here.}
+\conclusion{作者给了哪些结论, 哪些是 strong conclusions, 哪些又是weak的 conclusions ?}
 
-\note{Note here.}
+\note{需要额外记录的笔记. 比如作者如何评估自己的方法, 有没有问题或者可以借鉴的地方.}
 
-\refs{
+\refs{列出相关性高的文献, 以便之后可以继续 track 下去.
 \begin{enumerate}[label={[\arabic*]}]
-  \item Literature 1
-  \item Literature 2
+\setlength{\itemsep}{0pt}
+\item 文献1
+\item 文献2
 \end{enumerate}
-
 }
 
 \end{paper}
+
 
 % Paper 2
 
 \begin{paper}
 
-\titled{Title of paper}
+\titled{文章标题}
 
-\info{Author, Journal, 1998}
+\info{作者, 杂志和发表时间}
 
-\abst{Abstract here.}
+\abstract{摘要内容}
 
-\keywords{Keyword 1, keyword 2.}
+\keywords{关键词1; 关键词2. }
 
-\summary{Summary here. Note: When writing a summary, remember that you need to describe it in your own words through your own thinking. Ctrl + C is taboo.}
+\summary{总结.}
 
-\method{The method for solving the model problem.}
+\problem{作者的研究目标, 需要解决的问题是什么 ?}
 
-\intro{Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-Proin eu tempor velit. Fusce accumsan ultrices fringilla. Praesent
-sed odio mi. Mauris non ligula turpis. Duis posuere lacus nec diam
-interdum dictum suscipit magna molestie. Vestibulum nulla egestas aliquam.
+\method{作者解决问题的方法算法是什么 ? 是否基于前人的方法 ?}
+
+\intro{论文的主要内容.
 }
 
-\conclusion{Conclusion here.}
+\conclusion{作者给了哪些结论, 哪些是 strong conclusions, 哪些又是weak的 conclusions ?}
 
-\note{Note here.}
+\note{需要额外记录的笔记.}
 
 \end{paper}
-
 
 
 
 
 \end{document}
+
