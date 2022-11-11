@@ -26,6 +26,6 @@ poster: Academic poster template | 学术海报模板
 
 readme: README template | 说明文档模板
 
-refs: References list template | 参考文献列表模板
+refs: Literature notes template | 文献笔记模板
 
 response-letter: Response letter template | 回复审稿人意见模板

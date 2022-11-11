@@ -1,0 +1,169 @@
+% LaTeX LR-notes template
+% !TEX program = xelatex
+
+\documentclass[11pt]{article}
+
+\usepackage{ctex}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx,fancybox,multirow}
+\usepackage{mathrsfs}
+\usepackage{color,xcolor}
+\usepackage{framed}
+\usepackage{caption}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,
+filecolor=blue,citecolor=black,urlcolor=cyan}
+\definecolor{winered}{rgb}{0.6,0,0}
+
+\usepackage{enumitem}
+%\setlist{leftmargin=*} % noitemsep
+%\renewcommand{\labelenumi}{[\arabic{enumi}]}
+%\renewcommand{\labelenumii}{\alph{enumii}.}
+
+% layout setting
+\usepackage{geometry}
+\geometry{left=3.0cm,right=3.0cm,top=2.5cm,bottom=2.5cm}
+%\geometry{left=1.25in,right=1.25in,top=1in,bottom=1in}
+\setlength{\headheight}{15pt}
+\setlength{\headsep}{16pt}
+
+%--- define title page ---
+\makeatletter
+\def\@maketitle{%
+  \newpage
+  \null
+  \vspace{-1.5em}%
+  \begin{center}%
+  \let \footnote \thanks
+    {\LARGE \bfseries \@title \par}%
+    \vskip 1.0em%
+    {\large
+      \lineskip .5em%
+      \begin{tabular}[t]{c}%
+        \@author
+      \end{tabular}\par}%
+    \vskip 0.5em%
+    {\large \@date}%
+  \end{center}%
+  \par
+  \vskip 1.5em}
+\makeatother
+
+%--- counter of paper ---
+\makeatletter
+\newcommand{\twodigit}[1]{\two@digits{#1}}
+\makeatother
+\newcounter{papernum}
+\newenvironment{paper}[1][\unskip]{
+\stepcounter{papernum}
+\bigskip \hrule \vspace{3ex}
+\noindent {\bfseries\large 论文~\twodigit{\arabic{papernum}}}\quad #1 \par\vspace{8pt}}{\par\vspace{2pt}}
+%--- command of paper ---
+\newcommand{\titled}[1]{\noindent{\large\color{blue} 题目:} #1 \par\vspace{6pt}} %\hangpara{2.0em}{1}
+\newcommand{\info}[1]{\noindent{\large\color{blue} 信息:} #1 \par\vspace{6pt}}
+\newcommand{\abst}[1]{\noindent{\large\color{blue} 摘要:} #1 \par\vspace{6pt}}
+\newcommand{\keywords}[1]{\noindent{\large\color{blue} 关键词:} #1 \par\vspace{6pt}}
+\newcommand{\summary}[1]{\noindent{\large\color{red} 总结:} #1 \par\vspace{6pt}}
+\newcommand{\problem}[1]{\noindent{\large\color{blue} 问题:} #1 \par\vspace{6pt}}
+\newcommand{\method}[1]{\noindent{\large\color{blue} 方法:} #1 \par\vspace{6pt}}
+\newcommand{\intro}[1]{\noindent{\large\color{blue} 内容:} #1 \par\vspace{6pt}}
+\newcommand{\conclusion}[1]{\noindent{\large\color{blue} 结论:} #1 \par\vspace{6pt}}
+\newcommand{\note}[1]{\noindent{\large\color{red} 注:} #1 \par\vspace{6pt}}
+\newcommand{\refs}[1]{\noindent{\large\color{blue} 文献:} #1 \par\vspace{6pt}}
+
+%\numberwithin{equation}{section}
+
+% define new command
+\newcommand{\red}[1]{{\color{red}#1}}
+\newcommand{\blue}[1]{{\color{blue}#1}}
+\newcommand{\winered}[1]{\textcolor{winered}{#1}}
+\newcommand{\textcode}[1]{\textcolor{winered}{\bfseries\texttt{#1}}}
+
+% path of figures
+\graphicspath{{./figures/}}
+
+
+% Information of Document
+\title{文献综述笔记}
+\author{某某某}
+\date{2022.11.08}
+
+
+\begin{document}
+
+\maketitle
+
+
+% main body of document
+
+\subsection*{XXX}
+
+% Paper 2
+
+\begin{paper}
+
+\titled{Title of paper}
+
+\info{Author, Journal, 1998}
+
+\abst{Abstract here.}
+
+\keywords{Keyword 1, keyword 2.}
+
+\summary{Summary here. Note: When writing a summary, remember that you need to describe it in your own words through your own thinking. Ctrl + C is taboo.}
+
+\method{The method for solving the model problem.}
+
+\intro{Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Proin eu tempor velit. Fusce accumsan ultrices fringilla. Praesent
+sed odio mi. Mauris non ligula turpis. Duis posuere lacus nec diam
+interdum dictum suscipit magna molestie. Vestibulum nulla egestas aliquam.
+}
+
+\conclusion{Conclusion here.}
+
+\note{Note here.}
+
+\refs{
+\begin{enumerate}[label={[\arabic*]}]
+  \item Literature 1
+  \item Literature 2
+\end{enumerate}
+
+}
+
+\end{paper}
+
+% Paper 2
+
+\begin{paper}
+
+\titled{Title of paper}
+
+\info{Author, Journal, 1998}
+
+\abst{Abstract here.}
+
+\keywords{Keyword 1, keyword 2.}
+
+\summary{Summary here. Note: When writing a summary, remember that you need to describe it in your own words through your own thinking. Ctrl + C is taboo.}
+
+\method{The method for solving the model problem.}
+
+\intro{Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Proin eu tempor velit. Fusce accumsan ultrices fringilla. Praesent
+sed odio mi. Mauris non ligula turpis. Duis posuere lacus nec diam
+interdum dictum suscipit magna molestie. Vestibulum nulla egestas aliquam.
+}
+
+\conclusion{Conclusion here.}
+
+\note{Note here.}
+
+\end{paper}
+
+
+
+
+
+\end{document}
