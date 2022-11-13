@@ -13,7 +13,6 @@
 \usepackage{hyperref}
 \hypersetup{colorlinks=true,linkcolor=blue,
 filecolor=blue,citecolor=black,urlcolor=cyan}
-\definecolor{winered}{rgb}{0.6,0,0}
 
 \usepackage{enumitem}
 %\setlist{leftmargin=*} % noitemsep
@@ -49,6 +48,11 @@ filecolor=blue,citecolor=black,urlcolor=cyan}
   \vskip 1.5em}
 \makeatother
 
+%--- define color ---
+\definecolor{winered}{rgb}{0.6,0,0}
+\definecolor{deepblue}{rgb}{0,0,0.8}
+\definecolor{deepred}{rgb}{0.8,0,0}
+
 %--- counter of paper ---
 \makeatletter
 \newcommand{\twodigit}[1]{\two@digits{#1}}
@@ -59,17 +63,17 @@ filecolor=blue,citecolor=black,urlcolor=cyan}
 \bigskip \hrule \vspace{3ex}
 \noindent {\bfseries\large 论文~\twodigit{\arabic{papernum}}}\quad #1 \par\vspace{8pt}}{\par\vspace{2pt}}
 %--- command of paper ---
-\newcommand{\titled}[1]{\noindent{\large\color{blue} 题目:} #1 \par\vspace{6pt}} %\hangpara{2.0em}{1}
-\newcommand{\info}[1]{\noindent{\large\color{blue} 信息:} #1 \par\vspace{6pt}}
-\renewcommand{\abstract}[1]{\noindent{\large\color{blue} 摘要:} #1 \par\vspace{6pt}}
-\newcommand{\keywords}[1]{\noindent{\large\color{blue} 关键词:} #1 \par\vspace{6pt}}
-\newcommand{\summary}[1]{\noindent{\large\color{red} 总结:} #1 \par\vspace{6pt}}
-\newcommand{\problem}[1]{\noindent{\large\color{blue} 问题:} #1 \par\vspace{6pt}}
-\newcommand{\method}[1]{\noindent{\large\color{blue} 方法:} #1 \par\vspace{6pt}}
-\newcommand{\intro}[1]{\noindent{\large\color{blue} 内容:} #1 \par\vspace{6pt}}
-\newcommand{\conclusion}[1]{\noindent{\large\color{blue} 结论:} #1 \par\vspace{6pt}}
-\newcommand{\note}[1]{\noindent{\large\color{red} 注:} #1 \par\vspace{6pt}}
-\newcommand{\refs}[1]{\noindent{\large\color{blue} 文献:} #1 \par\vspace{6pt}}
+\newcommand{\titled}[1]{\noindent{\color{deepblue}\bfseries 题目:} {\bfseries #1} \par\vspace{6pt}} %\hangpara{2.0em}{1}
+\newcommand{\info}[2]{\noindent{\color{deepblue}\bfseries 信息:} #1, {\bfseries ~#2} \par\vspace{6pt}}
+\renewcommand{\abstract}[1]{\noindent{\bfseries\color{deepblue} 摘要:} #1 \par\vspace{6pt}}
+\newcommand{\keywords}[1]{\noindent{\bfseries\color{deepblue} 关键词:} #1 \par\vspace{6pt}}
+\newcommand{\summary}[1]{\noindent{\bfseries\color{deepred} 总结:} #1 \par\vspace{6pt}}
+\newcommand{\problem}[1]{\noindent{\bfseries\color{deepblue} 问题:} #1 \par\vspace{6pt}}
+\newcommand{\method}[1]{\noindent{\bfseries\color{deepblue} 方法:} #1 \par\vspace{6pt}}
+\newcommand{\intro}[1]{\noindent{\bfseries\color{deepblue} 内容:} #1 \par\vspace{6pt}}
+\newcommand{\conclusion}[1]{\noindent{\bfseries\color{deepblue} 结论:} #1 \par\vspace{6pt}}
+\newcommand{\note}[1]{\noindent{\bfseries\color{deepred} 注:} #1 \par\vspace{6pt}}
+\newcommand{\refs}[1]{\noindent{\bfseries\color{deepblue} 文献:} #1 \par\vspace{6pt}}
 
 %\numberwithin{equation}{section}
 
@@ -104,7 +108,7 @@ filecolor=blue,citecolor=black,urlcolor=cyan}
 
 \titled{文章标题}
 
-\info{作者, 杂志和发表时间}
+\info{作者}{杂志和发表时间}
 
 \abstract{摘要内容}
 
@@ -121,7 +125,7 @@ filecolor=blue,citecolor=black,urlcolor=cyan}
 
 \conclusion{作者给了哪些结论, 哪些是 strong conclusions, 哪些又是weak的 conclusions ?}
 
-\note{需要额外记录的笔记. 比如作者如何评估自己的方法, 有没有问题或者可以借鉴的地方.}
+\note{需要额外记录的笔记. 比如如何评估论文的方法, 有没有可以借鉴的地方.}
 
 \refs{列出相关性高的文献, 以便之后可以继续 track 下去.
 \begin{enumerate}[label={[\arabic*]}]

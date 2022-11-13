@@ -13,7 +13,6 @@
 \usepackage{hyperref}
 \hypersetup{colorlinks=true,linkcolor=blue,
 filecolor=blue,citecolor=black,urlcolor=cyan}
-\definecolor{winered}{rgb}{0.6,0,0}
 
 \usepackage{enumitem}
 %\setlist{leftmargin=*} % noitemsep
@@ -51,6 +50,11 @@ filecolor=blue,citecolor=black,urlcolor=cyan}
   \vskip 1.5em}
 \makeatother
 
+%--- define color ---
+\definecolor{winered}{rgb}{0.6,0,0}
+\definecolor{deepblue}{rgb}{0,0,0.8}
+\definecolor{deepred}{rgb}{0.8,0,0}
+
 %--- counter of paper ---
 \makeatletter
 \newcommand{\twodigit}[1]{\two@digits{#1}}
@@ -61,17 +65,17 @@ filecolor=blue,citecolor=black,urlcolor=cyan}
 \bigskip \hrule \vspace{3ex}
 \noindent {\bfseries\large Paper~\twodigit{\arabic{papernum}}}\quad #1 \par\vspace{8pt}}{\par\vspace{2pt}}
 %--- command of paper ---
-\newcommand{\titled}[1]{\noindent{\large\color{blue}\sc Title:} #1 \par\vspace{6pt}} %\hangpara{2.0em}{1}
-\newcommand{\info}[1]{\noindent{\large\color{blue}\sc Info:} #1 \par\vspace{6pt}}
-\renewcommand{\abstract}[1]{\noindent{\large\color{blue}\sc Abstract:} #1 \par\vspace{6pt}}
-\newcommand{\keywords}[1]{\noindent{\large\color{blue}\sc Keywords:} #1 \par\vspace{6pt}}
-\newcommand{\summary}[1]{\noindent{\large\color{red}\sc Summary:} #1 \par\vspace{6pt}}
-\newcommand{\problem}[1]{\noindent{\large\color{blue}\sc Problem:} #1 \par\vspace{6pt}}
-\newcommand{\method}[1]{\noindent{\large\color{blue}\sc Method:} #1 \par\vspace{6pt}}
-\newcommand{\intro}[1]{\noindent{\large\color{blue}\sc Intro:} #1 \par\vspace{6pt}}
-\newcommand{\conclusion}[1]{\noindent{\large\color{blue}\sc Conclusion:} #1 \par\vspace{6pt}}
-\newcommand{\note}[1]{\noindent{\large\color{red}\sc Note:} #1 \par\vspace{6pt}}
-\newcommand{\refs}[1]{\noindent{\large\color{blue}\sc References:} #1 \par\vspace{6pt}}
+\newcommand{\titled}[1]{\noindent{\large\color{deepblue}\sc Title:} {\bfseries #1} \par\vspace{6pt}} %\hangpara{2.0em}{1}
+\newcommand{\info}[2]{\noindent{\large\color{deepblue}\sc Info:} #1, {\bfseries ~#2} \par\vspace{6pt}}
+\renewcommand{\abstract}[1]{\noindent{\large\color{deepblue}\sc Abstract:} #1 \par\vspace{6pt}}
+\newcommand{\keywords}[1]{\noindent{\large\color{deepblue}\sc Keywords:} #1 \par\vspace{6pt}}
+\newcommand{\summary}[1]{\noindent{\large\color{deepred}\sc Summary:} #1 \par\vspace{6pt}}
+\newcommand{\problem}[1]{\noindent{\large\color{deepblue}\sc Problem:} #1 \par\vspace{6pt}}
+\newcommand{\method}[1]{\noindent{\large\color{deepblue}\sc Method:} #1 \par\vspace{6pt}}
+\newcommand{\intro}[1]{\noindent{\large\color{deepblue}\sc Intro:} #1 \par\vspace{6pt}}
+\newcommand{\conclusion}[1]{\noindent{\large\color{deepblue}\sc Conclusion:} #1 \par\vspace{6pt}}
+\newcommand{\note}[1]{\noindent{\large\color{deepred}\sc Note:} #1 \par\vspace{6pt}}
+\newcommand{\refs}[1]{\noindent{\large\color{deepblue}\sc References:} #1 \par\vspace{6pt}}
 
 %\numberwithin{equation}{section}
 
@@ -106,7 +110,7 @@ filecolor=blue,citecolor=black,urlcolor=cyan}
 
 \titled{Title of paper}
 
-\info{Author, Journal, 1998}
+\info{Author}{Journal (1998)}
 
 \abstract{Abstract here.}
 
@@ -144,7 +148,7 @@ interdum dictum suscipit magna molestie. Vestibulum nulla egestas aliquam.
 
 \titled{Title of paper}
 
-\info{Author, Journal, 1998}
+\info{Author}{Journal (1998)}
 
 \abstract{Abstract here.}
 
@@ -153,7 +157,6 @@ interdum dictum suscipit magna molestie. Vestibulum nulla egestas aliquam.
 \summary{Summary here. Note: When writing a summary, remember that you need to describe it in your own words through your own thinking. Ctrl + C is taboo.}
 
 \problem{The objective of the paper and the problem studied in the paper.}
-
 
 \method{The method for solving the model problem.}
 
