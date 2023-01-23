@@ -1,20 +1,20 @@
     
-    文件说明
-    
-    book-temp.tex
-    中文书籍模板 (目录简单)
-    XeLaTeX 编译
-    
-    book-temp-cn.tex
-    中文书籍模板
-    XeLaTeX 编译
+  文件说明
+  
+  book-temp.tex
+  中文书籍模板 (目录简单)
+  XeLaTeX 编译
+  
+  book-temp-cn.tex
+  中文书籍模板
+  XeLaTeX 编译
 	
-    book-temp-cover-cn.tex
-    英文书籍模板 (定制封面)
-    XeLaTeX 编译
+  book-temp-cover-cn.tex
+  英文书籍模板 (定制封面)
+  XeLaTeX 编译
 	
-    ctexbook-cn.tex
-    中文书籍模板 (ctexbool类)
-    XeLaTeX 编译
+  ctexbook-cn.tex
+  中文书籍模板 (ctexbook类)
+  XeLaTeX 编译
 	
 	

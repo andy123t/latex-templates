@@ -46,45 +46,37 @@
 
 %---- header and footer position -----
 %\setlength{\headheight}{18pt}
-%\setlength{\headsep}{18pt}     % 页眉位置
-%\setlength{\footskip}{28pt}    % 页脚位置
+%\setlength{\headsep}{18pt}     % header position
+%\setlength{\footskip}{28pt}    % footer position
 
 %---- Contents Setting -----
 \setcounter{tocdepth}{3}
 \setcounter{secnumdepth}{3}
 
-%\newcommand{\makeheadrule}{%
-%    \makebox[-3pt][l]{\rule[.7\baselineskip]{\headwidth}{0.4pt}}
-%    \rule[0.85\baselineskip]{\headwidth}{1.5pt}\vskip-.8\baselineskip}
-%
-%\makeatletter
-%\renewcommand{\headrule}{%
-%    {\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
-%     \makeheadrule}}
-%\pagestyle{fancyplain}
-
-
 \usepackage[cleardoublepage=plain]{scrextend}
 
 \usepackage{fancyhdr,fancyref}
 \pagestyle{fancy}
-\renewcommand{\chaptermark}[1]{\markboth{\thechapter ~ #1}{}}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername~\thechapter ~ #1}{}}
 \renewcommand{\sectionmark}[1]{\markright{\thesection ~ #1}{}}
 \fancyhf{}  % remove the original style
 \fancyhead[RO,LE]{~\thepage~}
-\fancyhead[LO]{\rmfamily \rightmark}
+\fancyhead[LO]{\nouppercase{\rightmark}}
 \fancyhead[RE]{\rmfamily \leftmark}
 
 %\setlength{\parskip}{3pt plus1pt minus1pt}
 
 \usepackage{tocloft,calc}
 \renewcommand{\cftchappresnum}{\chaptername\space}
+\renewcommand{\cftchapaftersnumb}{\hspace{-12pt}}
 \setlength{\cftchapnumwidth}{\widthof{\textbf{Appendix~999~}}}
 \makeatletter
 \g@addto@macro\appendix{%
   \addtocontents{toc}{%
     \protect\renewcommand{\protect\cftchappresnum}{\appendixname\space}%
+    \protect\renewcommand{\protect\cftchapaftersnumb}{\hspace{0pt}}
   }%
+  \renewcommand{\chaptermark}[1]{\markboth{\appendixname~\thechapter ~ #1}{}}
 }
 
 \renewcommand{\baselinestretch}{1.2}
@@ -401,10 +393,15 @@ The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the 
 
 The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
 
+The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
 
 The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
 
+The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
 
+The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
+
+The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
 
 \chapter{This is the second appendix}
 \section{A sub section}
@@ -416,7 +413,7 @@ The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the 
 
 The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
 
-
+The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
 
 \backmatter
 

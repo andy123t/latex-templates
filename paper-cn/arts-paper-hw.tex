@@ -7,8 +7,10 @@
 %-----数学宏包-----
 \usepackage{amsmath,amsthm,amssymb,amsfonts}
 \usepackage{mathrsfs,bm}
+
 %-----draft下 label提示-----
 %\usepackage[notcite,notref]{showkeys}
+
 %-----页面布局-----
 \usepackage{geometry}
 \geometry{left=1.25in,right=1.25in,top=1in,bottom=1in}
@@ -92,7 +94,7 @@
 }
 
 
-%----- 算法宏包及设置 -----
+%----- 算法宏包及设置 ---
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \floatname{algorithm}{算法}
@@ -105,14 +107,13 @@
 
 %----- 定义 maketitle, abstract -----
 \makeatletter
-\makeatletter
 \renewcommand\maketitle{
 {\raggedright
 \vspace*{1em}
 \begin{center}
 {\zihao{-2} \bfseries \@title }\\[1.5em]
-  \@author  \\
-  \@date \\[10pt]
+  姓名: \@author \quad 学号: \defstunum \\
+  班级: \defclass \\[10pt]
 \end{center}}
 }
 %----- abstract -------
@@ -127,7 +128,7 @@
 }
 \makeatother
 
-%---- 定义列表项的样式 -----
+%----- 定义列表项的样式 -----
 \usepackage{enumitem}
 \setlist{nolistsep}
 % \setlength{\itemsep}{3pt plus1pt minus2pt}
@@ -156,9 +157,10 @@
 
 
 %----- 题目等信息 -----
-\title{小论文的题目}
-\author{作者}
-\date{\today}
+\title{文科小论文作业}
+\author{某某某}
+\stunum{123000678}
+\class{20XX\,级XX专业\,1\,班}
 
 
 \begin{document}

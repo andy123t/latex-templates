@@ -1,27 +1,45 @@
 % paper template
-\documentclass[10pt,reqno,final]{article}
-%\documentclass[10pt,reqno,draft]{article}
-\usepackage{amsmath,amsfonts,amssymb,amsthm,latexsym,version}
-\usepackage{graphicx,fancybox,pifont}
-\usepackage[notcite,notref]{showkeys}
-\usepackage{hyperref}
-\usepackage{color}
-\usepackage{subfigure,multirow}
-\usepackage{algorithm,algorithmic}
+\documentclass[10pt,reqno,final]{amsart}
+%\documentclass[10pt,reqno,draft]{amsart}
 
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{mathrsfs,version,multirow}
+\usepackage{graphicx,fancybox,pifont}
+\usepackage{url,hyperref}
+\usepackage[notcite,notref]{showkeys}
+\usepackage{color}
+\usepackage{subfigure}
+\usepackage{epstopdf}
+\usepackage{cases}
+\usepackage{mathtools}
+\usepackage{algorithm,algorithmic}
 \usepackage{lipsum}
 
 \allowdisplaybreaks
 
-\setlength{\textwidth}{15cm} \setlength{\textheight}{21.6cm}
-\setlength{\oddsidemargin}{.5cm} \setlength{\evensidemargin}{.5cm}
-\baselineskip 13pt
+\textheight=21.6cm
+\textwidth=15cm
+\setlength{\oddsidemargin}{0.5cm}
+\setlength{\evensidemargin}{0.5cm}
 
-% command for equations, theorems and lemmas etc.
+\renewcommand{\baselinestretch}{1.1}
+\renewcommand {\thefootnote}{\fnsymbol{footnote}}
+
+% number of equation, figure and table
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+
+%======================================================%
+%== Command for Equations, Theorems and Lemmas etc. ===%
+%======================================================%
+
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[section]
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[section]
+%\newtheorem{lemma}[theorem]{Lemma}
+%\newtheorem{corollary}[theorem]{Corollary}
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
@@ -29,36 +47,42 @@
 \newtheorem{xca}{Exercise}[section]
 
 \theoremstyle{remark}
-\newtheorem{remark}[theorem]{Remark}
+\newtheorem{remark}{Remark}[section]
 
-\title{An Example Article}
-\author{D. Doe, P. T. Frank, and J. E. Smith \thanks{{\it Email address:} xyz@math.univ.edu.} }
-%\small Department of Mathematics, Shanghai Normal University,\\ \small Shanghai 200234, China
+
+% define the new command
+\newcommand{\atom}[2]{{\scriptsize\begin{array}{c} #1\\[-1mm] #2 \end{array}}}
+\newcommand{\refl}[1]{Lemma~{\rm \ref{#1}}}
+\newcommand{\reft}[1]{Theorem~{\rm \ref{#1}}}
+\newcommand{\refe}[2]{(\ref{#1})--(\ref{#2})}
+
+\usepackage[foot]{amsaddr}
+
+\title[Short Title]{This is Full Title}
+
+%\author[Author A \; \& \; Author B]{Author A${\,}^{1}$ \quad and \quad Author B${\,}^{2*}$} %$^{\dag}$
+%\author{D. Doe, P. T. Frank, and J. E. Smith\thanks{ {\it Email address:} xyz@math.univ.edu.}
+
+
+\author{author A$^1$ and author B$^1$}
+\address{$^1$common address of authors A and B}
+\author{author C$^{2}$}
+\address{$^2$author C address}
+\email{list of emails}
 
 \date{\today}
 
+\subjclass[2000]{65L60, 65L05, 65L70}
+
+\keywords{Keyword 1, Keyword 2, error analysis}
+
+\thanks{${}^{*}$Corresponding author (E-mail: xyz@math.univ.edu). The work of this author is
+supported in part by ...
+}
+
+
 \begin{document}
 
-\maketitle
-
-\begin{abstract}
-  This is an example \LaTeX\ article. This can be used as a
-  template for new articles.  Abstracts must be able to stand alone
-  and so cannot contain citations to the paper's references,
-  equations, etc.  An abstract must consist of a single paragraph and
-  be concise. Because of online formatting, abstracts must appear as
-  plain as possible. Any equations should be inline.
-
-  \medskip
-  \noindent{\bf Keywords}: example, \LaTeX, Numerical methods
-
-  \medskip
-  \noindent{\bf 2000 Mathematics Subject Classification: } 65L60, 65L05, 65L70.
-\end{abstract}
-
-
-\maketitle
-
 \begin{abstract}
   This is an example \LaTeX\ article. This can be used as a
   template for new articles.  Abstracts must be able to stand alone
@@ -67,6 +91,8 @@
   be concise. Because of online formatting, abstracts must appear as
   plain as possible. Any equations should be inline.
 \end{abstract}
+
+\maketitle
 
 
 \section{Introduction}
@@ -288,6 +314,10 @@ together this example manuscript and supplement.
 \bibliography{reference}
 
 
+
+
 \end{document}
+
+
 
 

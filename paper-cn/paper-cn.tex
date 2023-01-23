@@ -1,7 +1,7 @@
 % !TEX program = xelatex
 \documentclass[a4paper,12pt]{article}
-\usepackage{ctex}
 
+\usepackage{ctex}
 \usepackage{geometry}
 % 数学宏包
 \usepackage{amsmath,amsthm}
@@ -35,7 +35,6 @@
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{mauve}{rgb}{0.58,0,0.58}
 
-
 \lstset{
   xleftmargin=10pt,
   xrightmargin=10pt,
@@ -57,6 +56,7 @@
   breakatwhitespace=true,
   tabsize=3,
 }
+
 % 首行缩进
 \usepackage{indentfirst}
 % 设置浮动体的标题
@@ -72,17 +72,16 @@
 %\usepackage{hyperref}
 %% Document Layout
 % 页面布局
-\geometry{top=25mm,bottom=25mm,left=25mm,right=25mm}
+\geometry{top=1in,bottom=1in,left=1in,right=1in}
 \renewcommand*{\baselinestretch}{1.35}
 
 %\setmainfont{Times New Roman}
 %\setmonofont{Courier New}
-\setsansfont{Arial}
-\setCJKfamilyfont{kai}[AutoFakeBold]{simkai.ttf}
-\newcommand*{\kai}{\CJKfamily{kai}}
-\setCJKfamilyfont{song}[AutoFakeBold]{SimSun}
-\newcommand*{\song}{\CJKfamily{song}}
-
+%\setsansfont{Arial}
+%\setCJKfamilyfont{kai}[AutoFakeBold]{simkai.ttf}
+%\newcommand*{\kai}{\CJKfamily{kai}}
+%\setCJKfamilyfont{song}[AutoFakeBold]{SimSun}
+%\newcommand*{\song}{\CJKfamily{song}}
 
 \theoremstyle{plain}
 \newtheorem{definition}{定义}[section]
@@ -106,11 +105,13 @@
 \usepackage{float}
 \newcommand{\upcite}[1]{\textsuperscript{\textsuperscript{\cite{#1}}}}
 \usepackage{fancyhdr}
-\titleformat{\section}{\bfseries \Large}{\arabic{section}}{1em}{}
-\titleformat{\subsection}{\bfseries\large}{\thesubsection}{1em}{}
+
+%----- 设置节标题格式 -----
+%\titleformat{\section}{\bfseries \Large}{\arabic{section}}{1em}{}
+%\titleformat{\subsection}{\bfseries\large}{\thesubsection}{1em}{}
 
 
-% ----- 设置浮动体间距 ------
+%----- 设置浮动体间距 ------
 \setlength{\textfloatsep}{0pt}
 \setlength{\floatsep}{10pt plus 3pt minus 2pt}
 \setlength{\intextsep}{10pt}
@@ -118,37 +119,37 @@
 \setlength{\belowcaptionskip}{3pt plus1pt minus2pt}
 %\setlength{\itemsep}{3pt plus1pt minus2pt}
 
-% ----- 设置公式间距为零 ------
+%----- 设置公式间距为零 ------
 \AtBeginDocument{
-	\setlength{\abovedisplayskip}{4pt plus1pt minus1pt}
-	\setlength{\belowdisplayskip}{4pt plus1pt minus1pt}
+	\setlength{\abovedisplayskip}{5pt plus1pt minus1pt}
+	\setlength{\belowdisplayskip}{5pt plus1pt minus1pt}
 	\setlength{\abovedisplayshortskip}{2pt}
 	\setlength{\belowdisplayshortskip}{2pt}
 	\setlength{\arraycolsep}{2pt}   % array中列之间空白长度
 }
 
 
-% 添加自己要用的其他宏包
+%----- 添加自己要用的其他宏包 -----
 \usepackage[numbers,sort&compress]{natbib}
 \usepackage{subfig}
 % \usepackage{xltxtra}
 
 %\usepackage[cleardoublepage=plain]{scrextend}
 
-% --- 算法宏包及设置 ---
+%----- 算法宏包及设置 ---
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \floatname{algorithm}{算法}
 \algrenewcommand\algorithmicrequire{\textbf{输入:}}
 \algrenewcommand\algorithmicensure{\textbf{输出:}}
 
-
+%----- 定义 maketitle, abstract -----
 \makeatletter
 \renewcommand\maketitle{
 {\raggedright
-\vspace*{12pt}
+\vspace*{1em}
 \begin{center}
-{\fontsize{20pt}{20pt}\selectfont \bfseries \@title }\\[1.5em]
+{\LARGE \bfseries \@title }\\[1.5em]
   \@author  \\
   \@date \\[10pt]
 \end{center}}
@@ -156,7 +157,7 @@
 %----- abstract -------
 \renewenvironment{abstract}{
 \phantomsection
-\addcontentsline{toc}{section}{\textbf{摘要}}
+\addcontentsline{toc}{section}{摘要}
 \noindent\rule[0.1\baselineskip]{\textwidth}{0.5pt}
 %\centerline{\large \textbf{摘 \ 要}}\\[5pt]
 \textbf{摘~要：}
@@ -166,25 +167,22 @@
 \makeatother
 
 
-% ---- 定义列表项的样式 -----
+%----- 定义列表项的样式 -----
 \usepackage{enumitem}
 \setlist{nolistsep}
 % \setlength{\itemsep}{3pt plus1pt minus2pt}
 
-% --- 证明结束黑框 ----
+%----- 证明结束黑框 ----
 % \renewcommand{\qedsymbol}{$\blacksquare$}
 
-% --- 设置英文字体 -----
+%----- 设置英文字体 -----
 \usepackage{newtxtext}  % for text fonts
 
-% --- 设置数学字体 -----
+%----- 设置数学字体 -----
 % \usepackage{newtxmath}
 % \usepackage{mathptmx}
 
-% --- 直接插入 pdf 文件 ----
-% \usepackage{pdfpages}
-
-% --- 自定义命令 -----
+%----- 自定义命令 -----
 \newcommand{\CC}{\ensuremath{\mathbb{C}}}
 \newcommand{\RR}{\ensuremath{\mathbb{R}}}
 \newcommand{\A}{\mathcal{A}}
@@ -193,9 +191,10 @@
 \newcommand{\bA}{\boldsymbol{A}}
 \newcommand{\red}[1]{\textcolor{red}{#1}}
 
-
 \graphicspath{{./figures/}}
 
+
+%----- 题目等信息 -----
 \title{小论文的题目}
 \author{作者}
 \date{\today}
@@ -209,6 +208,7 @@
 \begin{abstract}
 摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容. 摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容.
 
+\medskip
 \noindent \textbf{关键词：} 关键词 1 ~ 关键词 2 ~ 关键词 3
 \end{abstract}
 
@@ -217,7 +217,6 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LaTeX 常用环境  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\section{LaTeX 常用环境}
 
 \section{列表的使用}
 
@@ -337,7 +336,7 @@ aligned 与 equation 环境套用, 公式间距是自动调节的, 如果有分�
 \begin{theorem}[Theorem]
 这是一个定理.
 \end{theorem}
-\begin{proof}
+\begin{proof}[\normalfont\bfseries 证明~\nopunct]
 这是证明环境.
 \end{proof}
 
@@ -410,7 +409,7 @@ aligned 与 equation 环境套用, 公式间距是自动调节的, 如果有分�
 
 % 使用方法:\bibliography{参考文件1文件名, 参考文献2文件名, ...}
 % 参考文献格式可选  plain, abbrv, unsrt, siam
-% \bibliographystyle{plain} 
+% \bibliographystyle{plain}
 \bibliographystyle{thuthesis-numeric}
 %\bibliographystyle{thuthesis-author-year}
 \bibliography{mybib}

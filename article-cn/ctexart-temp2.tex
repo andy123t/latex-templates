@@ -1,0 +1,740 @@
+% -*- coding: utf-8 -*-
+% !TEX program = xelatex
+
+\documentclass[zihao=-4,twoside,final]{ctexart}
+
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{mathrsfs,bm}
+\usepackage{graphicx}
+%\usepackage{parskip}
+\usepackage{multirow}
+%\usepackage[english]{babel}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{color,xcolor}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{pifont}
+\usepackage{subfig}
+\usepackage{longtable}
+\usepackage{makecell}
+\usepackage{geometry}
+%\geometry{left=1.25in,right=1.25in,top=1in,bottom=1in}
+\geometry{left=3cm,right=3cm,top=3cm,bottom=3cm}
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks = true,
+	linkcolor = black,
+	citecolor = blue,
+	filecolor = blue,
+    urlcolor =blue,
+}
+
+\allowdisplaybreaks
+
+
+%----- 设置章节 -----
+\ctexset{%
+  section/name = {第,节},
+  section/number = \arabic{section},
+  section/format = \centering,
+  section/nameformat = \large\bfseries,
+  section/titleformat = \large\bfseries,
+  section/beforeskip = 5.5ex plus 1ex minus .2ex,
+%
+  subsection/format=\raggedright,
+  subsection/nameformat=\bfseries,
+  subsection/titleformat=\bfseries
+}
+
+
+%----- 页眉页脚 -----
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{$\cdot$\:\thepage\:$\cdot$}
+\fancyhead[LO,RE]{\kaishu\nouppercase{\leftmark}}
+\renewcommand{\headrulewidth}{0.5pt}
+
+%-----设置英文字体 -----
+\usepackage{newtxtext}
+%\setmainfont{Times New Roman}
+
+%----- 设置数学字体 -----
+%\usepackage{newtxmath}
+%\usepackage{mathptmx}
+
+% numbering format
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+
+%\setlength{\parindent}{2em}                 % 首行两个汉字的缩进量
+%\setlength{\parskip}{3pt plus1pt minus1pt}  % 段落之间的竖直距离
+%\renewcommand{\baselinestretch}{1.35}       % 定义行距
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\floatname{algorithm}{算法}
+\algrenewcommand\algorithmicrequire{\textbf{输入:}}
+\algrenewcommand\algorithmicensure{\textbf{输出:}}
+
+% --- 使用 tabularx库并定义新的左右中格式 ----
+\newcolumntype{L}{X}
+\newcolumntype{C}{>{\centering \arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft \arraybackslash}X}
+\newcolumntype{P}[1]{>{\centering \arraybackslash}p{#1}}
+
+%------------- 数学定理设置 ---------------
+\theoremstyle{plain}
+\newtheorem{definition}{定义}[section]
+\newtheorem{proposition}{命题}[section]
+\newtheorem{lemma}{引理}[section]
+\newtheorem{theorem}{定理}[section]
+\newtheorem{example}{例}
+\newtheorem{corollary}{推论}[section]
+\newtheorem{remark}{注}[section]
+%\renewcommand{\proofname}{\heiti 证明}
+
+
+%----- 参考文献格式 -----
+%\bibliographystyle{plain} % abbrv, unsrt, siam
+\bibliographystyle{thuthesis-numeric}
+%\bibliographystyle{thuthesis-author-year}
+
+%----- 参考文献引用格式 -----
+\usepackage[numbers,sort&compress]{natbib}
+\def\bibfont{\small}      % 修改参考文献字体
+\setlength{\bibsep}{8pt}  % 调整参考文献间距
+\makeatletter
+\newcommand\bibstyle@super{\bibpunct{[}{]}{,}{s}{,}{\textsuperscript{,}}}
+\newcommand\bibstyle@numbers{\bibpunct{[}{]}{,}{n}{,}{,}}
+\newcommand\bibstyle@authoryear{\bibpunct{(}{)}{;}{a}{,}{,}}
+\makeatother
+
+% --- new command -----
+\newcommand{\CC}{\ensuremath{\mathbb{C}}}
+\newcommand{\RR}{\ensuremath{\mathbb{R}}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\ii}{\bm{\mathrm{i}}\,}  % imaginary number
+\newcommand{\md}{\mathrm{d}\,}
+\newcommand{\bA}{\boldsymbol{A}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\dx}[1][x]{\,{\rm d}#1}
+\newcommand{\dt}[1][t]{\dfrac{\rm d}{{\rm d}#1}}
+
+
+\title{论文的题目}
+\author{作者}
+\date{\today}
+
+% --------设置图片的路径 ---------
+\graphicspath{{./figure/}{./figures/}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+这是论文的摘要这是论文的摘要这是论文的摘要这是论文的摘要这是论文的摘要这是论文的摘要这是论文的摘要这是论文的摘要这是论文的摘要这是论文的摘要这是论文的摘要这是论文的摘要这是论文的摘要这是论文的摘要这是论文的摘要这是论文的摘要这是论文的摘要这是论文的摘要这是论文的摘要这是论文的摘要这是论文的摘要这是论文的摘要这是论文的摘要这是论文的摘要
+
+\medskip
+\noindent\textbf{摘要：} 关键词 1；关键词 2；关键词 3.
+\end{abstract}
+
+
+%\tableofcontents
+
+
+\section{引言}
+
+\subsection{研究背景}
+
+这是小四号的正文字体, 行间距 1.35 倍.
+
+通过空一行实现段落换行, 仅仅是回车并不会产生新的段落.
+
+自定义了一个命令 \verb|\red{文字}| 可以\red{加红文字}, 可以在论文修改阶段方便标记.
+
+这是一个引用的示例 \cite{Adams2003}和 \cite{Shen1994,Tadmor2012,TreWei2014}.
+
+%这是一大段文字这是一大段文字中英文混排 Numerical Methods. 这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字.
+
+\subsection{列表的使用}
+
+这是一个计数的列表.
+\begin{enumerate}%[label={\rm (\arabic*)}]%\roman
+	\item 第一项
+		\begin{enumerate}
+			\item 第一项中的第一项
+			\item 第一项中的第二项
+		\end{enumerate}
+	\item 第二项
+	\item 第三项
+\end{enumerate}
+
+
+这是一个不计数的列表.
+\begin{itemize}%[label={$\bullet$}]
+	\item 第一项
+	\begin{itemize}
+		\item 第一项中的第一项
+		\item 第一项中的第二项
+	\end{itemize}
+	\item 第二项
+	\item 第三项
+\end{itemize}
+
+
+
+\subsection{文献引用}
+
+参考文献可采用 BibTeX 或 BibLaTeX 的方式生成 (内容写在文件 \verb|mybib.bib| 中), 参考文献的样式为 \verb|thuthesis-numeric| (对应的引用格式可选 \verb|numbers| 或  \verb|super|)和 \verb|thuthesis-author-year| (对应的引用格式 \verb|authoryear|), 符合国家标准《信息与文献参考文献著录规则》GB/T 7714-2015, 论文中引用和参考的文献必须列出. 参考文献序号按所引文献在论文中出现的先后次序排列. 引用文献应在论文中的引用处加注文献序号, 并加注方括弧.
+
+文献引用示例 \cite{LiLiu1997} 和 \cite{Adams2003,Shen1994}.
+
+
+\subsection{数学公式}
+
+数学公式的使用请参考公式手册 symbols-a4, 或者 《一份(不太)简短的 \LaTeX~2$\varepsilon$ 介绍》 (lshort-zh-cn).
+
+自定义命令表示的几个数学符号 $\RR$, $\CC$, $\A$, $\ii$, $\md$, $\bA$.
+
+在文中行内公式可以这么写: $a^2+b^2=c^2$, 这是勾股定理, 它还可以表示为 $c=\sqrt{a^2+b^2}$, 还可以让公式单独一段并且加上编号
+\begin{equation}\label{eqn:trifun}
+\sin^2{\theta}+\cos^2{\theta}=1.
+\end{equation}
+还可以通过添加标签在正文中引用公式, 如等式~\eqref{eqn:trifun} 或者 \ref{eqn:trifun}.
+
+读者可能阅读过其它手册或者资料, 知道 LaTeX 提供了 eqnarray 环境. 它按照等号左边—等号—等号右边呈三列对齐, 但等号周围的空隙过大, 加上公式编号等一些 bug, 目前已不推荐使用. (摘自 lshort-zh-cn)
+
+多行公式常用 align 环境, 公式通过 \verb|&| 对齐. 分隔符通常放在等号左边:
+\begin{align}
+a & = b + c \\
+& = d + e.
+\end{align}
+
+align 环境会给每行公式都编号. 我们仍然可以用 \verb|\notag| 或 \verb|\nonumber| 去掉某行的编号. 在以下的例子,
+为了对齐等号, 我们将分隔符放在右侧, 并且此时需要在等号后添加一对括号 \verb|{}| 以产生正常的间距:
+\begin{align}
+a ={} & b + c \\
+={} & d + e + f + g + h + i + j \notag \\
+& + m + n + o \\
+={} & p + q + r + s.
+\end{align}
+
+如果不需要按等号对齐, 只需罗列数个公式, gather 将是一个很好用的环境:
+\begin{gather}
+a = b + c \\
+d = e + f + g \notag \\
+%h + i = j \\
+l + m = n
+\end{gather}
+
+align 和 gather 有对应的不带编号的版本 align* 和 gather*.
+对于 align、 gather、align* 与 gather* 等环境, 若添加命令 \verb|\allowdisplaybreaks| 后 (已添加), 公式可以跨页显示.
+
+多个公式组在一起公用一个编号, 编号位于公式的居中位置, amsmath 宏包提供了诸如 aligned、gathered 等环境, 与 equation 环境套用.
+
+这个公式使用 aligned 环境 (\textbf{推荐使用})
+\begin{equation}\label{eqn:1}
+\left\{\begin{aligned}
+  &-\frac{\mathrm{d}^{2} u}{\mathrm{d} x^{2}}+\frac{\mathrm{d} u}{\mathrm{d} x}=\pi^{2} \sin (\pi x)+\pi \cos (\pi x),\quad x \in [0,1], \\
+  &u(0)=0,\quad u(1)=0.
+\end{aligned} \right.
+\end{equation}
+
+这个公式使用 array 环境
+\begin{equation}\label{eqn:2}
+\left\{\begin{array}{l}
+\displaystyle
+-\frac{\mathrm{d}^{2} u}{\mathrm{d} x^{2}}+\frac{\mathrm{d} u}{\mathrm{d} x}=\pi^{2} \sin (\pi x)+\pi \cos (\pi x),\quad x \in [0,1], \\[6pt]
+u(0)=0,\quad u(1)=0.
+\end{array} \right.
+\end{equation}
+
+aligned 与 equation 环境套用, 公式间距自动调节, 如果有分式, 分式也是行间显示. 如果用 array 与 equation 环境套用, 需要手动调整公式行间距和行间显示.
+
+
+
+\subsection{定理环境}
+
+\begin{definition}
+这是一个定义.
+\end{definition}
+
+\begin{proposition}
+这是一个命题.
+\end{proposition}
+
+\begin{lemma}[Lemma]\label{lemma1}
+这是一个引理.
+\end{lemma}
+
+\begin{theorem}[Theorem]
+这是一个定理.
+\end{theorem}
+\begin{proof}
+这是证明环境.
+\end{proof}
+
+\begin{corollary}
+这是一个推论.
+\end{corollary}
+
+\begin{proposition}[Proposition]
+这是一个命题.
+\end{proposition}
+
+\begin{lemma}\label{lemma-convergence} {\rm (\textit{参考文献}\cite{LiLiu1997})}
+假设单步法具有 $p$ 阶精度, 且増量函数 $\varphi(x_{n}, u_{n}, h)$ 关于 $u$ 满足 {\rm Lipschitz} 条件
+\begin{equation}\label{eqn:3}
+|\varphi(x, u, h)-\varphi(x, \bar{u}, h)| \leqslant L_{\varphi}|u-\bar{u}|.
+\end{equation}
+\end{lemma}
+
+\begin{theorem}\label{theorem-convergence}
+假设单步法具有 $p$ 阶精度, 且増量函数 $\varphi(x_{n}, u_{n}, h)$ 关于 $u$ 满足 {\rm Lipschitz} 条件
+\begin{equation}\label{eqn:4}
+|\varphi(x, u, h)-\varphi(x, \bar{u}, h)| \leqslant L_{\varphi}|u-\bar{u}|.
+\end{equation}
+\end{theorem}
+\begin{proof}[\normalfont\bfseries 证明~\nopunct]
+由定理 \ref{lemma1} 和 \eqref{eqn:1} 式可以推出以上结论.
+\end{proof}
+
+\begin{corollary}\label{col-convergence}
+假设单步法具有 $p$ 阶精度, 且増量函数 $\varphi(x_{n}, u_{n}, h)$ 关于 $u$ 满足 {\rm Lipschitz} 条件
+\begin{equation}\label{eqn:5}
+|\varphi(x, u, h)-\varphi(x, \bar{u}, h)| \leqslant L_{\varphi}|u-\bar{u}|.
+\end{equation}
+\end{corollary}
+
+
+\begin{remark}\label{remark1}
+这是一个 remark.
+\end{remark}
+
+\begin{example}
+这是一个例子.
+\end{example}
+
+
+
+\clearpage
+\subsection{算法环境}
+
+如下是算法~\ref{alg:euclid}.
+\begin{algorithm}[H]
+    \small
+    \caption{~Euclid's algorithm}\label{alg:euclid}
+    \begin{algorithmic}[1]
+        \Procedure{Euclid}{$a,b$}\Comment{The g.c.d. of a and b}
+        \State $r\gets a\bmod b$
+        \While{$r\not=0$}\Comment{We have the answer if r is 0}
+        \State $a\gets b$
+        \State $b\gets r$
+        \State $r\gets a\bmod b$
+        \EndWhile\label{euclidendwhile}
+        \State \Return $b$\Comment{The gcd is b}
+        \EndProcedure
+    \end{algorithmic}
+\end{algorithm}
+
+
+如下是算法~\ref{alg:name}, 算法宽度可以通过 minipage 宏包调节.
+\begin{center}
+\vspace{-2ex}
+\begin{minipage}{.9\linewidth}
+\begin{algorithm}[H]
+\caption{~算法的名字}\label{alg:name}  % 算法的名字
+\begin{algorithmic}[1]
+\Require  input parameters A, B, C  % 算法的输入
+\Ensure  output result   % 算法的结果输出
+\State some description 算法介绍   % \State 后写一般语句
+\For{condition}    % For 语句，需要和 EndFor对应
+　　\State ...
+　　\If{condition}  % If 语句，需要和 EndIf对应
+　　　　\State ...
+　　\Else
+　　　　\State ...
+　　\EndIf
+\EndFor
+\While{condition}  % While语句，需要和 EndWhile对应
+　　\State ...
+\EndWhile
+\State \Return result
+\end{algorithmic}
+\end{algorithm}
+\end{minipage}
+\end{center}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% 微分方程的数值方法  %%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{微分方程的数值方法}
+
+本章我们考虑具有以下微分方程:
+\begin{equation}\label{eqn:pde}
+\left\{\begin{aligned}
+& L u=-\frac{\mathrm{d}^{2} u}{\mathrm{d} x^{2}}+\frac{\mathrm{d} u}{\mathrm{d} x}+q u=f, \quad a < x < b, \\
+& u(a)=\alpha, \quad u(b)=\beta.
+\end{aligned}\right.
+\end{equation}
+其中 $q, f$ 为 $[a,b]$ 上的连续函数, $q \geqslant 0$; $\alpha, \beta$ 为给定常数. 这是最简单的椭圆方程第一边值问题 .
+
+问题 \eqref{eqn:pde} 存在唯一解 (引用示例参考文献 \cite{LiLiu1997}).
+
+
+\subsection{有限差分方法}
+在偏微分方程的数值解法中, 有限差分法数学概念直观, 推导自然, 是发展较早且比较成熟的数值方法. 由于计算机只能存储有限个数据和做有限次运算, 所以任何一种用计算机解题的方法, 都必须把连续问题 (微分方程的边值问題、初值问题等) 离散化, 最终化成有限形式的线性代数方程组.
+
+\subsubsection{数值格式}
+将区间 $[a,b]$ 分成 $N$ 等分, 分点为
+\begin{equation*}
+  x_{i}=a+i h \quad i=0,1, \cdots, N,
+\end{equation*}
+其中 $h=(b-a) / N$. 于是我们得到区间 $I=[a,b]$ 的一个网格剖分. $x_i$ 称为网格的节点, $h$ 称为步长.
+
+数值格式:
+\begin{equation*}
+  L_{h} u_{i}=-\frac{u_{i+1}-2 u_{i}+u_{i-1}}{h^{2}}+\frac{u_{i+1}-u_{i-1}}{h}+q_{i} u_{i}=f_{i},\quad 1 \leqslant j \leqslant N-1.
+\end{equation*}
+其中  $q_{i}=q(x_{i}), f_{i}=f(x_{i})$.
+
+以上差分方程对于 $i=1,2, \cdots, N-1$ 都成立, 加上边值条件 $u_{0}=\alpha, u_{N}=\beta$, 就得到关于 $u_i$ 的差分格式:
+\begin{equation}\label{eqn:fdm}
+\left\{\begin{aligned}
+& L_{h} u_{i}=-\frac{u_{i+1}-2 u_{i}+u_{i-1}}{h^{2}}+\frac{u_{i+1}-u_{i-1}}{2h}+q_{i} u_{i}=f_{i}, \quad i=1,2, \cdots, N-1, \\
+& u_{0}=\alpha, \quad u_{N}=\beta.
+\end{aligned}\right.
+\end{equation}
+
+它的解 $u_i$ 是 $u(x)$ 在 $x=x_i$ 处的差分解.
+
+
+\subsection{矩阵形式}
+
+先定义向量 $\boldsymbol{u}$:
+\begin{equation*}
+  \boldsymbol{u}=(u_{1}, u_{2}, \cdots, u_{N-1})^{\mathrm{T}}.
+\end{equation*}
+
+差分格式可以写为矩阵形式:
+\begin{equation*}
+  \boldsymbol{A}\boldsymbol{u}=\boldsymbol{f}.
+\end{equation*}
+其中矩阵 $\boldsymbol{A}$、向量 $\boldsymbol{f}$ 的定义如下, 注意向量 $\boldsymbol{f}$ 的首尾元素已包含了 $x=a$ 和 $x=b$ 处的边界条件.
+\begin{equation}\label{equ:matrix1}
+\boldsymbol{A}=\begin{bmatrix}
+\dfrac{2}{h^{2}}+q_{1} & \dfrac{1}{2h}-\dfrac{1}{h^{2}} &   &  &  \\[8pt]
+ -\dfrac{1}{2h}-\dfrac{1}{h^{2}} & \dfrac{2}{h^{2}}+q_{2} & \dfrac{1}{2h}-\dfrac{1}{h^{2}}  & &  \\[8pt]
+  &  &  &  &    \\
+   &  \ddots  & \ddots  &  \ddots  &  \\[8pt]
+   &  &  &  &    \\
+  &   & -\dfrac{1}{2h}-\dfrac{1}{h^{2}} & \dfrac{2}{h^{2}}+q_{N-2}& \dfrac{1}{2h}-\dfrac{1}{h^{2}} \\[8pt]
+  &  &  & -\dfrac{1}{2h}-\dfrac{1}{h^{2}} & \dfrac{2}{h^{2}}+q_{N-1}
+\end{bmatrix}.
+\end{equation}
+
+上一个矩阵用了 \verb|bmatrix| 环境, 也可以使用 \verb|array| 环境.
+\begin{equation}\label{equ:matrix2}
+\boldsymbol{A}=\left[\begin{array}{cccccc}
+\dfrac{2}{h^{2}}+q_{1} & \dfrac{1}{2h}-\dfrac{1}{h^{2}} &   &  &  \\[8pt]
+ -\dfrac{1}{2h}-\dfrac{1}{h^{2}} & \dfrac{2}{h^{2}}+q_{2} & \dfrac{1}{2h}-\dfrac{1}{h^{2}}  & &  \\[8pt]
+  &  &  &  &    \\
+   &  \ddots  & \ddots  &  \ddots  &  \\[8pt]
+   &  &  &  &    \\
+  &   & -\dfrac{1}{2h}-\dfrac{1}{h^{2}} & \dfrac{2}{h^{2}}+q_{N-2}& \dfrac{1}{2h}-\dfrac{1}{h^{2}} \\[8pt]
+  &  &  & -\dfrac{1}{2h}-\dfrac{1}{h^{2}} & \dfrac{2}{h^{2}}+q_{N-1}
+\end{array}\right].
+\end{equation}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 插图环境  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{插图环境}
+
+\subsection{图的使用}
+
+XeLaTeX 环境下可以使用 EPS、PDF、PNG、JPEG、BMP 格式的图片, 当然也可以用绘图包直接在 \LaTeX 中绘制图形, 推荐使用宏包 tikz. 值得注意的是 figure 环境一个浮动体环境，LaTeX 不总是浮动体放在你想要的地方，但是 LaTeX 总是保证浮动体的相对顺序，所以对图片 \verb|\label| 和 \verb|\ref| 的交叉引用就显得尤为重要。
+
+
+\subsection{插图示例}
+
+插入一个图形并居中放置, 如图~\ref{fig:sinx}.
+\begin{figure}[htp!]
+  \centering
+  \includegraphics[width=0.4\linewidth]{image1.eps}
+  \caption{函数 $y=\sin(x)$ 的图像}\label{fig:sinx}
+\end{figure}
+
+
+两个图左右并排放置, 共用一个标题. 引用图片: \ref{fig:image1}.
+\begin{figure}[htp!]
+\centering
+  \includegraphics[width=0.45\linewidth]{image1.eps}
+  \hfill
+  \includegraphics[width=0.45\linewidth]{image2.eps}
+  \caption{左: 图一的描述;~ 右:图二的描述.}
+  \label{fig:image}
+\end{figure}
+
+
+使用 minipage 排版并排插图, 每个图都有单独的标题.
+\begin{figure}[htp!]
+\begin{minipage}[t]{0.48\linewidth}
+\centering
+  \includegraphics[width=0.9\linewidth]{image1.eps}
+    \caption{图一的描述.}
+    \label{fig:image1}
+\end{minipage}
+  \hfill
+\begin{minipage}[t]{0.48\linewidth}
+\centering
+   \includegraphics[width=0.9\linewidth]{image2.eps}
+   \caption{图二的描述.}
+   \label{fig:image2}
+\end{minipage}
+\end{figure}
+
+
+使用 subfig 宏包实现多图并排.
+\begin{figure}[htp!]
+\centering
+\subfloat[Subcaption A]{\includegraphics[width=0.3\linewidth]{image1}}
+\hfill
+\subfloat[Subcaption B]{\includegraphics[width=0.3\linewidth]{image1}}
+\hfill
+\subfloat[Subcaption C]{\includegraphics[width=0.3\linewidth]{image1}} \\
+\subfloat[Subcaption D]{\includegraphics[width=0.3\linewidth]{image2}}
+\hfill
+\subfloat[Subcaption E]{\includegraphics[width=0.3\linewidth]{image2}}
+\hfill
+\subfloat[Subcaption F]{\includegraphics[width=0.3\linewidth]{image2}}
+\caption{六个图并排}
+\end{figure}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 表格环境  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{表格环境}
+
+\subsection{表的使用}
+
+LaTeX 的 Table 环境一个浮动体环境, 浮动体排版与 Figure 环境类似. 作为论文, 推荐使用三线表进行排版. 一般的三线表, 标题前后有横线, 表格最后有横线. %当然也可以根据需要在合适的地方加线.
+
+本文基于 tabularx 宏包定义了新的的左中右 (LCR) 格式, LCR 三个格式会根据表格宽度的设定自行控制宽度, 且其宽度相等, 方便设置和页面相同宽度的表格. 本文还定义了命令 \verb|P{}|, 它可以设定某一列宽度 (如 \verb|P{1cm}| 控制某一列的宽度为 1cm), 实际上 \verb|P{}| 命令是在 \verb|p{}| 命令的基础上增加了居中功能. %PLCR 格式的功能需要调用 .
+
+\subsection{表格示例}
+
+如下表格: 表~\ref{tab:heightweight}.
+
+\begin{table}[!htp]
+\centering
+% PLCR已经定义
+\caption{某校学生升高体重样本.}
+\label{tab:heightweight}
+\begin{tabularx}{0.9\textwidth}{lCCC}
+   \toprule
+	序号 & 年龄 & 身高 & 体重\\
+	\midrule
+	001 & 14 & 156 & 42 \\
+	002 & 16 & 158 & 45 \\
+	003 & 14 & 162 & 48 \\
+	%004 & 15 & 163 & 50 \\
+    \cmidrule{2-4}
+	平均 & 15 & 159.75 & 46.25 \\
+	\bottomrule
+\end{tabularx}
+\end{table}
+
+
+\begin{table}[htp!]
+\centering
+\caption{论文进度安排}
+%\renewcommand\arraystretch{1.1} %定义表格高度
+% PLCR前面已经定义
+\begin{tabularx}{0.9\textwidth}{|P{4cm}|C|}
+\Xhline{2\arrayrulewidth}
+论文起止时间       &  论文筹备过程 \\
+\hline
+20xx.xx -- 20xx.xx    &  论文定题，整理相关文献 \\
+\hline
+20xx.xx -- 20xx.xx    &  审查、修改、完成开题报告 \\
+\hline
+20xx.xx -- 20xx.xx   &  对论文排版、初步完成论文初稿 \\
+\hline
+20xx.xx -- 20xx.xx    &  毕业论文预答辩 \\
+\hline
+20xx.xx -- 20xx.xx    &  对论文进行补充、完善 \\
+\hline
+20xx.xx -- 20xx.xx    &  论文定稿 \\
+\hline
+20xx.xx -- 20xx.xx    &  毕业论文答辩 \\
+\Xhline{2\arrayrulewidth}
+\end{tabularx}
+\end{table}
+
+
+\clearpage
+基于 tabular 环境设置一些格式: 上下表格线加粗.
+
+\begin{table}[!htp]
+%\small
+\centering
+\renewcommand\arraystretch{1.2} %定义表格高度
+\caption{数值误差与收敛速率示例.}
+\label{tab:error1}
+\begin{tabular}{c|c|cc|cc|cc}
+\Xhline{2\arrayrulewidth}
+degree &  step-size~$h$  & $L^2$-errors  &  order  & $H^1$-errors & order & $L^\infty$-errors  &  order \\
+\hline
+   &  1/128    & 9.18E-06    &2.02    & 7.70E-03  &1.01       & 6.46E-07    &2.02    \\
+1  &  1/256    & 2.29E-06    &2.01    & 1.92E-03  &1.00       & 1.61E-07    &2.01      \\
+   &  1/512    & 5.70E-07    &2.00    & 9.56E-04  &1.00       & 4.01E-08    &2.00       \\
+\hline  %   \cline{1-8}
+   &  1/128    & 1.39E-08    &3.01    & 1.15E-05  &2.01       & 3.48E-12   &4.02       \\
+2  &  1/256    & 1.73E-09    &3.01    & 2.88E-06  &2.01       & 3.27E-13   &3.94      \\
+   &  1/512    & 2.17E-10    &3.00    & 7.24E-06  &2.00       & 6.66E-13   &1.55     \\
+\hline  %   \cline{1-8}
+   &  1/32     & 2.28E-09    &4.05    & 6.92E-07  &3.04       & 1.45E-15   &8.21       \\
+3  &  1/64     & 1.42E-10    &4.03    & 8.65E-08  &3.02       & 2.06E-14   &3.85       \\
+   &  1/128    & 8.91E-12    &4.01    & 1.08E-08  &3.01       & 3.86E-14   &0.91       \\
+\Xhline{2\arrayrulewidth}
+\end{tabular}
+\end{table}
+
+
+基于 tabularx 环境设置一些格式: 左右表格双线.
+
+\begin{table}[htp!]
+\centering
+\renewcommand\arraystretch{1.2} %定义表格高度
+% PLCR已经定义
+\caption{数值误差示例.}
+\label{tab:error2}
+\begin{tabularx}{0.9\textwidth}{||P{1cm}|C|C|C|C|C|C||}
+\Xhline{2\arrayrulewidth}
+N  & A       & B    & C       & D      & E       & F   \\
+\Xhline{2\arrayrulewidth}
+2  & 9.20E-05 & 9.90E-05 & 1.00E-06 & 8.00E-06 & 1.50E-05 & 6.70E-05 \\
+4  & 9.80E-05 & 8.00E-05 & 7.00E-06 & 1.40E-05 & 1.60E-05 & 7.30E-05 \\
+6  & 4.00E-06 & 8.10E-05 & 8.80E-05 & 2.00E-05 & 2.20E-05 & 5.40E-05 \\
+8  & 8.50E-05 & 8.70E-05 & 1.90E-05 & 2.10E-05 & 3.00E-06 & 6.00E-05 \\
+10 & 8.60E-05 & 9.30E-05 & 2.50E-05 & 2.00E-06 & 9.00E-06 & 6.10E-05 \\
+12 & 1.70E-05 & 2.40E-05 & 7.60E-05 & 8.30E-05 & 9.00E-05 & 4.20E-05 \\
+14 & 2.30E-05 & 5.00E-06 & 8.20E-05 & 8.90E-05 & 9.10E-05 & 4.80E-05 \\
+16 & 7.90E-05 & 6.00E-06 & 1.30E-05 & 9.50E-05 & 9.70E-05 & 2.90E-05 \\
+18 & 1.00E-05 & 1.20E-05 & 9.40E-05 & 9.60E-05 & 7.80E-05 & 3.50E-05 \\
+20 & 1.10E-05 & 1.80E-05 & 1.10E-04   & 7.70E-05 & 8.40E-05 & 3.60E-05  \\
+\Xhline{2\arrayrulewidth}
+\end{tabularx}
+\end{table}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%% 生成参考文献 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\clearpage
+\phantomsection
+\addcontentsline{toc}{section}{参考文献} % 添加  "参考文献 " 到目录
+
+% 生成参考文献, 使用第一种请把第二种全部注释
+
+% 第一种方式, 使用 bib 文件
+
+%\nocite{*}  % 可以暂时显示全部参考文献, 包括未引用的
+
+% 使用方法:\bibliography{参考文件1文件名, 参考文献2文件名, ...}
+\bibliography{mybib}
+
+
+%----------------------------------------------------------------
+
+% 第二种方式, 按照格式直接写文献信息, 使用第二种请把第一种全部注释
+
+
+%\begin{thebibliography}{99}
+%\bibitem{Tadmor2012} Tadmor~E. A review of numerical methods for nonlinear partial differential
+%  equations\allowbreak[J]. Bull. Amer. Math. Soc., 2012, 49(4): 507-554.
+%
+%\bibitem{LiLiu1997} 李荣华, 刘播. 微分方程数值解法\allowbreak[M]. 东南大学出版社, 1997.
+%
+%\bibitem{Adams2003} Adams~R~A, Fournier~J~J~F. Sobolev spaces\allowbreak[M]. Elsevier, 2003.
+%
+%\bibitem{TreWei2014}Trefethen~L~N, Weideman~J~A~C. The exponentially convergent trapezoidal rule\allowbreak[J]. SIAM Rev., 2014, 56(3): 385-458.
+%
+%\bibitem{Shen1994} Shen~J. Efficient spectral-Galerkin method I. Direct solvers of second- and fourth-order equations using Legendre polynomials\allowbreak[J]. SIAM J. Sci. Comput., 1994, 15(6): 1489-1505.
+%
+%\end{thebibliography}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%% 附录 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% 添加附录, 如不需要可以把附录部分注释
+\appendix
+
+
+% 附录正文
+\section{这是第一个附录}
+
+\subsection{附录A的小节}
+
+这里是附录环境, 手动设置了 chapter 和 section 的样式, 并且加入到了目录.
+
+附录公式及编号
+\begin{equation}\label{eq:abc}
+  a^2+b^2=c^2.
+\end{equation}
+
+如图~\ref{fig:sinx2}.
+\begin{figure}[htp!]
+  \centering
+  \includegraphics[width=0.45\linewidth]{image1.eps}
+  \caption{函数 $y=\sin(x)$ 的图像}\label{fig:sinx2}
+\end{figure}
+
+
+如下表格: 表~\ref{tab:heightweight2}. 通过 \verb|autoref| 引用表格: \autoref{tab:heightweight2}.
+
+\begin{table}[!htp]
+\centering
+% PLCR已经定义
+\caption{某校学生升高体重样本}
+\label{tab:heightweight2}
+\begin{tabularx}{0.9\textwidth}{lCCC}
+   \toprule
+	序号 & 年龄 & 身高 & 体重 \\
+	\midrule
+	001 & 15 & 156 & 42 \\
+	002 & 16 & 158 & 45 \\
+	003 & 14 & 162 & 48 \\
+	004 & 15 & 163 & 50 \\
+    \cmidrule{2-4}
+	平均 & 15 & 159.75 & 46.25 \\
+	\bottomrule
+\end{tabularx}
+\end{table}
+
+
+\section{这是第二个附录}
+
+\subsection{附录B的小节}
+
+这里是附录环境, 手动设置了 chapter 和 section 的样式, 并且加入到了目录.
+
+
+
+
+\end{document}
+
+

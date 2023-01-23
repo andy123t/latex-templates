@@ -13,9 +13,9 @@
 \usepackage{fontspec}  % for Consolas and Courier New
 \lstset{basicstyle=\footnotesize\fontspec{Consolas}}   %Consolas Courier New
 
-%----------------------------------------------------------------------------------------
+%------------------------------------------------------------
 %	ASSIGNMENT INFORMATION
-%----------------------------------------------------------------------------------------
+%------------------------------------------------------------
 
 
 %\title{Homework \#1} % Assignment title
@@ -37,15 +37,15 @@
 \Major{计算数学} % Uncomment for classID in charge of the assignment
 
 \graphicspath{{figures/}}
-%----------------------------------------------------------------------------------------
+%------------------------------------------------------------
 
 \begin{document}
 
 \maketitle % Output the assignment title, created automatically using the information in the custom commands above
 
-%----------------------------------------------------------------------------------------
+%------------------------------------------------------------
 %	ASSIGNMENT CONTENT
-%----------------------------------------------------------------------------------------
+%------------------------------------------------------------
 
 %\section*{问题}
 
@@ -75,7 +75,7 @@
 \end{proof}
 
 
-%----------------------------------------------------------------------------------------
+%------------------------------------------------------------
 
 \begin{problem}
 	这里是一个问题。
@@ -87,12 +87,11 @@
 
 
 
-%----------------------------------------------------------------------------------------
+%------------------------------------------------------------
 
 \clearpage
 
 %\subsection*{表格}
-
 \noindent\textbf{表格}
 
 \begin{table}[ht!]
@@ -116,37 +115,28 @@ D &7.2632 &14.3913 &21.0323 &27.3171 &30.9630 &34.0870   \\
 
 \begin{figure}[htp!]
 \centering
-  \includegraphics[width=0.6\textwidth]{Euler.eps}
+  \includegraphics[width=0.6\textwidth]{image1}
    \caption{Euler 方法的误差}
    \label{fig:error1}
 \end{figure}
-
-
-%\clearpage
-%\begin{figure}[htp!]
-%\centering
-%  \includegraphics[width=3in]{Euler.eps}\hfill
-%  \includegraphics[width=3in]{RungeKutta.eps}
-%   \caption{左：Euler 方法的误差；右：Runge-Kutta 方法的误差.}
-%   \label{fig:error2}
-%\end{figure}
 
 
 \begin{figure}[!htp]
 \begin{minipage}[h]{0.48\linewidth}
 \centering
 %\captionsetup{width=0.9\linewidth}
-\includegraphics[width=0.9\textwidth]{Euler}
+\includegraphics[width=0.9\textwidth]{image1}
 \caption{Euler method}
 \label{Testfun1}
 \end{minipage}
 \begin{minipage}[h]{0.48\linewidth}
 \centering
-\includegraphics[width=0.9\textwidth]{RungeKutta} %width=\textwidth
+\includegraphics[width=0.9\textwidth]{image2}
 \caption{Runge-Kutta method}
 \label{Texstfun2}
 \end{minipage}
 \end{figure}
+
 
 \clearpage
 %\subsection*{MATLAB 代码}
@@ -201,6 +191,3 @@ set(gca,'fontsize',14)
 \end{document}
 
 
-% \begin{center}
-% 	\includegraphics[width=0.5\columnwidth]{swallow.jpg} % Example image
-% \end{center}
