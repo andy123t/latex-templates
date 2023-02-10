@@ -38,17 +38,20 @@
 
 
 %----- 设置章节 -----
-\ctexset{%
+\ctexset{
+  % section
   section/name = {第,节},
   section/number = \arabic{section},
   section/format = \centering,
   section/nameformat = \large\bfseries,
   section/titleformat = \large\bfseries,
   section/beforeskip = 5.5ex plus 1ex minus .2ex,
-%
-  subsection/format=\raggedright,
-  subsection/nameformat=\bfseries,
-  subsection/titleformat=\bfseries
+  % subsection
+  subsection/format = \raggedright,
+  subsection/nameformat = \bfseries,
+  subsection/titleformat = \bfseries,
+  % appendix
+  appendix/name = {附录},
 }
 
 
@@ -59,6 +62,12 @@
 \fancyhead[LE,RO]{$\cdot$\:\thepage\:$\cdot$}
 \fancyhead[LO,RE]{\kaishu\nouppercase{\leftmark}}
 \renewcommand{\headrulewidth}{0.5pt}
+
+%\pagestyle{fancy}
+%\fancyhf{}
+%\fancyhead[C]{\kaishu\nouppercase{论文的题目}} %\leftmark
+%\fancyfoot[C]{\thepage}
+%\renewcommand{\headrulewidth}{0.5pt}
 
 %-----设置英文字体 -----
 \usepackage{newtxtext}
@@ -73,6 +82,11 @@
 \numberwithin{figure}{section}
 \numberwithin{table}{section}
 
+%----- 重新设置图表公式 autoref -------
+\renewcommand{\figureautorefname}{图}
+\renewcommand{\tableautorefname}{表}
+\renewcommand{\equationautorefname}{公式}
+
 %\setlength{\parindent}{2em}                 % 首行两个汉字的缩进量
 %\setlength{\parskip}{3pt plus1pt minus1pt}  % 段落之间的竖直距离
 %\renewcommand{\baselinestretch}{1.35}       % 定义行距
@@ -83,7 +97,7 @@
 \algrenewcommand\algorithmicrequire{\textbf{输入:}}
 \algrenewcommand\algorithmicensure{\textbf{输出:}}
 
-% --- 使用 tabularx库并定义新的左右中格式 ----
+%----- 使用 tabularx库并定义新的左右中格式 -----
 \newcolumntype{L}{X}
 \newcolumntype{C}{>{\centering \arraybackslash}X}
 \newcolumntype{R}{>{\raggedleft \arraybackslash}X}
@@ -116,7 +130,7 @@
 \newcommand\bibstyle@authoryear{\bibpunct{(}{)}{;}{a}{,}{,}}
 \makeatother
 
-% --- new command -----
+%--- new command -----
 \newcommand{\CC}{\ensuremath{\mathbb{C}}}
 \newcommand{\RR}{\ensuremath{\mathbb{R}}}
 \newcommand{\A}{\mathcal{A}}
@@ -132,7 +146,7 @@
 \author{作者}
 \date{\today}
 
-% --------设置图片的路径 ---------
+%--------设置图片的路径 ---------
 \graphicspath{{./figure/}{./figures/}}
 
 \begin{document}
@@ -146,7 +160,7 @@
 \end{abstract}
 
 
-%\tableofcontents
+\tableofcontents
 
 
 \section{引言}
@@ -373,7 +387,7 @@ aligned 与 equation 环境套用, 公式间距自动调节, 如果有分式, �
 \end{center}
 
 
-
+\clearpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% 微分方程的数值方法  %%%%%%%%%%%%%%%%%%%%%%%
 
@@ -661,7 +675,6 @@ N  & A       & B    & C       & D      & E       & F   \\
 %----------------------------------------------------------------
 
 % 第二种方式, 按照格式直接写文献信息, 使用第二种请把第一种全部注释
-
 
 %\begin{thebibliography}{99}
 %\bibitem{Tadmor2012} Tadmor~E. A review of numerical methods for nonlinear partial differential

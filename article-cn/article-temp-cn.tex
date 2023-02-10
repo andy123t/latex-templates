@@ -61,6 +61,11 @@
 \numberwithin{figure}{section}
 \numberwithin{table}{section}
 
+%----- 重新设置图表公式 autoref -------
+\renewcommand{\figureautorefname}{图}
+\renewcommand{\tableautorefname}{表}
+\renewcommand{\equationautorefname}{公式}
+
 %\setlength{\parindent}{2em}                 % 首行两个汉字的缩进量
 %\setlength{\parskip}{3pt plus1pt minus1pt}  % 段落之间的竖直距离
 %\renewcommand{\baselinestretch}{1.35}       % 定义行距
@@ -71,7 +76,7 @@
 \algrenewcommand\algorithmicrequire{\textbf{输入:}}
 \algrenewcommand\algorithmicensure{\textbf{输出:}}
 
-% --- 使用 tabularx库并定义新的左右中格式 ----
+%----- 使用 tabularx库并定义新的左右中格式 ------
 \newcolumntype{L}{X}
 \newcolumntype{C}{>{\centering \arraybackslash}X}
 \newcolumntype{R}{>{\raggedleft \arraybackslash}X}
@@ -104,7 +109,7 @@
 \newcommand\bibstyle@authoryear{\bibpunct{(}{)}{;}{a}{,}{,}}
 \makeatother
 
-% --- new command -----
+%----- new command -----
 \newcommand{\CC}{\ensuremath{\mathbb{C}}}
 \newcommand{\RR}{\ensuremath{\mathbb{R}}}
 \newcommand{\A}{\mathcal{A}}
@@ -120,7 +125,7 @@
 \author{作者}
 \date{\today}
 
-% --------设置图片的路径 ---------
+%--------设置图片的路径 ---------
 \graphicspath{{./figure/}{./figures/}}
 
 \begin{document}

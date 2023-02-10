@@ -1,21 +1,38 @@
 % paper template
+
 \documentclass[10pt,reqno,final]{article}
 %\documentclass[10pt,reqno,draft]{article}
-\usepackage{amsmath,amsfonts,amssymb,amsthm,latexsym,version}
-\usepackage{graphicx,fancybox,pifont}
+
+\usepackage{amsmath,amsfonts,amssymb,amsthm,version}
+\usepackage{mathrsfs,fancybox,pifont}
+\usepackage{graphicx}
+\usepackage{url,hyperref}
 \usepackage[notcite,notref]{showkeys}
-\usepackage{hyperref}
 \usepackage{color}
 \usepackage{subfigure,multirow}
+\usepackage{epstopdf}
+\usepackage{cases}
+\usepackage{mathtools}
 \usepackage{algorithm,algorithmic}
-
+\usepackage{authblk}
+%\usepackage{fancyhdr}
 \usepackage{lipsum}
 
 \allowdisplaybreaks
 
-\setlength{\textwidth}{15cm} \setlength{\textheight}{21.6cm}
-\setlength{\oddsidemargin}{.5cm} \setlength{\evensidemargin}{.5cm}
+\setlength{\textwidth}{15cm}
+\setlength{\textheight}{21.6cm}
+\setlength{\oddsidemargin}{.5cm}
+\setlength{\evensidemargin}{.5cm}
 \baselineskip 13pt
+
+%\renewcommand{\baselinestretch}{1.1}
+\renewcommand {\thefootnote}{\fnsymbol{footnote}}
+
+% number of equation, figure and table
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
 
 % command for equations, theorems and lemmas etc.
 \theoremstyle{plain}
@@ -31,9 +48,22 @@
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
 
-\title{An Example Article}
-\author{D. Doe, P. T. Frank, and J. E. Smith\thanks{{\it Email address:} \texttt{xyz@math.univ.edu}.} }
-%\small Department of Mathematics, Shanghai Normal University,\\ \small Shanghai 200234, China
+% define the new command
+\newcommand{\atom}[2]{{\scriptsize\begin{array}{c} #1\\[-1mm] #2 \end{array}}}
+\newcommand{\refl}[1]{Lemma~{\rm \ref{#1}}}
+\newcommand{\reft}[1]{Theorem~{\rm \ref{#1}}}
+\newcommand{\refe}[2]{(\ref{#1})--(\ref{#2})}
+
+
+% Information for title and author
+\title{An Example Article\thanks{The work is supported in part by NSF Grant No. 12345678 and ...} }
+
+\author[1]{Author A}
+\author[1]{Author B\thanks{B.B@university.edu}}
+\author[2]{Author C\thanks{C.C@university.edu}}
+\author[2]{Author D\thanks{D.D@university.edu}}
+\affil[1]{Department of Computer Science, \LaTeX\ University}
+\affil[2]{Department of Mechanical Engineering, \LaTeX\ University}
 
 \date{\today}
 
@@ -50,7 +80,7 @@
   plain as possible. Any equations should be inline.
 
   \medskip
-  \noindent{\bf Keywords}: example, \LaTeX, Numerical methods
+  \noindent{\bf Keywords}: Example, \LaTeX, numerical methods
 
   \medskip
   \noindent{\bf 2000 Mathematics Subject Classification: } 65L60, 65L05, 65L70.
@@ -274,6 +304,7 @@ together this example manuscript and supplement.
 %\bibliographystyle{abbrv}
 
 \bibliography{reference}
+
 
 
 \end{document}

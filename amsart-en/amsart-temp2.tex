@@ -1,4 +1,5 @@
 % paper template
+
 \documentclass[10pt,reqno,final]{amsart}
 %\documentclass[10pt,reqno,draft]{amsart}
 
@@ -14,6 +15,7 @@
 \usepackage{mathtools}
 \usepackage{algorithm,algorithmic}
 \usepackage{lipsum}
+\usepackage[foot]{amsaddr}
 
 \allowdisplaybreaks
 
@@ -49,36 +51,34 @@
 \theoremstyle{remark}
 \newtheorem{remark}{Remark}[section]
 
-
 % define the new command
 \newcommand{\atom}[2]{{\scriptsize\begin{array}{c} #1\\[-1mm] #2 \end{array}}}
 \newcommand{\refl}[1]{Lemma~{\rm \ref{#1}}}
 \newcommand{\reft}[1]{Theorem~{\rm \ref{#1}}}
 \newcommand{\refe}[2]{(\ref{#1})--(\ref{#2})}
 
-\usepackage[foot]{amsaddr}
 
+% Information for title and author
 \title[Short Title]{This is Full Title}
 
-%\author[Author A \; \& \; Author B]{Author A${\,}^{1}$ \quad and \quad Author B${\,}^{2*}$} %$^{\dag}$
-%\author{D. Doe, P. T. Frank, and J. E. Smith\thanks{ {\it Email address:} xyz@math.univ.edu.}
-
-
-\author{author A$^1$ and author B$^1$}
+\author{author A$^1$ and author B$^{1,*}$}
 \address{$^1$common address of authors A and B}
+
 \author{author C$^{2}$}
 \address{$^2$author C address}
+
 \email{list of emails}
 
-\date{\today}
+\thanks{${}^{*}$Corresponding author.}
+\thanks{The first author was supported in part by NSF Grant \#000000.}
+\thanks{Support information for the second author.}
+\thanks{Support information for the third author.}
 
 \subjclass[2000]{65L60, 65L05, 65L70}
 
-\keywords{Keyword 1, Keyword 2, error analysis}
+\date{\today}
 
-\thanks{${}^{*}$Corresponding author (E-mail: xyz@math.univ.edu). The work of this author is
-supported in part by ...
-}
+\keywords{Keyword 1, keyword 2, error analysis}
 
 
 \begin{document}
