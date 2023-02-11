@@ -3,148 +3,97 @@
 % xelatex -> bibtex -> xelatex -> xelatex
 % 中文书籍 LaTeX 模板
 
-\documentclass[UTF8,openany,twoside,12pt]{book}
-%\documentclass[UTF8,twoside,12pt]{book}
+\documentclass[UTF8,openany,twoside,12pt]{ctexbook}
+%\documentclass[UTF8,openany,twoside,zihao=-4]{ctexbook}
+%\documentclass[UTF8,twoside,12pt]{ctexbook}
 
-%-----中文宏包-----
-\usepackage[UTF8]{ctex}
-%\usepackage[UTF8,zihao=-4]{ctex}  % need remove 12pt
-
-%-----数学宏包-----
+%----- package for template -----
 \usepackage{amsmath,amsthm,amssymb,amsfonts}
 \usepackage{mathrsfs,bm}
-%-----draft下 label提示-----
 %\usepackage[notcite,notref]{showkeys}
-%-----页面布局-----
 \usepackage{geometry}
 \geometry{left=2.5cm,right=2.5cm,top=3.0cm,bottom=3.0cm}
 %\geometry{left=1in,right=1in,top=1in,bottom=1in}
 %\geometry{left=2.5cm,right=2.1cm,top=1.7cm,bottom=2cm,includehead,includefoot}
 %\geometry{b5paper,text={125mm,195mm},centering,left=1in,right=1in,top=1in,bottom=1in}
-
-%-----设置超链接-----
-\usepackage{url,hyperref}
-\hypersetup{colorlinks=true,linkcolor=black,citecolor=black} % 去掉目录红框
-%-----制作目录-----
+\usepackage{url}
+%\usepackage[english]{babel}
 \usepackage{imakeidx}
-% 设置颜色
 \usepackage{color,xcolor}
-% 插入图片
 \usepackage{graphicx}
 \usepackage{epsfig}
-%\usepackage{subfig}
-%-----设置表格-----
 \usepackage{tabularx,array}
 \usepackage{longtable}
 \usepackage{booktabs}
 \usepackage{multirow}
 \usepackage{multicol}
 \usepackage{fancybox}
-%-----调整单元格格式-----
 \usepackage{makecell}
-%-----操作字符串-----
 \usepackage{xstring}
-%-----多语种处理-----
-%\usepackage[english]{babel}
-%-----设置代码环境-----
 \usepackage{listings}
-%-----设置章节标题和目录-----
 \usepackage{titletoc}
-\usepackage{titlesec}
-%-----数学公式扩展-----
+%\usepackage{titlesec}
+\usepackage{caption}
 \usepackage{mathtools}
-%-----浮动体设置-----
 \usepackage{float}
-%-----书签设置-----
 \usepackage{bookmark}
 
-%-----附录设置-----
 %\usepackage[title,titletoc]{appendix}
 %\renewcommand{\appendixname}{附录}
 
-%-----首行缩进宏包-----
-%\usepackage{indentfirst}
-%-----脚注控制-----
-%\usepackage[perpage,symbol]{footmisc}
+%----- 设置英文字体 -----
+\usepackage{newtxtext}  % for text fonts
+%\setmainfont{Times New Roman}
+%\setmonofont{Courier New}
+%\setsansfont{Arial}
 
-%-----设置英文字体 -----
-%\usepackage{newtxtext}  % for text fonts
-
-%-----设置数学字体-----
+%----- 设置数学字体 -----
 % \usepackage{newtxmath}
 % \usepackage{mathptmx}
 
-%-----直接插入 pdf 文件-----
+%----- 直接插入 pdf 文件 -----
 % \usepackage{pdfpages}
 
-%-----算法宏包及设置-----
+%----- 算法宏包及设置 -----
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \floatname{algorithm}{算法}
 \algrenewcommand\algorithmicrequire{\textbf{输入:}}
 \algrenewcommand\algorithmicensure{\textbf{输出:}}
 
-%----定义列表项的样式 -----
+%----- 定义列表项的样式 -----
 \usepackage{enumitem}
 \setlist{nolistsep}
 % \setlength{\itemsep}{3pt plus1pt minus2pt}
 
-%-----设置空白页的页眉-----
+\usepackage{indentfirst}                % 首行缩进宏包
+%\usepackage[perpage,symbol]{footmisc}  % 脚注控制
+
 \usepackage[cleardoublepage=plain]{scrextend}
 
-%-----设置页眉页脚格式-----
+%----- 设置页眉和页脚 -----
 \usepackage{fancyhdr,fancyref}
 \pagestyle{fancy}
-\fancyhf{} %清空原有样式
-\renewcommand{\chaptermark}[1]{\markboth{\thechapter ~ #1}{}}
-\renewcommand{\sectionmark}[1]{\markright{\thesection ~ #1}{}}
+\fancyhf{}  %清除以前对页眉页脚的设置
 \fancyhead[RO,LE]{\fangsong \zihao{5} ~\thepage~}
-\fancyhead[LO]{\fangsong \zihao{5} \rightmark}
-\fancyhead[RE]{\fangsong \zihao{5} \leftmark}
-%\fancyhead[RO,LE]{\fangsong \zihao{5} \rightmark}
+\fancyhead[LO]{\fangsong \zihao{5} \leftmark}
+\fancyhead[RE]{\fangsong \zihao{5} \rightmark}
 %\fancyhead[LO,RE]{\fangsong \zihao{5} \leftmark}
 \lfoot{}
 \cfoot{}
 \rfoot{}
 
-%\renewcommand{\chaptername}{第\chinese{chapter}章}
-\renewcommand{\chaptername}{第\arabic{chapter}章}
-\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
-\renewcommand{\thesubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}}
-\renewcommand{\thesubsubsection}{\arabic{subsubsection}.}
+%----- 设置超链接 -----
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=blue,
+  filecolor=blue,
+  urlcolor=blue,
+} % 去掉目录红框
 
-
-\newcommand{\chpzihao}{\fontsize{20pt}{20pt}\selectfont}
-%---------- 定义章节标题格式 ------------
-\titleformat{\chapter}[hang]{\bfseries \chpzihao \filcenter}
-    {\chpzihao \chaptername}{20pt}{}
-\titlespacing{\chapter}{0pt}{-0.5ex  plus .1ex minus .2ex}{4.5ex plus .1ex minus .2ex}
-
-\titleformat{\section}[hang]{\bfseries \zihao{3}}
-    {\zihao{3} \thesection}{1em}{}
-\titlespacing{\section}{0pt}{2.5ex plus .1ex minus .2ex}{1.0ex plus .1ex minus .2ex}
-
-\titleformat{\subsection}[hang]{\bfseries \zihao{4}}
-    {\zihao{4} \thesubsection}{1em}{}
-\titlespacing{\subsection}{0pt}{1.5ex plus .1ex minus .2ex}{\wordsep}
-
-\titleformat{\subsubsection}[hang]{\bfseries}
-    {\thesubsubsection }{1em}{}{}
-\titlespacing{\subsubsection}{0pt}{1.2ex plus .1ex minus .2ex}{\wordsep}
-
-
-%-----设置章节在页眉处的格式-----
-\makeatletter
-\renewcommand{\chaptermark}[1]{\markboth{\ifnum \value{secnumdepth}>-1
-\if@mainmatter \chaptername ~ \fi\fi #1}{}}
-\makeatother
-
-
-%-----设置章节目录的深度-----
-%\setcounter{secnumdepth}{3}
-\setcounter{tocdepth}{3}
-
-%-----设置定理样式-----
+%----- 定义定理格式 -----
 \theoremstyle{plain}
 \newtheorem{definition}{定义}[chapter]
 \newtheorem{proposition}{命题}[chapter]
@@ -158,68 +107,113 @@
 \newtheorem{axiom}{公理}[chapter]
 \newtheorem{property}{性质}[chapter]
 \newtheorem{conjecture}{猜想}[chapter]
-\renewcommand{\proofname}{证明}
-\renewcommand{\proofname}{证明}
-\makeatletter
-\renewenvironment{proof}[1][\proofname]{\par
-  \pushQED{\qed}%
-  \normalfont \topsep6\p@\@plus6\p@\relax
-  \trivlist
-  \item[\hskip\labelsep
-        \bfseries
-    #1\@addpunct{\,:\,}]\ignorespaces
-}{%
-  \popQED\endtrivlist\@endpefalse
-}
-\makeatother
+\renewcommand{\proofname}{\bfseries 证明}
 
-%-----定制图形和表格标题的样式-----
-\usepackage{caption}
-\captionsetup{font={small,singlespacing},labelformat={default},labelsep=quad}
-\captionsetup[figure]{position=bottom,skip={5pt},name={图}}
-\captionsetup[table]{position=top,skip={2pt},name={表}}
-
-%-----设置浮动体间距 -----
-\setlength{\textfloatsep}{12pt plus 2pt minus 2pt}
-\setlength{\floatsep}{10pt plus 2pt minus 2pt}
-\setlength{\intextsep}{10pt plus 2pt minus 2pt}
-\setlength{\abovecaptionskip}{2pt plus 1pt minus 1pt}
-\setlength{\belowcaptionskip}{3pt plus 1pt minus 2pt}
-\setlength{\itemsep}{3pt plus1pt minus2pt}
-
-
-%-----重新设置图表 autoref-----
+%----- 重新设置图表autoref -------
 \renewcommand{\figureautorefname}{图}
 \renewcommand{\tableautorefname}{表}
 
-%-----使用 tabularx宏包并定义新的对齐格式-----
+%----- 使用 tabularx库并定义新的左右中格式 -----
 \newcolumntype{L}{X}
 \newcolumntype{C}{>{\centering \arraybackslash}X}
 \newcolumntype{R}{>{\raggedleft \arraybackslash}X}
 \newcolumntype{P}[1]{>{\centering \arraybackslash}p{#1}}
 
-
-%-----设置公式间距-----
-\AtBeginDocument{
-	\setlength{\abovedisplayskip}{4pt plus 1pt minus 1pt}
-	\setlength{\belowdisplayskip}{4pt plus 1pt minus 1pt}
-	\setlength{\abovedisplayshortskip}{2pt}
-	\setlength{\belowdisplayshortskip}{2pt}
-	\setlength{\arraycolsep}{2pt}   % array中列之间空白长度
+%---------- 定义章节标题格式 ------------
+%\renewcommand{\appendixname}{附录}
+\newcommand{\chpzihao}{\fontsize{20pt}{20pt}\selectfont}
+%--- chapter ---
+\ctexset{
+    chapter = {
+        format = \linespread{1.0}\heiti\chpzihao\centering,
+        nameformat = {},
+        titleformat = {},
+        number = \arabic{chapter},
+        numberformat = {},
+        aftername = \quad,
+        beforeskip = {4pt},
+        afterskip = {24pt},
+        pagestyle = plain,
+    }
+}
+%--- section ---
+\ctexset{
+    section = {
+        format = \linespread{1.0}\heiti\zihao{-3}\raggedright,
+        numberformat = {},
+        aftername = \quad,
+        beforeskip = {24pt},
+        afterskip = {6pt},
+    }
+}
+%--- subsection ---
+\ctexset{
+    subsection = {
+        format = \linespread{1.0}\heiti\zihao{4}\raggedright,
+        numberformat = {},
+        aftername = \quad,
+        beforeskip = {12pt},
+        afterskip = {6pt},
+    }
+}
+%--- subsubsection ---
+\ctexset{
+    subsubsection = {
+        format = \linespread{1.0}\heiti\zihao{-4}\raggedright,
+        numberformat = {},
+        aftername = \quad,
+        beforeskip = {12pt},
+        afterskip = {6pt},
+    }
+}
+%--- appendix ---
+\ctexset{
+    appendix = {
+        name = {附录},
+        numbering = true,
+        number = \Alph{chapter},
+    }
 }
 
+%\ctexset{
+%chapter={name={第,章},number=\chinese{chapter}},
+%section={name={{\bf\S}},number={\normalsize{\arabic{section}}}},
+%subsection={number=\arabic{section}.\arabic{subsection}},
+%}
 
-%-----制作目录-----
+%------------- 定义新的目录页面 ----------------
+\usepackage{tocloft}
+\renewcommand{\cfttoctitlefont}{\hfill \heiti \chpzihao}
+%\renewcommand{\cftchappresnum}{第}
+%\renewcommand{\cftchapaftersnum}{章}
+\renewcommand{\contentsname}{目~~录}%\LARGE
+\renewcommand{\cftaftertoctitle}{\hfill}
+%\renewcommand{\cftchapaftersnumb}{\hspace{28pt}}
+\setlength{\cftbeforetoctitleskip}{5pt}
+\setlength{\cftaftertoctitleskip}{24pt}
+\setlength{\cftbeforechapskip}{12pt}
+\setlength{\cftbeforesecskip}{3pt}
+\renewcommand{\cftdot}{$\cdot$}
+\renewcommand{\cftdotsep}{3}
+\renewcommand{\cftchapdotsep}{\cftdotsep}
+\renewcommand\cftchapleader{\cftdotfill{\cftchapdotsep}}
+\renewcommand{\cftsecdotsep}{\cftdotsep}  % 设置Section引导点
+
+%--------- 定制图形和表格标题的样式 --------------
+\captionsetup{font={small,singlespacing},labelformat={default},labelsep=quad}
+\captionsetup[figure]{position=bottom,skip={5pt},name={图}}
+\captionsetup[table]{position=top,skip={2pt},name={表}}
+\setlength{\textfloatsep}{12pt plus 2pt minus 2pt}
+\setlength{\floatsep}{10pt plus 2pt minus 2pt}
+\setlength{\intextsep}{10pt plus 2pt minus 2pt}
+\setlength{\abovecaptionskip}{2pt plus 1pt minus 1pt}
+\setlength{\belowcaptionskip}{3pt plus 1pt minus 2pt}
+%\setlength{\itemsep}{3pt plus 1pt minus 2pt}
+
 \makeindex
 %\bibliographystyle{plain}
 
-%-----设置行间距-----
-\renewcommand{\baselinestretch}{1.35}
-%\renewcommand{\baselinestretch}{1.2}
-
-%------中文段落缩进和行距-----
-\setlength{\parindent}{2em}                   % 首行两个汉字的缩进量
-\setlength{\parskip}{4pt plus 1pt minus 1pt}  % 段落之间的竖直距离
+\renewcommand{\baselinestretch}{1.35}        % 定义行距
 
 %----- 参考文献格式 -----
 %\bibliographystyle{plain} % abbrv, unsrt, siam
@@ -237,11 +231,11 @@
 \makeatother
 
 
-%-----自定义命令-----
+%----- 自定义命令 -----
 \newcommand{\CC}{\ensuremath{\mathbb{C}}}
 \newcommand{\RR}{\ensuremath{\mathbb{R}}}
 \newcommand{\A}{\mathcal{A}}
-\newcommand{\ii}{\bm{\mathrm{i}}\,}  %虚部
+\newcommand{\ii}{\bm{\mathrm{i}}\,}  % 虚部
 \newcommand{\md}{\mathrm{d}\,}
 \newcommand{\bA}{\boldsymbol{A}}
 \newcommand{\red}[1]{\textcolor{red}{#1}}
@@ -250,42 +244,90 @@
 %-----设置图片的路径-----
 \graphicspath{{./figure/}{./figures/}{./image/}{./images/}}
 
+% Generic dummy publisher logo
+\newcommand{\plogo}{\fbox{$\mathcal{PL}$}}
 
-%----书籍标题作者等信息 -----
-
-\title{\bfseries LaTeX 书籍样例}
+\title{\bfseries \LaTeX{} 书籍样例}
 \author{\fangsong 某某某~~编著}
 \date{\fangsong 202X年X月}
 
 
 \begin{document}
 
-\maketitle  % 生成封面
+%\maketitle  % 生成封面
+
+%------- 自定义封面 -----------
+
+\begin{titlepage}
+    \pdfbookmark[0]{封~~面}{cover}
+    % 取消标题页上的页眉和页脚
+    \centering   % 将所有内容放在标题页的中心
+    \scshape     % 对标题页上的所有文本使用小写字母
+    \vspace*{2\baselineskip}   % 页面顶部的空白
+
+    %------------------------------------------------
+    %	题目
+    %------------------------------------------------
+	
+    \rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}  % 粗水平线
+    \rule{\textwidth}{0.4pt}   % 细水平线
+	
+    \vspace{0.75\baselineskip} % 标题上方的空白
+
+    \makeatletter
+    {\LARGE\bfseries \@title \\} % 题目
+
+	\vspace{0.75\baselineskip} % 标题下方的空白
+	
+	\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} % 细水平线
+	\rule{\textwidth}{1.6pt}  % 粗水平线
+	
+	\vspace{2\baselineskip}   % 标题栏后的空白
+	
+    %------------------------------------------------
+    %	作者
+    %------------------------------------------------
+	
+	% {\scshape\Large 某某某  \quad 编著 \\}
+    {\fangsong\large \@author \\[10pt] }
+	
+    {\fangsong\large \@date \\}
+
+    \makeatother
+
+	%\vspace{2\baselineskip}
+
+	%\textit{机构的名字 \\ 地点}
+	
+	\vfill % Whitespace between editor names and publisher logo
+	
+	%------------------------------------------------
+	%	出版社
+	%------------------------------------------------
+	
+	\plogo % Publisher logo
+	
+	\vspace{0.3\baselineskip} % Whitespace under the publisher logo
+	
+	202X % Publication year
+
+	{\large publisher} % Publisher
+\end{titlepage}
+
 
 \thispagestyle{empty}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\frontmatter   %页码罗马数字, 章节不编号
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frontmatter
 
 
+\chapter{序}
 
-\chapter{序 I}
-
-这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言
-
-
-\chapter{序 II}
-
-这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言
+这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分是序言这部分
 
 \chapter{前~~言}
 
-这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言
+这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分
 
-%%%%%%%%%%%%%%%%%%%%%%% 生成目录  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \renewcommand\contentsname{目~~录}
 \cleardoublepage
@@ -786,10 +828,6 @@ N  & A       & B    & C       & D      & E       & F   \\
 
 \renewcommand{\bibname}{参考文献}
 
-\clearpage
-\phantomsection
-\addcontentsline{toc}{chapter}{参考文献} % 添加  "参考文献 " 到目录
-
 % 第一种方式, 使用 bib 文件
 
 %\nocite{*}  % 可以暂时显示全部参考文献, 包括未引用的
@@ -829,14 +867,6 @@ N  & A       & B    & C       & D      & E       & F   \\
 
 % 添加附录, 如不需要可以把附录部分注释
 \appendix
-%\renewcommand{\appendixname}{Appendix~\Alph{chapter}}
-%\renewcommand{\thechapter}{A\arabic{chapter}}
-\renewcommand{\chaptername}{附录 \Alph{chapter}}
-\renewcommand{\thesection}{\Alph{chapter}.\arabic{section}}
-
-%\setcounter{page}{1} % 如果需要可以自行重置页码
-%\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
-
 
 % 附录正文
 \chapter{这是第一个附录}

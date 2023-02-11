@@ -2,19 +2,26 @@
   文件说明
   
   book-temp.tex
-  中文书籍模板 (目录简单)
+  中文书籍模板 (默认章节格式)
   XeLaTeX 编译
   
   book-temp-cn.tex
-  中文书籍模板
+  中文书籍模板 (定义章节格式)
   XeLaTeX 编译
 	
   book-temp-cover-cn.tex
-  英文书籍模板 (定制封面)
+  中文书籍模板 (定义章节格式, 定义封面)
   XeLaTeX 编译
-	
-  ctexbook-cn.tex
-  中文书籍模板 (ctexbook类)
+  
+  ctexbook-temp.tex
+  中文书籍模板 (ctexbook类, 定义章节格式)
   XeLaTeX 编译
-	
-	
+  
+  ctexbook-temp1-cover.tex
+  英文书籍模板 (ctexbook类, 定义章节格式, 定义封面)
+  XeLaTeX 编译
+  
+  ctexbook-temp2-cover.tex
+  英文书籍模板 (ctexbook类, 修改章节格式, 定义封面)
+  XeLaTeX 编译
+  

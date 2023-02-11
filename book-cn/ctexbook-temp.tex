@@ -16,10 +16,7 @@
 %\geometry{left=1in,right=1in,top=1in,bottom=1in}
 %\geometry{left=2.5cm,right=2.1cm,top=1.7cm,bottom=2cm,includehead,includefoot}
 %\geometry{b5paper,text={125mm,195mm},centering,left=1in,right=1in,top=1in,bottom=1in}
-\usepackage{url,hyperref}
-\hypersetup{colorlinks=true,
-linkcolor=black,
-citecolor=black} % 去掉目录红框
+\usepackage{url}
 %\usepackage[english]{babel}
 \usepackage{imakeidx}
 \usepackage{color,xcolor}
@@ -35,47 +32,47 @@ citecolor=black} % 去掉目录红框
 \usepackage{xstring}
 \usepackage{listings}
 \usepackage{titletoc}
-%\usepackage{titlesec}
+\usepackage{titlesec}
+\usepackage{caption}
 \usepackage{mathtools}
 \usepackage{float}
 \usepackage{bookmark}
-\usepackage[numbers]{natbib}
-%\def\bibfont{\small}  % 修改参考文献字体
 
 %\usepackage[title,titletoc]{appendix}
 %\renewcommand{\appendixname}{附录}
 
-% --- 设置英文字体 -----
+%----- 设置英文字体 -----
 \usepackage{newtxtext}  % for text fonts
 %\setmainfont{Times New Roman}
 %\setmonofont{Courier New}
 %\setsansfont{Arial}
 
-% --- 设置数学字体 -----
+%----- 设置数学字体 -----
 % \usepackage{newtxmath}
 % \usepackage{mathptmx}
 
-% --- 直接插入 pdf 文件 ----
+%----- 直接插入 pdf 文件 -----
 % \usepackage{pdfpages}
 
-% --- 算法宏包及设置 ---
+%----- 算法宏包及设置 -----
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \floatname{algorithm}{算法}
 \algrenewcommand\algorithmicrequire{\textbf{输入:}}
 \algrenewcommand\algorithmicensure{\textbf{输出:}}
 
-% ---- 定义列表项的样式 -----
+%----- 定义列表项的样式 -----
 \usepackage{enumitem}
 \setlist{nolistsep}
 % \setlength{\itemsep}{3pt plus1pt minus2pt}
 
-
 \usepackage{indentfirst}                % 首行缩进宏包
 %\usepackage[perpage,symbol]{footmisc}  % 脚注控制
-\usepackage{fancyhdr,fancyref}          % 页眉和页脚的相关定义
 
 \usepackage[cleardoublepage=plain]{scrextend}
+
+%----- 设置页眉和页脚 -----
+\usepackage{fancyhdr,fancyref}
 \pagestyle{fancy}
 \fancyhf{}  %清除以前对页眉页脚的设置
 \fancyhead[RO,LE]{\fangsong \zihao{5} ~\thepage~}
@@ -86,7 +83,17 @@ citecolor=black} % 去掉目录红框
 \cfoot{}
 \rfoot{}
 
+%----- 设置超链接 -----
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=black,
+  filecolor=blue,
+  urlcolor=blue,
+} % 去掉目录红框
 
+%----- 定义定理格式 -----
 \theoremstyle{plain}
 \newtheorem{definition}{定义}[chapter]
 \newtheorem{proposition}{命题}[chapter]
@@ -102,17 +109,17 @@ citecolor=black} % 去掉目录红框
 \newtheorem{conjecture}{猜想}[chapter]
 \renewcommand{\proofname}{\bfseries 证明}
 
-%% ----- 重新设置图表autoref -------
+%----- 重新设置图表autoref -------
 \renewcommand{\figureautorefname}{图}
 \renewcommand{\tableautorefname}{表}
 
-% --- 使用 tabularx库并定义新的左右中格式 ----
+%----- 使用 tabularx库并定义新的左右中格式 -----
 \newcolumntype{L}{X}
 \newcolumntype{C}{>{\centering \arraybackslash}X}
 \newcolumntype{R}{>{\raggedleft \arraybackslash}X}
 \newcolumntype{P}[1]{>{\centering \arraybackslash}p{#1}}
 
-% ---------- 定义章节标题格式 ------------
+%---------- 定义章节标题格式 ------------
 %\renewcommand{\appendixname}{附录}
 \newcommand{\chpzihao}{\fontsize{20pt}{20pt}\selectfont}
 %--- chapter ---
@@ -174,13 +181,7 @@ citecolor=black} % 去掉目录红框
 %subsection={number=\arabic{section}.\arabic{subsection}},
 %}
 
-%\hypersetup{
-%	colorlinks = true,
-%	linkcolor  = black,
-%	citecolor = black
-%} % 去掉目录红框
-
-% ------------- 定义新的目录页面 ----------------
+%------------- 定义新的目录页面 ----------------
 \usepackage{tocloft}
 \renewcommand{\cfttoctitlefont}{\hfill \heiti \chpzihao}
 %\renewcommand{\cftchappresnum}{第}
@@ -198,13 +199,39 @@ citecolor=black} % 去掉目录红框
 \renewcommand\cftchapleader{\cftdotfill{\cftchapdotsep}}
 \renewcommand{\cftsecdotsep}{\cftdotsep}  % 设置Section引导点
 
+% --------- 定制图形和表格标题的样式 --------------
+\captionsetup{font={small,singlespacing},labelformat={default},labelsep=quad}
+\captionsetup[figure]{position=bottom,skip={5pt},name={图}}
+\captionsetup[table]{position=top,skip={2pt},name={表}}
+\setlength{\textfloatsep}{12pt plus 2pt minus 2pt}
+\setlength{\floatsep}{10pt plus 2pt minus 2pt}
+\setlength{\intextsep}{10pt plus 2pt minus 2pt}
+\setlength{\abovecaptionskip}{2pt plus 1pt minus 1pt}
+\setlength{\belowcaptionskip}{3pt plus 1pt minus 2pt}
+%\setlength{\itemsep}{3pt plus 1pt minus 2pt}
 
 \makeindex
 %\bibliographystyle{plain}
 
 \renewcommand{\baselinestretch}{1.35}        % 定义行距
 
-% --- 自定义命令 -----
+%----- 参考文献格式 -----
+%\bibliographystyle{plain} % abbrv, unsrt, siam
+\bibliographystyle{thuthesis-numeric}
+%\bibliographystyle{thuthesis-author-year}
+
+%----- 参考文献引用格式 -----
+\usepackage[numbers,sort&compress]{natbib}
+\def\bibfont{\small}      % 修改参考文献字体
+\setlength{\bibsep}{8pt}  % 调整参考文献间距
+\makeatletter
+\newcommand\bibstyle@super{\bibpunct{[}{]}{,}{s}{,}{\textsuperscript{,}}}
+\newcommand\bibstyle@numbers{\bibpunct{[}{]}{,}{n}{,}{,}}
+\newcommand\bibstyle@authoryear{\bibpunct{(}{)}{;}{a}{,}{,}}
+\makeatother
+
+
+%----- 自定义命令 -----
 \newcommand{\CC}{\ensuremath{\mathbb{C}}}
 \newcommand{\RR}{\ensuremath{\mathbb{R}}}
 \newcommand{\A}{\mathcal{A}}
@@ -214,79 +241,17 @@ citecolor=black} % 去掉目录红框
 \newcommand{\red}[1]{\textcolor{red}{#1}}
 
 
-%-----设置图片的路径-----
 \graphicspath{{./figure/}{./figures/}{./image/}{./images/}}
 
-% Generic dummy publisher logo
-\newcommand{\plogo}{\fbox{$\mathcal{PL}$}}
 
-\title{\bfseries \LaTeX{} 书籍样例}
+\title{\bfseries LaTeX 书籍样例}
 \author{\fangsong 某某某~~编著}
-\date{2021年12月}
+\date{\fangsong 202X年X月}
 
 
 \begin{document}
 
-%\maketitle  % 生成封面
-
-%------- 自定义封面 -----------
-
-\begin{titlepage}
-    \pdfbookmark[0]{封~~面}{cover}
-    % 取消标题页上的页眉和页脚
-    \centering   % 将所有内容放在标题页的中心
-    \scshape     % 对标题页上的所有文本使用小写字母
-    \vspace*{2\baselineskip}   % 页面顶部的空白
-
-    %------------------------------------------------
-    %	题目
-    %------------------------------------------------
-	
-    \rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}  % 粗水平线
-    \rule{\textwidth}{0.4pt}   % 细水平线
-	
-    \vspace{0.75\baselineskip} % 标题上方的空白
-
-    \makeatletter
-    {\LARGE\bfseries \@title \\} % 题目
-
-	\vspace{0.75\baselineskip} % 标题下方的空白
-	
-	\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} % 细水平线
-	\rule{\textwidth}{1.6pt}  % 粗水平线
-	
-	\vspace{2\baselineskip}   % 标题栏后的空白
-	
-    %------------------------------------------------
-    %	作者
-    %------------------------------------------------
-	
-	% {\scshape\Large 某某某  \quad 编著 \\}
-    {\fangsong\large \@author \\[10pt] }
-	
-    {\fangsong\large \@date \\}
-
-    \makeatother
-
-	%\vspace{2\baselineskip}
-
-	%\textit{机构的名字 \\ 地点}
-	
-	\vfill % Whitespace between editor names and publisher logo
-	
-	%------------------------------------------------
-	%	出版社
-	%------------------------------------------------
-	
-	\plogo % Publisher logo
-	
-	\vspace{0.3\baselineskip} % Whitespace under the publisher logo
-	
-	2021 % Publication year
-
-	{\large publisher} % Publisher
-\end{titlepage}
-
+\maketitle
 
 \thispagestyle{empty}
 
@@ -308,15 +273,17 @@ citecolor=black} % 去掉目录红框
 \pdfbookmark[chapter]{\contentsname}{toc}
 \tableofcontents
 
-\mainmatter
 
-%\part{总论}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\chapter{第一个章节标题}
+\mainmatter   % 页码阿拉伯数字, 章节编号
 
-\section{引言}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 正文内容从这里开始  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{研究背景}
+
+\chapter{引言}
+
+\section{研究背景}
 
 这是小四号的正文字体, 行间距 1.35 倍.
 
@@ -326,9 +293,35 @@ citecolor=black} % 去掉目录红框
 
 这是一个引用的示例 \cite{Tadmor2012} 和 \cite{LiLiu1997,Adams2003,TreWei2014}.
 
-这是一大段文字这是一大段文字中英文混排 Numerical Methods. 这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字.
+这是一大段文字这是一大段文字中英文混排 Numerical Methods. 这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字.
 
-\subsection{列表的使用}
+\section{主要结论}
+
+这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字.
+
+
+
+\section{结构安排}
+
+本文接下来的写作安排如下:
+
+第二章, 我们介绍了 LaTeX 常用环境, 包括列表的使用、文献引用、数学公式、定理环境以及算法环境.
+
+第三章, 对于差分方法数值求解微分方程, 给出了一个简短的示例.
+
+第四章, 针对插图环境, 给出了单个图形居中放置、两个图形并排放置以及多个图形并排放置的示例.
+
+第五章, 针对表格环境, 介绍了一些自定义命令, 并给出相应的表格插入示例.
+
+最后是参考文献、附录和后记.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LaTeX 常用环境 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{LaTeX 常用环境}
+
+\section{列表的使用}
 
 这是一个计数的列表.
 \begin{enumerate}%[label={\rm (\arabic*)}]%\roman
@@ -340,7 +333,6 @@ citecolor=black} % 去掉目录红框
 	\item 第二项
 	\item 第三项
 \end{enumerate}
-
 
 这是一个不计数的列表.
 \begin{itemize}%[label={$\bullet$}]
@@ -354,15 +346,14 @@ citecolor=black} % 去掉目录红框
 \end{itemize}
 
 
-%\subsection{文献引用}
+\section{文献引用}
 
-%参考文献采用 BibLaTeX 的方式生成 (内容写在文件 \verb|mybib.bib| 中), 参考文献的样式可以选择 BibLaTeX 的标准样式: \verb|plain|、\verb|abbrv|、\verb|unsrt| 与 \verb|siam| 等.
+参考文献可采用 BibTeX 的方式生成 (内容写在文件 \verb|mybib.bib| 中), 参考文献的样式为 \verb|thuthesis-numeric| (对应的引用格式可选 \verb|numbers| 或  \verb|super|)和 \verb|thuthesis-author-year| (对应的引用格式 \verb|authoryear|), 符合国家标准《信息与文献参考文献著录规则》GB/T 7714-2015, 论文中引用和参考的文献必须列出. 参考文献序号按所引文献在论文中出现的先后次序排列. 引用文献应在论文中的引用处加注文献序号, 并加注方括弧.
 
-%文献引用示例 \cite{LiLiu1997} 和 \cite{Adams2003,Shen1994}.
+文献引用示例 \cite{LiLiu1997} 和 \cite{Adams2003,Shen1994}.
 
 
-
-\subsection{数学公式}
+\section{数学公式}
 
 数学公式的使用请参考公式手册 symbols-a4, 或者 《一份(不太)简短的 \LaTeX~2$\varepsilon$ 介绍》 (lshort-zh-cn).
 
@@ -374,7 +365,7 @@ citecolor=black} % 去掉目录红框
 \end{equation}
 还可以通过添加标签在正文中引用公式, 如等式~\eqref{eqn:trifun} 或者 \ref{eqn:trifun}.
 
-%读者可能阅读过其它手册或者资料, 知道 LaTeX 提供了 eqnarray 环境. 它按照等号左边—等号—等号右边呈三列对齐, 但等号周围的空隙过大, 加上公式编号等一些 bug, 目前已不推荐使用. (摘自 lshort-zh-cn)
+读者可能阅读过其它手册或者资料, 知道 LaTeX 提供了 eqnarray 环境. 它按照等号左边—等号—等号右边呈三列对齐, 但等号周围的空隙过大, 加上公式编号等一些 bug, 目前已不推荐使用. (摘自 lshort-zh-cn)
 
 多行公式常用 align 环境, 公式通过 \verb|&| 对齐. 分隔符通常放在等号左边:
 \begin{align}
@@ -390,17 +381,12 @@ a ={} & b + c \\
 & + m + n + o \\
 ={} & p + q + r + s.
 \end{align}
-如果两列都要左对齐, 然后整体居中
-\begin{align}
-&a = b + 1 && e = c + f + g + 3 \\
-&c = d + e + 2 && c = d + e + 2 \\
-&e = c + f + g + 3 && a = b + 1
-\end{align}
-如果我们不需要按等号对齐, 只需罗列数个公式, gather 将是一个很好用的环境:
+
+如果不需要按等号对齐, 只需罗列数个公式, gather 将是一个很好用的环境:
 \begin{gather}
 a = b + c \\
-d = e + f + g \\
-h + i = j + k \notag \\
+d = e + f + g \notag \\
+%h + i = j \\
 l + m = n
 \end{gather}
 
@@ -426,9 +412,11 @@ u(0)=0,\quad u(1)=0.
 \end{array} \right.
 \end{equation}
 
-aligned 与 equation 环境套用, 公式间距是自动调节的, 如果有分式, 分式也是行间显示. 如果用 array 与 equation 环境套用, 有时候需要手动调整公式行间距和行间显示.
+aligned 与 equation 环境套用, 公式间距自动调节, 如果有分式, 分式也是行间显示. 如果用 array 与 equation 环境套用, 需要手动调整公式行间距和行间显示.
 
-\subsection{定理环境}
+
+
+\section{定理环境}
 
 \begin{definition}
 这是一个定义.
@@ -445,9 +433,13 @@ aligned 与 equation 环境套用, 公式间距是自动调节的, 如果有分�
 \begin{theorem}[Theorem]
 这是一个定理.
 \end{theorem}
-\begin{proof}[\normalfont\bfseries 证明\,:\nopunct]
+\begin{proof}
 这是证明环境.
 \end{proof}
+
+\begin{corollary}
+这是一个推论.
+\end{corollary}
 
 \begin{proposition}[Proposition]
 这是一个命题.
@@ -466,9 +458,9 @@ aligned 与 equation 环境套用, 公式间距是自动调节的, 如果有分�
 |\varphi(x, u, h)-\varphi(x, \bar{u}, h)| \leqslant L_{\varphi}|u-\bar{u}|.
 \end{equation}
 \end{theorem}
-\begin{proof}[\normalfont\bfseries 证明\,:\nopunct]
-由定理 \ref{lemma1} 和 \eqref{eqn:1} 式可以推出以上结论.
-\end{proof}
+%\begin{proof}[\normalfont\bfseries 证明~\nopunct]
+%由定理 \ref{lemma1} 和 \eqref{eqn:1} 式可以推出以上结论.
+%\end{proof}
 
 \begin{corollary}\label{col-convergence}
 假设单步法具有 $p$ 阶精度, 且増量函数 $\varphi(x_{n}, u_{n}, h)$ 关于 $u$ 满足 {\rm Lipschitz} 条件
@@ -487,30 +479,58 @@ aligned 与 equation 环境套用, 公式间距是自动调节的, 如果有分�
 \end{example}
 
 
-%
-%\subsection{算法环境}
-%
-%如下是算法~\ref{alg:euclid}.
-%\begin{algorithm}[H]
-%    \small
-%    \caption{Euclid's algorithm}\label{alg:euclid}
-%    \begin{algorithmic}[1]
-%        \Procedure{Euclid}{$a,b$}\Comment{The g.c.d. of a and b}
-%        \State $r\gets a\bmod b$
-%        \While{$r\not=0$}\Comment{We have the answer if r is 0}
-%        \State $a\gets b$
-%        \State $b\gets r$
-%        \State $r\gets a\bmod b$
-%        \EndWhile\label{euclidendwhile}
-%        \State \Return $b$\Comment{The gcd is b}
-%        \EndProcedure
-%    \end{algorithmic}
-%\end{algorithm}
+\section{算法环境}
+
+如下是算法~\ref{alg:euclid}.
+\begin{algorithm}[H]
+    \small
+    \caption{~Euclid's algorithm}\label{alg:euclid}
+    \begin{algorithmic}[1]
+        \Procedure{Euclid}{$a,b$}\Comment{The g.c.d. of a and b}
+        \State $r\gets a\bmod b$
+        \While{$r\not=0$}\Comment{We have the answer if r is 0}
+        \State $a\gets b$
+        \State $b\gets r$
+        \State $r\gets a\bmod b$
+        \EndWhile\label{euclidendwhile}
+        \State \Return $b$\Comment{The gcd is b}
+        \EndProcedure
+    \end{algorithmic}
+\end{algorithm}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%% 微分方程的数值方法  %%%%%%%%%%%%%%%%%%%%%%%
+如下是算法~\ref{alg:name}, 算法宽度可以通过 minipage 宏包调节.
+\begin{center}
+\vspace{-2ex}
+\begin{minipage}{.9\linewidth}
+\begin{algorithm}[H]
+\caption{~算法的名字}\label{alg:name}  % 算法的名字
+\begin{algorithmic}[1]
+\Require  input parameters A, B, C  % 算法的输入
+\Ensure  output result   % 算法的结果输出
+\State some description 算法介绍   % \State 后写一般语句
+\For{condition}    % For 语句，需要和 EndFor对应
+　　\State ...
+　　\If{condition}  % If 语句，需要和 EndIf对应
+　　　　\State ...
+　　\Else
+　　　　\State ...
+　　\EndIf
+\EndFor
+\While{condition}  % While语句，需要和 EndWhile对应
+　　\State ...
+\EndWhile
+\State \Return result
+\end{algorithmic}
+\end{algorithm}
+\end{minipage}
+\end{center}
 
-\section{微分方程的数值方法}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% 微分方程的数值方法 %%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{微分方程的数值方法}
 
 本章我们考虑具有以下微分方程:
 \begin{equation}\label{eqn:pde}
@@ -524,10 +544,10 @@ aligned 与 equation 环境套用, 公式间距是自动调节的, 如果有分�
 问题 \eqref{eqn:pde} 存在唯一解 (引用示例参考文献 \cite{LiLiu1997}).
 
 
-\subsection{有限差分方法}
+\section{有限差分方法}
 在偏微分方程的数值解法中, 有限差分法数学概念直观, 推导自然, 是发展较早且比较成熟的数值方法. 由于计算机只能存储有限个数据和做有限次运算, 所以任何一种用计算机解题的方法, 都必须把连续问题 (微分方程的边值问題、初值问题等) 离散化, 最终化成有限形式的线性代数方程组.
 
-\subsubsection{数值格式}
+\subsection{数值格式}
 将区间 $[a,b]$ 分成 $N$ 等分, 分点为
 \begin{equation*}
   x_{i}=a+i h \quad i=0,1, \cdots, N,
@@ -538,12 +558,12 @@ aligned 与 equation 环境套用, 公式间距是自动调节的, 如果有分�
 \begin{equation*}
   L_{h} u_{i}=-\frac{u_{i+1}-2 u_{i}+u_{i-1}}{h^{2}}+\frac{u_{i+1}-u_{i-1}}{h}+q_{i} u_{i}=f_{i},\quad 1 \leqslant j \leqslant N-1.
 \end{equation*}
-其中  $q_{i}=q(x_{i}), f_{i}=f(x_{i})$.
+其中  $q_{i}=q(x_{i})$, $f_{i}=f(x_{i})$.
 
 以上差分方程对于 $i=1,2, \cdots, N-1$ 都成立, 加上边值条件 $u_{0}=\alpha, u_{N}=\beta$, 就得到关于 $u_i$ 的差分格式:
 \begin{equation}\label{eqn:fdm}
 \left\{\begin{aligned}
-& L_{h} u_{i}=-\frac{u_{i+1}-2 u_{i}+u_{i-1}}{h^{2}}+\frac{u_{i+1}-u_{i-1}}{2h}+q_{i} u_{i}=f_{i}, \quad i=1,2, \cdots, N-1, \\
+& L_{h} u_{i}=-\frac{u_{i+1}-2 u_{i}+u_{i-1}}{h^{2}}+\frac{u_{i+1}-u_{i-1}}{2h}+q_{i} u_{i}=f_{i}, ~ i=1, \cdots, N-1, \\
 & u_{0}=\alpha, \quad u_{N}=\beta.
 \end{aligned}\right.
 \end{equation}
@@ -565,65 +585,192 @@ aligned 与 equation 环境套用, 公式间距是自动调节的, 如果有分�
 其中矩阵 $\boldsymbol{A}$、向量 $\boldsymbol{f}$ 的定义如下, 注意向量 $\boldsymbol{f}$ 的首尾元素已包含了 $x=a$ 和 $x=b$ 处的边界条件.
 \begin{equation}\label{equ:matrix1}
 \boldsymbol{A}=\begin{bmatrix}
-\dfrac{2}{h^{2}}+q_{1} & \dfrac{1}{2h}-\dfrac{1}{h^{2}} &   &  &  \\[8pt]
- -\dfrac{1}{2h}-\dfrac{1}{h^{2}} & \dfrac{2}{h^{2}}+q_{2} & \dfrac{1}{2h}-\dfrac{1}{h^{2}}  & &  \\[8pt]
+\frac{2}{h^{2}}+q_{1} & \frac{1}{2h}-\frac{1}{h^{2}} &   &  &  \\[8pt]
+ -\frac{1}{2h}-\frac{1}{h^{2}} & \frac{2}{h^{2}}+q_{2} & \frac{1}{2h}-\frac{1}{h^{2}}  & &  \\[8pt]
   &  &  &  &    \\
-   &  \ddots  & \ddots  &  \ddots  &  \\[8pt]
-   &  &  &  &    \\
-  &   & -\dfrac{1}{2h}-\dfrac{1}{h^{2}} & \dfrac{2}{h^{2}}+q_{N-2}& \dfrac{1}{2h}-\dfrac{1}{h^{2}} \\[8pt]
-  &  &  & -\dfrac{1}{2h}-\dfrac{1}{h^{2}} & \dfrac{2}{h^{2}}+q_{N-1}
+  &  \ddots  & \ddots  &  \ddots  &  \\[8pt]
+  &  &  &  &    \\
+  &   & -\frac{1}{2h}-\frac{1}{h^{2}} & \frac{2}{h^{2}}+q_{N-2}& \frac{1}{2h}-\frac{1}{h^{2}} \\[8pt]
+  &  &  & -\frac{1}{2h}-\frac{1}{h^{2}} & \frac{2}{h^{2}}+q_{N-1}
 \end{bmatrix}.
 \end{equation}
 
 上一个矩阵用了 \verb|bmatrix| 环境, 也可以使用 \verb|array| 环境.
 \begin{equation}\label{equ:matrix2}
 \boldsymbol{A}=\left[\begin{array}{cccccc}
-\dfrac{2}{h^{2}}+q_{1} & \dfrac{1}{2h}-\dfrac{1}{h^{2}} &   &  &  \\[8pt]
- -\dfrac{1}{2h}-\dfrac{1}{h^{2}} & \dfrac{2}{h^{2}}+q_{2} & \dfrac{1}{2h}-\dfrac{1}{h^{2}}  & &  \\[8pt]
+\frac{2}{h^{2}}+q_{1} & \frac{1}{2h}-\frac{1}{h^{2}} &   &  &  \\[8pt]
+ -\frac{1}{2h}-\frac{1}{h^{2}} & \frac{2}{h^{2}}+q_{2} & \frac{1}{2h}-\frac{1}{h^{2}}  & &  \\[8pt]
   &  &  &  &    \\
-   &  \ddots  & \ddots  &  \ddots  &  \\[8pt]
-   &  &  &  &    \\
-  &   & -\dfrac{1}{2h}-\dfrac{1}{h^{2}} & \dfrac{2}{h^{2}}+q_{N-2}& \dfrac{1}{2h}-\dfrac{1}{h^{2}} \\[8pt]
-  &  &  & -\dfrac{1}{2h}-\dfrac{1}{h^{2}} & \dfrac{2}{h^{2}}+q_{N-1}
+  &  \ddots  & \ddots  &  \ddots  &  \\[8pt]
+  &  &  &  &    \\
+  &   & -\frac{1}{2h}-\frac{1}{h^{2}} & \frac{2}{h^{2}}+q_{N-2}& \frac{1}{2h}-\frac{1}{h^{2}} \\[8pt]
+  &  &  & -\frac{1}{2h}-\frac{1}{h^{2}} & \frac{2}{h^{2}}+q_{N-1}
 \end{array}\right].
 \end{equation}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 插图环境 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\chapter{插图LaTeX环境}
 
+\section{图的使用}
 
-\appendix
+XeLaTeX 环境下可以使用 EPS、PDF、PNG、JPEG、BMP 格式的图片, 当然也可以用绘图包直接在 \LaTeX 中绘制图形, 推荐使用宏包 tikz. 值得注意的是 figure 环境一个\index{浮动体}环境，LaTeX 不总是浮动体放在你想要的地方，但是 LaTeX 总是保证浮动体的相对顺序，所以对图片 \verb|\label| 和 \verb|\ref| 的交叉引用就显得尤为重要。
 
-\chapter{这是第一个附录}
+\section{插图示例}
 
-\section{附录A的小节}
+插入一个图形并居中放置, 如图~\ref{fig:sinx}.
+\begin{figure}[htp!]
+  \centering
+  \includegraphics[width=7.2cm]{image1.eps}
+  \caption{函数 $y=\sin(x)$ 的图像}\label{fig:sinx}
+\end{figure}
 
 \clearpage
-\section{附录A的小节}
+两个图左右并排放置, 共用一个标题.
+\begin{figure}[htp!]
+  \centering
+  \includegraphics[width=0.45\linewidth]{image1.eps}
+  \hfill
+  \includegraphics[width=0.45\linewidth]{image2.eps}
+  \caption{左: 图一的描述;~ 右:图二的描述.}
+  \label{fig:image}
+\end{figure}
 
 
-\chapter{这是第二个附录}
+使用 minipage 排版并排插图, 每个图都有单独的标题. 通过 \verb|autoref| 引用图片: \autoref{fig:image1} 与 \autoref{fig:image2}.
+\begin{figure}[htp!]
+\begin{minipage}[t]{0.48\linewidth}
+  \centering
+  \includegraphics[width=0.9\linewidth]{image1.eps}
+  \caption{图一的描述.}
+  \label{fig:image1}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+\centering
+   \includegraphics[width=0.9\linewidth]{image2.eps}
+   \caption{图二的描述.}
+   \label{fig:image2}
+\end{minipage}
+\end{figure}
 
-\section{附录B的小节}
+%使用 subfig 宏包实现多图并排.
+%\begin{figure}[htp!]
+%\centering
+%\subfloat[Subcaption A]{\includegraphics[width=0.3\linewidth]{image1}}
+%\hfill
+%\subfloat[Subcaption B]{\includegraphics[width=0.3\linewidth]{image1}}
+%\hfill
+%\subfloat[Subcaption C]{\includegraphics[width=0.3\linewidth]{image1}} \\
+%\subfloat[Subcaption D]{\includegraphics[width=0.3\linewidth]{image2}}
+%\hfill
+%\subfloat[Subcaption E]{\includegraphics[width=0.3\linewidth]{image2}}
+%\hfill
+%\subfloat[Subcaption F]{\includegraphics[width=0.3\linewidth]{image2}}
+%\caption{六个图并排.}
+%\end{figure}
 
 
-内容附录内容附录内容附录\index{内容}附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容正文内容正文.内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容文内容正文内容正文内容正文\index{内容}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 表格环境 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{表格环境}
+
+\section{表的使用}
+
+LaTeX 的 Table 环境一个浮动体环境, 浮动体排版与 Figure 环境类似. 作为论文, 推荐使用三线表进行排版. 一般的三线表, 标题前后有横线, 表格最后有横线. %当然也可以根据需要在合适的地方加线.
+
+本文基于 tabularx 宏包定义了新的的左中右 (LCR) 格式, LCR 三个格式会根据表格宽度的设定自行控制宽度, 且其宽度相等, 方便设置和页面相同宽度的表格. 本文还定义了命令 \verb|P{}|, 它可以设定某一列宽度 (如 \verb|P{1cm}| 控制某一列的宽度为 1cm), 实际上 \verb|P{}| 命令是在 \verb|p{}| 命令的基础上增加了居中功能. %PLCR 格式的功能需要调用 .
+
+\section{表格示例}
+
+如下表格: 表~\ref{tab:heightweight}. 通过 \verb|autoref| 引用表格: \autoref{tab:heightweight}.
+
+\begin{table}[!htp]
+\centering
+% PLCR已经定义
+\caption{某校学生升高体重样本}
+\label{tab:heightweight}
+\begin{tabularx}{0.9\textwidth}{lCCC}
+   \toprule
+	序号 & 年龄 & 身高 & 体重 \\
+	\midrule
+	001 & 15 & 156 & 42 \\
+	002 & 16 & 158 & 45 \\
+	003 & 14 & 162 & 48 \\
+	004 & 15 & 163 & 50 \\
+    \cmidrule{2-4}
+	平均 & 15 & 159.75 & 46.25 \\
+	\bottomrule
+\end{tabularx}
+\end{table}
+
+\clearpage
+基于 tabular 环境设置一些格式: 上下表格线加粗.
+\begin{table}[!htp]
+%\small
+\centering
+%\renewcommand\arraystretch{1.1} %定义表格高度
+\caption{数值误差与收敛速率示例}
+\label{tab:error1}
+\begin{tabular}{c|c|cc|cc|cc}
+\Xhline{2\arrayrulewidth}
+degree &  step-size~$h$  & $L^2$-errors  &  order  & $H^1$-errors & order & $L^\infty$-errors  &  order \\
+\hline
+   &  1/128    & 9.18E-06    &2.02    & 7.70E-03  &1.01       & 6.46E-07    &2.02   \\
+1  &  1/256    & 2.29E-06    &2.01    & 1.92E-03  &1.00       & 1.61E-07    &2.01   \\
+   &  1/512    & 5.70E-07    &2.00    & 9.56E-04  &1.00       & 4.01E-08    &2.00   \\
+\hline  %   \cline{1-8}
+   &  1/128    & 1.39E-08    &3.01    & 1.15E-05  &2.01       & 3.48E-12   &4.02    \\
+2  &  1/256    & 1.73E-09    &3.01    & 2.88E-06  &2.01       & 3.27E-13   &3.94    \\
+   &  1/512    & 2.17E-10    &3.00    & 7.24E-06  &2.00       & 6.66E-13   &1.55    \\
+\hline  %   \cline{1-8}
+   &  1/32     & 2.28E-09    &4.05    & 6.92E-07  &3.04       & 1.45E-15   &8.21    \\
+3  &  1/64     & 1.42E-10    &4.03    & 8.65E-08  &3.02       & 2.06E-14   &3.85    \\
+   &  1/128    & 8.91E-12    &4.01    & 1.08E-08  &3.01       & 3.86E-14   &0.91    \\
+\Xhline{2\arrayrulewidth}
+\end{tabular}
+\end{table}
+
+基于 tabularx 环境设置一些格式: 左右表格双线.
+\begin{table}[htp!]
+\centering
+%\renewcommand\arraystretch{1.1} %定义表格高度
+\caption{数值误差示例}
+\label{tab:error2}
+\begin{tabularx}{0.96\textwidth}{||P{0.8cm}|C|C|C|C|C|C||}
+\Xhline{2\arrayrulewidth}
+N  & A       & B    & C       & D      & E       & F   \\
+\Xhline{2\arrayrulewidth}
+2  & 9.20E-05 & 9.90E-05 & 1.00E-06 & 8.00E-06 & 1.50E-05 & 6.70E-05 \\
+4  & 9.80E-05 & 8.00E-05 & 7.00E-06 & 1.40E-05 & 1.60E-05 & 7.30E-05 \\
+6  & 4.00E-06 & 8.10E-05 & 8.80E-05 & 2.00E-05 & 2.20E-05 & 5.40E-05 \\
+8  & 8.50E-05 & 8.70E-05 & 1.90E-05 & 2.10E-05 & 3.00E-06 & 6.00E-05 \\
+10 & 8.60E-05 & 9.30E-05 & 2.50E-05 & 2.00E-06 & 9.00E-06 & 6.10E-05 \\
+12 & 1.70E-05 & 2.40E-05 & 7.60E-05 & 8.30E-05 & 9.00E-05 & 4.20E-05 \\
+14 & 2.30E-05 & 5.00E-06 & 8.20E-05 & 8.90E-05 & 9.10E-05 & 4.80E-05 \\
+16 & 7.90E-05 & 6.00E-06 & 1.30E-05 & 9.50E-05 & 9.70E-05 & 2.90E-05 \\
+18 & 1.00E-05 & 1.20E-05 & 9.40E-05 & 9.60E-05 & 7.80E-05 & 3.50E-05 \\
+20 & 1.10E-05 & 1.80E-05 & 1.10E-04   & 7.70E-05 & 8.40E-05 & 3.60E-05  \\
+\Xhline{2\arrayrulewidth}
+\end{tabularx}
+\end{table}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%% 生成参考文献 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\renewcommand{\bibname}{参考文献}
 
 % 生成参考文献, 使用第一种请把第二种全部注释
+
+\renewcommand{\bibname}{参考文献}
 
 % 第一种方式, 使用 bib 文件
 
 %\nocite{*}  % 可以暂时显示全部参考文献, 包括未引用的
 
 % 使用方法:\bibliography{参考文件1文件名, 参考文献2文件名, ...}
-% 参考文献格式可选  plain, abbrv, unsrt, siam
-%\bibliographystyle{plain}
-\bibliographystyle{thuthesis-numeric}
 \bibliography{mybib}
 
 
@@ -650,6 +797,64 @@ aligned 与 equation 环境套用, 公式间距是自动调节的, 如果有分�
 %\bibitem{Shen1994} Shen~J. Efficient spectral-Galerkin method I. Direct solvers of second- and fourth-order equations using Legendre polynomials\allowbreak[J]. SIAM J. Sci. Comput., 1994, 15(6): 1489-1505.
 %
 %\end{thebibliography}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%% 附录 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% 添加附录, 如不需要可以把附录部分注释
+\appendix
+
+% 附录正文
+\chapter{这是第一个附录}
+
+\section{附录A的小节}
+
+这里是\index{附录环境}, 手动设置了 chapter 和 section 的样式, 并且加入到了目录.
+
+附录公式及编号
+\begin{equation}\label{eq:abc}
+  a^2+b^2=c^2.
+\end{equation}
+
+如图~\ref{fig:sinx2}.
+\begin{figure}[htp!]
+  \centering
+  \includegraphics[width=0.45\linewidth]{image1.eps}
+  \caption{函数 $y=\sin(x)$ 的图像}\label{fig:sinx2}
+\end{figure}
+
+
+如下表格: 表~\ref{tab:heightweight2}. 通过 \verb|autoref| 引用表格: \autoref{tab:heightweight2}.
+
+\begin{table}[!htp]
+\centering
+% PLCR已经定义
+\caption{某校学生升高体重样本.}
+\label{tab:heightweight2}
+\begin{tabularx}{0.9\textwidth}{lCCC}
+   \toprule
+	序号 & 年龄 & 身高 & 体重\\
+	\midrule
+	001 & 14 & 156 & 42 \\
+	002 & 16 & 158 & 45 \\
+	003 & 14 & 162 & 48 \\
+	004 & 15 & 163 & 50 \\
+    \cmidrule{2-4}
+	平均 & 15 & 159.75 & 46.25 \\
+	\bottomrule
+\end{tabularx}
+\end{table}
+
+
+\chapter{这是第二个附录}
+
+\section{附录B的小节}
+
+这里是附录环境, 手动设置了 chapter 和 section 的样式, 并且加入到了目录.
+
+内容附录内容附录内容附录\index{内容}附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容正文内容正文. 内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容文内容正文内容正文内容正文内容.
 
 
 
@@ -680,7 +885,7 @@ aligned 与 equation 环境套用, 公式间距是自动调节的, 如果有分�
 \begin{flushright}
 作~~者~~~~~~~~~
 
-2021年12月~~~~~
+202X年X月~~~~~
 \end{flushright}
 
 

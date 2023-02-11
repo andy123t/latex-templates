@@ -1,8 +1,8 @@
 % -*- coding: utf-8 -*-
 % !TEX program = xelatex
 
-\documentclass[zihao=-4]{ctexart}
-%\documentclass[zihao=-4,twoside]{ctexart}
+\documentclass[zihao=-4,twoside,final]{ctexart}
+
 \usepackage{amsmath,amsthm,amssymb,amsfonts}
 \usepackage{mathrsfs,bm}
 \usepackage{graphicx}
@@ -35,6 +35,57 @@
 }
 
 \allowdisplaybreaks
+
+
+%----- 设置章节 -----
+\ctexset{
+  % section
+  section/name = {第,节},
+  section/number = \arabic{section},
+  %section/number = \chinese{section},
+  section/format = \centering,
+  section/nameformat = \large\bfseries,
+  section/titleformat = \large\bfseries,
+  section/beforeskip = 5.5ex plus 1ex minus .2ex,
+  % subsection
+  subsection/format = \raggedright,
+  subsection/nameformat = \bfseries,
+  subsection/titleformat = \bfseries,
+  % appendix
+  appendix/name = {附录},
+}
+
+%\ctexset{
+%  % section
+%  section/name = {,、\hspace{-1.5ex}},
+%  section/number = \chinese{section},
+%  section/format = \centering,
+%  section/nameformat = \large\bfseries,
+%  section/titleformat = \large\bfseries,
+%  section/beforeskip = 5.5ex plus 1ex minus .2ex,
+%  % subsection
+%  subsection/format = \raggedright,
+%  subsection/nameformat = \bfseries,
+%  subsection/titleformat = \bfseries,
+%  % appendix
+%  appendix/name = {附录},
+%}
+
+
+%----- 页眉页脚 -----
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{$\cdot$\:\thepage\:$\cdot$}
+\fancyhead[RE]{\kaishu\nouppercase{\leftmark}}
+\fancyhead[LO]{\kaishu\nouppercase{\rightmark}}
+\renewcommand{\headrulewidth}{0.5pt}
+
+%\pagestyle{fancy}
+%\fancyhf{}
+%\fancyhead[LE,RO]{$\cdot$\:\thepage\:$\cdot$}
+%\fancyhead[LO,RE]{\kaishu\nouppercase{\leftmark}}
+%\renewcommand{\headrulewidth}{0.5pt}
 
 %-----设置英文字体 -----
 \usepackage{newtxtext}
@@ -110,8 +161,11 @@
 
 
 \title{论文的题目}
-\author{作者}
-\date{\today}
+
+\author{李某某, 王某某\thanks{通信作者: email@univ.edu.cn, 本文由某某某基金资助.} \\[6pt]
+  XX大学数学学院, 上海, 200234, 中国}
+
+\date{}
 
 %--------设置图片的路径 ---------
 \graphicspath{{./figure/}{./figures/}}
@@ -354,7 +408,7 @@ aligned 与 equation 环境套用, 公式间距自动调节, 如果有分式, �
 \end{center}
 
 
-
+\clearpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% 微分方程的数值方法  %%%%%%%%%%%%%%%%%%%%%%%
 
@@ -642,7 +696,6 @@ N  & A       & B    & C       & D      & E       & F   \\
 %----------------------------------------------------------------
 
 % 第二种方式, 按照格式直接写文献信息, 使用第二种请把第一种全部注释
-
 
 %\begin{thebibliography}{99}
 %\bibitem{Tadmor2012} Tadmor~E. A review of numerical methods for nonlinear partial differential

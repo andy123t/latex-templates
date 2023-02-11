@@ -1,7 +1,7 @@
 % -*- coding: utf-8 -*-
 % !TEX program = xelatex
 
-\documentclass[zihao=-4,twoside,final]{ctexart}
+\documentclass[zihao=-4,final]{ctexart}
 
 \usepackage{amsmath,amsthm,amssymb,amsfonts}
 \usepackage{mathrsfs,bm}
@@ -37,37 +37,13 @@
 \allowdisplaybreaks
 
 
-%----- 设置章节 -----
-\ctexset{
-  % section
-  section/name = {第,节},
-  section/number = \arabic{section},
-  section/format = \centering,
-  section/nameformat = \large\bfseries,
-  section/titleformat = \large\bfseries,
-  section/beforeskip = 5.5ex plus 1ex minus .2ex,
-  % subsection
-  subsection/format = \raggedright,
-  subsection/nameformat = \bfseries,
-  subsection/titleformat = \bfseries,
-  % appendix
-  appendix/name = {附录},
-}
-
-
 %----- 页眉页脚 -----
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[LE,RO]{$\cdot$\:\thepage\:$\cdot$}
-\fancyhead[LO,RE]{\kaishu\nouppercase{\leftmark}}
+\fancyhead[C]{\kaishu\nouppercase{论文的题目}} %\leftmark
+\fancyfoot[C]{\thepage}
 \renewcommand{\headrulewidth}{0.5pt}
-
-%\pagestyle{fancy}
-%\fancyhf{}
-%\fancyhead[C]{\kaishu\nouppercase{论文的题目}} %\leftmark
-%\fancyfoot[C]{\thepage}
-%\renewcommand{\headrulewidth}{0.5pt}
 
 %-----设置英文字体 -----
 \usepackage{newtxtext}
@@ -143,7 +119,7 @@
 
 
 \title{论文的题目}
-\author{作者}
+\author{作者\thanks{作者的信息}}
 \date{\today}
 
 %--------设置图片的路径 ---------
@@ -160,7 +136,7 @@
 \end{abstract}
 
 
-\tableofcontents
+%\tableofcontents
 
 
 \section{引言}
@@ -387,7 +363,7 @@ aligned 与 equation 环境套用, 公式间距自动调节, 如果有分式, �
 \end{center}
 
 
-\clearpage
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% 微分方程的数值方法  %%%%%%%%%%%%%%%%%%%%%%%
 
@@ -675,6 +651,7 @@ N  & A       & B    & C       & D      & E       & F   \\
 %----------------------------------------------------------------
 
 % 第二种方式, 按照格式直接写文献信息, 使用第二种请把第一种全部注释
+
 
 %\begin{thebibliography}{99}
 %\bibitem{Tadmor2012} Tadmor~E. A review of numerical methods for nonlinear partial differential
