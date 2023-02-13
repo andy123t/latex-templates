@@ -1,7 +1,7 @@
 % paper template
 
-\documentclass[10pt,reqno,final]{amsart}
-%\documentclass[10pt,reqno,draft]{amsart}
+\documentclass[10pt,reqno,twoside,final]{article}
+%\documentclass[10pt,reqno,draft]{article}
 
 % package for mathematics
 \usepackage{amsmath,amssymb,amsthm}
@@ -34,9 +34,13 @@
 % package for algorithm
 \usepackage{algorithm}
 \usepackage{algpseudocode}
+% package for author and affiliation style
+\usepackage[affil-it]{authblk}
 % package for using box and verbatim
 \usepackage{fancybox}
-\usepackage[foot]{amsaddr}
+% package for page headers and footers
+\usepackage{fancyhdr}
+
 % allow page breaks between multiline formulas
 \allowdisplaybreaks
 
@@ -46,12 +50,28 @@
 \setlength{\oddsidemargin}{0.5cm}
 \setlength{\evensidemargin}{0.5cm}
 
+% headers and footers setting
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{$\cdot$\:\thepage\:$\cdot$}
+\fancyhead[LO,RE]{\nouppercase{\leftmark}}
+\renewcommand{\headrulewidth}{0.5pt}
+
+%\fancyhead[C]{\nouppercase{title of paper}}
+%\fancyfoot[C]{\thepage}
+%\renewcommand{\headrulewidth}{0.5pt}
+
+%\fancyhead[LE,RO]{$\cdot$\:\thepage\:$\cdot$}
+%\fancyhead[RE]{\nouppercase{\leftmark}}
+%\fancyhead[LO]{\nouppercase{\rightmark}}
+%\renewcommand{\headrulewidth}{0.5pt}
+
 % command for line spacing
-\renewcommand{\baselinestretch}{1.1}
+%\renewcommand{\baselinestretch}{1.1}
 
 % command for mark footnotes
 %\usepackage[symbol]{footmisc}
-\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+%\renewcommand{\thefootnote}{\fnsymbol{footnote}}
 
 % command for equations, theorems and lemmas etc.
 \theoremstyle{plain}
@@ -67,7 +87,7 @@
 \newtheorem{xca}{Exercise}[section]
 
 \theoremstyle{remark}
-\newtheorem{remark}{Remark}[section]
+\newtheorem{remark}[theorem]{Remark}
 
 % caption setting
 %\captionsetup{font={small,singlespacing},labelformat={default},labelsep=period}
@@ -93,29 +113,20 @@
 
 
 % Information for title and author
-\title[Short Title]{This is Full Title}
+\title{An Example Article\thanks{The work is supported in part by NSF Grant No. 12345678 and ...} }
 
-\author{author A$^1$ and author B$^{1,*}$}
-\address{$^1$common address of authors A and B}
+\author[1]{Author A}
+\author[1]{Author B\thanks{Email address: \texttt{B.B@university.edu}}}
+\author[2]{Author C\thanks{Email address: \texttt{C.C@university.edu}}}
+\author[2]{Author D\thanks{Email address: \texttt{D.D@university.edu}}}
+\affil[1]{Department of Computer Science, \LaTeX\ University}
+\affil[2]{Department of Mechanical Engineering, \LaTeX\ University}
 
-\author{author C$^{2}$}
-\address{$^2$author C address}
-
-\email{list of emails}
-
-\thanks{${}^{*}$Corresponding author.}
-\thanks{The first author was supported in part by NSF Grant \#000000.}
-\thanks{Support information for the second author.}
-\thanks{Support information for the third author.}
-
-\subjclass[2000]{65L60, 65L05, 65L70}
-
-\date{\today}
-
-\keywords{Keyword 1, keyword 2, error analysis}
-
+\date{Date: \today}
 
 \begin{document}
+
+\maketitle
 
 \begin{abstract}
   This is an example \LaTeX\ article. This can be used as a
@@ -124,9 +135,13 @@
   equations, etc.  An abstract must consist of a single paragraph and
   be concise. Because of online formatting, abstracts must appear as
   plain as possible. Any equations should be inline.
-\end{abstract}
 
-\maketitle
+  \medskip
+  \noindent{\bf Keywords}: Example, \LaTeX, numerical methods
+
+  \medskip
+  \noindent{\bf 2000 Mathematics Subject Classification: } 65L60, 65L05, 65L70.
+\end{abstract}
 
 
 \section{Introduction}
@@ -213,9 +228,9 @@ Here we state our main result as \ref{thm:bigthm}.
 
 LaTeX is a high-quality typesetting system; it includes features designed
 for the production of technical and scientific documentation.
-%LaTeX is the de facto standard for the communication and publication of scientific documents.
-%LaTeX is based on the idea that it is better to leave document design to
-%document designers, and to let authors get on with writing documents.
+LaTeX is the de facto standard for the communication and publication of scientific documents.
+LaTeX is based on the idea that it is better to leave document design to
+document designers, and to let authors get on with writing documents.
 
 \begin{theorem}[Mean Value Theorem]\label{thm:mvt}
   Suppose $f$ is a function that is continuous on the closed interval
@@ -318,19 +333,21 @@ Reduce the width of the algorithm environment
 \end{minipage}
 \end{center}
 
+
 \section{Experimental results}
 \label{sec:experiments}
 
 LaTeX is a high-quality typesetting system; it includes features designed
 for the production of technical and scientific documentation.
-%LaTeX is the de facto standard for the communication and publication of scientific documents.
-%LaTeX is based on the idea that it is better to leave document design to
-%document designers, and to let authors get on with writing documents.
+LaTeX is the de facto standard for the communication and publication of scientific documents.
+LaTeX is based on the idea that it is better to leave document design to
+document designers, and to let authors get on with writing documents.
 
 \begin{example}
   This is example environment.
 \end{example}
 
+\clearpage
 Figure \ref{fig:a} shows some example results.
 \begin{figure}[htp!]
   \centering
@@ -339,7 +356,6 @@ Figure \ref{fig:a} shows some example results.
   \label{fig:a}
 \end{figure}
 
-\clearpage
 The two figures are placed side by side, sharing the same title.
 \begin{figure}[htp!]
   \centering
@@ -394,6 +410,7 @@ degree &  step-size~$h$  & $L^2$-errors  &  order  & $H^1$-errors & order & $L^\
 \end{table}
 
 Use the \texttt{tabularx} environment to generate tables.
+
 \begin{table}[htp!]
 \centering
 \newcolumntype{L}{X}
@@ -448,7 +465,6 @@ We would like to acknowledge the assistance of volunteers in putting
 together this example manuscript and supplement.
 
 
-% References
 \bibliographystyle{plain}
 %\bibliographystyle{abbrv}
 
@@ -456,6 +472,5 @@ together this example manuscript and supplement.
 
 
 \end{document}
-
 
 

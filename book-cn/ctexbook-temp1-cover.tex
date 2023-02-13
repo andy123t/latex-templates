@@ -8,7 +8,7 @@
 %\documentclass[UTF8,twoside,12pt]{ctexbook}
 
 %----- package for template -----
-\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{amsmath,amsthm,amssymb}
 \usepackage{mathrsfs,bm}
 %\usepackage[notcite,notref]{showkeys}
 \usepackage{geometry}
@@ -40,6 +40,16 @@
 
 %\usepackage[title,titletoc]{appendix}
 %\renewcommand{\appendixname}{附录}
+
+%----- 设置超链接 -----
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=blue,
+  filecolor=blue,
+  urlcolor=blue,
+}
 
 %----- 设置英文字体 -----
 \usepackage{newtxtext}  % for text fonts
@@ -82,16 +92,6 @@
 \lfoot{}
 \cfoot{}
 \rfoot{}
-
-%----- 设置超链接 -----
-\usepackage{hyperref}
-\hypersetup{
-  colorlinks=true,
-  linkcolor=black,
-  citecolor=blue,
-  filecolor=blue,
-  urlcolor=blue,
-} % 去掉目录红框
 
 %----- 定义定理格式 -----
 \theoremstyle{plain}

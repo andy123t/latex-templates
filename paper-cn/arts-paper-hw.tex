@@ -1,11 +1,12 @@
 % !TEX program = xelatex
+
 \documentclass[a4paper,12pt]{article}
 
 %-----中文宏包-----
 \usepackage[UTF8]{ctex}
 
 %-----数学宏包-----
-\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{amsmath,amsthm,amssymb}
 \usepackage{mathrsfs,bm}
 
 %-----draft下 label提示-----
@@ -19,7 +20,12 @@
 
 %-----设置超链接-----
 \usepackage{url,hyperref}
-\hypersetup{colorlinks=true,linkcolor=black,citecolor=black} % 去掉目录红框
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=black
+} % 去掉目录红框
+
 %-----制作目录-----
 \usepackage{imakeidx}
 % 设置颜色
@@ -58,6 +64,7 @@
 %-----设置行间距 -----
 \renewcommand*{\baselinestretch}{1.5}
 
+%----- 设置字体 -----
 %\setmainfont{Times New Roman}
 %\setmonofont{Courier New}
 %\setsansfont{Arial}
@@ -66,15 +73,16 @@
 %\setCJKfamilyfont{song}[AutoFakeBold]{SimSun}
 %\newcommand*{\song}{\CJKfamily{song}}
 
+%----- 定义引用格式 -----
 \newcommand{\upcite}[1]{\textsuperscript{\textsuperscript{\cite{#1}}}}
 
+%----- 设置章节格式 -----
 \renewcommand{\thesection}{\chinese{section}、}
 \renewcommand{\thesubsection}{（\chinese{subsection}）}
 \renewcommand{\thesubsubsection}{\arabic{subsubsection}.}
 \titleformat{\section}{\bfseries \zihao{-3}}{\chinese{section}、}{0em}{}
 \titleformat{\subsection}{\bfseries \zihao{4}}{（\chinese{subsection}）}{0.2em}{}
 \titleformat{\subsubsection}{\bfseries \zihao{-4}}{\arabic{subsubsection}、}{0.2em}{}
-
 
 %----- 设置浮动体间距 ------
 \setlength{\textfloatsep}{0pt}
@@ -92,7 +100,6 @@
 	\setlength{\belowdisplayshortskip}{2pt}
 	\setlength{\arraycolsep}{2pt}   % array中列之间空白长度
 }
-
 
 %----- 算法宏包及设置 ---
 \usepackage{algorithm}

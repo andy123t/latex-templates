@@ -6,11 +6,16 @@
 \usepackage{ctex}
 %\usepackage[fontset=windows]{ctex}
 
-\usepackage{amsmath,amsfonts}
-\usepackage{amssymb,amsthm}
-\usepackage{mathrsfs,multirow}
-\usepackage{graphicx,fancybox}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathrsfs,bm}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{makecell}
+\usepackage{multirow,multicol}
 \usepackage{url,hyperref}
+\usepackage{fancybox}
 \usepackage{color}
 \usepackage{mathtools}
 \allowdisplaybreaks
@@ -24,6 +29,7 @@
 %\numberwithin{table}{section}
 
 %\linespread{1.5}
+
 \newcounter{problemname}
 \newenvironment{problem}{\stepcounter{problemname}\par\noindent\textbf{问题 \arabic{problemname}.}}{\par\vspace{2ex}}
 \newenvironment{solution}{\par\noindent\textbf{回答：}}{\par\vspace{2ex}}
@@ -62,5 +68,4 @@
 
 
 \end{document}
-
 

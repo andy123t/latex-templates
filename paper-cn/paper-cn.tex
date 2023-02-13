@@ -3,34 +3,110 @@
 
 \usepackage{ctex}
 \usepackage{geometry}
-% 数学宏包
-\usepackage{amsmath,amsthm}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{bm}
+%-----数学宏包-----
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{mathrsfs,bm}
+% 设置目录
 \usepackage{titletoc}
 % 设置颜色
-\usepackage{xcolor}
+\usepackage{color,xcolor}
 % 插入图片
 \usepackage{graphicx}
 % 表格
 \usepackage{array}
-%% 长表格
+% 长表格
 \usepackage{longtable}
-%% booktabs 提供了\toprule 等命令.
+% booktabs 提供了\toprule 等命令.
 \usepackage{booktabs}
-%% multirow 支持在表格中跨行
+% multirow 支持在表格中跨行
 \usepackage{multirow}
-%% 调整间隔, 让表格更好看些
+% 调整间隔, 让表格更好看些
 \usepackage{bigstrut}
-%% 在跨行表格中输入定界符
+% 在跨行表格中输入定界符
 \usepackage{bigdelim}
 % 保护脆落命令
 \usepackage{cprotect}
 % 设置代码环境
 \usepackage{listings}
-\usepackage{xcolor}
+% 首行缩进
+\usepackage{indentfirst}
+% 设置浮动体的标题
+\usepackage{caption}
+% 定制列表环境
+\usepackage{enumitem}
+% 下划线
+\usepackage{ulem}
+% 尺寸计算
+\usepackage{calc}
 
+%-----设置超链接-----
+\usepackage{url,hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=black
+} % 去掉目录红框
+
+%----- 页面布局 -----
+\geometry{top=1in,bottom=1in,left=1in,right=1in}
+
+%----- 设置行间距 -----
+\renewcommand*{\baselinestretch}{1.35}
+
+%----- 定义列表项的样式 -----
+\usepackage{enumitem}
+\setlist{nolistsep}
+% \setlength{\itemsep}{3pt plus1pt minus2pt}
+
+%----- 证明结束黑框 ----
+% \renewcommand{\qedsymbol}{$\blacksquare$}
+
+%\setmainfont{Times New Roman}
+%\setmonofont{Courier New}
+%\setsansfont{Arial}
+%\setCJKfamilyfont{kai}[AutoFakeBold]{simkai.ttf}
+%\newcommand*{\kai}{\CJKfamily{kai}}
+%\setCJKfamilyfont{song}[AutoFakeBold]{SimSun}
+%\newcommand*{\song}{\CJKfamily{song}}
+
+%----- 设置英文字体 -----
+\usepackage{newtxtext}  % for text fonts
+
+%----- 设置数学字体 -----
+% \usepackage{newtxmath}
+% \usepackage{mathptmx}
+
+%----- 算法宏包及设置 ---
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\floatname{algorithm}{算法}
+\algrenewcommand\algorithmicrequire{\textbf{输入:}}
+\algrenewcommand\algorithmicensure{\textbf{输出:}}
+
+%----- 添加自己要用的其他宏包 -----
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{subfig}
+% \usepackage{xltxtra}
+
+%\usepackage[cleardoublepage=plain]{scrextend}
+
+%----- 设置定理环境 -----
+\theoremstyle{plain}
+\newtheorem{definition}{定义}[section]
+\newtheorem{proposition}{命题}[section]
+\newtheorem{lemma}{引理}[section]
+\newtheorem{theorem}{定理}[section]
+\newtheorem{example}{例}[section]
+\newtheorem{corollary}{推论}[section]
+\newtheorem{remark}{注}[section]
+\newtheorem{exercise}{练习}[section]
+\newtheorem{assumption}{假设}[section]
+\newtheorem{axiom}{公理}[section]
+\newtheorem{property}{性质}[section]
+\newtheorem{conjecture}{猜想}[section]
+\renewcommand{\proofname}{\textbf{证明}}
+
+%----- 设置代码高亮 -----
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{mauve}{rgb}{0.58,0,0.58}
@@ -57,59 +133,9 @@
   tabsize=3,
 }
 
-% 首行缩进
-\usepackage{indentfirst}
-% 设置浮动体的标题
-\usepackage{caption}
-% 定制列表环境
-\usepackage{enumitem}
-% 下划线
-\usepackage{ulem}
-% 尺寸计算
-\usepackage{calc}
-
-% 超链接 hyperref 的设置
-%\usepackage{hyperref}
-%% Document Layout
-% 页面布局
-\geometry{top=1in,bottom=1in,left=1in,right=1in}
-\renewcommand*{\baselinestretch}{1.35}
-
-%\setmainfont{Times New Roman}
-%\setmonofont{Courier New}
-%\setsansfont{Arial}
-%\setCJKfamilyfont{kai}[AutoFakeBold]{simkai.ttf}
-%\newcommand*{\kai}{\CJKfamily{kai}}
-%\setCJKfamilyfont{song}[AutoFakeBold]{SimSun}
-%\newcommand*{\song}{\CJKfamily{song}}
-
-\theoremstyle{plain}
-\newtheorem{definition}{定义}[section]
-\newtheorem{proposition}{命题}[section]
-\newtheorem{lemma}{引理}[section]
-\newtheorem{theorem}{定理}[section]
-\newtheorem{example}{例}[section]
-\newtheorem{corollary}{推论}[section]
-\newtheorem{remark}{注}[section]
-\newtheorem{exercise}{练习}[section]
-\newtheorem{assumption}{假设}[section]
-\newtheorem{axiom}{公理}[section]
-\newtheorem{property}{性质}[section]
-\newtheorem{conjecture}{猜想}[section]
-\renewcommand{\proofname}{\textbf{证明}}
-
-\usepackage[urlcolor=blue]{hyperref}
-\usepackage{threeparttable}
-\usepackage{setspace}
-\usepackage{titlesec}
-\usepackage{float}
-\newcommand{\upcite}[1]{\textsuperscript{\textsuperscript{\cite{#1}}}}
-\usepackage{fancyhdr}
-
 %----- 设置节标题格式 -----
 %\titleformat{\section}{\bfseries \Large}{\arabic{section}}{1em}{}
 %\titleformat{\subsection}{\bfseries\large}{\thesubsection}{1em}{}
-
 
 %----- 设置浮动体间距 ------
 \setlength{\textfloatsep}{0pt}
@@ -127,21 +153,6 @@
 	\setlength{\belowdisplayshortskip}{2pt}
 	\setlength{\arraycolsep}{2pt}   % array中列之间空白长度
 }
-
-
-%----- 添加自己要用的其他宏包 -----
-\usepackage[numbers,sort&compress]{natbib}
-\usepackage{subfig}
-% \usepackage{xltxtra}
-
-%\usepackage[cleardoublepage=plain]{scrextend}
-
-%----- 算法宏包及设置 ---
-\usepackage{algorithm}
-\usepackage{algpseudocode}
-\floatname{algorithm}{算法}
-\algrenewcommand\algorithmicrequire{\textbf{输入:}}
-\algrenewcommand\algorithmicensure{\textbf{输出:}}
 
 %----- 定义 maketitle, abstract -----
 \makeatletter
@@ -166,21 +177,6 @@
 }
 \makeatother
 
-
-%----- 定义列表项的样式 -----
-\usepackage{enumitem}
-\setlist{nolistsep}
-% \setlength{\itemsep}{3pt plus1pt minus2pt}
-
-%----- 证明结束黑框 ----
-% \renewcommand{\qedsymbol}{$\blacksquare$}
-
-%----- 设置英文字体 -----
-\usepackage{newtxtext}  % for text fonts
-
-%----- 设置数学字体 -----
-% \usepackage{newtxmath}
-% \usepackage{mathptmx}
 
 %----- 自定义命令 -----
 \newcommand{\CC}{\ensuremath{\mathbb{C}}}

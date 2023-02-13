@@ -3,15 +3,15 @@
 % xelatex -> bibtex -> xelatex -> xelatex
 % 中文书籍 LaTeX 模板
 
-\documentclass[UTF8,openany,twoside,12pt]{book}
-%\documentclass[UTF8,twoside,12pt]{book}
+\documentclass[openany,twoside,12pt]{book}
+%\documentclass[twoside,12pt]{book}
 
 %-----中文宏包-----
 \usepackage[UTF8]{ctex}
 %\usepackage[UTF8,zihao=-4]{ctex}  % need remove 12pt
 
 %-----数学宏包-----
-\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{amsmath,amsthm,amssymb}
 \usepackage{mathrsfs,bm}
 %-----draft下 label提示-----
 %\usepackage[notcite,notref]{showkeys}
@@ -24,7 +24,12 @@
 
 %-----设置超链接-----
 \usepackage{url,hyperref}
-\hypersetup{colorlinks=true,linkcolor=black,citecolor=black} % 去掉目录红框
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=black
+} % 去掉目录红框
+
 %-----制作目录-----
 \usepackage{imakeidx}
 % 设置颜色
