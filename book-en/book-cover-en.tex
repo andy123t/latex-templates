@@ -4,7 +4,7 @@
 %\documentclass[twoside,12pt]{book}
 
 %----- Packages for template -----
-\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{amsmath,amsthm,amssymb}
 \usepackage{mathrsfs,bm}
 %\usepackage[notcite,notref]{showkeys}
 \usepackage{geometry}
@@ -12,8 +12,7 @@
 %\geometry{left=1in,right=1in,top=1in,bottom=1in}
 %\geometry{left=2.5cm,right=2.1cm,top=1.7cm,bottom=2cm,includehead,includefoot}
 %\geometry{b5paper,text={125mm,195mm},centering,left=1in,right=1in,top=1in,bottom=1in}
-\usepackage{url,hyperref}
-\hypersetup{colorlinks=true,linkcolor=black,citecolor=black}
+
 \usepackage[english]{babel}
 \usepackage{imakeidx}
 \usepackage{color,xcolor}
@@ -42,6 +41,15 @@
 %\usepackage{indentfirst}
 \usepackage[perpage,symbol]{footmisc}   % footnote setting
 
+\usepackage{url,hyperref}
+\hypersetup{
+  colorlinks = true,
+  linkcolor = black,
+  citecolor = blue,
+  filecolor = blue,
+  urlcolor =blue,
+}
+
 % caption setting
 \usepackage{caption}
 %\captionsetup{font={small,singlespacing},labelformat={default},labelsep=period}
@@ -64,7 +72,6 @@
 %---- Contents Setting -----
 \setcounter{tocdepth}{3}
 \setcounter{secnumdepth}{3}
-
 
 \usepackage[cleardoublepage=plain]{scrextend}
 
