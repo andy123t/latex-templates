@@ -32,7 +32,7 @@
 % package for caption
 \usepackage{caption}
 % package for algorithm
-\usepackage{algorithm}
+\usepackage{algorithm,algorithmicx}
 \usepackage{algpseudocode}
 % package for author and affiliation style
 \usepackage[affil-it]{authblk}
@@ -40,6 +40,9 @@
 \usepackage{fancybox}
 % package for page headers and footers
 \usepackage{fancyhdr}
+
+% package for bibliography support
+\usepackage[numbers,sort&compress]{natbib}
 
 % allow page breaks between multiline formulas
 \allowdisplaybreaks
@@ -53,12 +56,17 @@
 % headers and footers setting
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[LE,RO]{$\cdot$\:\thepage\:$\cdot$}
-\fancyhead[LO,RE]{\nouppercase{\leftmark}}
-\renewcommand{\headrulewidth}{0.5pt}
+\fancyhead[CO]{\uppercase{Title of Paper}}
+\fancyhead[CE]{\uppercase{Author A, Author B \& Author C}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
 
-%\fancyhead[C]{\nouppercase{title of paper}}
+%\fancyhead[C]{\uppercase{Title of Paper}}
 %\fancyfoot[C]{\thepage}
+%\renewcommand{\headrulewidth}{0pt}
+
+%\fancyhead[LE,RO]{$\cdot$\:\thepage\:$\cdot$}
+%\fancyhead[LO,RE]{\nouppercase{\leftmark}}
 %\renewcommand{\headrulewidth}{0.5pt}
 
 %\fancyhead[LE,RO]{$\cdot$\:\thepage\:$\cdot$}
@@ -106,8 +114,8 @@
 
 % new command
 \newcommand{\abs}[1]{\lvert#1\rvert}
-\newcommand{\dx}[1][x]{\,{\rm d}#1}
-\newcommand{\ddx}[1][x]{\dfrac{\rm d}{{\rm d}#1}}
+\newcommand{\dx}[1][x]{\,\mathrm{d}#1}
+\newcommand{\ddx}[1][x]{\dfrac{\mathrm{d}}{\mathrm{d}#1}}
 \newcommand{\refe}[2]{(\ref{#1})--(\ref{#2})}
 \newcommand{\red}[1]{\textcolor{red}{#1}}
 
@@ -118,7 +126,7 @@
 \author[1]{Author A}
 \author[1]{Author B\thanks{Email address: \texttt{B.B@university.edu}}}
 \author[2]{Author C\thanks{Email address: \texttt{C.C@university.edu}}}
-\author[2]{Author D\thanks{Email address: \texttt{D.D@university.edu}}}
+%\author[2]{Author D\thanks{Email address: \texttt{D.D@university.edu}}}
 \affil[1]{Department of Computer Science, \LaTeX\ University}
 \affil[2]{Department of Mechanical Engineering, \LaTeX\ University}
 
@@ -212,7 +220,7 @@ This is a lemma environment
 \end{enumerate}
 \end{lemma}
 
-This is a citation example \cite{WoZhMeSh2005}.
+This is a citation example \cite{Adams2003}. This statement requires citation \cite{Shen1994,Tadmor2012,TreWei2014}.
 
 Here we state our main result as \ref{thm:bigthm}.
 
@@ -302,32 +310,32 @@ Our analysis leads to the algorithm in \ref{alg:buildtree}.
 \begin{algorithmic}
   \State {Define $P:=T:=\{ \{1\},\ldots,\{d\}$\}}
   \While{$\#P > 1$}
-  \State {Choose $C^\prime\in\mathcal{C}_p(P)$ with $C^\prime := \operatorname{argmin}_{C\in\mathcal{C}_p(P)} \varrho(C)$}
-  \State {Find an optimal partition tree $T_{C^\prime}$ }
-  \State {Update $P := (P{\setminus} C^\prime) \cup \{ \bigcup_{t\in C^\prime} t \}$}
-  \State {Update $T := T \cup \{ \bigcup_{t\in\tau} t : \tau\in T_{C^\prime}{\setminus} \mathcal{L}(T_{C^\prime})\}$}
+    \State {Choose $C^\prime\in\mathcal{C}_p(P)$ with $C^\prime := \operatorname{argmin}_{C\in\mathcal{C}_p(P)} \varrho(C)$}
+    \State {Find an optimal partition tree $T_{C^\prime}$ }
+    \State {Update $P := (P{\setminus} C^\prime) \cup \{ \bigcup_{t\in C^\prime} t \}$}
+    \State {Update $T := T \cup \{ \bigcup_{t\in\tau} t : \tau\in T_{C^\prime}{\setminus} \mathcal{L}(T_{C^\prime})\}$}
   \EndWhile
-  \Return $T$
+  \State \Return $T$
 \end{algorithmic}
 \end{algorithm}
 
-Reduce the width of the algorithm environment
+Adjust the width of the algorithm environment
 \begin{center}
 \vspace{-2ex}
 \begin{minipage}{0.9\linewidth}
 \begin{algorithm}[H]
 \caption{Euclid’s algorithm}
-\label{euclid}
-\begin{algorithmic} % The number tells where the line numbering should start
-    \Procedure{Euclid}{$a,b$} \Comment{The g.c.d. of a and b}
-        \State $r\gets a \bmod b$
-        \While{$r\not=0$} \Comment{We have the answer if r is 0}
-            \State $a \gets b$
-            \State $b \gets r$
-            \State $r \gets a \bmod b$
-        \EndWhile\label{euclidendwhile}
-            \State \textbf{return} $b$\Comment{The gcd is b}
-    \EndProcedure
+\label{alg:euclid}
+\begin{algorithmic}[1] % line numbering
+\Procedure{Euclid}{$a,b$}\Comment{The g.c.d. of a and b}
+  \State $r \gets a \bmod b$
+  \While{$r\not=0$}\Comment{We have the answer if r is 0}
+    \State $a \gets b$
+    \State $b \gets r$
+    \State $r \gets a \bmod b$
+  \EndWhile\label{euclidendwhile}
+  \State \textbf{return} $b$\Comment{The gcd is b}
+\EndProcedure
 \end{algorithmic}
 \end{algorithm}
 \end{minipage}

@@ -28,11 +28,11 @@
 %----- 设置超链接 -----
 \usepackage{hyperref}
 \hypersetup{
-	colorlinks = true,
-	linkcolor = black,
-	citecolor = blue,
-	filecolor = blue,
-    urlcolor =blue,
+  colorlinks = true,
+  linkcolor = black,
+  citecolor = blue,
+  filecolor = blue,
+  urlcolor =blue,
 }
 
 % 允许多行公式跨页显示
@@ -91,15 +91,11 @@
 
 %----- 参考文献引用格式 -----
 \usepackage[numbers,sort&compress]{natbib}
+%\usepackage[numbers,super,square,sort&compress]{natbib}
 \def\bibfont{\small}      % 修改参考文献字体
 \setlength{\bibsep}{8pt}  % 调整参考文献间距
-\makeatletter
-\newcommand\bibstyle@super{\bibpunct{[}{]}{,}{s}{,}{\textsuperscript{,}}}
-\newcommand\bibstyle@numbers{\bibpunct{[}{]}{,}{n}{,}{,}}
-\newcommand\bibstyle@authoryear{\bibpunct{(}{)}{;}{a}{,}{,}}
-\makeatother
 
-%--- new command -----
+%----- 定义新命令 -----
 \newcommand{\CC}{\ensuremath{\mathbb{C}}}
 \newcommand{\RR}{\ensuremath{\mathbb{R}}}
 \newcommand{\A}{\mathcal{A}}
@@ -107,8 +103,8 @@
 \newcommand{\md}{\mathrm{d}\,}
 \newcommand{\bA}{\boldsymbol{A}}
 \newcommand{\red}[1]{\textcolor{red}{#1}}
-\newcommand{\dx}[1][x]{\,{\rm d}#1}
-\newcommand{\dt}[1][t]{\dfrac{\rm d}{{\rm d}#1}}
+\newcommand{\dx}[1][x]{\,\mathrm{d}#1}
+\newcommand{\dt}[1][t]{\dfrac{\mathrm{d}}{\mathrm{d}#1}}
 
 
 \title{论文的题目}

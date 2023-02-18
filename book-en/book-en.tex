@@ -27,6 +27,7 @@
 \usepackage{fancybox}
 \usepackage{makecell}
 \usepackage{algorithm}
+\usepackage{algorithmicx}
 \usepackage{algpseudocode}
 \usepackage{xstring}
 %\usepackage[english]{babel}
@@ -36,7 +37,9 @@
 \usepackage{mathtools}
 \usepackage{float}
 \usepackage{bookmark}
-\usepackage[numbers]{natbib}
+
+% package for bibliography support
+\usepackage[numbers,sort&compress]{natbib}
 
 %\usepackage{indentfirst}
 \usepackage[perpage,symbol]{footmisc}   % footnote setting
@@ -85,6 +88,7 @@
 \fancyhead[LO]{\rmfamily \rightmark}
 \fancyhead[RE]{\rmfamily \leftmark}
 
+\setlength{\headheight}{15pt}
 %\setlength{\parskip}{3pt plus1pt minus1pt}
 
 \renewcommand{\baselinestretch}{1.2}
@@ -130,7 +134,7 @@
 \graphicspath{{./figure/}{./figures/}{./image/}{./images/}}
 
 
-%----- book information -----
+%----- Book information -----
 
 \title{\bfseries LaTeX Book Sample}
 \author{Edited by Andy}
@@ -193,7 +197,7 @@ LaTeX is not a word processor! Instead, LaTeX encourages authors not to worry to
 
 LaTeX is based on the idea that it is better to leave document design to document designers, and to let authors get on with writing documents.
 
-The \texttt{gather} environment
+The \texttt{align} environment
 \begin{align}
 a & = b + c \\
 & = d + e.
@@ -239,13 +243,9 @@ The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the 
 LaTeX is a high-quality typesetting system; it includes features designed for the production of technical and scientific documentation. LaTeX is the de facto standard for the communication and publication of scientific documents.
 
 \subsection{A sub section}
-LaTeX is not a word processor! Instead, LaTeX encourages authors not to worry too much about the appearance of their documents but to concentrate on getting the right content. For example consider this document:
+LaTeX is not a word processor! Instead, LaTeX encourages authors not to worry too much about the appearance of their documents but to concentrate on getting the right content. LaTeX is a high-quality typesetting system; it includes features designed for the production of technical and scientific documentation. LaTeX is the de facto standard for the communication and publication of scientific documents.
 
-LaTeX is based on the idea that it is better to leave document design to document designers, and to let authors get on with writing documents. So, in LaTeX you would input this document as:
-$ \Rightarrow $
-
-Assuming that the disturbance errors of $f$ and $u_{N,0}$ are $\tilde{f}$ and $\tilde{u}_{N,0}$ respectively, the error of the numerical solution $u_N$ is $\tilde{u}_N$.
-
+The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
 
 \begin{definition}
 This is a definition environment.
@@ -289,16 +289,17 @@ This is a theorem environment.
   This is example environment.
 \end{example}
 
-The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
+The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
 
-The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
+The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
+
 
 \section{The third section}
 LaTeX is a high-quality typesetting system; it includes features designed for the production of technical and scientific documentation. LaTeX is the de facto standard for the communication and publication of scientific documents.
 
 Here we state our main result as \ref{thm:bigthm}.
 
-\begin{theorem}[$LDL^T$ Factorization \cite{Adams2003}]\label{thm:bigthm}
+\begin{theorem}[$LDL^T$ Factorization \cite{GoVa2013}]\label{thm:bigthm}
   If $A \in \mathbb{R}^{n \times n}$ is symmetric and the principal
   submatrix $A(1:k,1:k)$ is nonsingular for $k=1:n-1$, then there
   exists a unit lower triangular matrix $L$ and a diagonal matrix
@@ -384,33 +385,33 @@ Our analysis leads to the algorithm in \ref{alg:buildtree}.
 \begin{algorithmic}
   \State {Define $P:=T:=\{ \{1\},\ldots,\{d\}$\}}
   \While{$\#P > 1$}
-  \State {Choose $C^\prime\in\mathcal{C}_p(P)$ with $C^\prime := \operatorname{argmin}_{C\in\mathcal{C}_p(P)} \varrho(C)$}
-  \State {Find an optimal partition tree $T_{C^\prime}$ }
-  \State {Update $P := (P{\setminus} C^\prime) \cup \{ \bigcup_{t\in C^\prime} t \}$}
-  \State {Update $T := T \cup \{ \bigcup_{t\in\tau} t : \tau\in T_{C^\prime}{\setminus} \mathcal{L}(T_{C^\prime})\}$}
+    \State {Choose $C^\prime\in\mathcal{C}_p(P)$ with $C^\prime := \operatorname{argmin}_{C\in\mathcal{C}_p(P)} \varrho(C)$}
+    \State {Find an optimal partition tree $T_{C^\prime}$ }
+    \State {Update $P := (P{\setminus} C^\prime) \cup \{ \bigcup_{t\in C^\prime} t \}$}
+    \State {Update $T := T \cup \{ \bigcup_{t\in\tau} t : \tau\in T_{C^\prime}{\setminus} \mathcal{L}(T_{C^\prime})\}$}
   \EndWhile
-  \Return $T$
+  \State \Return $T$
 \end{algorithmic}
 \end{algorithm}
 
 \clearpage
-Reduce the width of the algorithm environment
+Adjust the width of the algorithm environment
 \begin{center}
 \vspace{-2ex}
 \begin{minipage}{0.9\linewidth}
 \begin{algorithm}[H]
 \caption{Euclid’s algorithm}
-\label{euclid}
-\begin{algorithmic} % The number tells where the line numbering should start
-    \Procedure{Euclid}{$a,b$} \Comment{The g.c.d. of a and b}
-        \State $r\gets a \bmod b$
-        \While{$r\not=0$} \Comment{We have the answer if r is 0}
-            \State $a \gets b$
-            \State $b \gets r$
-            \State $r \gets a \bmod b$
-        \EndWhile\label{euclidendwhile}
-            \State \textbf{return} $b$\Comment{The gcd is b}
-    \EndProcedure
+\label{alg:euclid}
+\begin{algorithmic}[1] % line numbering
+\Procedure{Euclid}{$a,b$}\Comment{The g.c.d. of a and b}
+  \State $r \gets a \bmod b$
+  \While{$r\not=0$}\Comment{We have the answer if r is 0}
+    \State $a \gets b$
+    \State $b \gets r$
+    \State $r \gets a \bmod b$
+  \EndWhile\label{euclidendwhile}
+  \State \textbf{return} $b$\Comment{The gcd is b}
+\EndProcedure
 \end{algorithmic}
 \end{algorithm}
 \end{minipage}
@@ -653,11 +654,13 @@ The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the 
 \addcontentsline{toc}{chapter}{\bibname}
 
 \bibliographystyle{plain}
-\bibliography{mybib}
+\bibliography{reference}
 
 
 %\begin{thebibliography}{99}
 %\bibitem{Adams2003} Adams~R~A, Fournier~J~J~F. Sobolev spaces[M]. Elsevier, 2003.
+%
+%\bibitem{GoVa2013} Gene~H. Golub and Charles~F. Van~Loan. Matrix computations. The Johns Hopkins University Press, Baltimore, 4th edition, 2013.
 %
 %\bibitem{Shen1994} Shen~J. Efficient spectral-Galerkin method I. Direct solvers of second- and fourth-order equations using Legendre polynomials[J]. SIAM J. Sci. Comput., 1994, 15(6): 1489-1505.
 %

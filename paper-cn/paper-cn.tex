@@ -69,6 +69,17 @@
 %\setCJKfamilyfont{song}[AutoFakeBold]{SimSun}
 %\newcommand*{\song}{\CJKfamily{song}}
 
+%----- 参考文献格式 -----
+%\bibliographystyle{plain} % abbrv, unsrt, siam
+\bibliographystyle{thuthesis-numeric}
+%\bibliographystyle{thuthesis-author-year}
+
+%----- 参考文献引用格式 -----
+\usepackage[numbers,sort&compress]{natbib}
+%\usepackage[numbers,super,square,sort&compress]{natbib}
+\def\bibfont{\small}      % 修改参考文献字体
+\setlength{\bibsep}{8pt}  % 调整参考文献间距
+
 %----- 设置英文字体 -----
 \usepackage{newtxtext}  % for text fonts
 
@@ -84,9 +95,8 @@
 \algrenewcommand\algorithmicensure{\textbf{输出:}}
 
 %----- 添加自己要用的其他宏包 -----
-\usepackage[numbers,sort&compress]{natbib}
 \usepackage{subfig}
-% \usepackage{xltxtra}
+%\usepackage{xltxtra}
 
 %\usepackage[cleardoublepage=plain]{scrextend}
 
@@ -404,10 +414,6 @@ aligned 与 equation 环境套用, 公式间距是自动调节的, 如果有分�
 %\nocite{*}  % 可以暂时显示全部参考文献, 包括未引用的
 
 % 使用方法:\bibliography{参考文件1文件名, 参考文献2文件名, ...}
-% 参考文献格式可选  plain, abbrv, unsrt, siam
-% \bibliographystyle{plain}
-\bibliographystyle{thuthesis-numeric}
-%\bibliographystyle{thuthesis-author-year}
 \bibliography{mybib}
 
 

@@ -50,8 +50,6 @@
 \usepackage{float}
 %-----书签设置-----
 \usepackage{bookmark}
-%-----参考文献格式-----
-\usepackage[numbers]{natbib}
 %-----设置页眉页脚格式-----
 \usepackage{fancyhdr}
 %-----设置行间距 -----
@@ -67,7 +65,18 @@
 %\newcommand*{\song}{\CJKfamily{song}}
 
 %----- 定义引用格式 -----
-\newcommand{\upcite}[1]{\textsuperscript{\textsuperscript{\cite{#1}}}}
+%\newcommand{\upcite}[1]{\textsuperscript{\textsuperscript{\cite{#1}}}}
+
+%----- 参考文献格式 -----
+%\bibliographystyle{plain} % abbrv, unsrt, siam
+\bibliographystyle{thuthesis-numeric}
+%\bibliographystyle{thuthesis-author-year}
+
+%----- 参考文献引用格式 -----
+%\usepackage[numbers,sort&compress]{natbib}
+\usepackage[numbers,super,square,sort&compress]{natbib}
+\def\bibfont{\small}      % 修改参考文献字体
+\setlength{\bibsep}{8pt}  % 调整参考文献间距
 
 %----- 设置章节格式 -----
 \renewcommand{\thesection}{\chinese{section}、}
@@ -190,7 +199,7 @@
 
 文献引用示例 \cite{Tadmor2012} 和 \cite{LiLiu1997,Adams2003,TreWei2014}.
 
-文献引用示例 \upcite{LiLiu1997} 和 \upcite{Adams2003,Shen1994}.
+文献引用示例 \cite{LiLiu1997} 和 \cite{Adams2003,Shen1994}.
 
 
 \section{第一节}
@@ -245,10 +254,6 @@
 %\nocite{*}  % 可以暂时显示全部参考文献, 包括未引用的
 
 % 使用方法:\bibliography{参考文件1文件名, 参考文献2文件名, ...}
-% 参考文献格式可选  plain, abbrv, unsrt, siam
-% \bibliographystyle{plain}
-\bibliographystyle{thuthesis-numeric}
-%\bibliographystyle{thuthesis-author-year}
 \bibliography{mybib}
 
 
