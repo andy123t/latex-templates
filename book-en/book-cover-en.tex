@@ -36,21 +36,27 @@
 \usepackage{titlesec}
 \usepackage{mathtools}
 \usepackage{float}
-\usepackage{bookmark}
+\usepackage[numbered]{bookmark}
+\usepackage{anyfontsize}
 
 % package for bibliography support
 \usepackage[numbers,sort&compress]{natbib}
+%\def\bibfont{\small}      % bib font size
+%\setlength{\bibsep}{8pt}  % vertical space of bib
 
 %\usepackage{indentfirst}
-\usepackage[perpage,symbol]{footmisc}   % footnote setting
 
-\usepackage{url,hyperref}
+% footnote setting
+%\usepackage[perpage,symbol]{footmisc}
+
+% hyperlink setting
+\usepackage{hyperref}
 \hypersetup{
   colorlinks = true,
   linkcolor = black,
   citecolor = blue,
   filecolor = blue,
-  urlcolor =blue,
+  urlcolor = blue,
 }
 
 % caption setting
@@ -135,10 +141,13 @@
 % define new command
 \newcommand{\CC}{\ensuremath{\mathbb{C}}}
 \newcommand{\RR}{\ensuremath{\mathbb{R}}}
-\newcommand{\A}{\mathcal{A}}
-\newcommand{\ii}{\bm{\mathrm{i}}\,}  % imaginary part
-\newcommand{\md}{\mathrm{d}\,}
-\newcommand{\bA}{\boldsymbol{A}}
+% new command
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\dif}{\mathop{}\!\mathrm{d}}
+\newcommand{\dx}[1][x]{\mathop{}\!\mathrm{d}#1}
+\newcommand{\ii}{\mathrm{i}\mkern1mu} % imaginary
+\newcommand{\refe}[2]{(\ref{#1})--(\ref{#2})}
 \newcommand{\red}[1]{\textcolor{red}{#1}}
 
 \newcommand{\plogo}{\fbox{$\mathcal{PL}$}} % Generic dummy publisher logo
@@ -635,7 +644,7 @@ The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the 
 
 
 \section{The second section}
-LaTeX is a high-quality typesetting system; it includes features designed for the production of technical and scientific documentation. \index{LaTeX} is the de facto standard for the communication and publication of scientific documents.
+LaTeX is a high-quality typesetting system; it includes features designed for the production of technical and scientific documentation. LaTeX\index{LaTeX} is the de facto standard for the communication and publication of scientific documents.
 
 \subsection{A sub section}
 LaTeX is not a word processor! Instead, LaTeX encourages authors not to worry too much about the appearance of their documents but to concentrate on getting the right content.
@@ -703,7 +712,7 @@ The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the 
 The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
 
 
-The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. Thequick brown \index{fox} jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
+The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox\index{fox} jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
 
 
 The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.

@@ -16,7 +16,6 @@
 %\geometry{left=1in,right=1in,top=1in,bottom=1in}
 %\geometry{left=2.5cm,right=2.1cm,top=1.7cm,bottom=2cm,includehead,includefoot}
 %\geometry{b5paper,text={125mm,195mm},centering,left=1in,right=1in,top=1in,bottom=1in}
-\usepackage{url}
 %\usepackage[english]{babel}
 \usepackage{imakeidx}
 \usepackage{color,xcolor}
@@ -36,7 +35,8 @@
 \usepackage{caption}
 \usepackage{mathtools}
 \usepackage{float}
-\usepackage{bookmark}
+\usepackage[numbered]{bookmark}
+\usepackage{anyfontsize}
 
 %----- 设置超链接 -----
 \usepackage{hyperref}
@@ -608,7 +608,7 @@ aligned 与 equation 环境套用, 公式间距自动调节, 如果有分式, �
 
 \section{图的使用}
 
-XeLaTeX 环境下可以使用 EPS、PDF、PNG、JPEG、BMP 格式的图片, 当然也可以用绘图包直接在 \LaTeX 中绘制图形, 推荐使用宏包 tikz. 值得注意的是 figure 环境一个\index{浮动体}环境，LaTeX 不总是浮动体放在你想要的地方，但是 LaTeX 总是保证浮动体的相对顺序，所以对图片 \verb|\label| 和 \verb|\ref| 的交叉引用就显得尤为重要。
+XeLaTeX 环境下可以使用 EPS、PDF、PNG、JPEG、BMP 格式的图片, 当然也可以用绘图包直接在 \LaTeX 中绘制图形, 推荐使用宏包 tikz. 值得注意的是 figure 环境一个浮动体\index{浮动体}环境，LaTeX 不总是浮动体放在你想要的地方，但是 LaTeX 总是保证浮动体的相对顺序，所以对图片 \verb|\label| 和 \verb|\ref| 的交叉引用就显得尤为重要。
 
 \section{插图示例}
 
@@ -804,7 +804,7 @@ N  & A       & B    & C       & D      & E       & F   \\
 
 \section{附录A的小节}
 
-这里是\index{附录环境}, 手动设置了 chapter 和 section 的样式, 并且加入到了目录.
+这里是附录环境\index{附录环境}, 手动设置了 chapter 和 section 的样式, 并且加入到了目录.
 
 附录公式及编号
 \begin{equation}\label{eq:abc}
@@ -847,7 +847,7 @@ N  & A       & B    & C       & D      & E       & F   \\
 
 这里是附录环境, 手动设置了 chapter 和 section 的样式, 并且加入到了目录.
 
-内容附录内容附录内容附录\index{内容}附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容正文内容正文. 内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容文内容正文内容正文内容正文内容.
+内容附录内容附录内容附录内容\index{内容}附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容正文内容正文. 内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容附录内容文内容正文内容正文内容正文内容.
 
 
 
