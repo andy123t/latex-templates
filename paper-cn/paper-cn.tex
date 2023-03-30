@@ -40,7 +40,7 @@
 \usepackage{calc}
 
 %-----设置超链接-----
-\usepackage{url,hyperref}
+\usepackage{hyperref}
 \hypersetup{
   colorlinks=true,
   linkcolor=black,
@@ -89,6 +89,7 @@
 
 %----- 算法宏包及设置 ---
 \usepackage{algorithm}
+\usepackage{algorithmicx}
 \usepackage{algpseudocode}
 \floatname{algorithm}{算法}
 \algrenewcommand\algorithmicrequire{\textbf{输入:}}
@@ -164,36 +165,49 @@
 	\setlength{\arraycolsep}{2pt}   % array中列之间空白长度
 }
 
-%----- 定义 maketitle, abstract -----
+%----- maketitle -----
 \makeatletter
-\renewcommand\maketitle{
-{\raggedright
-\vspace*{1em}
-\begin{center}
-{\LARGE \bfseries \@title }\\[1.5em]
-  \@author  \\
-  \@date \\[10pt]
-\end{center}}
+\def\@maketitle{%
+  \newpage
+  \null
+  \vspace{-1.5em}%
+  \begin{center}%
+  \let \footnote \thanks
+    {\LARGE \bfseries \@title \par}%
+    \vskip 1.0em%
+    {\large
+      \lineskip 0.5em%
+      \begin{tabular}[t]{c}%
+        \@author
+      \end{tabular}\par}%
+    \vskip 0.5em%
+    {\large \@date}%
+  \end{center}%
+  \par
+  \vskip 1em
 }
+\makeatother
 %----- abstract -------
 \renewenvironment{abstract}{
 \phantomsection
 \addcontentsline{toc}{section}{摘要}
 \noindent\rule[0.1\baselineskip]{\textwidth}{0.5pt}
-%\centerline{\large \textbf{摘 \ 要}}\\[5pt]
 \textbf{摘~要：}
 }{\par
 \noindent\rule[0.3\baselineskip]{\textwidth}{0.5pt}
 }
-\makeatother
 
 
-%----- 自定义命令 -----
+%----- 定义新命令 -----
 \newcommand{\CC}{\ensuremath{\mathbb{C}}}
 \newcommand{\RR}{\ensuremath{\mathbb{R}}}
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\dif}{\mathop{}\!\mathrm{d}}
+\newcommand{\dx}[1][x]{\mathop{}\!\mathrm{d}#1}
+\newcommand{\ii}{\mathrm{i}\mkern1mu} % imaginary
+\newcommand{\refe}[2]{(\ref{#1})--(\ref{#2})}
 \newcommand{\A}{\mathcal{A}}
-\newcommand{\ii}{\bm{\mathrm{i}}\,}  % 虚部
-\newcommand{\md}{\mathrm{d}\,}
 \newcommand{\bA}{\boldsymbol{A}}
 \newcommand{\red}[1]{\textcolor{red}{#1}}
 
@@ -220,8 +234,6 @@
 
 
 %%%%%%%%%%%%%%%%%%% 正文  %%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LaTeX 常用环境  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \section{列表的使用}
@@ -266,7 +278,7 @@
 \subsection{公式}
 数学公式的使用请参考公式手册 symbols-a4, 或者 《一份(不太)简短的 \LaTeX~2$\varepsilon$ 介绍》 (lshort-zh-cn).
 
-自定义命令表示的几个数学符号 $\RR$, $\CC$, $\A$, $\ii$, $\md$, $\bA$.
+自定义命令表示的几个数学符号 $\RR$, $\CC$, $\A$, $\ii$, $\dif$, $\bA$.
 
 在文中行内公式可以这么写: $a^2+b^2=c^2$, 这是勾股定理, 它还可以表示为 $c=\sqrt{a^2+b^2}$, 还可以让公式单独一段并且加上编号
 \begin{equation}\label{eqn:trifun}
@@ -405,7 +417,7 @@ aligned 与 equation 环境套用, 公式间距是自动调节的, 如果有分�
 %\end{algorithm}
 
 
-% -----------参考文献 -------------------
+%%%%%%%%%%%%%%%%%% 参考文献 %%%%%%%%%%%%%%%%%
 
 % 生成参考文献
 \phantomsection
@@ -446,5 +458,4 @@ column = size(A,2)
 
 
 \end{document}
-
 

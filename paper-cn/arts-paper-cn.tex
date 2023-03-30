@@ -17,8 +17,13 @@
 %\geometry{left=2.5cm,right=2.1cm,top=1.7cm,bottom=2cm,includehead,includefoot}
 
 %-----设置超链接-----
-\usepackage{url,hyperref}
-\hypersetup{colorlinks=true,linkcolor=black,citecolor=black} % 去掉目录红框
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=black
+} % 去掉目录红框
+
 %-----制作目录-----
 \usepackage{imakeidx}
 % 设置颜色
@@ -103,35 +108,37 @@
 	\setlength{\arraycolsep}{2pt}   % array中列之间空白长度
 }
 
-%----- 算法宏包及设置 -----
-\usepackage{algorithm}
-\usepackage{algpseudocode}
-\floatname{algorithm}{算法}
-\algrenewcommand\algorithmicrequire{\textbf{输入:}}
-\algrenewcommand\algorithmicensure{\textbf{输出:}}
-
 %----- 定义命令 -----
 \newcommand{\stunum}[1]{\def\defstunum{#1}}
 \newcommand{\class}[1]{\def\defclass{#1}}
 
-%----- 定义 maketitle, abstract -----
+%----- maketitle -----
 \makeatletter
-\makeatletter
-\renewcommand\maketitle{
-{\raggedright
-\vspace*{1em}
-\begin{center}
-{\zihao{-2} \bfseries \@title }\\[1.5em]
-  \@author  \\
-  \@date \\[10pt]
-\end{center}}
+\def\@maketitle{%
+  \newpage
+  \null
+  \vspace{-1.5em}%
+  \begin{center}%
+  \let \footnote \thanks
+    {\LARGE \bfseries \@title \par}%
+    \vskip 1.0em%
+    {\large
+      \lineskip 0.5em%
+      \begin{tabular}[t]{c}%
+        \@author
+      \end{tabular}\par}%
+    \vskip 0.5em%
+    {\large \@date}%
+  \end{center}%
+  \par
+  \vskip 1em
 }
+\makeatother
 %----- abstract -------
 \renewenvironment{abstract}{
 \phantomsection
 \addcontentsline{toc}{section}{摘要}
 \noindent\rule[0.1\baselineskip]{\textwidth}{0.5pt}
-%\centerline{\large \textbf{摘 \ 要}}\\[5pt]
 \textbf{摘~要：}
 }{\par
 \noindent\rule[0.3\baselineskip]{\textwidth}{0.5pt}
@@ -153,12 +160,13 @@
 % \usepackage{newtxmath}
 % \usepackage{mathptmx}
 
-%----- 自定义命令 -----
+%----- 定义新命令 -----
 \newcommand{\CC}{\ensuremath{\mathbb{C}}}
 \newcommand{\RR}{\ensuremath{\mathbb{R}}}
+\newcommand{\dif}{\mathop{}\!\mathrm{d}}
+\newcommand{\dx}[1][x]{\mathop{}\!\mathrm{d}#1}
+\newcommand{\refe}[2]{(\ref{#1})--(\ref{#2})}
 \newcommand{\A}{\mathcal{A}}
-\newcommand{\ii}{\bm{\mathrm{i}}\,}  % 虚部
-\newcommand{\md}{\mathrm{d}\,}
 \newcommand{\bA}{\boldsymbol{A}}
 \newcommand{\red}[1]{\textcolor{red}{#1}}
 
@@ -189,8 +197,7 @@
 
 %\tableofcontents
 
-
-%%%%%%%%%%%%%%%%%%% 正文  %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%% 正文  %%%%%%%%%%%%%%%%%%%
 
 
 \section{引言}
@@ -243,9 +250,7 @@
 
 
 
-
-
-% -----------参考文献 -------------------
+%%%%%%%%%%%%%%%%%%%% 参考文献 %%%%%%%%%%%%%%%%%%%%
 
 % 生成参考文献
 \phantomsection
@@ -280,4 +285,5 @@
 这是附录的内容
 
 
-\end{document} 
+\end{document}
+
