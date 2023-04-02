@@ -14,6 +14,22 @@
 %\usepackage{mathptmx}
 %\usepackage{mathpazo}
 
+% custom theorem
+\newtheorem{innercustomgeneric}{\customgenericname}
+\providecommand{\customgenericname}{}
+\newcommand{\newcustomtheorem}[2]{%
+  \newenvironment{#1}[1]
+  {%
+   \renewcommand\customgenericname{#2}%
+   \renewcommand\theinnercustomgeneric{##1}%
+   \innercustomgeneric
+  }
+  {\endinnercustomgeneric}
+}
+
+\newcustomtheorem{ntheorem}{Theorem}
+\newcustomtheorem{nlemma}{Lemma}
+
 % differential operator
 \newcommand{\dif}{\mathop{}\!\mathrm{d}}
 
@@ -117,6 +133,10 @@ This is a remark.
 \begin{example}
 This is an example.
 \end{example}
+
+\begin{ntheorem}{A.1}
+This is a custom theorem.
+\end{ntheorem}
 
 
 %------------------------------------------------------------

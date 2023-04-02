@@ -14,6 +14,22 @@
 %\usepackage{mathptmx}
 %\usepackage{mathpazo}
 
+% custom theorem
+\newtheorem{innercustomgeneric}{\customgenericname}
+\providecommand{\customgenericname}{}
+\newcommand{\newcustomtheorem}[2]{%
+  \newenvironment{#1}[1]
+  {%
+   \renewcommand\customgenericname{#2}%
+   \renewcommand\theinnercustomgeneric{##1}%
+   \innercustomgeneric
+  }
+  {\endinnercustomgeneric}
+}
+
+\newcustomtheorem{ntheorem}{定理}
+\newcustomtheorem{nlemma}{引理}
+
 % differential operator
 \newcommand{\dif}{\mathop{}\!\mathrm{d}}
 
@@ -32,7 +48,7 @@
 %	ASSIGNMENT INFORMATION
 %------------------------------------------------------------
 
-\header{微分方程数值解 -- 作业 \#1} % 页眉
+\header{XX 课程 -- 作业 \#1} % 页眉
 
 \title{作业 \#1} % 作业名字
 
@@ -41,11 +57,11 @@
 %\date{\today}
 \date{202X年X月X日} % 日期
 
-\institute{上海师范大学数理学院} % 学院或学校
+\institute{XX 大学 XX 学院} % 学院或学校
 
-\courseinfo{课程\textup{:} 微分方程数值解} % 课程信息
+\courseinfo{课程\textup{:} XX 课程 } % 课程信息
 
-\studentinfo{专业: \textsl{计算数学} \quad 学号: 123002584} % 学号
+\studentinfo{专业: \textsl{专业名称} \quad 学号: 123002584} % 学号
 
 
 \begin{document}
@@ -109,7 +125,6 @@
 这是一个命题.
 \end{proposition}
 
-
 \begin{remark}\label{rem:remark}
 这是一个 remark.
 \end{remark}
@@ -117,6 +132,10 @@
 \begin{example}
 这是一个例子.
 \end{example}
+
+\begin{ntheorem}{A.1}
+这是一个自定义的定理.
+\end{ntheorem}
 
 
 %------------------------------------------------------------

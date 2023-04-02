@@ -68,7 +68,7 @@
     \newcommand{\DateLang}{Date}
     \newcommand{\StudentLang}{Name}
     \newcommand{\problemname}{Problem}
-    \newcommand{\solutionname}{Answer}
+    \newcommand{\solutionname}{Solution}
     \renewcommand{\proofname}{Proof}
     \newcommand{\punctname}{.}
     \newcommand{\themname}{Theorem}
