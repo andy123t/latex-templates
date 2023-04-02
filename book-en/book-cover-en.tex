@@ -138,13 +138,14 @@
 \numberwithin{figure}{chapter}
 \numberwithin{table}{chapter}
 
-% define new command
+% differential operator
+\newcommand{\dif}{\mathop{}\!\mathrm{d}}
+
+% new command
 \newcommand{\CC}{\ensuremath{\mathbb{C}}}
 \newcommand{\RR}{\ensuremath{\mathbb{R}}}
-% new command
 \newcommand{\abs}[1]{\lvert#1\rvert}
 \newcommand{\norm}[1]{\lVert#1\rVert}
-\newcommand{\dif}{\mathop{}\!\mathrm{d}}
 \newcommand{\dx}[1][x]{\mathop{}\!\mathrm{d}#1}
 \newcommand{\ii}{\mathrm{i}\mkern1mu} % imaginary
 \newcommand{\refe}[2]{(\ref{#1})--(\ref{#2})}
@@ -166,10 +167,11 @@
 
 %\maketitle
 
-%----------------------------------------------------------------------------------------
-%	TITLE PAGE
-%----------------------------------------------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% TITLE PAGE
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{titlepage} % Suppresses headers and footers on the title page
 
@@ -199,17 +201,8 @@
 	\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} % Thin horizontal rule
 	\rule{\textwidth}{1.6pt} % Thick horizontal rule
 	
-	\vspace{2\baselineskip} % Whitespace after the title block
-	
-	%------------------------------------------------
-	%	Subtitle
-	%------------------------------------------------
-	
-	% A Number of Fascinating and Life-changing Templates Presented in a Clear and Concise Way
-
-	
-	\vspace*{3\baselineskip} % Whitespace under the subtitle
-	
+	\vspace{5\baselineskip} % Whitespace after the title block
+    
 	%------------------------------------------------
 	%	Editor(s)
 	%------------------------------------------------
@@ -242,12 +235,13 @@
 
 \end{titlepage}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \thispagestyle{empty}
 
 \frontmatter
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Preface}
 
@@ -257,6 +251,7 @@ The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the 
 The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %\clearpage
 \cleardoublepage
@@ -264,9 +259,11 @@ The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the 
 \pdfbookmark[chapter]{\contentsname}{toc}
 \tableofcontents
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \mainmatter
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \chapter{The first chapter}
@@ -326,9 +323,9 @@ This statement requires citation \cite{Adams2003} and \cite{Shen1994,Tadmor2012,
 we present a new method for solving the model equation
 \begin{equation}\label{eq:mulequ}
 \left\{\begin{aligned}
-  & \partial_{t} u-\varepsilon^{2} \Delta u+u^{3}-u=0, \quad \text{ in } ~\Omega\times\mathcal{T}, \\
-  &\, u(x,y,t) = g(t), \quad \text{ on } ~ \partial \Omega, \\
-  &\, u(x,y,0)=\varphi(x, y), \quad \text{ on } ~\Omega.
+  & \partial_{t} u-\varepsilon^{2} \Delta u+u^{3}-u=0, \quad \text{in} ~\Omega\times\mathcal{T}, \\
+  &\, u(x,y,t) = g(t), \quad \text{on} ~ \partial \Omega, \\
+  &\, u(x,y,0)=\varphi(x, y), \quad \text{on} ~\Omega.
 \end{aligned}\right.
 \end{equation}
 where $\varepsilon$ is a small parameter.
@@ -606,7 +603,7 @@ The two figures are placed side by side, sharing the same title.
   \includegraphics[width=0.45\linewidth]{image1}
   \hfill
   \includegraphics[width=0.45\linewidth]{image2}
-  \caption{Left: Caption 1, Right: Caption 2.}
+  \caption{Left: Caption 1, ~ Right: Caption 2.}
   \label{fig:b}
 \end{figure}
 
@@ -742,8 +739,11 @@ The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the 
 The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \backmatter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \renewcommand{\bibname}{References}
 
@@ -771,14 +771,15 @@ The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the 
 %\end{thebibliography}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \clearpage
 \phantomsection
 \addcontentsline{toc}{chapter}{\indexname}
 \printindex
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \end{document}
-
 

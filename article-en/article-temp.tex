@@ -15,7 +15,7 @@
 \usepackage{graphicx}
 \usepackage{subfigure}
 % package for hyperlink
-\usepackage{url,hyperref}
+\usepackage{hyperref}
 % package for layout of list
 \usepackage{enumitem}
 % package for showing keys in draft mode
@@ -56,6 +56,9 @@
 %\usepackage[symbol]{footmisc}
 %\renewcommand{\thefootnote}{\fnsymbol{footnote}}
 
+% command for listsep
+%\setlist{nolistsep}
+
 % command for equations, theorems and lemmas etc.
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[section]
@@ -87,10 +90,14 @@
 \numberwithin{figure}{section}
 \numberwithin{table}{section}
 
+% differential operator
+\newcommand{\dif}{\mathop{}\!\mathrm{d}}
+
 % new command
 \newcommand{\abs}[1]{\lvert#1\rvert}
-\newcommand{\dx}[1][x]{\,\mathrm{d}#1}
-\newcommand{\ddx}[1][x]{\dfrac{\mathrm{d}}{\mathrm{d}#1}}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\dx}[1][x]{\mathop{}\!\mathrm{d}#1}
+\newcommand{\ii}{\mathrm{i}\mkern1mu} % imaginary
 \newcommand{\refe}[2]{(\ref{#1})--(\ref{#2})}
 \newcommand{\red}[1]{\textcolor{red}{#1}}
 
@@ -139,9 +146,9 @@ this piece of work.
 In this paper we present a new method for solving the model equation
 \begin{equation}\label{eq:mulequ}
 \left\{\begin{aligned}
-  & \partial_{t} u-\varepsilon^{2} \Delta u+u^{3}-u=0, \quad \text{ in } ~\Omega\times\mathcal{T}, \\
-  &\, u(x,y,t) = g(t), \quad \text{ on } ~ \partial \Omega, \\
-  &\, u(x,y,0)=\varphi(x, y), \quad \text{ on } ~\Omega.
+  & \partial_{t} u-\varepsilon^{2} \Delta u+u^{3}-u=0, \quad \text{in} ~\Omega\times\mathcal{T}, \\
+  &\, u(x,y,t) = g(t), \quad \text{on} ~ \partial \Omega, \\
+  &\, u(x,y,0)=\varphi(x, y), \quad \text{on} ~\Omega.
 \end{aligned}\right.
 \end{equation}
 where $\varepsilon$ is a small parameter.

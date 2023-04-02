@@ -2,9 +2,10 @@
 % Homepage: https://ddswhu.me/
 % Email: elegantlatex2e@gmail.com
 % Lastest Version: https://github.com/ElegantLaTeX/ElegantNote
+% Modified by andy123t
 
 % --- Class structure: identification part
-\ProvidesClass{elegantnote}[2022/04/09 ElegantNote v2.40 class]
+\ProvidesClass{elegantnote}[2023/03/24 ElegantNote v2.40 class]
 \NeedsTeXFormat{LaTeX2e}
 
 \RequirePackage{kvoptions}
@@ -527,71 +528,144 @@
   breaklines=true,
   keywordstyle=\color{winered},
   commentstyle=\color{gray},
-  emph={%
-    elegantpaper,
-    fontenc,
-    fontspec,
-    xeCJK,
-    FiraMono,
-    xunicode,
-    newtxmath,
-    figure,
-    fig,
-    image,
-    img,
-    table,
-    itemize,
-    enumerate,
-    newtxtext,
-    newtxtt,
-    ctex,
-    microtype,
-    description,
-    times,
-    newtx,
-    booktabs,
-    tabular,
-    PDFLaTeX,
-    XeLaTeX,
-    type1cm,
-    BibTeX,
-    device,
-    color,
-    mode,
-    chinesefont,
-    cite,
-    bibstyle,
-    math,
-    lang,
-    amsthm},
+  emph={
+    elegantpaper,fontenc,fontspec,xeCJK,FiraMono,xunicode,
+    newtxmath,figure,fig,image,img,table,itemize,enumerate,
+    newtxtext,newtxtt,ctex,microtype,description,times,newtx,
+    booktabs,tabular,PDFLaTeX,XeLaTeX,type1cm,BibTeX,device,
+    color,mode,chinesefont,cite,bibstyle,math,lang,amsthm
+  },
   emphstyle={\color{frenchplum}},
   morekeywords={%
-    DeclareSymbolFont,
-    setCJKfamilyfont,
-    SetSymbolFont,
-    toprule,
-    midrule,
-    bottomrule,
-    institute,
-    version,
-    includegraphics,
-    setmainfont,
-    setsansfont,
-    setmonofont ,
-    setCJKmainfont,
-    setCJKsansfont,
-    setCJKmonofont,
-    RequirePackage,
-    figref,
-    pagecolor,
-    definecolor,
-    tabref,
-    email,
-    maketitle,
-    keywords},
+    DeclareSymbolFont,setCJKfamilyfont,SetSymbolFont,
+    toprule,midrule,bottomrule,institute,version,
+    includegraphics,setmainfont,setsansfont,setmonofont,
+    setCJKmainfont,setCJKsansfont,setCJKmonofont,
+    RequirePackage,figref,pagecolor,definecolor,
+    tabref,email,maketitle,keywords
+  },
   frame=none,
-  tabsize=2}
+  tabsize=2
+}
 
 
 % restore the tt default family to lmodern tt family
 \renewcommand\ttdefault{lmtt}
+
+%---------- add code highlight style ----------
+% matlab highlight color settings
+%\definecolor{mBasic}{RGB}{248,248,242}
+\definecolor{mKeyword}{RGB}{0,0,255}
+\definecolor{mString}{RGB}{160,32,240}
+\definecolor{mComment}{RGB}{34,139,34}
+\definecolor{mNumber}{RGB}{96,96,96}
+
+% Python highlight color settings
+%\definecolor{pBasic}{RGB}{248,248,242}
+\definecolor{pKeyword}{RGB}{228,0,128}
+\definecolor{pString}{RGB}{148,0,209}
+\definecolor{pComment}{RGB}{117,113,94}
+\definecolor{pIdentifier}{RGB}{166,226,46}
+\definecolor{pNumber}{RGB}{96,96,96}
+
+\ifdefstring{\ELEGANT@color}{green}{
+  \definecolor{mBackground}{RGB}{249,249,249}
+  \definecolor{pBackground}{RGB}{249,249,249}
+  \definecolor{mRule}{RGB}{192,192,192}
+  \definecolor{pRule}{RGB}{192,192,192}
+}{\relax}
+\ifdefstring{\ELEGANT@color}{cyan}{
+  \definecolor{mBackground}{RGB}{249,249,249}
+  \definecolor{pBackground}{RGB}{249,249,249}
+  \definecolor{mRule}{RGB}{192,192,192}
+  \definecolor{pRule}{RGB}{192,192,192}
+}{\relax}
+\ifdefstring{\ELEGANT@color}{blue}{
+  \definecolor{mBackground}{RGB}{249,249,249}
+  \definecolor{pBackground}{RGB}{249,249,249}
+  \definecolor{mRule}{RGB}{192,192,192}
+  \definecolor{pRule}{RGB}{192,192,192}
+}{\relax}
+\ifdefstring{\ELEGANT@color}{sakura}{
+  \definecolor{mBackground}{RGB}{249,249,249}
+  \definecolor{pBackground}{RGB}{249,249,249}
+  \definecolor{mRule}{RGB}{192,192,192}
+  \definecolor{pRule}{RGB}{192,192,192}
+}{\relax}
+\ifdefstring{\ELEGANT@color}{black}{
+  \definecolor{mBackground}{RGB}{255,255,255}
+  \definecolor{pBackground}{RGB}{255,255,255}
+  \definecolor{mRule}{RGB}{192,192,192}
+  \definecolor{pRule}{RGB}{192,192,192}
+}{\relax}
+\ifdefstring{\ELEGANT@color}{brown}{
+  \definecolor{mBackground}{RGB}{249,249,249}
+  \definecolor{pBackground}{RGB}{249,249,249}
+  \definecolor{mRule}{RGB}{192,192,192}
+  \definecolor{pRule}{RGB}{192,192,192}
+}{\relax}
+
+%----- matlab highlight style -----
+\lstdefinestyle{matlab}
+{
+  language=matlab,
+  xleftmargin=20pt,
+  xrightmargin=20pt,
+  frame=tlbr,framesep=6pt,framerule=0.5pt,
+  %frame=shadowbox,rulesepcolor=\color{red!20!green!20!blue!20},
+  %basicstyle=\footnotesize\ttfamily,
+  basicstyle=\footnotesize\fontspec{Consolas},
+  keywordstyle={\color{mKeyword}},
+  stringstyle={\color{mString}},
+  commentstyle={\color{mComment}},
+  backgroundcolor=\color{mBackground},
+  rulecolor=\color{mRule},
+  keywords={
+    break,case,catch,classdef,continue,else,
+    elseif,end,for,function,global,if,otherwise,parfor,
+    persistent,return,spmd,switch,try,while
+  },
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  tabsize=4,
+  captionpos=t,
+  breaklines=true,
+  numberstyle=\scriptsize\color{mNumber},
+  numbers=left,
+  stepnumber=1,
+}
+
+%----- python highlight style -----
+\lstdefinestyle{python}{
+  language=python,
+  xleftmargin=20pt,
+  xrightmargin=20pt,
+  frame=tlbr,framesep=4pt,framerule=0.5pt,
+  %frame=shadowbox,rulesepcolor=\color{red!20!green!20!blue!20},
+  %basicstyle=\footnotesize\ttfamily,
+  basicstyle=\footnotesize\fontspec{Consolas},
+  keywordstyle=\color{pKeyword},
+  stringstyle=\color{pString},
+  commentstyle=\color{pComment},
+  backgroundcolor=\color{pBackground},
+  rulecolor=\color{pRule},
+  emph={format_string,eff_ana_bf,permute,eff_ana_btr},
+  emphstyle=\color{pIdentifier}
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  tabsize=4,
+  captionpos=t,
+  breaklines=true,
+  numberstyle=\scriptsize\color{pNumber},
+  numbers=left,
+  stepnumber=1,
+}
+
+%\lstset{basicstyle=\footnotesize\fontspec{Consolas}}
+%\lstset{basicstyle=\footnotesize\fontspec{Courier New}}
+%\newcommand*\lstinputpath[1]{\lstset{inputpath=#1}}
+%\lstinputpath{{./code/}}
+
+% End of file `elegantnote.cls'.

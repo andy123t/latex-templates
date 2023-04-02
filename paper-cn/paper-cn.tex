@@ -156,6 +156,9 @@
 \setlength{\belowcaptionskip}{3pt plus1pt minus2pt}
 %\setlength{\itemsep}{3pt plus1pt minus2pt}
 
+%-----设置图片的路径 -----
+\graphicspath{{./figure/}{./figures/}}
+
 %----- 设置公式间距为零 ------
 \AtBeginDocument{
 	\setlength{\abovedisplayskip}{5pt plus1pt minus1pt}
@@ -197,21 +200,20 @@
 \noindent\rule[0.3\baselineskip]{\textwidth}{0.5pt}
 }
 
+%----- 微分符号 -----
+\newcommand{\dif}{\mathop{}\!\mathrm{d}}
 
 %----- 定义新命令 -----
 \newcommand{\CC}{\ensuremath{\mathbb{C}}}
 \newcommand{\RR}{\ensuremath{\mathbb{R}}}
 \newcommand{\abs}[1]{\lvert#1\rvert}
 \newcommand{\norm}[1]{\lVert#1\rVert}
-\newcommand{\dif}{\mathop{}\!\mathrm{d}}
 \newcommand{\dx}[1][x]{\mathop{}\!\mathrm{d}#1}
 \newcommand{\ii}{\mathrm{i}\mkern1mu} % imaginary
 \newcommand{\refe}[2]{(\ref{#1})--(\ref{#2})}
 \newcommand{\A}{\mathcal{A}}
 \newcommand{\bA}{\boldsymbol{A}}
 \newcommand{\red}[1]{\textcolor{red}{#1}}
-
-\graphicspath{{./figures/}}
 
 
 %----- 题目等信息 -----
@@ -229,7 +231,7 @@
 摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容. 摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容.
 
 \medskip
-\noindent \textbf{关键词：} 关键词 1 ~ 关键词 2 ~ 关键词 3
+\noindent \textbf{关键词：} 关键词 1, ~ 关键词 2, ~ 关键词 3
 \end{abstract}
 
 
@@ -278,7 +280,7 @@
 \subsection{公式}
 数学公式的使用请参考公式手册 symbols-a4, 或者 《一份(不太)简短的 \LaTeX~2$\varepsilon$ 介绍》 (lshort-zh-cn).
 
-自定义命令表示的几个数学符号 $\RR$, $\CC$, $\A$, $\ii$, $\dif$, $\bA$.
+自定义命令表示的几个数学符号 $\RR$, $\CC$, $\A$, $\ii$, $\bA$. 微分符号 $\dif$ 以及 $\dx$, $\dx[t]$.
 
 在文中行内公式可以这么写: $a^2+b^2=c^2$, 这是勾股定理, 它还可以表示为 $c=\sqrt{a^2+b^2}$, 还可以让公式单独一段并且加上编号
 \begin{equation}\label{eqn:trifun}
@@ -317,104 +319,71 @@ align 和 gather 有对应的不带编号的版本 align* 和 gather*.
 多个公式组在一起公用一个编号, 编号位于公式的居中位置, amsmath 宏包提供了诸如 aligned、gathered 等环境, 与 equation 环境套用.
 
 这个公式使用 aligned 环境 (\textbf{推荐使用})
-\begin{equation}\label{eqn:1}
+\begin{equation}\label{eq:alignedEq}
 \left\{\begin{aligned}
-  &-\frac{\mathrm{d}^{2} u}{\mathrm{d} x^{2}}+\frac{\mathrm{d} u}{\mathrm{d} x}=\pi^{2} \sin (\pi x)+\pi \cos (\pi x),\quad x \in [0,1], \\
+  &-\frac{{\dif}^{2} u}{\dif x^{2}}+\frac{\dif u}{\dif x}=\pi^{2} \sin (\pi x)+\pi \cos (\pi x),\quad x \in [0,1], \\
   &u(0)=0,\quad u(1)=0.
 \end{aligned} \right.
 \end{equation}
+其中方程的解析解为 $u=\sin(\pi x)$.
 
 这个公式使用 array 环境
-\begin{equation}\label{eqn:2}
+\begin{equation}\label{eq:arrayEq}
 \left\{\begin{array}{l}
 \displaystyle
--\frac{\mathrm{d}^{2} u}{\mathrm{d} x^{2}}+\frac{\mathrm{d} u}{\mathrm{d} x}=\pi^{2} \sin (\pi x)+\pi \cos (\pi x),\quad x \in [0,1], \\[6pt]
+-\frac{{\dif}^{2} u}{\dif x^{2}}+\frac{\dif u}{\dif x}=\pi^{2} \sin (\pi x)+\pi \cos (\pi x),\quad x \in [0,1], \\[6pt]
 u(0)=0,\quad u(1)=0.
 \end{array} \right.
 \end{equation}
 
 aligned 与 equation 环境套用, 公式间距是自动调节的, 如果有分式, 分式也是行间显示. 如果用 array 与 equation 环境套用, 有时候需要手动调整公式行间距和行间显示.
 
+\subsection{定理环境}
 
-
-\section{定理环境}
-
-\begin{definition}
+\begin{definition}\label{def:foo}
 这是一个定义.
 \end{definition}
 
-\begin{proposition}
+\begin{proposition}\label{prop:foo}
 这是一个命题.
 \end{proposition}
 
-\begin{lemma}[Lemma] \label{lemma1}
+\begin{lemma}[Lemma]\label{lmm:foo}
 这是一个引理.
 \end{lemma}
 
-\begin{theorem}[Theorem]
+\begin{theorem}[Theorem]\label{thm:foo}
 这是一个定理.
 \end{theorem}
-\begin{proof}[\normalfont\bfseries 证明~\nopunct]
+\begin{proof}
 这是证明环境.
 \end{proof}
+
+\begin{corollary}\label{cor:foo}
+这是一个推论.
+\end{corollary}
 
 \begin{proposition}[Proposition]
 这是一个命题.
 \end{proposition}
 
-\begin{lemma}\label{lemma-convergence} {\rm (\textit{参考文献}\cite{LiLiu1997})}
-假设单步法具有 $p$ 阶精度, 且増量函数 $\varphi(x_{n}, u_{n}, h)$ 关于 $u$ 满足 {\rm Lipschitz} 条件
-\begin{equation}\label{eqn:3}
-|\varphi(x, u, h)-\varphi(x, \bar{u}, h)| \leqslant L_{\varphi}|u-\bar{u}|.
-\end{equation}
-\end{lemma}
-
-\begin{theorem}\label{theorem-convergence}
-假设单步法具有 $p$ 阶精度, 且増量函数 $\varphi(x_{n}, u_{n}, h)$ 关于 $u$ 满足 {\rm Lipschitz} 条件
-\begin{equation}\label{eqn:4}
+\begin{theorem}\label{thm:convergence}
+假设单步法具有 $p$ 阶精度, 且増量函数 $\varphi(x_{n}, u_{n}, h)$ 关于 $u$ 满足\textup{Lipschitz} 条件
+\begin{equation}\label{eq:conver2}
 |\varphi(x, u, h)-\varphi(x, \bar{u}, h)| \leqslant L_{\varphi}|u-\bar{u}|.
 \end{equation}
 \end{theorem}
-\begin{proof}
-由定理 \ref{lemma1} 和 \eqref{eqn:1} 式可以推出以上结论.
+\begin{proof}[\normalfont\bfseries 证明~\nopunct]
+由定理 \ref{thm:foo} 和 \eqref{eq:alignedEq} 式可以推出以上结论.
 \end{proof}
 
-\begin{corollary}\label{col-convergence}
-假设单步法具有 $p$ 阶精度, 且増量函数 $\varphi(x_{n}, u_{n}, h)$ 关于 $u$ 满足 {\rm Lipschitz} 条件
-\begin{equation}\label{eqn:5}
-|\varphi(x, u, h)-\varphi(x, \bar{u}, h)| \leqslant L_{\varphi}|u-\bar{u}|.
-\end{equation}
-\end{corollary}
-
-
-\begin{remark}\label{remark1}
+\begin{remark}\label{rem:remark}
 这是一个 remark.
 \end{remark}
 
 \begin{example}
 这是一个例子.
 \end{example}
-
-
-%\clearpage
-%\section{算法环境}
-%
-%如下是算法~\ref{alg:euclid}.
-%\begin{algorithm}[H]
-%    \small
-%    \caption{Euclid's algorithm}\label{alg:euclid}
-%    \begin{algorithmic}[1]
-%        \Procedure{Euclid}{$a,b$}\Comment{The g.c.d. of a and b}
-%        \State $r\gets a\bmod b$
-%        \While{$r\not=0$}\Comment{We have the answer if r is 0}
-%        \State $a\gets b$
-%        \State $b\gets r$
-%        \State $r\gets a\bmod b$
-%        \EndWhile\label{euclidendwhile}
-%        \State \Return $b$\Comment{The gcd is b}
-%        \EndProcedure
-%    \end{algorithmic}
-%\end{algorithm}
 
 
 %%%%%%%%%%%%%%%%%% 参考文献 %%%%%%%%%%%%%%%%%
@@ -431,8 +400,7 @@ aligned 与 equation 环境套用, 公式间距是自动调节的, 如果有分�
 
 %% 另一种方式
 %\begin{thebibliography}{99}
-%\bibitem{Tadmor2012} Tadmor~E. A review of numerical methods for nonlinear partial differential
-%  equations\allowbreak[J]. Bull. Amer. Math. Soc., 2012, 49(4): 507-554.
+%\bibitem{Tadmor2012} Tadmor~E. A review of numerical methods for nonlinear partial differential equations\allowbreak[J]. Bull. Amer. Math. Soc., 2012, 49(4): 507-554.
 %
 %\bibitem{LiLiu1997} 李荣华, 刘播. 微分方程数值解法\allowbreak[M]. 东南大学出版社, 1997.
 %

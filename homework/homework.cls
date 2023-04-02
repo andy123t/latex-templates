@@ -1,280 +1,297 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Felipe Portales' HomeWorks
-% Maintainer: Felipe Portales-Oliva (f.portales.oliva@gmail.com)
-%
-% Document class to produce simple yet stylish homework submissions
-%
-% This package is public domain, according to :
-%    The Unlicense <https://unlicense.org>
-%
-% Modfied based on fphw
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%  This is file `homework.cls',
+%%
+%%  @author andy123t
+%%  @date 2023/04/02
+%%  @version v1.0
+%%
 
-%%% Identification
+%----- Identification -----%
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{homework}[2023/04/01]
 
-\NeedsTeXFormat{LaTeX2e} % we need to have LaTeX2e for this to compile
-\ProvidesClass{homework}[2020/04/12] % homework is the name we need to provide to
-                                  % the documentclass command on the .tex file
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% % Enhanced datetime
-% % compile with XeLatex
-
-\RequirePackage{datetime} %datetime
-\renewcommand{\today}{ \number\year 年 \number\month 月 \number\day 日}
-
-%%% Preliminary declarations:
-%%%% These are some commands where we declare new commands for the class
-
-% We define the macro for the name of the professor
-\newcommand{\professor}[1]{ \newcommand{\professorloc}{#1} }
-% We define the macro for the name of the course
-\newcommand{\class}[1]{ \newcommand{\classlocal}{#1} }
-% We define the macro for the name of the institution
-\newcommand{\institute}[1]{ \newcommand{\instituteloc}{#1} }
-% We define the macro for the ID of you
-\newcommand{\IDnumber}[1]{ \newcommand{\IDnumberloc}{#1} }
-% We define the macro for the Major of you
-\newcommand{\Major}[1]{ \newcommand{\Majorloc}{#1} }
-
-%these are auxiliary definitions used in the title section
-\newcommand{\CourseLang}{Course}
-\newcommand{\DateLang}{Due Date}
-\newcommand{\StudentLang}{Student name}
-\newcommand{\ProfessorLang}{Professor}
-\newcommand{\IDnumberLang}{ID}
-\newcommand{\MajorLang}{Major}
-
-% Header and footers, we will use the titles also
-\RequirePackage{fancyhdr}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%% Options
-%%%% We now pass the options of the class
-
-% Two Columns are difficult to read and grade, we will not use them
-\DeclareOption{twocolumn}{\OptionNotUsed}
-
-% Two sided paper are difficult to read and grade, we will not use them
+%----- New Options -----%
+\newif\ifhw@en
+\DeclareOption{en}{\hw@entrue}
+\DeclareOption{cn}{\hw@enfalse}
 \DeclareOption{twoside}{\OptionNotUsed}
-
-
-% we hardcode some language options
-\DeclareOption{en}{
-    \renewcommand{\CourseLang}{Course}
-    \renewcommand{\ProfessorLang}{Professor}
-    \renewcommand{\DateLang}{Date}
-    \renewcommand{\StudentLang}{Name}
-    \renewcommand{\IDnumberLang}{Student ID}
-    \renewcommand{\MajorLang}{Major}
-}
-
-% Chinese options
-\DeclareOption{cn}{
-    \renewcommand{\CourseLang}{课程}
-    \renewcommand{\ProfessorLang}{教授}
-    \renewcommand{\DateLang}{日期}
-    \renewcommand{\StudentLang}{姓名}
-    \renewcommand{\IDnumberLang}{学号}
-    \renewcommand{\MajorLang}{专业}
-}
-
-
-\PassOptionsToClass{a4paper}{article}
-
+\DeclareOption{twocolumn}{\OptionNotUsed}
+%\DeclareOption{oneside}{\PassOptionsToClass{oneside}{article}}
+\DeclareOption{a4paper}{\PassOptionsToClass{a4paper}{article}}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
-
+\ExecuteOptions{en,a4paper}
 \ProcessOptions\relax
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%----- Load Class -----%
+\LoadClass[final]{article}
+%\RequirePackage[UTF8,zihao=-4,heading=true]{ctex}
 
-%%% Bulk Declarations
-%%%% Here we do more declarations and call other files
+%----- package for geometry -----%
+\RequirePackage{geometry}
+\geometry{left=3.0cm,right=3.0cm,top=3.2cm,bottom=2.8cm}
 
-
-% we need to load
-\LoadClass{article}
-
-
-\RequirePackage[cs4size,UTF8,heading=true]{ctex}
-
-\RequirePackage{amsmath,amssymb,amsthm,amsfonts}
-\RequirePackage{booktabs}
-\RequirePackage{graphicx}
+%----- package for different compilation modes -----%
 \RequirePackage{ifpdf,ifxetex}
 \ifxetex
-  \RequirePackage{fontspec}
+    \RequirePackage[UTF8,heading=true]{ctex}
+    \RequirePackage{fontspec}
 \else
-  \ifpdf
-  	\usepackage[utf8]{inputenc}
-  	\RequirePackage[T1]{fontenc}
-    \RequirePackage{epstopdf}
-  \else
+    \ifpdf
+    \usepackage[utf8]{inputenc}
+    \RequirePackage[T1]{fontenc}
+    \else
     \RequirePackage[dvipdfmx]{graphicx}
     \RequirePackage{bmpsize}
-  \fi
+    \fi
 \fi
 
+%----- packages -----%
+\RequirePackage{amsmath,amssymb,amsthm}
+\RequirePackage{booktabs}
+\RequirePackage{graphicx}
 \RequirePackage{float}
-\RequirePackage{cite}
 \RequirePackage{longtable}
 \RequirePackage{multirow}
 \RequirePackage{enumerate}
-\usepackage{graphicx} % Required for including images
+\RequirePackage{graphicx}
 \RequirePackage{color,xcolor}
-\RequirePackage{fancyhdr}
 \RequirePackage{tikz}
 \RequirePackage{tabularx}
 \RequirePackage{makecell}
 \RequirePackage{caption}
-%\RequirePackage[english]{babel}
+\RequirePackage{anyfontsize}
 
+%----- hardcode some language options -----%
+\ifhw@en
+    \RequirePackage[english]{babel}
+    %\newcommand{\CourseLang}{Course}
+    \newcommand{\DateLang}{Date}
+    \newcommand{\StudentLang}{Name}
+    \newcommand{\problemname}{Problem}
+    \newcommand{\solutionname}{Answer}
+    \renewcommand{\proofname}{Proof}
+    \newcommand{\punctname}{.}
+    \newcommand{\themname}{Theorem}
+    \newcommand{\lmmname}{Lemma}
+    \newcommand{\defnname}{Definition}
+    \newcommand{\propname}{Proposition}
+    \newcommand{\corname}{Corollary}
+    \newcommand{\remname}{Remark}
+    \newcommand{\exaname}{Example}
+    \else
+    %\newcommand{\CourseLang}{课程}
+    \newcommand{\DateLang}{日期}
+    \newcommand{\StudentLang}{姓名}
+    \newcommand{\problemname}{问题}
+    \newcommand{\solutionname}{解}
+    \renewcommand{\proofname}{证明}
+    \newcommand{\punctname}{\,:\,}
+    \newcommand{\themname}{定理}
+    \newcommand{\lmmname}{引理}
+    \newcommand{\defnname}{定义}
+    \newcommand{\propname}{命题}
+    \newcommand{\corname}{推论}
+    \newcommand{\remname}{注}
+    \newcommand{\exaname}{例}
+\fi
+
+%----- preliminary declarations -----%
+% define the macro for information of the course
+\newcommand{\courseinfo}[1]{\def\courseinfoloc{#1}}
+% define the macro for the name of the institution
+\newcommand{\institute}[1]{\def\instituteloc{#1}}
+% define the macro for information of the student
+\newcommand{\studentinfo}[1]{\def\studentinfoloc{#1} }
+
+% define the macro for the header
+\newcommand{\header}[1]{\def\headerloc{#1}}
+
+%----- graphics path -----%
 \graphicspath{{./figure/}{./figures/}{./image/}{./images/}}
 
-% we will modify sections, subsections and sub subsections
+%----- modify sections, subsections and sub subsections -----%
 \RequirePackage{titlesec}
-% Modification of section
-%\titleformat{\section}[block]{\normalsize\bfseries}{\thesection.}{.3cm}{}
-
-% modification of subsection and sub sub section
-%\titleformat{\subsection}[runin]{\bfseries}{ \thesubsection.}
-%{1mm}{}[:\quad]
-%\titleformat{\subsubsection}[runin]{\bfseries}{ \thesubsubsection.}
-%{1mm}{}[:\quad]
-
 \titleformat*{\section}{\large\bfseries}
 \titleformat*{\subsection}{\normalsize\bfseries}
 \titleformat*{\subsubsection}{\normalsize\bfseries}
 
-
-% Geometry lets us modify the sizes of the document nicely
-\RequirePackage{geometry}
-% Decent margins for the documents, as it is meant to be printed
-\geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
-
+%----- package for header and footer -----%
+\RequirePackage{fancyhdr}
 \fancyhead{}
 \fancyfoot{}
 \pagestyle{fancy}
-\renewcommand{\headrulewidth}{0.4pt} % we want rules
+\renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
-\fancyhead[RO] {\footnotesize\thepage}
-\fancyhead[LO] {\footnotesize{\ifx\classlocal\undefined{}\else\itshape\classlocal{} --{} \fi}\makeatletter\@title\makeatother }
-\fancyfoot[RO] {\footnotesize\itshape\makeatletter\@author\makeatother}
+\fancyhead[RO]{\footnotesize\thepage}
+%\fancyhead[LO]{\footnotesize{\ifx\courseinfoloc\undefined{}\else\itshape\courseinfoloc{~}--{}
+%\fi}\makeatletter\@title\makeatother}
+\fancyhead[LO]{\footnotesize{\ifx\headerloc\undefined{}\makeatletter\@title\makeatother\else\itshape\headerloc\fi}}
+\fancyfoot[RO]{\footnotesize\itshape\makeatletter\@author\makeatother}
+%\setlength{\headheight}{15pt}
+\setlength{\headsep}{18pt}
 
-% New title style for the document
+%----- new title page -----%
 \renewcommand{\maketitle}{%
     \thispagestyle{plain}
     \begin{center}
         \ifx\instituteloc\undefined{}\else{\scshape \instituteloc} \\[10pt] \fi
         \hrule
+        \vspace{15pt}
+        {\LARGE \bfseries \@title} \\[10pt]
+        \ifx\courseinfoloc\undefined{}\else{\large\courseinfoloc{}}\\[6pt]\fi
+        \StudentLang: \@author
+        \ifx\studentinfoloc\undefined{}\else\quad \studentinfoloc{} \fi
         \vspace{10pt}
-        {\LARGE \bfseries \@title} \\[5pt]
-        \StudentLang: {\itshape\@author}
-        \ifx\Majorloc\undefined{}\else \quad \MajorLang: {\itshape\Majorloc{}}\fi
-        \ifx\IDnumberloc\undefined{}\else \quad \IDnumberLang: {\IDnumberloc{}}\fi
-        \vspace{8pt}
         \hrule
-        \vspace{10pt}
-        \ifx\classlocal\undefined{}\else\CourseLang: {\classlocal{} \ifx\professorloc\undefined{}\else{\quad}\fi  }\fi
-        \ifx\professorloc\undefined{}\else{\ProfessorLang: {\professorloc}}\fi
-        \ifx\classlocal\undefined{}\else{\quad}\fi
+        \vspace{12pt}
         \DateLang: {\@date}
         \vspace{15pt}
     \end{center}
 }
 
-% definition of the "problem" environment
-% \usepackage[most]{tcolorbox}
-
-% \newsavebox{\problembox}
-% \newenvironment{problem}
-%     {\begin{center} \begin{minipage}{.98\textwidth}\begin{tcolorbox}[enhanced]}
-%     {\end{tcolorbox}\end{minipage} \end{center} }
-
-
+%----- definition of problem environment -----%
 \newcounter{problemname}
 \newenvironment{problem}{
     \stepcounter{problemname}
     \par\noindent
-    \textbf{问题\arabic{problemname}. 
+    \textbf{\problemname~\arabic{problemname}. 
 }}{
 \par %\medskip
 }
 
+%----- formula spacing -----%
+\AtBeginDocument{
+    \setlength{\abovedisplayskip}{5pt plus 2pt minus 2pt}
+    \setlength{\belowdisplayskip}{5pt plus 2pt minus 2pt}
+    \setlength{\abovedisplayshortskip}{3pt plus 1pt minus 1pt}
+    \setlength{\belowdisplayshortskip}{3pt plus 1pt minus 1pt}
+}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%----- column type of tabularx -----%
+\newcolumntype{L}{X}
+\newcolumntype{C}{>{\centering \arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft \arraybackslash}X}
+\newcolumntype{P}[1]{>{\centering \arraybackslash}p{#1}}
+
+%----- set up caption -----%
 \captionsetup{font={normalsize,singlespacing},labelformat={default},labelsep=quad}
-\captionsetup[figure]{position=bottom,skip={5pt},name={图}}
-\captionsetup[table]{position=top,skip={2pt},name={表}}
+\captionsetup[figure]{position=bottom,skip={5pt}}
+\captionsetup[table]{position=top,skip={2pt}}
 \setlength{\textfloatsep}{0pt}
 \setlength{\floatsep}{10pt plus 3pt minus 2pt}
 \setlength{\intextsep}{10pt}
 \setlength{\abovecaptionskip}{2pt plus1pt minus1pt}
 \setlength{\belowcaptionskip}{3pt plus1pt minus2pt}
 
-
-
-% definition of the "theorem" environment
+%----- definition of theorem environment -----%
 \theoremstyle{plain} 
-\newtheorem{definition}{\heiti 定义}[section]
-\newtheorem{proposition}{\heiti 命题}[section]
-\newtheorem{lemma}{\heiti 引理}[section]
-\newtheorem{theorem}{\heiti 定理}[section]
-\newtheorem{example}{\heiti 例子}[section]
-\newtheorem{corollary}{\heiti 推论}[section]
-\newtheorem{remark}{\heiti 注}[section]
-\renewcommand{\proofname}{\heiti 证明}
+\newtheorem{definition}{\defnname}
+\newtheorem{proposition}{\propname}
+\newtheorem{lemma}{\lmmname}
+\newtheorem{theorem}{\themname}
+\newtheorem{example}{\exaname}
+\newtheorem{corollary}{\corname}
+\newtheorem{remark}{\remname}
 %\renewcommand{\qedsymbol}{$\blacksquare$}
-\newenvironment{solution}
-  {\renewcommand\qedsymbol{}\begin{proof}[{\heiti 解}]} %$\blacksquare$
-  {\end{proof}}
-
-\RequirePackage{listings}
-
-%\definecolor{mBasic}{RGB}{248,248,242}       % default
-\definecolor{mKeyword}{RGB}{0,0,255}          % bule
-\definecolor{mString}{RGB}{160,32,240}        % purple
-\definecolor{mComment}{RGB}{34,139,34}        % green
-\definecolor{mBackground}{RGB}{245,245,245}   % lightgrey
-\definecolor{mNumber}{RGB}{128,128,128}       % gray
-
-\lstset{language=Matlab,               % choose the language of the code
-  xleftmargin=10pt,
-  xrightmargin=10pt,
-  frame=tlbr,framesep=6pt,framerule=0.4pt,  % sets the frame style
-  %frame=shadowbox,rulesepcolor=\color{red!20!green!20!blue!20},
-  basicstyle=\small\ttfamily,
-  keywordstyle={\color{mKeyword}},     % sets color for keywords
-  stringstyle={\color{mString}},       % sets color for strings
-  commentstyle={\color{mComment}},     % sets color for comments
-  rulecolor=\color{gray!80},
-  backgroundcolor=\color{gray!5}, % choose the background color
-  title=\lstname,                      % show the filename of files included with \lstinputlisting;
-  keywords={break,case,catch,classdef,continue,else,elseif,end,for,
-  function,global,if,otherwise,parfor,persistent,return,spmd,switch,try,while},
-  showspaces=false,                    % show spaces adding particular underscores
-  showstringspaces=false,              % underline spaces within strings
-  showtabs=false,                      % show tabs within strings adding particular underscores
-  tabsize=4,                           % sets default tabsize to 2 spaces
-  captionpos=t,                        % sets the caption-position to bottom
-  breaklines=true,                     % sets automatic line breaking
-  %numberstyle=\tiny\color{mNumber},
-%  numbers=left,                        % where to put the line-numbers
-%  stepnumber=1,                        % the step between two line-numbers.
-%  %numbersep=5pt,                      % how far the line-numbers are from the code
+\renewenvironment{proof}[1][\proofname]{\par
+    \pushQED{\qed}%
+    \normalfont \topsep6\p@\@plus6\p@\relax
+    \trivlist\item[\hskip\labelsep
+    \bfseries #1\@addpunct{\punctname}]\ignorespaces
+}{
+    \popQED\endtrivlist\@endpefalse
+}
+\newenvironment{solution}{
+\renewcommand\qedsymbol{}\begin{proof}[{\solutionname}]
+}{\end{proof}
 }
 
 
+%----- code highlighting -----%
+\RequirePackage{listings}
 
-%%% We finish the class with this command
+% matlab highlight color settings
+%\definecolor{mBasic}{RGB}{248,248,242}
+\definecolor{mKeyword}{RGB}{0,0,255}
+\definecolor{mString}{RGB}{160,32,240}
+\definecolor{mComment}{RGB}{34,139,34}
+\definecolor{mNumber}{RGB}{96,96,96}
+\definecolor{mBackground}{RGB}{255,255,255}
+\definecolor{mRule}{RGB}{96,96,96}
+
+% python highlight color settings
+%\definecolor{pBasic}{RGB}{248,248,242}
+\definecolor{pKeyword}{RGB}{228,0,128}
+\definecolor{pString}{RGB}{148,0,209}
+\definecolor{pComment}{RGB}{117,113,94}
+\definecolor{pIdentifier}{RGB}{166,226,46}
+\definecolor{pNumber}{RGB}{96,96,96}
+\definecolor{pBackground}{RGB}{255,255,255}
+\definecolor{pRule}{RGB}{96,96,96}
+
+%----- matlab highlight style -----%
+\lstdefinestyle{matlab}
+{
+  language=matlab,
+  xleftmargin=23pt,
+  xrightmargin=5pt,
+  frame=tlbr,framesep=4pt,framerule=0.5pt,
+  framexleftmargin=17pt,
+  %frame=shadowbox,rulesepcolor=\color{red!20!green!20!blue!20},
+  basicstyle=\footnotesize\ttfamily,
+  %basicstyle=\footnotesize\fontspec{Consolas},
+  keywordstyle={\color{mKeyword}},
+  stringstyle={\color{mString}},
+  commentstyle={\color{mComment}},
+  backgroundcolor=\color{mBackground},
+  rulecolor=\color{mRule},
+  keywords={
+    break,case,catch,classdef,continue,else,
+    elseif,end,for,function,global,if,otherwise,parfor,
+    persistent,return,spmd,switch,try,while
+  },
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  tabsize=4,
+  captionpos=t,
+  breaklines=true,
+  numberstyle=\scriptsize\color{mNumber},
+  %numbersep=9pt,
+  numbers=left,
+  stepnumber=1,
+}
+
+%----- python highlight style -----%
+\lstdefinestyle{python}{
+  language=python,
+  xleftmargin=23pt,
+  xrightmargin=5pt,
+  frame=tlbr,framesep=4pt,framerule=0.5pt,
+  framexleftmargin=18pt,
+  %frame=shadowbox,rulesepcolor=\color{red!20!green!20!blue!20},
+  basicstyle=\footnotesize\ttfamily,
+  %basicstyle=\footnotesize\fontspec{Consolas},
+  keywordstyle=\color{pKeyword},
+  stringstyle=\color{pString},
+  commentstyle=\color{pComment},
+  backgroundcolor=\color{pBackground},
+  rulecolor=\color{pRule},
+  emph={format_string,eff_ana_bf,permute,eff_ana_btr},
+  emphstyle=\color{pIdentifier}
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  tabsize=4,
+  captionpos=t,
+  breaklines=true,
+  numberstyle=\scriptsize\color{pNumber},
+  %numbersep=9pt,
+  numbers=left,
+  stepnumber=1,
+}
+
+%----- end input -----%
 \endinput
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%\titleformat*{\section}{\Large\bfseries}
-%\titleformat*{\subsection}{\normalsize\bfseries}
-%\titleformat*{\subsubsection}{\normalsize\bfseries}
+% End of file `howework.cls'.

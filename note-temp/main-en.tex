@@ -14,11 +14,10 @@
 %\usetikzlibrary{shapes.geometric,shapes.symbols,shapes.callouts,decorations.markings,shapes.misc,shapes.arrows}
 
 \usepackage[numbers,sort&compress]{natbib}
-\def\bibfont{\small}      % 修改参考文献字体
-\setlength{\bibsep}{8pt}  % 调整参考文献间距
-%\usepackage{subfig}
+%\def\bibfont{\small}      % bib font size
+%\setlength{\bibsep}{8pt}  % vertical space of bib
 
-% --- 算法宏包及设置 ---
+%----- package for algorithm -----
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \floatname{algorithm}{Algorithm}
@@ -26,8 +25,11 @@
 \algrenewcommand\algorithmicensure{\textbf{Output:}}
 
 
-% --- 代码高亮 ---
-%\input{matlab-style.tex}
+%----- code highlight -----
+%\lstset{basicstyle=\footnotesize\fontspec{Consolas}}
+%\lstset{basicstyle=\footnotesize\fontspec{Courier New}}
+%\newcommand*\lstinputpath[1]{\lstset{inputpath=#1}}
+%\lstinputpath{{./M-files/}}
 
 %\definecolor{hong}{RGB}{199,21,133}
 %\definecolor{huang}{RGB}{255,164,0}
@@ -40,7 +42,8 @@
 %\bibliographystyle{thuthesis-numeric}
 \bibliographystyle{plain}
 
-% --- 自定义命令 -----
+
+%----- define new command -----
 \newcommand{\CC}{\ensuremath{\mathbb{C}}}
 \newcommand{\RR}{\ensuremath{\mathbb{R}}}
 \newcommand{\A}{\mathcal{A}}
@@ -51,8 +54,9 @@
 \newcommand{\mT}{\mathrm{T}}
 \newcommand{\md}{\mathrm{d}}
 
-%\title{\LaTeX 笔记模板}
-%\author{某某某}
+
+%\title{\LaTeX note template}
+%\author{Author}
 %\institute{}
 %\version{1.3}
 %\date{\zhtoday}
@@ -61,12 +65,9 @@
 \begin{document}
 %\maketitle
 
-\pagenumbering{Roman} % 页码为大写罗马数字
-
 \input{cover2.tex}
 
-
-% ----- generate a empty page -----
+%----- generate a empty page -----
 %\clearpage%
 %\thispagestyle{empty}%
 %\addtocounter{page}{-1}%
@@ -74,20 +75,26 @@
 %\clearpage
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagenumbering{Roman} % page is Roman numerals
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \clearpage
 %\phantomsection
 \pdfbookmark[1]{Contents}{toc}
 \tableofcontents
 \clearpage
+
 \setlist[itemize]{label=$\circ$}
 
-\pagenumbering{arabic}  % 页码为阿拉伯数字
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\pagenumbering{arabic}  % page is arabic numerals
 
-%==========================================%
+%%%%%%%%%%%%%%%%%%%%%% Body Here %%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 正文内容从这里开始  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{ElegantNote Instructions}
 \thispagestyle{empty}
@@ -302,37 +309,81 @@ Thank \href{https://github.com/sikouhjw}{sikouhjw} and \href{https://github.com/
 \end{enumerate}
 
 
+\section{code highlight}
+
+MATLAB code
+
+\begin{lstlisting}[style=matlab,title={MATLAB code}]
+% Euler method for the ODE model
+% u'(x)=x^2+x-u, x in [0,1]
+% Initial condition: u(0)=0 ;
+% Exact solution: u(x)=-exp(-x)+x^2-x+1.
+clear all;  clf
+h=0.1;
+x=0:h:1;
+N=length(x)-1;
+u(1)=0;                        % initial value
+fun=@(t,u) t.^2+t-u;           % RHS
+
+for n=1:N
+    u(n+1)=u(n)+h.*fun(x(n),u(n));
+end
+
+ue=-exp(-x)+x.^2-x+1;          % exact solution
+plot(x,ue,'b-',x,u,'r+','LineWidth',1)
+legend('Exact','Numerical','location','North')
+%title('Euler method','fontsize',12)
+set(gca,'fontsize',12)
+xlabel('x','fontsize',16), ylabel('u','fontsize',16,'Rotation',0)
+\end{lstlisting}
+
+Python code
+
+\begin{lstlisting}[style=python,title={Python code}]
+#PythonDraw.py
+import turtle as t
+t.setup(650, 350, 200, 200)
+t.penup()
+t.fd(-250)
+t.pendown()
+t.pensize(25)
+t.pencolor("purple color")
+t.seth(-40)
+for i in range(4):
+    t.circle(40, 80)
+    t.circle(-40, 80)
+t.circle(40, 80/2)
+t.fd(40)
+t.circle(16, 180)
+t.fd(40 * 2/3)
+t.done()
+\end{lstlisting}
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%% 参考文献 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%% References %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \clearpage
 \phantomsection
-\addcontentsline{toc}{section}{References} % 添加  "参考文献 " 到目录
+\addcontentsline{toc}{section}{References}
 
-% 生成参考文献, 使用第一种请把第二种全部注释
-
-% 第一种方式, 使用 bib 文件
-
-%\nocite{*}  % 可以暂时显示全部参考文献, 包括未引用的
-
+%\nocite{*}
 \bibliography{reference}
 
 
-% 第二种方式, 按照格式直接写文献信息, 使用第二种请把第一种全部注释
-
 %\begin{thebibliography}{99}
+%\bibitem{Adams2003} Adams~R~A, Fournier~J~J~F. Sobolev spaces[M]. Elsevier, 2003.
+%
+%\bibitem{GoVa2013} Gene~H. Golub and Charles~F. Van~Loan. Matrix computations. The Johns Hopkins University Press, Baltimore, 4th edition, 2013.
+%
+%\bibitem{Shen1994} Shen~J. Efficient spectral-Galerkin method I. Direct solvers of second- and fourth-order equations using Legendre polynomials[J]. SIAM J. Sci. Comput., 1994, 15(6): 1489-1505.
+%
 %\bibitem{Tadmor2012} Tadmor~E. A review of numerical methods for nonlinear partial differential
-%  equations\allowbreak[J]. Bull. Amer. Math. Soc., 2012, 49(4): 507-554.
+%  equations[J]. Bull. Amer. Math. Soc., 2012, 49(4): 507-554.
 %
-%\bibitem{LiLiu1997} 李荣华, 刘播. 微分方程数值解法\allowbreak[M]. 东南大学出版社, 1997.
-%
-%\bibitem{Adams2003} Adams~R~A, Fournier~J~J~F. Sobolev spaces\allowbreak[M]. Elsevier, 2003.
-%
-%\bibitem{TreWei2014}Trefethen~L~N, Weideman~J~A~C. The exponentially convergent trapezoidal rule\allowbreak[J]. SIAM Rev., 2014, 56(3): 385-458.
-%
-%\bibitem{Shen1994} Shen~J. Efficient spectral-Galerkin method I. Direct solvers of second- and fourth-order equations using Legendre polynomials\allowbreak[J]. SIAM J. Sci. Comput., 1994, 15(6): 1489-1505.
+%\bibitem{TreWei2014} Trefethen~L~N, Weideman~J~A~C. The exponentially convergent trapezoidal rule[J]. SIAM Rev., 2014, 56(3): 385-458.
 %
 %\end{thebibliography}
 

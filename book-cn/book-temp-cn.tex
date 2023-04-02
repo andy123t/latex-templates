@@ -194,6 +194,8 @@
 \setlength{\belowcaptionskip}{3pt plus 1pt minus 2pt}
 \setlength{\itemsep}{3pt plus1pt minus2pt}
 
+%-----设置图片的路径-----
+\graphicspath{{./figure/}{./figures/}{./image/}{./images/}}
 
 %-----重新设置图表 autoref-----
 \renewcommand{\figureautorefname}{图}
@@ -268,18 +270,20 @@
 \setlength{\bibsep}{8pt}  % 调整参考文献间距
 
 
-%-----自定义命令-----
+%----- 微分符号 -----
+\newcommand{\dif}{\mathop{}\!\mathrm{d}}
+
+%----- 定义新命令 -----
 \newcommand{\CC}{\ensuremath{\mathbb{C}}}
 \newcommand{\RR}{\ensuremath{\mathbb{R}}}
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\dx}[1][x]{\mathop{}\!\mathrm{d}#1}
+\newcommand{\ii}{\mathrm{i}\mkern1mu} % imaginary
+\newcommand{\refe}[2]{(\ref{#1})--(\ref{#2})}
 \newcommand{\A}{\mathcal{A}}
-\newcommand{\ii}{\bm{\mathrm{i}}\,}  %虚部
-\newcommand{\md}{\mathrm{d}\,}
 \newcommand{\bA}{\boldsymbol{A}}
 \newcommand{\red}[1]{\textcolor{red}{#1}}
-
-
-%-----设置图片的路径-----
-\graphicspath{{./figure/}{./figures/}{./image/}{./images/}}
 
 
 %----书籍标题作者等信息 -----
@@ -296,12 +300,11 @@
 \thispagestyle{empty}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \frontmatter   %页码罗马数字, 章节不编号
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \chapter{序 I}
@@ -317,7 +320,7 @@
 
 这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言这部分是前言
 
-%%%%%%%%%%%%%%%%%%%%%%% 生成目录  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%% 生成目录  %%%%%%%%%%%%%%%%%%
 
 \renewcommand\contentsname{目~~录}
 \cleardoublepage
@@ -326,11 +329,11 @@
 \tableofcontents
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \mainmatter   % 页码阿拉伯数字, 章节编号
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 正文内容从这里开始  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%% 正文内容从这里开始  %%%%%%%%%%%%%%%
 
 
 \chapter{引言}
@@ -345,12 +348,11 @@
 
 这是一个引用的示例 \cite{Tadmor2012} 和 \cite{LiLiu1997,Adams2003,TreWei2014}.
 
-这是一大段文字这是一大段文字中英文混排 Numerical Methods. 这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字.
+这是中文与 English 混排. 标点统一使用英文的标点 (英文没有的除外). 这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字. 这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字.
 
 \section{主要结论}
 
 这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字.
-
 
 
 \section{结构安排}
@@ -369,7 +371,7 @@
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LaTeX 常用环境 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%% LaTeX 常用环境 %%%%%%%%%%%%%%%%
 
 \chapter{LaTeX 常用环境}
 
@@ -409,7 +411,7 @@
 
 数学公式的使用请参考公式手册 symbols-a4, 或者 《一份(不太)简短的 \LaTeX~2$\varepsilon$ 介绍》 (lshort-zh-cn).
 
-自定义命令表示的几个数学符号 $\RR$, $\CC$, $\A$, $\ii$, $\md$, $\bA$.
+自定义命令表示的几个数学符号 $\RR$, $\CC$, $\A$, $\ii$, $\bA$. 微分符号 $\dif$ 以及 $\dx$, $\dx[t]$.
 
 在文中行内公式可以这么写: $a^2+b^2=c^2$, 这是勾股定理, 它还可以表示为 $c=\sqrt{a^2+b^2}$, 还可以让公式单独一段并且加上编号
 \begin{equation}\label{eqn:trifun}
@@ -438,7 +440,7 @@ a ={} & b + c \\
 \begin{gather}
 a = b + c \\
 d = e + f + g \notag \\
-%h + i = j \\
+h + i = j \\
 l + m = n
 \end{gather}
 
@@ -448,18 +450,19 @@ align 和 gather 有对应的不带编号的版本 align* 和 gather*.
 多个公式组在一起公用一个编号, 编号位于公式的居中位置, amsmath 宏包提供了诸如 aligned、gathered 等环境, 与 equation 环境套用.
 
 这个公式使用 aligned 环境 (\textbf{推荐使用})
-\begin{equation}\label{eqn:1}
+\begin{equation}\label{eq:alignedEq}
 \left\{\begin{aligned}
-  &-\frac{\mathrm{d}^{2} u}{\mathrm{d} x^{2}}+\frac{\mathrm{d} u}{\mathrm{d} x}=\pi^{2} \sin (\pi x)+\pi \cos (\pi x),\quad x \in [0,1], \\
+  &-\frac{{\dif}^{2} u}{\dif x^{2}}+\frac{\dif u}{\dif x}=\pi^{2} \sin (\pi x)+\pi \cos (\pi x),\quad x \in [0,1], \\
   &u(0)=0,\quad u(1)=0.
 \end{aligned} \right.
 \end{equation}
+其中方程的解析解为 $u=\sin(\pi x)$.
 
 这个公式使用 array 环境
-\begin{equation}\label{eqn:2}
+\begin{equation}\label{eq:arrayEq}
 \left\{\begin{array}{l}
 \displaystyle
--\frac{\mathrm{d}^{2} u}{\mathrm{d} x^{2}}+\frac{\mathrm{d} u}{\mathrm{d} x}=\pi^{2} \sin (\pi x)+\pi \cos (\pi x),\quad x \in [0,1], \\[6pt]
+-\frac{{\dif}^{2} u}{\dif x^{2}}+\frac{\dif u}{\dif x}=\pi^{2} \sin (\pi x)+\pi \cos (\pi x),\quad x \in [0,1], \\[6pt]
 u(0)=0,\quad u(1)=0.
 \end{array} \right.
 \end{equation}
@@ -467,29 +470,28 @@ u(0)=0,\quad u(1)=0.
 aligned 与 equation 环境套用, 公式间距自动调节, 如果有分式, 分式也是行间显示. 如果用 array 与 equation 环境套用, 需要手动调整公式行间距和行间显示.
 
 
-
 \section{定理环境}
 
-\begin{definition}
+\begin{definition}\label{def:foo}
 这是一个定义.
 \end{definition}
 
-\begin{proposition}
+\begin{proposition}\label{prop:foo}
 这是一个命题.
 \end{proposition}
 
-\begin{lemma}[Lemma]\label{lemma1}
+\begin{lemma}[Lemma]\label{lmm:foo}
 这是一个引理.
 \end{lemma}
 
-\begin{theorem}[Theorem]
+\begin{theorem}[Theorem]\label{thm:foo}
 这是一个定理.
 \end{theorem}
 \begin{proof}
 这是证明环境.
 \end{proof}
 
-\begin{corollary}
+\begin{corollary}\label{cor:foo}
 这是一个推论.
 \end{corollary}
 
@@ -497,32 +499,31 @@ aligned 与 equation 环境套用, 公式间距自动调节, 如果有分式, �
 这是一个命题.
 \end{proposition}
 
-\begin{lemma}\label{lemma-convergence} {\rm (\textit{参考文献}\cite{LiLiu1997})}
-假设单步法具有 $p$ 阶精度, 且増量函数 $\varphi(x_{n}, u_{n}, h)$ 关于 $u$ 满足 {\rm Lipschitz} 条件
-\begin{equation}\label{eqn:3}
+\begin{lemma}\label{lmm:convergence} {\rm (\textit{参考文献}\cite{LiLiu1997})}
+假设单步法具有 $p$ 阶精度, 且増量函数 $\varphi(x_{n}, u_{n}, h)$ 关于 $u$ 满足 \textup{Lipschitz} 条件
+\begin{equation}\label{eq:conver1}
 |\varphi(x, u, h)-\varphi(x, \bar{u}, h)| \leqslant L_{\varphi}|u-\bar{u}|.
 \end{equation}
 \end{lemma}
 
-\begin{theorem}\label{theorem-convergence}
-假设单步法具有 $p$ 阶精度, 且増量函数 $\varphi(x_{n}, u_{n}, h)$ 关于 $u$ 满足 {\rm Lipschitz} 条件
-\begin{equation}\label{eqn:4}
+\begin{theorem}\label{thm:convergence}
+假设单步法具有 $p$ 阶精度, 且増量函数 $\varphi(x_{n}, u_{n}, h)$ 关于 $u$ 满足\textup{Lipschitz} 条件
+\begin{equation}\label{eq:conver2}
 |\varphi(x, u, h)-\varphi(x, \bar{u}, h)| \leqslant L_{\varphi}|u-\bar{u}|.
 \end{equation}
 \end{theorem}
-%\begin{proof}[\normalfont\bfseries 证明~\nopunct]
-%由定理 \ref{lemma1} 和 \eqref{eqn:1} 式可以推出以上结论.
-%\end{proof}
+\begin{proof}[\normalfont\bfseries 证明~\nopunct]
+由定理 \ref{lmm:convergence} 和 \eqref{eq:alignedEq} 式可以推出以上结论.
+\end{proof}
 
-\begin{corollary}\label{col-convergence}
-假设单步法具有 $p$ 阶精度, 且増量函数 $\varphi(x_{n}, u_{n}, h)$ 关于 $u$ 满足 {\rm Lipschitz} 条件
-\begin{equation}\label{eqn:5}
+\begin{corollary}\label{col:convergence}
+假设单步法具有 $p$ 阶精度, 且増量函数 $\varphi(x_{n}, u_{n}, h)$ 关于 $u$ 满足 \textup{Lipschitz} 条件
+\begin{equation}\label{eq:conver3}
 |\varphi(x, u, h)-\varphi(x, \bar{u}, h)| \leqslant L_{\varphi}|u-\bar{u}|.
 \end{equation}
 \end{corollary}
 
-
-\begin{remark}\label{remark1}
+\begin{remark}\label{rem:remark}
 这是一个 remark.
 \end{remark}
 
@@ -535,42 +536,42 @@ aligned 与 equation 环境套用, 公式间距自动调节, 如果有分式, �
 
 如下是算法~\ref{alg:euclid}.
 \begin{algorithm}[H]
-    \small
-    \caption{~Euclid's algorithm}\label{alg:euclid}
-    \begin{algorithmic}[1]
-        \Procedure{Euclid}{$a,b$}\Comment{The g.c.d. of a and b}
-        \State $r\gets a\bmod b$
-        \While{$r\not=0$}\Comment{We have the answer if r is 0}
-        \State $a\gets b$
-        \State $b\gets r$
-        \State $r\gets a\bmod b$
-        \EndWhile\label{euclidendwhile}
-        \State \Return $b$\Comment{The gcd is b}
-        \EndProcedure
-    \end{algorithmic}
+\small
+\caption{~Euclid's algorithm}\label{alg:euclid}
+\begin{algorithmic}[1]
+  \Procedure{Euclid}{$a,b$}\Comment{The g.c.d. of a and b}
+  \State $r\gets a\bmod b$
+  \While{$r\not=0$}\Comment{We have the answer if r is 0}
+  \State $a\gets b$
+  \State $b\gets r$
+  \State $r\gets a\bmod b$
+  \EndWhile\label{euclidendwhile}
+  \State \Return $b$\Comment{The gcd is b}
+  \EndProcedure
+\end{algorithmic}
 \end{algorithm}
 
+如下是算法~\ref{alg:foo}, 算法宽度可以通过 minipage 宏包调节.
 
-如下是算法~\ref{alg:name}, 算法宽度可以通过 minipage 宏包调节.
 \begin{center}
 \vspace{-2ex}
 \begin{minipage}{.9\linewidth}
 \begin{algorithm}[H]
-\caption{~算法的名字}\label{alg:name}  % 算法的名字
+\caption{~算法的名字}\label{alg:foo}
 \begin{algorithmic}[1]
-\Require  input parameters A, B, C  % 算法的输入
-\Ensure  output result   % 算法的结果输出
-\State some description 算法介绍   % \State 后写一般语句
-\For{condition}    % For 语句，需要和 EndFor对应
-　　\State ...
-　　\If{condition}  % If 语句，需要和 EndIf对应
-　　　　\State ...
-　　\Else
-　　　　\State ...
-　　\EndIf
+\Require input parameters A, B, C
+\Ensure output result
+\State some description 算法介绍
+\For{condition}
+  \State ...
+  \If{condition}
+    \State ...
+    \Else
+    \State ...
+  \EndIf
 \EndFor
-\While{condition}  % While语句，需要和 EndWhile对应
-　　\State ...
+\While{condition}
+  \State ...
 \EndWhile
 \State \Return result
 \end{algorithmic}
@@ -585,15 +586,15 @@ aligned 与 equation 环境套用, 公式间距自动调节, 如果有分式, �
 \chapter{微分方程的数值方法}
 
 本章我们考虑具有以下微分方程:
-\begin{equation}\label{eqn:pde}
+\begin{equation}\label{eq:pde}
 \left\{\begin{aligned}
-& L u=-\frac{\mathrm{d}^{2} u}{\mathrm{d} x^{2}}+\frac{\mathrm{d} u}{\mathrm{d} x}+q u=f, \quad a < x < b, \\
+& L u=-\frac{{\dif}^{2} u}{\dif x^{2}}+\frac{\dif u}{\dif x}+q u=f, \quad a < x < b, \\
 & u(a)=\alpha, \quad u(b)=\beta.
 \end{aligned}\right.
 \end{equation}
 其中 $q, f$ 为 $[a,b]$ 上的连续函数, $q \geqslant 0$; $\alpha, \beta$ 为给定常数. 这是最简单的椭圆方程第一边值问题 .
 
-问题 \eqref{eqn:pde} 存在唯一解 (引用示例参考文献 \cite{LiLiu1997}).
+问题 \eqref{eq:pde} 存在唯一解 (引用示例参考文献 \cite{LiLiu1997}).
 
 
 \section{有限差分方法}
@@ -602,7 +603,7 @@ aligned 与 equation 环境套用, 公式间距自动调节, 如果有分式, �
 \subsection{数值格式}
 将区间 $[a,b]$ 分成 $N$ 等分, 分点为
 \begin{equation*}
-  x_{i}=a+i h \quad i=0,1, \cdots, N,
+  x_{i}=a+i h, \quad i=0,1, \cdots, N,
 \end{equation*}
 其中 $h=(b-a) / N$. 于是我们得到区间 $I=[a,b]$ 的一个网格剖分. $x_i$ 称为网格的节点, $h$ 称为步长.
 
@@ -613,7 +614,7 @@ aligned 与 equation 环境套用, 公式间距自动调节, 如果有分式, �
 其中  $q_{i}=q(x_{i})$, $f_{i}=f(x_{i})$.
 
 以上差分方程对于 $i=1,2, \cdots, N-1$ 都成立, 加上边值条件 $u_{0}=\alpha, u_{N}=\beta$, 就得到关于 $u_i$ 的差分格式:
-\begin{equation}\label{eqn:fdm}
+\begin{equation}\label{eq:fdm}
 \left\{\begin{aligned}
 & L_{h} u_{i}=-\frac{u_{i+1}-2 u_{i}+u_{i-1}}{h^{2}}+\frac{u_{i+1}-u_{i-1}}{2h}+q_{i} u_{i}=f_{i}, ~ i=1, \cdots, N-1, \\
 & u_{0}=\alpha, \quad u_{N}=\beta.
@@ -635,7 +636,7 @@ aligned 与 equation 环境套用, 公式间距自动调节, 如果有分式, �
   \boldsymbol{A}\boldsymbol{u}=\boldsymbol{f}.
 \end{equation*}
 其中矩阵 $\boldsymbol{A}$、向量 $\boldsymbol{f}$ 的定义如下, 注意向量 $\boldsymbol{f}$ 的首尾元素已包含了 $x=a$ 和 $x=b$ 处的边界条件.
-\begin{equation}\label{equ:matrix1}
+\begin{equation}\label{eq:matrix1}
 \boldsymbol{A}=\begin{bmatrix}
 \frac{2}{h^{2}}+q_{1} & \frac{1}{2h}-\frac{1}{h^{2}} &   &  &  \\[8pt]
  -\frac{1}{2h}-\frac{1}{h^{2}} & \frac{2}{h^{2}}+q_{2} & \frac{1}{2h}-\frac{1}{h^{2}}  & &  \\[8pt]
@@ -648,20 +649,20 @@ aligned 与 equation 环境套用, 公式间距自动调节, 如果有分式, �
 \end{equation}
 
 上一个矩阵用了 \verb|bmatrix| 环境, 也可以使用 \verb|array| 环境.
-\begin{equation}\label{equ:matrix2}
+\begin{equation}\label{eq:matrix2}
 \boldsymbol{A}=\left[\begin{array}{cccccc}
-\frac{2}{h^{2}}+q_{1} & \frac{1}{2h}-\frac{1}{h^{2}} &   &  &  \\[8pt]
+\frac{2}{h^{2}}+q_{1} & \frac{1}{2h}-\frac{1}{h^{2}} &  &  &  \\[8pt]
  -\frac{1}{2h}-\frac{1}{h^{2}} & \frac{2}{h^{2}}+q_{2} & \frac{1}{2h}-\frac{1}{h^{2}}  & &  \\[8pt]
-  &  &  &  &    \\
-  &  \ddots  & \ddots  &  \ddots  &  \\[8pt]
-  &  &  &  &    \\
-  &   & -\frac{1}{2h}-\frac{1}{h^{2}} & \frac{2}{h^{2}}+q_{N-2}& \frac{1}{2h}-\frac{1}{h^{2}} \\[8pt]
+  &  &  &  &   \\
+  &  \ddots  & \ddots & \ddots &  \\[8pt]
+  &  &  &  &   \\
+  &   & -\frac{1}{2h}-\frac{1}{h^{2}} & \frac{2}{h^{2}}+q_{N-2} & \frac{1}{2h}-\frac{1}{h^{2}} \\[8pt]
   &  &  & -\frac{1}{2h}-\frac{1}{h^{2}} & \frac{2}{h^{2}}+q_{N-1}
 \end{array}\right].
 \end{equation}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 插图环境 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%% 插图环境 %%%%%%%%%%%%%%%%%%%
 
 \chapter{插图LaTeX环境}
 
@@ -679,7 +680,7 @@ XeLaTeX 环境下可以使用 EPS、PDF、PNG、JPEG、BMP 格式的图片, 当�
 \end{figure}
 
 \clearpage
-两个图左右并排放置, 共用一个标题.
+两个图左右并排放置, 共用一个标题, 如图~\ref{fig:image1}.
 \begin{figure}[htp!]
   \centering
   \includegraphics[width=0.45\linewidth]{image1.eps}
@@ -707,7 +708,7 @@ XeLaTeX 环境下可以使用 EPS、PDF、PNG、JPEG、BMP 格式的图片, 当�
 \end{minipage}
 \end{figure}
 
-%使用 subfig 宏包实现多图并排.
+%使用 subfig 宏包实现多图并排, 如图~\ref{fig:images}.
 %\begin{figure}[htp!]
 %\centering
 %\subfloat[Subcaption A]{\includegraphics[width=0.3\linewidth]{image1}}
@@ -721,11 +722,12 @@ XeLaTeX 环境下可以使用 EPS、PDF、PNG、JPEG、BMP 格式的图片, 当�
 %\hfill
 %\subfloat[Subcaption F]{\includegraphics[width=0.3\linewidth]{image2}}
 %\caption{六个图并排.}
+%\label{fig:images}
 %\end{figure}
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 表格环境 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%% 表格环境 %%%%%%%%%%%%%%%%%%
 
 \chapter{表格环境}
 
@@ -759,7 +761,7 @@ LaTeX 的 Table 环境一个浮动体环境, 浮动体排版与 Figure 环境类
 \end{table}
 
 \clearpage
-基于 tabular 环境设置一些格式: 上下表格线加粗.
+基于 tabular 环境设置一些格式: 上下表格线加粗, 如表~\ref{tab:error1}.
 \begin{table}[!htp]
 %\small
 \centering
@@ -770,28 +772,28 @@ LaTeX 的 Table 环境一个浮动体环境, 浮动体排版与 Figure 环境类
 \Xhline{2\arrayrulewidth}
 degree &  step-size~$h$  & $L^2$-errors  &  order  & $H^1$-errors & order & $L^\infty$-errors  &  order \\
 \hline
-   &  1/128    & 9.18E-06    &2.02    & 7.70E-03  &1.01       & 6.46E-07    &2.02   \\
-1  &  1/256    & 2.29E-06    &2.01    & 1.92E-03  &1.00       & 1.61E-07    &2.01   \\
-   &  1/512    & 5.70E-07    &2.00    & 9.56E-04  &1.00       & 4.01E-08    &2.00   \\
-\hline  %   \cline{1-8}
-   &  1/128    & 1.39E-08    &3.01    & 1.15E-05  &2.01       & 3.48E-12   &4.02    \\
-2  &  1/256    & 1.73E-09    &3.01    & 2.88E-06  &2.01       & 3.27E-13   &3.94    \\
-   &  1/512    & 2.17E-10    &3.00    & 7.24E-06  &2.00       & 6.66E-13   &1.55    \\
-\hline  %   \cline{1-8}
-   &  1/32     & 2.28E-09    &4.05    & 6.92E-07  &3.04       & 1.45E-15   &8.21    \\
-3  &  1/64     & 1.42E-10    &4.03    & 8.65E-08  &3.02       & 2.06E-14   &3.85    \\
-   &  1/128    & 8.91E-12    &4.01    & 1.08E-08  &3.01       & 3.86E-14   &0.91    \\
+  & 1/128 & 9.18E-06 & 2.02 & 7.70E-03 & 1.01  & 6.46E-07 & 2.02 \\
+1 & 1/256 & 2.29E-06 & 2.01 & 1.92E-03 & 1.00  & 1.61E-07 & 2.01 \\
+  & 1/512 & 5.70E-07 & 2.00 & 9.56E-04 & 1.00  & 4.01E-08 & 2.00 \\
+\hline
+  & 1/128 & 1.39E-08 & 3.01 & 1.15E-05 & 2.01  & 3.48E-12 & 4.02 \\
+2 & 1/256 & 1.73E-09 & 3.01 & 2.88E-06 & 2.01  & 3.27E-13 & 3.94 \\
+  & 1/512 & 2.17E-10 & 3.00 & 7.24E-06 & 2.00  & 6.66E-13 & 1.55 \\
+\hline
+  & 1/32  & 2.28E-09 & 4.05 & 6.92E-07 & 3.04  & 1.45E-15 & 8.21 \\
+3 & 1/64  & 1.42E-10 & 4.03 & 8.65E-08 & 3.02  & 2.06E-14 & 3.85 \\
+  & 1/128 & 8.91E-12 & 4.01 & 1.08E-08 & 3.01  & 3.86E-14 & 0.91 \\
 \Xhline{2\arrayrulewidth}
 \end{tabular}
 \end{table}
 
-基于 tabularx 环境设置一些格式: 左右表格双线.
+基于 tabularx 环境设置一些格式, 如表~\ref{tab:error2}.
 \begin{table}[htp!]
 \centering
 %\renewcommand\arraystretch{1.1} %定义表格高度
 \caption{数值误差示例}
 \label{tab:error2}
-\begin{tabularx}{0.96\textwidth}{||P{0.8cm}|C|C|C|C|C|C||}
+\begin{tabularx}{0.96\textwidth}{|P{0.8cm}|C|C|C|C|C|C|}
 \Xhline{2\arrayrulewidth}
 N  & A       & B    & C       & D      & E       & F   \\
 \Xhline{2\arrayrulewidth}
@@ -804,14 +806,13 @@ N  & A       & B    & C       & D      & E       & F   \\
 14 & 2.30E-05 & 5.00E-06 & 8.20E-05 & 8.90E-05 & 9.10E-05 & 4.80E-05 \\
 16 & 7.90E-05 & 6.00E-06 & 1.30E-05 & 9.50E-05 & 9.70E-05 & 2.90E-05 \\
 18 & 1.00E-05 & 1.20E-05 & 9.40E-05 & 9.60E-05 & 7.80E-05 & 3.50E-05 \\
-20 & 1.10E-05 & 1.80E-05 & 1.10E-04   & 7.70E-05 & 8.40E-05 & 3.60E-05  \\
+20 & 1.10E-05 & 1.80E-05 & 1.10E-04 & 7.70E-05 & 8.40E-05 & 3.60E-05 \\
 \Xhline{2\arrayrulewidth}
 \end{tabularx}
 \end{table}
 
 
-
-%%%%%%%%%%%%%%%%%%%%%%%% 生成参考文献 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%% 生成参考文献 %%%%%%%%%%%%%%%%
 
 
 % 生成参考文献, 使用第一种请把第二种全部注释
@@ -830,7 +831,7 @@ N  & A       & B    & C       & D      & E       & F   \\
 \bibliography{mybib}
 
 
-%----------------------------------------------------------------
+%-------------------------------------------------
 
 % 第二种方式, 按照格式直接写文献信息, 使用第二种请把第一种全部注释
 % 注意： 参考文献序号按所引文献在论文中出现的先后次序排列
@@ -856,8 +857,7 @@ N  & A       & B    & C       & D      & E       & F   \\
 
 
 
-
-%%%%%%%%%%%%%%%%%%%%%%%% 附录 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%% 附录 %%%%%%%%%%%%%%%%%%%%%
 
 % 添加附录, 如不需要可以把附录部分注释
 \appendix
@@ -922,13 +922,13 @@ N  & A       & B    & C       & D      & E       & F   \\
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \backmatter  % 结束章节自动编号
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%% 索引  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%% 索引  %%%%%%%%%%%%%%%%%%%%%%
 
 \clearpage
 \renewcommand\indexname{索~~引}
@@ -937,7 +937,7 @@ N  & A       & B    & C       & D      & E       & F   \\
 \printindex
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%% 后记  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%% 后记  %%%%%%%%%%%%%%%%%%%%%%%
 
 
 \chapter{后~~记}
