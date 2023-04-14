@@ -38,6 +38,14 @@
 \usepackage[affil-it]{authblk}
 % package for using box and verbatim
 \usepackage{fancybox}
+% package for page headers and footers
+\usepackage{fancyhdr}
+
+% package for section etc.
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries}{\thesection.}{1.2ex}{}
+\titleformat{\subsection}{\normalfont\bfseries}{\thesubsection.}{1.2ex}{}
+\titleformat{\subsubsection}{\normalfont\slshape}{\thesubsubsection.}{1.2ex}{}
 
 % package for bibliography support
 \usepackage[numbers,sort&compress]{natbib}
@@ -46,20 +54,39 @@
 \allowdisplaybreaks
 
 % layout setting
-\setlength{\textwidth}{15cm}
-\setlength{\textheight}{21.6cm}
-\setlength{\oddsidemargin}{0.5cm}
-\setlength{\evensidemargin}{0.5cm}
+\usepackage{geometry}
+\geometry{left=1.25in,right=1.25in,top=1.25in,bottom=1.25in}
+%\setlength{\textwidth}{15cm}
+%\setlength{\textheight}{21.6cm}
+%\setlength{\oddsidemargin}{0.5cm}
+%\setlength{\evensidemargin}{0.5cm}
+
+% headers and footers setting
+%\pagestyle{fancy}
+%\fancyhf{}
+%\fancyhead[CO]{\uppercase{Title of Paper}}
+%\fancyhead[CE]{\uppercase{Author A, Author B \& Author C}}
+%\fancyfoot[C]{\thepage}
+%\renewcommand{\headrulewidth}{0pt}
+
+%\fancyhead[C]{\uppercase{Title of Paper}}
+%\fancyfoot[C]{\thepage}
+%\renewcommand{\headrulewidth}{0pt}
+
+%\fancyhead[CO]{\uppercase{Title of Paper}}
+%\fancyhead[CE]{\uppercase{Author A, Author B \& Author C}}
+%\fancyhead[RO]{\thepage}
+%\fancyhead[LE]{\thepage}
 
 % command for line spacing
-%\renewcommand{\baselinestretch}{1.1}
+\renewcommand{\baselinestretch}{1.1}
 
 % command for mark footnotes
 %\usepackage[symbol]{footmisc}
 %\renewcommand{\thefootnote}{\fnsymbol{footnote}}
 
 % command for listsep
-%\setlist{nolistsep}
+\setlist{nolistsep}
 
 % command for equations, theorems and lemmas etc.
 \theoremstyle{plain}
@@ -75,10 +102,11 @@
 \newtheorem{xca}{Exercise}[section]
 
 \theoremstyle{remark}
-\newtheorem{remark}{Remark}[section]
+\newtheorem{remark}[theorem]{Remark}
 
 % caption setting
-%\captionsetup{font={small,singlespacing},labelformat={default},labelsep=period}
+%\captionsetup{font={small,singlespacing},labelfont={bf},labelformat={default},labelsep=period}
+\captionsetup{font={small},labelformat={default},labelsep=period}
 \captionsetup[figure]{position=bottom,skip={5pt},name={Figure}}
 \captionsetup[table]{position=top,skip={2pt},name={Table}}
 %\setlength{\textfloatsep}{12pt plus 2pt minus 2pt}
@@ -91,6 +119,23 @@
 \numberwithin{equation}{section}
 \numberwithin{figure}{section}
 \numberwithin{table}{section}
+
+% redefine abstract environment
+\makeatletter
+\renewenvironment{abstract}{%
+    \if@twocolumn
+      \section*{\abstractname}%
+    \else %% <- here removed \small
+      \begin{center}%
+        {\bfseries \large\abstractname\vspace{\z@}} %% <- here added \large
+      \end{center}%
+      \quotation
+    \fi}
+    {\if@twocolumn\else\endquotation\fi}
+\makeatother
+
+% graphic path
+\graphicspath{{./figures/}}
 
 % differential operator
 \newcommand{\dif}{\mathop{}\!\mathrm{d}}
@@ -105,20 +150,16 @@
 
 
 % Information for title and author
-\title{An Example Article\thanks{The work is supported in part by NSF Grant No. 12345678 and ...}}
+\title{An Example Article}
 
-%\author{Author A, Author B, and J. E. Smith\thanks{Corresponding author (\textit{E-mail address:} \texttt{xyz@math.univ.edu}).} }
+\author[1]{Author A\thanks{Email address: \texttt{A.A@university.edu}; Corresponding author.}}
+\author[1]{Author B\thanks{Email address: \texttt{B.B@university.edu}}}
+\author[2]{Author C\thanks{Email address: \texttt{C.C@university.edu}}}
+%\author[2]{Author D\thanks{Email address: \texttt{D.D@university.edu}}}
+\affil[1]{Department of Mathematics, \LaTeX\ University.}
+\affil[2]{Department of Mechanical Engineering, \LaTeX\ University}
 
-\author{Author A\thanks{Email address: \texttt{A.A@university.edu}; Corresponding author.}}
-\affil{Department of Computer Science, \LaTeX\ University.}
-
-\author{Author B\thanks{Email address: \texttt{B.B@university.edu}}}
-\affil{Department of Mathematics, \LaTeX\ University.}
-
-\author{Author C\thanks{Email address: \texttt{C.C@university.edu}}}
-\affil{Department of Mechanical Engineering, \LaTeX\ University}
-
-\date{\today}
+\date{Date: \today}
 
 \begin{document}
 
@@ -140,6 +181,7 @@
 \end{abstract}
 
 
+
 \section{Introduction}
 The introduction introduces the context and summarizes the
 manuscript. It is importantly to clearly state the contributions of
@@ -148,9 +190,9 @@ this piece of work.
 In this paper we present a new method for solving the model equation
 \begin{equation}\label{eq:mulequ}
 \left\{\begin{aligned}
-  & \partial_{t} u-\varepsilon^{2} \Delta u+u^{3}-u=0, \quad \text{ in } ~\Omega\times\mathcal{T}, \\
-  &\, u(x,y,t) = g(t), \quad \text{ on } ~ \partial \Omega, \\
-  &\, u(x,y,0)=\varphi(x, y), \quad \text{ on } ~\Omega.
+  & \partial_{t} u-\varepsilon^{2} \Delta u+u^{3}-u=0, \quad \text{in} ~\Omega\times\mathcal{T}, \\
+  &\, u(x,y,t) = g(t), \quad \text{on} ~ \partial \Omega, \\
+  &\, u(x,y,0)=\varphi(x, y), \quad \text{on} ~\Omega.
 \end{aligned}\right.
 \end{equation}
 where $\varepsilon$ is a small parameter.
@@ -174,10 +216,17 @@ The paper is organized as follows. Our main results are in
 results are in \ref{sec:experiments}, discussion is in \ref{sec:discussion} and the conclusions follow in
 \ref{sec:conclusions}.
 
+
+\section{Preliminaries}
+\label{sec:preliminaries}
+
+\subsection{This is subsection}
+
+\subsubsection{This is subsubsection}
+
+
 \section{Main results}
 \label{sec:main}
-
-%\subsection{Subsection name}
 
 We interleave text filler with some example theorems and theorem-like
 items.
@@ -222,11 +271,8 @@ Here we state our main result as \ref{thm:bigthm}.
   such that $A=LDL^T$. The factorization is unique.
 \end{theorem}
 
-LaTeX is a high-quality typesetting system; it includes features designed
-for the production of technical and scientific documentation.
-LaTeX is the de facto standard for the communication and publication of scientific documents.
-LaTeX is based on the idea that it is better to leave document design to
-document designers, and to let authors get on with writing documents.
+LaTeX is a high-quality typesetting system; it includes features designed for the production of technical and scientific documentation.
+LaTeX is based on the idea that it is better to leave document design to document designers, and to let authors get on with writing documents.
 
 \begin{theorem}[Mean Value Theorem]\label{thm:mvt}
   Suppose $f$ is a function that is continuous on the closed interval
@@ -333,53 +379,75 @@ Adjust the width of the algorithm environment
 \section{Experimental results}
 \label{sec:experiments}
 
-LaTeX is a high-quality typesetting system; it includes features designed
-for the production of technical and scientific documentation.
-LaTeX is the de facto standard for the communication and publication of scientific documents.
-LaTeX is based on the idea that it is better to leave document design to
-document designers, and to let authors get on with writing documents.
+Some experimental results here. Some experimental results here. Some experimental results here. Some experimental results here. Some experimental results here.Some experimental results here.
 
 \begin{example}
   This is example environment.
 \end{example}
 
-\clearpage
-Figure \ref{fig:a} shows some example results.
+Figure~\ref{fig:foo} shows some example results.
 \begin{figure}[htp!]
   \centering
   \includegraphics[width=0.48\linewidth]{fig1}
   \caption{Example figure using external image files.}
-  \label{fig:a}
+  \label{fig:foo}
 \end{figure}
 
-The two figures are placed side by side, sharing the same title.
+The two figures are placed side by side, sharing the same title, as shown in \autoref{fig:twofigs}.
 \begin{figure}[htp!]
   \centering
   \includegraphics[width=0.45\linewidth]{fig1}
   \hfill
   \includegraphics[width=0.45\linewidth]{fig2}
   \caption{Left: Caption 1, Right: Caption 2.}
-  \label{fig:b}
+  \label{fig:twofigs}
 \end{figure}
 
-Use \texttt{minipage} package to set up images side-by-side, each with its own title.
+Use the \texttt{tabularx} environment to generate \autoref{tab:error}.
+
+\begin{table}[htp!]
+\centering
+\newcolumntype{L}{X}
+\newcolumntype{C}{>{\centering \arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft \arraybackslash}X}
+\newcolumntype{P}[1]{>{\centering \arraybackslash}p{#1}}
+\renewcommand\arraystretch{1.2}
+\caption{Table description}
+\label{tab:error}
+\begin{tabularx}{0.8\textwidth}{|P{0.8cm}|C|C|C|C|C|}
+\Xhline{2\arrayrulewidth}
+N  & A       & B    & C       & D      & E     \\
+\Xhline{2\arrayrulewidth}
+2  & 9.20E-05 & 9.90E-05 & 1.00E-06 & 8.00E-06 & 1.50E-05 \\
+4  & 9.80E-05 & 8.00E-05 & 7.00E-06 & 1.40E-05 & 1.60E-05 \\
+6  & 4.00E-06 & 8.10E-05 & 8.80E-05 & 2.00E-05 & 2.20E-05 \\
+8  & 8.50E-05 & 8.70E-05 & 1.90E-05 & 2.10E-05 & 3.00E-06 \\
+10 & 8.60E-05 & 9.30E-05 & 2.50E-05 & 2.00E-06 & 9.00E-06 \\
+12 & 1.70E-05 & 2.40E-05 & 7.60E-05 & 8.30E-05 & 9.00E-05 \\
+%14 & 2.30E-05 & 5.00E-06 & 8.20E-05 & 8.90E-05 & 9.10E-05 \\
+%16 & 7.90E-05 & 6.00E-06 & 1.30E-05 & 9.50E-05 & 9.70E-05 \\
+\Xhline{2\arrayrulewidth}
+\end{tabularx}
+\end{table}
+
+Use \texttt{minipage} package to set images side-by-side, each with its own title, as shown in Figure~\ref{fig:A} and Figure~\ref{fig:B}.
 \begin{figure}[htp!]
 \begin{minipage}[t]{0.48\linewidth}
   \centering
   \includegraphics[width=0.96\linewidth]{fig1}
   \caption{Caption A}
-  \label{fig:image1}
+  \label{fig:A}
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.48\linewidth}
 \centering
-   \includegraphics[width=0.95\linewidth]{fig2}
+   \includegraphics[width=0.96\linewidth]{fig2}
    \caption{Caption B}
-   \label{fig:image2}
+   \label{fig:B}
 \end{minipage}
 \end{figure}
 
-Additional results are available in the supplement in Table \ref{tab:foo}.
+Additional results are available in the supplement in Table~\ref{tab:foo}.
 
 \begin{table}[!htp]
 \centering
@@ -405,42 +473,20 @@ degree &  step-size~$h$  & $L^2$-errors  &  order  & $H^1$-errors & order & $L^\
 \end{tabular}
 \end{table}
 
-Use the \texttt{tabularx} environment to generate \autoref{tab:error}.
-
-\begin{table}[htp!]
-\centering
-\newcolumntype{L}{X}
-\newcolumntype{C}{>{\centering \arraybackslash}X}
-\newcolumntype{R}{>{\raggedleft \arraybackslash}X}
-\newcolumntype{P}[1]{>{\centering \arraybackslash}p{#1}}
-\renewcommand\arraystretch{1.2}
-\caption{Table description}
-\label{tab:error}
-\begin{tabularx}{0.8\textwidth}{|P{0.8cm}|C|C|C|C|C|}
-\Xhline{2\arrayrulewidth}
-N  & A       & B    & C       & D      & E     \\
-\Xhline{2\arrayrulewidth}
-2  & 9.20E-05 & 9.90E-05 & 1.00E-06 & 8.00E-06 & 1.50E-05 \\
-4  & 9.80E-05 & 8.00E-05 & 7.00E-06 & 1.40E-05 & 1.60E-05 \\
-6  & 4.00E-06 & 8.10E-05 & 8.80E-05 & 2.00E-05 & 2.20E-05 \\
-8  & 8.50E-05 & 8.70E-05 & 1.90E-05 & 2.10E-05 & 3.00E-06 \\
-10 & 8.60E-05 & 9.30E-05 & 2.50E-05 & 2.00E-06 & 9.00E-06 \\
-12 & 1.70E-05 & 2.40E-05 & 7.60E-05 & 8.30E-05 & 9.00E-05 \\
-\Xhline{2\arrayrulewidth}
-\end{tabularx}
-\end{table}
-
 
 \section{Discussion of \texorpdfstring{{\boldmath$Z=X \cup Y$}}{Z = X union Y}}
 \label{sec:discussion}
 
-Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here.
+Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here.
+
+Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here.
 
 \section{Conclusions}
 \label{sec:conclusions}
 
-Some conclusions here.
+Some conclusions here. Some conclusions here. Some conclusions here. Some conclusions here. Some conclusions here. Some conclusions here. Some conclusions here.
 
+Some conclusions here. Some conclusions here. Some conclusions here. Some conclusions here. Some conclusions here. Some conclusions here. Some conclusions here. Some conclusions here.
 
 \appendix
 \section{An example appendix}

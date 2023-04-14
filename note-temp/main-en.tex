@@ -17,12 +17,59 @@
 %\def\bibfont{\small}      % bib font size
 %\setlength{\bibsep}{8pt}  % vertical space of bib
 
+%----- header and footer -----
+\fancypagestyle{plain}{%
+	\fancyhf{}
+	\fancyhead[C]{\color{ecolor}\nouppercase{\leftmark}}
+	\fancyfoot[C]{\color{gray}\thepage}
+    \renewcommand{\headrulewidth}{0.5pt}
+}
+
+\pagestyle{plain}
+
 %----- package for algorithm -----
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \floatname{algorithm}{Algorithm}
 \algrenewcommand\algorithmicrequire{\textbf{Input:}}
 \algrenewcommand\algorithmicensure{\textbf{Output:}}
+
+%----- maketitle -----
+\makeatletter
+\renewcommand*{\maketitle}{
+\begin{titlepage}
+    \pdfbookmark[1]{Cover}{cover}
+    \centering
+    %\scshape
+    \vspace*{5\baselineskip}
+    \color{ecolor}
+
+    %-------- title ---------
+    \rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}
+    \rule{\textwidth}{0.4pt}
+	
+    \vspace{0.75\baselineskip}
+
+    {\LARGE\bfseries \@title}
+
+	\vspace{0.75\baselineskip}
+	
+	\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt}
+	\rule{\textwidth}{1.6pt}
+	
+	\vspace{4\baselineskip}
+
+    %----- Author -----
+    {\Large \@author}
+
+    \vspace{0.35\baselineskip}	
+
+    {\Large \@date}
+	\vfill
+\end{titlepage}
+\thispagestyle{empty}
+}
+\makeatother
 
 
 %----- code highlight -----
@@ -38,10 +85,9 @@
 %\newcommand\HUGE{\@setfontsize\Huge{32}{36}}
 %\makeatother
 
-
+% bibliography style
 %\bibliographystyle{thuthesis-numeric}
 \bibliographystyle{plain}
-
 
 %----- define new command -----
 \newcommand{\CC}{\ensuremath{\mathbb{C}}}
@@ -55,17 +101,18 @@
 \newcommand{\md}{\mathrm{d}}
 
 
-%\title{\LaTeX note template}
-%\author{Author}
+\title{Title of Note Template ElegantNote \\[20pt]
+\Large Subtitle of notes
+}
+\author{Author}
 %\institute{}
 %\version{1.3}
 %\date{\zhtoday}
-%\date{}
+\date{June, 2022}
 
 \begin{document}
-%\maketitle
 
-\input{cover2.tex}
+\maketitle
 
 %----- generate a empty page -----
 %\clearpage%
@@ -309,7 +356,7 @@ Thank \href{https://github.com/sikouhjw}{sikouhjw} and \href{https://github.com/
 \end{enumerate}
 
 
-\section{code highlight}
+\section{Code highlight}
 
 MATLAB code
 
@@ -317,24 +364,20 @@ MATLAB code
 % Euler method for the ODE model
 % u'(x)=x^2+x-u, x in [0,1]
 % Initial condition: u(0)=0 ;
-% Exact solution: u(x)=-exp(-x)+x^2-x+1.
 clear all;  clf
 h=0.1;
 x=0:h:1;
 N=length(x)-1;
 u(1)=0;                        % initial value
 fun=@(t,u) t.^2+t-u;           % RHS
-
 for n=1:N
     u(n+1)=u(n)+h.*fun(x(n),u(n));
 end
-
 ue=-exp(-x)+x.^2-x+1;          % exact solution
 plot(x,ue,'b-',x,u,'r+','LineWidth',1)
 legend('Exact','Numerical','location','North')
-%title('Euler method','fontsize',12)
 set(gca,'fontsize',12)
-xlabel('x','fontsize',16), ylabel('u','fontsize',16,'Rotation',0)
+xlabel('x','fontsize',16), ylabel('u','fontsize',16)
 \end{lstlisting}
 
 Python code

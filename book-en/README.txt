@@ -4,7 +4,7 @@
   PDFLaTeX compilation
   
   book-cover-en.tex
-  English Book Template (Custom cover)
+  English Book Template (Define cover page)
   PDFLaTeX compilation
 	
 	

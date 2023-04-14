@@ -39,13 +39,15 @@
 % 尺寸计算
 \usepackage{calc}
 
-%-----设置超链接-----
+%----- 设置超链接 -----
 \usepackage{hyperref}
 \hypersetup{
-  colorlinks=true,
-  linkcolor=black,
-  citecolor=black
-} % 去掉目录红框
+  colorlinks = true,
+  linkcolor = black,
+  citecolor = blue,
+  filecolor = blue,
+  urlcolor = blue,
+}
 
 %----- 页面布局 -----
 \geometry{top=1in,bottom=1in,left=1in,right=1in}
@@ -386,32 +388,37 @@ aligned 与 equation 环境套用, 公式间距是自动调节的, 如果有分�
 \end{example}
 
 
-%%%%%%%%%%%%%%%%%% 参考文献 %%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%% 参考文献 %%%%%%%%%%%%%%%%%%%%
 
 % 生成参考文献
 \phantomsection
 \addcontentsline{toc}{section}{参考文献} % 添加  "参考文献 " 到目录
 
+% 生成参考文献, 两种方式任选一种
+
+% 第一种方式, 使用 bib 文件
+
 %\nocite{*}  % 可以暂时显示全部参考文献, 包括未引用的
-
-% 使用方法:\bibliography{参考文件1文件名, 参考文献2文件名, ...}
-\bibliography{mybib}
+\bibliography{reference}
 
 
-%% 另一种方式
+%-------------------------------------
+
+% 第二种方式, 手动添加文献信息
+
 %\begin{thebibliography}{99}
 %\bibitem{Tadmor2012} Tadmor~E. A review of numerical methods for nonlinear partial differential equations\allowbreak[J]. Bull. Amer. Math. Soc., 2012, 49(4): 507-554.
 %
-%\bibitem{LiLiu1997} 李荣华, 刘播. 微分方程数值解法\allowbreak[M]. 东南大学出版社, 1997.
+%\bibitem{LiLiu1997} 李荣华, 刘播. 微分方程数值解法\allowbreak[M]. 第四版. 北京: 高等教育出版社, 2009.
 %
-%\bibitem{Adams2003} Adams~R~A, Fournier~J~J~F. Sobolev spaces\allowbreak[M]. Elsevier, 2003.
+%\bibitem{Adams2003} Adams~R~A, Fournier~J~J~F. Sobolev spaces\allowbreak[M]. 2nd ed. Amsterdam: Elsevier, 2003.
 %
-%\bibitem{TreWei2014} Trefethen~L~N, Weideman~J~A~C. The exponentially convergent trapezoidal rule\allowbreak[J]. SIAM Rev., 2014, 56(3): 385-458.
+%\bibitem{TreWei2014}Trefethen~L~N, Weideman~J~A~C. The exponentially convergent trapezoidal rule\allowbreak[J]. SIAM Rev., 2014, 56(3): 385-458.
 %
 %\bibitem{Shen1994} Shen~J. Efficient spectral-Galerkin method I. Direct solvers of second- and fourth-order equations using Legendre polynomials\allowbreak[J]. SIAM J. Sci. Comput., 1994, 15(6): 1489-1505.
 %
 %\end{thebibliography}
-
 
 
 \section*{MATLAB 源程序}

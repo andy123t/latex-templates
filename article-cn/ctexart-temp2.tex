@@ -149,13 +149,15 @@
 
 %\tableofcontents
 
-%%%%%%%%%%%%%%%%%%%% 引言 %%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%% 正文开始 %%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%% 引言 %%%%%%%%%%%%%%%%%%%%%%
 
 \section{引言}
 
 \subsection{研究背景}
 
-这是小四号的正文字体, 行间距 1.35 倍.
+这是小四号的正文字体.
 
 通过空一行实现段落换行, 仅仅是回车并不会产生新的段落.
 
@@ -165,38 +167,38 @@
 
 这是中文与 English 混排. 标点统一使用英文的标点 (英文没有的除外). 这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字. 这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字.
 
-这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字.
+这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字.
 
 \subsection{列表的使用}
 
 这是一个计数的列表.
-\begin{enumerate}%[label={\rm (\arabic*)}]%\roman
-	\item 第一项
-		\begin{enumerate}
-			\item 第一项中的第一项
-			\item 第一项中的第二项
-		\end{enumerate}
-	\item 第二项
-	\item 第三项
+\begin{enumerate}%[label={\rm (\arabic*)}]
+  \item 第一项
+    \begin{enumerate}
+      \item 第一项中的第一项
+      \item 第一项中的第二项
+    \end{enumerate}
+  \item 第二项
+  \item 第三项
 \end{enumerate}
 
 
 这是一个不计数的列表.
 \begin{itemize}%[label={$\bullet$}]
-	\item 第一项
-	\begin{itemize}
-		\item 第一项中的第一项
-		\item 第一项中的第二项
-	\end{itemize}
-	\item 第二项
-	\item 第三项
+  \item 第一项
+  \begin{itemize}
+    \item 第一项中的第一项
+    \item 第一项中的第二项
+  \end{itemize}
+  \item 第二项
+  \item 第三项
 \end{itemize}
 
 
 
 \subsection{文献引用}
 
-参考文献可采用 BibTeX 或 BibLaTeX 的方式生成 (内容写在文件 \verb|mybib.bib| 中), 参考文献的样式为 \verb|thuthesis-numeric| (对应的引用格式可选 \verb|numbers| 或  \verb|super|)和 \verb|thuthesis-author-year| (对应的引用格式 \verb|authoryear|), 符合国家标准《信息与文献参考文献著录规则》GB/T 7714-2015, 论文中引用和参考的文献必须列出. 参考文献序号按所引文献在论文中出现的先后次序排列. 引用文献应在论文中的引用处加注文献序号, 并加注方括弧.
+参考文献可采用 BibTeX 的方式生成 (文献信息写在文件 \verb|reference.bib| 中), 参考文献的样式为 \verb|thuthesis-numeric| (对应的引用格式可选 \verb|numbers| 或  \verb|super|)和 \verb|thuthesis-author-year| (对应的引用格式 \verb|authoryear|), 符合国家标准《信息与文献参考文献著录规则》GB/T 7714-2015, 论文中引用和参考的文献必须列出. 参考文献序号按所引文献在论文中出现的先后次序排列. 引用文献应在论文中的引用处加注文献序号, 并加注方括弧.
 
 文献引用示例 \cite{LiLiu1997} 和 \cite{Adams2003,Shen1994}.
 
@@ -546,15 +548,15 @@ LaTeX 的 Table 环境一个浮动体环境, 浮动体排版与 Figure 环境类
 \label{tab:heightweight}
 \begin{tabularx}{0.9\textwidth}{lCCC}
    \toprule
-	序号 & 年龄 & 身高 & 体重 \\
-	\midrule
-	001 & 15 & 156 & 42 \\
-	002 & 16 & 158 & 45 \\
-	003 & 14 & 162 & 48 \\
-	004 & 15 & 163 & 50 \\
+  序号 & 年龄 & 身高 & 体重 \\
+  \midrule
+  001 & 15 & 156 & 42 \\
+  002 & 16 & 158 & 45 \\
+  003 & 14 & 162 & 48 \\
+  004 & 15 & 163 & 50 \\
     \cmidrule{2-4}
-	平均 & 15 & 159.75 & 46.25 \\
-	\bottomrule
+  平均 & 15 & 159.75 & 46.25 \\
+  \bottomrule
 \end{tabularx}
 \end{table}
 
@@ -566,19 +568,19 @@ LaTeX 的 Table 环境一个浮动体环境, 浮动体排版与 Figure 环境类
 % PLCR前面已经定义
 \begin{tabularx}{0.9\textwidth}{|P{4cm}|C|}
 \Xhline{2\arrayrulewidth}
-论文起止时间       &  论文筹备过程 \\
+论文起止时间   &   论文筹备过程 \\
 \hline
-20xx.xx -- 20xx.xx    &  论文定题, 整理相关文献 \\
+20xx.xx -- 20xx.xx   &  论文定题, 整理相关文献 \\
 \hline
-20xx.xx -- 20xx.xx    &  审查、修改、完成开题报告 \\
+20xx.xx -- 20xx.xx   &  审查、修改、完成开题报告 \\
 \hline
 20xx.xx -- 20xx.xx   &  对论文排版、初步完成论文初稿 \\
 \hline
-20xx.xx -- 20xx.xx    &  毕业论文预答辩 \\
+20xx.xx -- 20xx.xx   &  毕业论文预答辩 \\
 \hline
-20xx.xx -- 20xx.xx    &  论文定稿 \\
+20xx.xx -- 20xx.xx   &  论文定稿 \\
 \hline
-20xx.xx -- 20xx.xx    &  毕业论文答辩 \\
+20xx.xx -- 20xx.xx   &  毕业论文答辩 \\
 \Xhline{2\arrayrulewidth}
 \end{tabularx}
 \end{table}
@@ -592,7 +594,7 @@ LaTeX 的 Table 环境一个浮动体环境, 浮动体排版与 Figure 环境类
 \label{tab:error1}
 \begin{tabular}{c|c|cc|cc|cc}
 \Xhline{2\arrayrulewidth}
-degree &  step-size~$h$  & $L^2$-errors  &  order  & $H^1$-errors & order & $L^\infty$-errors  &  order \\
+degree & step-size~$h$ & $L^2$-errors & order & $H^1$-errors & order & $L^\infty$-errors & order \\
 \hline
   & 1/128 & 9.18E-06 & 2.02 & 7.70E-03 & 1.01  & 6.46E-07 & 2.02 \\
 1 & 1/256 & 2.29E-06 & 2.01 & 1.92E-03 & 1.00  & 1.61E-07 & 2.01 \\
@@ -617,7 +619,7 @@ degree &  step-size~$h$  & $L^2$-errors  &  order  & $H^1$-errors & order & $L^\
 \label{tab:error2}
 \begin{tabularx}{0.96\textwidth}{|P{0.8cm}|C|C|C|C|C|C|}
 \Xhline{2\arrayrulewidth}
-N  & A       & B    & C       & D      & E       & F   \\
+ N &   A   &   B    &    C   & D   &   E   &   F   \\
 \Xhline{2\arrayrulewidth}
 2  & 9.20E-05 & 9.90E-05 & 1.00E-06 & 8.00E-06 & 1.50E-05 & 6.70E-05 \\
 4  & 9.80E-05 & 8.00E-05 & 7.00E-06 & 1.40E-05 & 1.60E-05 & 7.30E-05 \\
@@ -634,34 +636,30 @@ N  & A       & B    & C       & D      & E       & F   \\
 \end{table}
 
 
-
 %%%%%%%%%%%%%%%%% 生成参考文献 %%%%%%%%%%%%%%%%%%%%%
 
 \clearpage
 \phantomsection
-\addcontentsline{toc}{section}{参考文献} % 添加  "参考文献 " 到目录
+\addcontentsline{toc}{section}{参考文献}
 
-% 生成参考文献, 使用第一种请把第二种全部注释
+% 生成参考文献, 两种方式任选一种
 
 % 第一种方式, 使用 bib 文件
 
-%\nocite{*}  % 可以暂时显示全部参考文献, 包括未引用的
-
-% 使用方法:\bibliography{参考文件1文件名, 参考文献2文件名, ...}
-\bibliography{mybib}
+%\nocite{*}  % 可以暂时显示全部参考文献
+\bibliography{reference}
 
 
-%----------------------------------------------------------------
+%------------------------------------------------
 
-% 第二种方式, 按照格式直接写文献信息, 使用第二种请把第一种全部注释
-
+% 第二种方式, 手动添加文献信息
 
 %\begin{thebibliography}{99}
 %\bibitem{Tadmor2012} Tadmor~E. A review of numerical methods for nonlinear partial differential equations\allowbreak[J]. Bull. Amer. Math. Soc., 2012, 49(4): 507-554.
 %
-%\bibitem{LiLiu1997} 李荣华, 刘播. 微分方程数值解法\allowbreak[M]. 东南大学出版社, 1997.
+%\bibitem{LiLiu1997} 李荣华, 刘播. 微分方程数值解法\allowbreak[M]. 第四版. 北京: 高等教育出版社, 2009.
 %
-%\bibitem{Adams2003} Adams~R~A, Fournier~J~J~F. Sobolev spaces\allowbreak[M]. Elsevier, 2003.
+%\bibitem{Adams2003} Adams~R~A, Fournier~J~J~F. Sobolev spaces\allowbreak[M]. 2nd ed. Amsterdam: Elsevier, 2003.
 %
 %\bibitem{TreWei2014}Trefethen~L~N, Weideman~J~A~C. The exponentially convergent trapezoidal rule\allowbreak[J]. SIAM Rev., 2014, 56(3): 385-458.
 %
@@ -704,15 +702,15 @@ N  & A       & B    & C       & D      & E       & F   \\
 \label{tab:heightweight2}
 \begin{tabularx}{0.9\textwidth}{lCCC}
    \toprule
-	序号 & 年龄 & 身高 & 体重 \\
-	\midrule
-	001 & 15 & 156 & 42 \\
-	002 & 16 & 158 & 45 \\
-	003 & 14 & 162 & 48 \\
-	004 & 15 & 163 & 50 \\
+  序号 & 年龄 & 身高 & 体重 \\
+  \midrule
+  001 & 15 & 156 & 42 \\
+  002 & 16 & 158 & 45 \\
+  003 & 14 & 162 & 48 \\
+  004 & 15 & 163 & 50 \\
     \cmidrule{2-4}
-	平均 & 15 & 159.75 & 46.25 \\
-	\bottomrule
+  平均 & 15 & 159.75 & 46.25 \\
+  \bottomrule
 \end{tabularx}
 \end{table}
 

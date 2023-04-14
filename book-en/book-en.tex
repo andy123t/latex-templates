@@ -498,39 +498,39 @@ document designers, and to let authors get on with writing documents.
 
 \section{Figure Environment}
 
-Figure \ref{fig:a} shows some example results.
+Figure \ref{fig:sinx} shows some example results.
 \begin{figure}[htp!]
   \centering
   \includegraphics[width=0.48\linewidth]{image1}
   \caption{Example figure using external image files.}
-  \label{fig:a}
+  \label{fig:sinx}
 \end{figure}
 
 \clearpage
-The two figures are placed side by side, sharing the same title.
+The two figures are placed side by side, sharing the one title, as shown in Figure~\ref{fig:twofigs}.
 \begin{figure}[htp!]
   \centering
   \includegraphics[width=0.45\linewidth]{image1}
   \hfill
   \includegraphics[width=0.45\linewidth]{image2}
-  \caption{Left: Caption 1, Right: Caption 2.}
-  \label{fig:b}
+  \caption{Left: Caption 1, ~ Right: Caption 2.}
+  \label{fig:twofigs}
 \end{figure}
 
-Use \texttt{minipage} package to set up images side-by-side, each with its own title.
+Use \texttt{minipage} package to set images side-by-side, each with its own title, as shown in Figure~\ref{fig:A} and Figure~\ref{fig:B}.
 \begin{figure}[htp!]
 \begin{minipage}[t]{0.48\linewidth}
   \centering
   \includegraphics[width=0.96\linewidth]{image1}
   \caption{Caption A}
-  \label{fig:image1}
+  \label{fig:A}
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.48\linewidth}
 \centering
    \includegraphics[width=0.95\linewidth]{image2}
    \caption{Caption B}
-   \label{fig:image2}
+   \label{fig:B}
 \end{minipage}
 \end{figure}
 

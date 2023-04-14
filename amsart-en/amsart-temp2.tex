@@ -36,6 +36,7 @@
 \usepackage{algpseudocode}
 % package for using box and verbatim
 \usepackage{fancybox}
+% package for address
 \usepackage[foot]{amsaddr}
 
 % package for bibliography support
@@ -45,25 +46,25 @@
 \allowdisplaybreaks
 
 % layout setting
-\setlength{\textwidth}{15cm}
-\setlength{\textheight}{21.6cm}
-\setlength{\oddsidemargin}{0.5cm}
-\setlength{\evensidemargin}{0.5cm}
+\usepackage{geometry}
+\geometry{left=1.25in,right=1.25in,top=1.25in,bottom=1.25in}
+%\setlength{\textwidth}{15cm}
+%\setlength{\textheight}{21.6cm}
+%\setlength{\oddsidemargin}{0.5cm}
+%\setlength{\evensidemargin}{0.5cm}
 
 % command for line spacing
 \renewcommand{\baselinestretch}{1.1}
 
 % command for mark footnotes
 %\usepackage[symbol]{footmisc}
-\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+%\renewcommand{\thefootnote}{\fnsymbol{footnote}}
 
 % command for equations, theorems and lemmas etc.
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}{Lemma}[section]
 \newtheorem{corollary}{Corollary}[section]
-%\newtheorem{lemma}[theorem]{Lemma}
-%\newtheorem{corollary}[theorem]{Corollary}
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
@@ -75,8 +76,8 @@
 
 % caption setting
 %\captionsetup{font={small,singlespacing},labelformat={default},labelsep=period}
-\captionsetup[figure]{position=bottom,skip={5pt},name={Figure}}
-\captionsetup[table]{position=top,skip={2pt},name={Table}}
+\captionsetup[figure]{position=bottom,skip={8pt},name={Figure}}
+\captionsetup[table]{position=top,skip={4pt},name={Table}}
 %\setlength{\textfloatsep}{12pt plus 2pt minus 2pt}
 %\setlength{\floatsep}{10pt plus 2pt minus 2pt}
 %\setlength{\intextsep}{10pt plus 2pt minus 2pt}
@@ -87,6 +88,16 @@
 \numberwithin{equation}{section}
 \numberwithin{figure}{section}
 \numberwithin{table}{section}
+
+% graphic path
+\graphicspath{{./figures/}}
+
+% blankbox for figure
+\newcommand{\blankbox}[2]{%
+\parbox{\columnwidth}{\centering
+\setlength{\fboxsep}{0pt}%
+\fbox{\raisebox{0pt}[#2]{\hspace{#1}}}}%
+}
 
 % differential operator
 \newcommand{\dif}{\mathop{}\!\mathrm{d}}
@@ -138,16 +149,15 @@
 
 
 \section{Introduction}
-The introduction introduces the context and summarizes the
-manuscript. It is importantly to clearly state the contributions of
-this piece of work.
+The introduction introduces the context and summarizes the manuscript.
+It is importantly to clearly state the contributions of this piece of work.
 
 In this paper we present a new method for solving the model equation
 \begin{equation}\label{eq:mulequ}
 \left\{\begin{aligned}
   & \partial_{t} u-\varepsilon^{2} \Delta u+u^{3}-u=0, \quad \text{in} ~\Omega\times\mathcal{T}, \\
-  &\, u(x,y,t) = g(t), \quad \text{on} ~ \partial \Omega, \\
-  &\, u(x,y,0)=\varphi(x, y), \quad \text{on} ~\Omega.
+  &\, u(x,y,t) = g(t), \quad \text{on } ~ \partial \Omega, \\
+  &\, u(x,y,0)=\varphi(x, y), \quad \text{on } ~\Omega.
 \end{aligned}\right.
 \end{equation}
 where $\varepsilon$ is a small parameter.
@@ -158,26 +168,34 @@ The merits of our method are as follows:
 \begin{itemize}
   \item item one
   \item item two
+  %\item item three
 \end{itemize}
 \begin{enumerate}
   \item item one
   \item item two
+  %\item item three
 \end{enumerate}
 
 The outline is not required, but we show an example here.
 
 The paper is organized as follows. Our main results are in
 \ref{sec:main}, our new algorithm is in \ref{sec:alg}, experimental
-results are in \ref{sec:experiments}, discussion is in \ref{sec:discussion} and the conclusions follow in
-\ref{sec:conclusions}.
+results are in \ref{sec:experiments}, discussion is in \ref{sec:discussion}
+and the conclusions follow in \ref{sec:conclusions}.
+
+
+\section{Preliminaries}
+\label{sec:preliminaries}
+
+\subsection{This is subsection}
+
+\subsubsection{This is subsubsection}
+
 
 \section{Main results}
 \label{sec:main}
 
-%\subsection{Subsection name}
-
-We interleave text filler with some example theorems and theorem-like
-items.
+We interleave text filler with some example theorems and theorem-like items.
 
 \begin{definition}
 This is a definition environment.
@@ -205,7 +223,8 @@ This is a lemma environment
 \end{enumerate}
 \end{lemma}
 
-This is a citation example \cite{Adams2003}. This statement requires citation \cite{Shen1994,Tadmor2012,TreWei2014}.
+This is a citation example \cite{Adams2003}. This statement requires
+citation \cite{Shen1994,Tadmor2012,TreWei2014}.
 
 Here we state our main result as \ref{thm:bigthm}.
 
@@ -219,11 +238,8 @@ Here we state our main result as \ref{thm:bigthm}.
   such that $A=LDL^T$. The factorization is unique.
 \end{theorem}
 
-LaTeX is a high-quality typesetting system; it includes features designed
-for the production of technical and scientific documentation.
-%LaTeX is the de facto standard for the communication and publication of scientific documents.
-%LaTeX is based on the idea that it is better to leave document design to
-%document designers, and to let authors get on with writing documents.
+%LaTeX is a high-quality typesetting system; it includes features designed
+%for the production of technical and scientific documentation.
 
 \begin{theorem}[Mean Value Theorem]\label{thm:mvt}
   Suppose $f$ is a function that is continuous on the closed interval
@@ -239,8 +255,7 @@ for the production of technical and scientific documentation.
 \end{theorem}
 
 \begin{remark}
-Observe that \ref{thm:bigthm}, \ref{thm:mvt} correctly mix references
-to multiple labels.
+Observe that \ref{thm:bigthm}, \ref{thm:mvt} correctly mix references to multiple labels.
 \end{remark}
 
 % command cref package cleveref
@@ -259,8 +274,7 @@ to multiple labels.
   \end{equation*}
 \end{proof}
 
-Note that it may require two \LaTeX\ compilations for the proof marks
-to show.
+Note that it may require two \LaTeX\ compilations for the proof marks to show.
 
 Display matrices can be rendered using environments from \texttt{amsmath}:
 \begin{equation}\label{eq:matrices}
@@ -283,6 +297,7 @@ We calculate the Fr\'{e}chet derivative of $F$ as follows:
 \end{align}
 \end{subequations}
 \ref{eq:aa} is the first line, and \ref{eq:bb} is the last line.
+
 
 \section{Algorithm}
 \label{sec:alg}
@@ -330,50 +345,86 @@ Adjust the width of the algorithm environment
 \section{Experimental results}
 \label{sec:experiments}
 
-LaTeX is the de facto standard for the communication and publication of scientific documents.
-%LaTeX is based on the idea that it is better to leave document design to document designers, and to let authors get on with writing documents.
+Some experimental results here.
 
 \begin{example}
   This is example environment.
 \end{example}
 
-Figure \ref{fig:a} shows some example results.
+\begin{figure}[htp!]
+\blankbox{.6\columnwidth}{10pc}
+\caption{This is an example of a figure caption with text.}
+\label{fig:blackbox}
+\end{figure}
+
+\textbf{Some figures and tables here.}
+
+Figure~\ref{fig:foo} shows some example results.
 \begin{figure}[htp!]
   \centering
   \includegraphics[width=0.48\linewidth]{fig1}
   \caption{Example figure using external image files.}
-  \label{fig:a}
+  \label{fig:foo}
 \end{figure}
 
-\clearpage
-The two figures are placed side by side, sharing the same title.
+The two figures are placed side by side, sharing one title, as shown in \autoref{fig:twofigs}.
 \begin{figure}[htp!]
   \centering
   \includegraphics[width=0.45\linewidth]{fig1}
   \hfill
   \includegraphics[width=0.45\linewidth]{fig2}
   \caption{Left: Caption 1, Right: Caption 2.}
-  \label{fig:b}
+  \label{fig:twofigs}
 \end{figure}
 
-Use \texttt{minipage} package to set up images side-by-side, each with its own title.
+Use the \texttt{tabularx} environment to generate \autoref{tab:error}.
+
+\begin{table}[htp!]
+\centering
+\newcolumntype{L}{X}
+\newcolumntype{C}{>{\centering \arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft \arraybackslash}X}
+\newcolumntype{P}[1]{>{\centering \arraybackslash}p{#1}}
+\renewcommand\arraystretch{1.2}
+\caption{Table description}
+\label{tab:error}
+\begin{tabularx}{0.8\textwidth}{|P{0.8cm}|C|C|C|C|C|}
+\Xhline{2\arrayrulewidth}
+N  & A       & B    & C       & D      & E     \\
+\Xhline{2\arrayrulewidth}
+2  & 9.20E-05 & 9.90E-05 & 1.00E-06 & 8.00E-06 & 1.50E-05 \\
+4  & 9.80E-05 & 8.00E-05 & 7.00E-06 & 1.40E-05 & 1.60E-05 \\
+6  & 4.00E-06 & 8.10E-05 & 8.80E-05 & 2.00E-05 & 2.20E-05 \\
+8  & 8.50E-05 & 8.70E-05 & 1.90E-05 & 2.10E-05 & 3.00E-06 \\
+10 & 8.60E-05 & 9.30E-05 & 2.50E-05 & 2.00E-06 & 9.00E-06 \\
+12 & 1.70E-05 & 2.40E-05 & 7.60E-05 & 8.30E-05 & 9.00E-05 \\
+14 & 2.30E-05 & 5.00E-06 & 8.20E-05 & 8.90E-05 & 9.10E-05 \\
+%16 & 7.90E-05 & 6.00E-06 & 1.30E-05 & 9.50E-05 & 9.70E-05 \\
+\Xhline{2\arrayrulewidth}
+\end{tabularx}
+\end{table}
+
+Use \texttt{minipage} package to set images side-by-side, each with its own title,
+as shown in Figure~\ref{fig:A} and Figure~\ref{fig:B}.
 \begin{figure}[htp!]
 \begin{minipage}[t]{0.48\linewidth}
   \centering
   \includegraphics[width=0.96\linewidth]{fig1}
   \caption{Caption A}
-  \label{fig:image1}
+  \label{fig:A}
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.48\linewidth}
 \centering
-   \includegraphics[width=0.95\linewidth]{fig2}
+   \includegraphics[width=0.96\linewidth]{fig2}
    \caption{Caption B}
-   \label{fig:image2}
+   \label{fig:B}
 \end{minipage}
 \end{figure}
 
-Additional results are available in the supplement in Table \ref{tab:foo}.
+
+
+Additional results are available in the supplement in Table~\ref{tab:foo}.
 
 \begin{table}[!htp]
 \centering
@@ -399,41 +450,26 @@ degree &  step-size~$h$  & $L^2$-errors  &  order  & $H^1$-errors & order & $L^\
 \end{tabular}
 \end{table}
 
-Use the \texttt{tabularx} environment to generate \autoref{tab:error}.
-
-\begin{table}[htp!]
-\centering
-\newcolumntype{L}{X}
-\newcolumntype{C}{>{\centering \arraybackslash}X}
-\newcolumntype{R}{>{\raggedleft \arraybackslash}X}
-\newcolumntype{P}[1]{>{\centering \arraybackslash}p{#1}}
-\renewcommand\arraystretch{1.2}
-\caption{Table description}
-\label{tab:error}
-\begin{tabularx}{0.8\textwidth}{|P{0.8cm}|C|C|C|C|C|}
-\Xhline{2\arrayrulewidth}
-N  & A       & B    & C       & D      & E     \\
-\Xhline{2\arrayrulewidth}
-2  & 9.20E-05 & 9.90E-05 & 1.00E-06 & 8.00E-06 & 1.50E-05 \\
-4  & 9.80E-05 & 8.00E-05 & 7.00E-06 & 1.40E-05 & 1.60E-05 \\
-6  & 4.00E-06 & 8.10E-05 & 8.80E-05 & 2.00E-05 & 2.20E-05 \\
-8  & 8.50E-05 & 8.70E-05 & 1.90E-05 & 2.10E-05 & 3.00E-06 \\
-10 & 8.60E-05 & 9.30E-05 & 2.50E-05 & 2.00E-06 & 9.00E-06 \\
-12 & 1.70E-05 & 2.40E-05 & 7.60E-05 & 8.30E-05 & 9.00E-05 \\
-\Xhline{2\arrayrulewidth}
-\end{tabularx}
-\end{table}
-
-
 \section{Discussion of \texorpdfstring{{$Z=X \cup Y$}}{Z = X union Y}}
 \label{sec:discussion}
 
-Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here.
+Some discussions here. Some discussions here. Some discussions here.
+Some discussions here. Some discussions here. Some discussions here.
+Some discussions here. Some discussions here.
 
-\section{Conclusions}
-\label{sec:conclusions}
+Some discussions here. Some discussions here. Some discussions here.
+Some discussions here. Some discussions here. Some discussions here.
+Some discussions here. Some discussions here.
 
+\section{Conclusions}\label{sec:conclusions}
+
+Some conclusions here. Some conclusions here. Some conclusions here.
+Some conclusions here. Some conclusions here. Some conclusions here.
 Some conclusions here.
+
+Some conclusions here. Some conclusions here. Some conclusions here.
+Some conclusions here. Some conclusions here. Some conclusions here.
+Some conclusions here. Some conclusions here.
 
 
 \appendix
@@ -446,7 +482,7 @@ Test Lemma.
 \end{lemma}
 
 This is a equation in appendix.
-\begin{equation}\label{eq:A1}
+\begin{equation}\label{eq:abc}
   a^2+b^2=c^2.
 \end{equation}
 

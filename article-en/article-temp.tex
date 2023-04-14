@@ -44,20 +44,22 @@
 \allowdisplaybreaks
 
 % layout setting
-\setlength{\textwidth}{15cm}
-\setlength{\textheight}{21.6cm}
-\setlength{\oddsidemargin}{0.5cm}
-\setlength{\evensidemargin}{0.5cm}
+\usepackage{geometry}
+\geometry{left=1.25in,right=1.25in,top=1.25in,bottom=1.25in}
+%\setlength{\textwidth}{15cm}
+%\setlength{\textheight}{21.6cm}
+%\setlength{\oddsidemargin}{0.5cm}
+%\setlength{\evensidemargin}{0.5cm}
 
 % command for line spacing
-%\renewcommand{\baselinestretch}{1.1}
+\renewcommand{\baselinestretch}{1.1}
 
 % command for mark footnotes
 %\usepackage[symbol]{footmisc}
 %\renewcommand{\thefootnote}{\fnsymbol{footnote}}
 
 % command for listsep
-%\setlist{nolistsep}
+\setlist{nolistsep}
 
 % command for equations, theorems and lemmas etc.
 \theoremstyle{plain}
@@ -89,6 +91,9 @@
 \numberwithin{equation}{section}
 \numberwithin{figure}{section}
 \numberwithin{table}{section}
+
+% graphic path
+\graphicspath{{./figures/}}
 
 % differential operator
 \newcommand{\dif}{\mathop{}\!\mathrm{d}}
@@ -159,10 +164,12 @@ The merits of our method are as follows:
 \begin{itemize}
   \item item one
   \item item two
+  \item item three
 \end{itemize}
 \begin{enumerate}
   \item item one
   \item item two
+  \item item three
 \end{enumerate}
 
 The outline is not required, but we show an example here.
@@ -172,13 +179,19 @@ The paper is organized as follows. Our main results are in
 results are in \ref{sec:experiments}, discussion is in \ref{sec:discussion} and the conclusions follow in
 \ref{sec:conclusions}.
 
+
+\section{Preliminaries}
+\label{sec:preliminaries}
+
+\subsection{This is subsection}
+
+\subsubsection{This is subsubsection}
+
+
 \section{Main results}
 \label{sec:main}
 
-%\subsection{Subsection name}
-
-We interleave text filler with some example theorems and theorem-like
-items.
+We interleave text filler with some example theorems and theorem-like items.
 
 \begin{definition}
 This is a definition environment.
@@ -220,11 +233,8 @@ Here we state our main result as \ref{thm:bigthm}.
   such that $A=LDL^T$. The factorization is unique.
 \end{theorem}
 
-LaTeX is a high-quality typesetting system; it includes features designed
-for the production of technical and scientific documentation.
-LaTeX is the de facto standard for the communication and publication of scientific documents.
-LaTeX is based on the idea that it is better to leave document design to
-document designers, and to let authors get on with writing documents.
+LaTeX is a high-quality typesetting system; it includes features designed for the production of technical and scientific documentation.
+LaTeX is based on the idea that it is better to leave document design to document designers, and to let authors get on with writing documents.
 
 \begin{theorem}[Mean Value Theorem]\label{thm:mvt}
   Suppose $f$ is a function that is continuous on the closed interval
@@ -331,77 +341,30 @@ Adjust the width of the algorithm environment
 \section{Experimental results}
 \label{sec:experiments}
 
-LaTeX is a high-quality typesetting system; it includes features designed
-for the production of technical and scientific documentation.
-LaTeX is the de facto standard for the communication and publication of scientific documents.
-LaTeX is based on the idea that it is better to leave document design to
-document designers, and to let authors get on with writing documents.
+Some experimental results here. Some experimental results here. Some experimental results here. Some experimental results here. Some experimental results here.Some experimental results here.
 
 \begin{example}
   This is example environment.
 \end{example}
 
-\clearpage
-Figure \ref{fig:a} shows some example results.
+Figure~\ref{fig:foo} shows some example results.
 \begin{figure}[htp!]
   \centering
   \includegraphics[width=0.48\linewidth]{fig1}
   \caption{Example figure using external image files.}
-  \label{fig:a}
+  \label{fig:foo}
 \end{figure}
 
-The two figures are placed side by side, sharing the same title.
+The two figures are placed side by side, sharing the same title, as shown in \autoref{fig:twofigs}.
 \begin{figure}[htp!]
   \centering
   \includegraphics[width=0.45\linewidth]{fig1}
   \hfill
   \includegraphics[width=0.45\linewidth]{fig2}
   \caption{Left: Caption 1, Right: Caption 2.}
-  \label{fig:b}
+  \label{fig:twofigs}
 \end{figure}
 
-Use \texttt{minipage} package to set up images side-by-side, each with its own title.
-\begin{figure}[htp!]
-\begin{minipage}[t]{0.48\linewidth}
-  \centering
-  \includegraphics[width=0.96\linewidth]{fig1}
-  \caption{Caption A}
-  \label{fig:image1}
-\end{minipage}
-\hfill
-\begin{minipage}[t]{0.48\linewidth}
-\centering
-   \includegraphics[width=0.95\linewidth]{fig2}
-   \caption{Caption B}
-   \label{fig:image2}
-\end{minipage}
-\end{figure}
-
-Additional results are available in the supplement in Table \ref{tab:foo}.
-
-\begin{table}[!htp]
-\centering
-\renewcommand\arraystretch{1.2} % line spacing
-\caption{Numerical error}
-\label{tab:foo}
-\begin{tabular}{c|c|cc|cc|cc}
-\hline
-degree &  step-size~$h$  & $L^2$-errors  &  order  & $H^1$-errors & order & $L^\infty$-errors  &  order \\
-\hline
-   &  1/128    & 9.18E-06    &2.02    & 7.70E-03  &1.01       & 6.46E-07    &2.02   \\
-1  &  1/256    & 2.29E-06    &2.01    & 1.92E-03  &1.00       & 1.61E-07    &2.01   \\
-   &  1/512    & 5.70E-07    &2.00    & 9.56E-04  &1.00       & 4.01E-08    &2.00   \\
-\hline  % \cline{1-8}
-   &  1/128    & 1.39E-08    &3.01    & 1.15E-05  &2.01       & 3.48E-12   &4.02    \\
-2  &  1/256    & 1.73E-09    &3.01    & 2.88E-06  &2.01       & 3.27E-13   &3.94    \\
-   &  1/512    & 2.17E-10    &3.00    & 7.24E-06  &2.00       & 6.66E-13   &1.55    \\
-\hline  % \cline{1-8}
-   &  1/32     & 2.28E-09    &4.05    & 6.92E-07  &3.04       & 1.45E-15   &8.21    \\
-3  &  1/64     & 1.42E-10    &4.03    & 8.65E-08  &3.02       & 2.06E-14   &3.85    \\
-   &  1/128    & 8.91E-12    &4.01    & 1.08E-08  &3.01       & 3.86E-14   &0.91    \\
-\hline
-\end{tabular}
-\end{table}
 
 Use the \texttt{tabularx} environment to generate \autoref{tab:error}.
 
@@ -424,21 +387,77 @@ N  & A       & B    & C       & D      & E     \\
 8  & 8.50E-05 & 8.70E-05 & 1.90E-05 & 2.10E-05 & 3.00E-06 \\
 10 & 8.60E-05 & 9.30E-05 & 2.50E-05 & 2.00E-06 & 9.00E-06 \\
 12 & 1.70E-05 & 2.40E-05 & 7.60E-05 & 8.30E-05 & 9.00E-05 \\
+%14 & 2.30E-05 & 5.00E-06 & 8.20E-05 & 8.90E-05 & 9.10E-05 \\
+%16 & 7.90E-05 & 6.00E-06 & 1.30E-05 & 9.50E-05 & 9.70E-05 \\
 \Xhline{2\arrayrulewidth}
 \end{tabularx}
+\end{table}
+
+Use \texttt{minipage} package to set images side-by-side, each with its own title, as shown in Figure~\ref{fig:A} and Figure~\ref{fig:B}.
+\begin{figure}[htp!]
+\begin{minipage}[t]{0.48\linewidth}
+  \centering
+  \includegraphics[width=0.96\linewidth]{fig1}
+  \caption{Caption A}
+  \label{fig:A}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+\centering
+   \includegraphics[width=0.96\linewidth]{fig2}
+   \caption{Caption B}
+   \label{fig:B}
+\end{minipage}
+\end{figure}
+
+Additional results are available in the supplement in Table~\ref{tab:foo}.
+
+\begin{table}[!htp]
+\centering
+\renewcommand\arraystretch{1.2} % line spacing
+\caption{Numerical error}
+\label{tab:foo}
+\begin{tabular}{c|c|cc|cc|cc}
+\hline
+degree & step-size~$h$ & $L^2$-errors & order & $H^1$-errors & order & $L^\infty$-errors & order \\
+\hline
+   &  1/128    & 9.18E-06    &2.02    & 7.70E-03  &1.01       & 6.46E-07    &2.02   \\
+1  &  1/256    & 2.29E-06    &2.01    & 1.92E-03  &1.00       & 1.61E-07    &2.01   \\
+   &  1/512    & 5.70E-07    &2.00    & 9.56E-04  &1.00       & 4.01E-08    &2.00   \\
+\hline  % \cline{1-8}
+   &  1/128    & 1.39E-08    &3.01    & 1.15E-05  &2.01       & 3.48E-12   &4.02    \\
+2  &  1/256    & 1.73E-09    &3.01    & 2.88E-06  &2.01       & 3.27E-13   &3.94    \\
+   &  1/512    & 2.17E-10    &3.00    & 7.24E-06  &2.00       & 6.66E-13   &1.55    \\
+\hline  % \cline{1-8}
+   &  1/32     & 2.28E-09    &4.05    & 6.92E-07  &3.04       & 1.45E-15   &8.21    \\
+3  &  1/64     & 1.42E-10    &4.03    & 8.65E-08  &3.02       & 2.06E-14   &3.85    \\
+   &  1/128    & 8.91E-12    &4.01    & 1.08E-08  &3.01       & 3.86E-14   &0.91    \\
+\hline
+\end{tabular}
 \end{table}
 
 
 \section{Discussion of \texorpdfstring{{\boldmath$Z=X \cup Y$}}{Z = X union Y}}
 \label{sec:discussion}
 
-Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here.
+Some discussions here. Some discussions here. Some discussions here. 
+Some discussions here. Some discussions here. Some discussions here. 
+Some discussions here. Some discussions here.
+
+Some discussions here. Some discussions here. Some discussions here. 
+Some discussions here. Some discussions here. Some discussions here. 
+Some discussions here. Some discussions here.
 
 \section{Conclusions}
 \label{sec:conclusions}
 
+Some conclusions here. Some conclusions here. Some conclusions here. 
+Some conclusions here. Some conclusions here. Some conclusions here. 
 Some conclusions here.
 
+Some conclusions here. Some conclusions here. Some conclusions here. 
+Some conclusions here. Some conclusions here. Some conclusions here. 
+Some conclusions here. Some conclusions here.
 
 \appendix
 \section{An example appendix}

@@ -28,7 +28,7 @@
   linkcolor = black,
   citecolor = blue,
   filecolor = blue,
-  urlcolor =blue,
+  urlcolor = blue,
 }
 
 %-----制作目录-----
@@ -79,11 +79,11 @@
 %\usepackage{newtxtext}  % for text fonts
 
 %-----设置数学字体-----
-% \usepackage{newtxmath}
-% \usepackage{mathptmx}
+%\usepackage{newtxmath}
+%\usepackage{mathptmx}
 
 %-----直接插入 pdf 文件-----
-% \usepackage{pdfpages}
+%\usepackage{pdfpages}
 
 %-----算法宏包及设置-----
 \usepackage{algorithm}
@@ -95,7 +95,7 @@
 %----定义列表项的样式 -----
 \usepackage{enumitem}
 \setlist{nolistsep}
-% \setlength{\itemsep}{3pt plus1pt minus2pt}
+%\setlength{\itemsep}{3pt plus1pt minus2pt}
 
 %-----设置空白页的页眉-----
 \usepackage[cleardoublepage=plain]{scrextend}
@@ -120,7 +120,6 @@
 \renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
 \renewcommand{\thesubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}}
 \renewcommand{\thesubsubsection}{\arabic{subsubsection}.}
-
 
 \newcommand{\chpzihao}{\fontsize{20pt}{20pt}\selectfont}
 %%---------- 定义章节标题格式 ------------
@@ -172,9 +171,8 @@
   \pushQED{\qed}%
   \normalfont \topsep6\p@\@plus6\p@\relax
   \trivlist
-  \item[\hskip\labelsep
-        \bfseries
-    #1\@addpunct{\,:\,}]\ignorespaces
+  \item[\hskip\labelsep\bfseries
+  #1\@addpunct{\,:\,}]\ignorespaces
 }{%
   \popQED\endtrivlist\@endpefalse
 }
@@ -269,7 +267,6 @@
 \def\bibfont{\small}      % 修改参考文献字体
 \setlength{\bibsep}{8pt}  % 调整参考文献间距
 
-
 %----- 微分符号 -----
 \newcommand{\dif}{\mathop{}\!\mathrm{d}}
 
@@ -285,6 +282,8 @@
 \newcommand{\bA}{\boldsymbol{A}}
 \newcommand{\red}[1]{\textcolor{red}{#1}}
 
+% Generic dummy publisher logo
+\newcommand{\plogo}{\fbox{$\mathcal{PL}$}}
 
 %----书籍标题作者等信息 -----
 
@@ -295,16 +294,76 @@
 
 \begin{document}
 
-\maketitle  % 生成封面
+%\maketitle  % 生成封面
+
+%------- 自定义封面 -----------
+
+\begin{titlepage}
+    \pdfbookmark[0]{封~~面}{cover}
+    % 取消标题页上的页眉和页脚
+    \centering   % 将所有内容放在标题页的中心
+    \scshape     % 对标题页上的所有文本使用小写字母
+    \vspace*{2\baselineskip}   % 页面顶部的空白
+
+    %------------------------------------------------
+    %	题目
+    %------------------------------------------------
+	
+    \rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}  % 粗水平线
+    \rule{\textwidth}{0.4pt}   % 细水平线
+	
+    \vspace{0.75\baselineskip} % 标题上方的空白
+
+    \makeatletter
+    {\LARGE\bfseries \@title \\} % 题目
+
+	\vspace{0.75\baselineskip} % 标题下方的空白
+	
+	\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} % 细水平线
+	\rule{\textwidth}{1.6pt}  % 粗水平线
+	
+	\vspace{2\baselineskip}   % 标题栏后的空白
+	
+    %------------------------------------------------
+    %	作者
+    %------------------------------------------------
+	
+	% {\scshape\Large 某某某  \quad 编著 \\}
+    {\fangsong\large \@author \\[10pt] }
+	
+    {\fangsong\large \@date \\}
+
+    \makeatother
+
+	%\vspace{2\baselineskip}
+
+	%\textit{机构的名字 \\ 地点}
+	
+	\vfill % Whitespace between editor names and publisher logo
+	
+	%------------------------------------------------
+	%	出版社
+	%------------------------------------------------
+	
+	\plogo % Publisher logo
+	
+	\vspace{0.3\baselineskip} % Whitespace under the publisher logo
+	
+	202X % Publication year
+
+	{\large publisher} % Publisher
+\end{titlepage}
+
 
 \thispagestyle{empty}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \frontmatter   %页码罗马数字, 章节不编号
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 
 \chapter{序 I}
@@ -402,7 +461,7 @@
 
 \section{文献引用}
 
-参考文献可采用 BibTeX 的方式生成 (内容写在文件 \verb|mybib.bib| 中), 参考文献的样式为 \verb|thuthesis-numeric| (对应的引用格式可选 \verb|numbers| 或  \verb|super|)和 \verb|thuthesis-author-year| (对应的引用格式 \verb|authoryear|), 符合国家标准《信息与文献参考文献著录规则》GB/T 7714-2015, 论文中引用和参考的文献必须列出. 参考文献序号按所引文献在论文中出现的先后次序排列. 引用文献应在论文中的引用处加注文献序号, 并加注方括弧.
+参考文献可采用 BibTeX 或 BibLaTeX 的方式生成 (文献信息写在文件 \verb|reference.bib| 中), 参考文献的样式为 \verb|thuthesis-numeric| (对应的引用格式可选 \verb|numbers| 或  \verb|super|)和 \verb|thuthesis-author-year| (对应的引用格式 \verb|authoryear|), 符合国家标准《信息与文献参考文献著录规则》GB/T 7714-2015, 论文中引用和参考的文献必须列出. 参考文献序号按所引文献在论文中出现的先后次序排列. 引用文献应在论文中的引用处加注文献序号, 并加注方括弧.
 
 文献引用示例 \cite{LiLiu1997} 和 \cite{Adams2003,Shen1994}.
 
@@ -513,15 +572,15 @@ aligned 与 equation 环境套用, 公式间距自动调节, 如果有分式, �
 \end{equation}
 \end{theorem}
 \begin{proof}[\normalfont\bfseries 证明~\nopunct]
-由定理 \ref{lmm:convergence} 和 \eqref{eq:alignedEq} 式可以推出以上结论.
+由引理 \ref{lmm:convergence} 和 \eqref{eq:alignedEq} 式可以推出以上结论.
 \end{proof}
 
-\begin{corollary}\label{col:convergence}
-假设单步法具有 $p$ 阶精度, 且増量函数 $\varphi(x_{n}, u_{n}, h)$ 关于 $u$ 满足 \textup{Lipschitz} 条件
-\begin{equation}\label{eq:conver3}
-|\varphi(x, u, h)-\varphi(x, \bar{u}, h)| \leqslant L_{\varphi}|u-\bar{u}|.
-\end{equation}
-\end{corollary}
+%\begin{corollary}\label{col:convergence}
+%假设单步法具有 $p$ 阶精度, 且増量函数 $\varphi(x_{n}, u_{n}, h)$ 关于 $u$ 满足 \textup{Lipschitz} 条件
+%\begin{equation}\label{eq:conver3}
+%|\varphi(x, u, h)-\varphi(x, \bar{u}, h)| \leqslant L_{\varphi}|u-\bar{u}|.
+%\end{equation}
+%\end{corollary}
 
 \begin{remark}\label{rem:remark}
 这是一个 remark.
@@ -662,7 +721,7 @@ aligned 与 equation 环境套用, 公式间距自动调节, 如果有分式, �
 \end{equation}
 
 
-%%%%%%%%%%%%%%%%%%% 插图环境 %%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%% 插图环境 %%%%%%%%%%%%%%%%%%%%
 
 \chapter{插图LaTeX环境}
 
@@ -675,36 +734,36 @@ XeLaTeX 环境下可以使用 EPS、PDF、PNG、JPEG、BMP 格式的图片, 当�
 插入一个图形并居中放置, 如图~\ref{fig:sinx}.
 \begin{figure}[htp!]
   \centering
-  \includegraphics[width=7.2cm]{image1.eps}
+  \includegraphics[width=7.2cm]{image1}
   \caption{函数 $y=\sin(x)$ 的图像}\label{fig:sinx}
 \end{figure}
 
 \clearpage
-两个图左右并排放置, 共用一个标题, 如图~\ref{fig:image1}.
+两个图左右并排放置, 共用一个标题, 如图~\ref{fig:twofigs}.
 \begin{figure}[htp!]
   \centering
-  \includegraphics[width=0.45\linewidth]{image1.eps}
+  \includegraphics[width=0.45\linewidth]{image1}
   \hfill
-  \includegraphics[width=0.45\linewidth]{image2.eps}
+  \includegraphics[width=0.45\linewidth]{image2}
   \caption{左: 图一的描述;~ 右:图二的描述.}
-  \label{fig:image}
+  \label{fig:twofigs}
 \end{figure}
 
 
-使用 minipage 排版并排插图, 每个图都有单独的标题. 通过 \verb|autoref| 引用图片: \autoref{fig:image1} 与 \autoref{fig:image2}.
+使用 minipage 排版并排插图, 每个图都有单独的标题. 通过 \verb|autoref| 引用图片: \autoref{fig:A} 与 \autoref{fig:B}.
 \begin{figure}[htp!]
 \begin{minipage}[t]{0.48\linewidth}
   \centering
-  \includegraphics[width=0.9\linewidth]{image1.eps}
+  \includegraphics[width=0.9\linewidth]{image1}
   \caption{图一的描述.}
-  \label{fig:image1}
+  \label{fig:A}
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.48\linewidth}
 \centering
-   \includegraphics[width=0.9\linewidth]{image2.eps}
+   \includegraphics[width=0.9\linewidth]{image2}
    \caption{图二的描述.}
-   \label{fig:image2}
+   \label{fig:B}
 \end{minipage}
 \end{figure}
 
@@ -770,7 +829,7 @@ LaTeX 的 Table 环境一个浮动体环境, 浮动体排版与 Figure 环境类
 \label{tab:error1}
 \begin{tabular}{c|c|cc|cc|cc}
 \Xhline{2\arrayrulewidth}
-degree &  step-size~$h$  & $L^2$-errors  &  order  & $H^1$-errors & order & $L^\infty$-errors  &  order \\
+degree & step-size~$h$ & $L^2$-errors & order & $H^1$-errors & order & $L^\infty$-errors & order \\
 \hline
   & 1/128 & 9.18E-06 & 2.02 & 7.70E-03 & 1.01  & 6.46E-07 & 2.02 \\
 1 & 1/256 & 2.29E-06 & 2.01 & 1.92E-03 & 1.00  & 1.61E-07 & 2.01 \\
@@ -812,48 +871,38 @@ N  & A       & B    & C       & D      & E       & F   \\
 \end{table}
 
 
-%%%%%%%%%%%%%%%%%% 生成参考文献 %%%%%%%%%%%%%%%%
 
-
-% 生成参考文献, 使用第一种请把第二种全部注释
-
-\renewcommand{\bibname}{参考文献}
+%%%%%%%%%%%%%%%%% 生成参考文献 %%%%%%%%%%%%%%%%%%%%%
 
 \clearpage
 \phantomsection
-\addcontentsline{toc}{chapter}{参考文献} % 添加  "参考文献 " 到目录
+\addcontentsline{toc}{section}{参考文献}
+
+% 生成参考文献, 两种方式任选一种
 
 % 第一种方式, 使用 bib 文件
 
-%\nocite{*}  % 可以暂时显示全部参考文献, 包括未引用的
-
-% 使用方法:\bibliography{参考文件1文件名, 参考文献2文件名, ...}
-\bibliography{mybib}
+%\nocite{*}  % 可以暂时显示全部参考文献
+\bibliography{reference}
 
 
-%-------------------------------------------------
+%------------------------------------------------
 
-% 第二种方式, 按照格式直接写文献信息, 使用第二种请把第一种全部注释
-% 注意： 参考文献序号按所引文献在论文中出现的先后次序排列
-% 第二种方式需要加下面三行命令才能把  "参考文献 " 加到目录
+% 第二种方式, 手动添加文献信息
 
-%\clearpage
-%\phantomsection
-%\addcontentsline{toc}{chapter}{参考文献} % 添加  "参考文献 " 到目录
-%
 %\begin{thebibliography}{99}
-%\bibitem{Tadmor2012} Tadmor~E. A review of numerical methods for nonlinear partial differential
-%  equations\allowbreak[J]. Bull. Amer. Math. Soc., 2012, 49(4): 507-554.
+%\bibitem{Tadmor2012} Tadmor~E. A review of numerical methods for nonlinear partial differential equations\allowbreak[J]. Bull. Amer. Math. Soc., 2012, 49(4): 507-554.
 %
-%\bibitem{LiLiu1997} 李荣华, 刘播. 微分方程数值解法\allowbreak[M]. 东南大学出版社, 1997.
+%\bibitem{LiLiu1997} 李荣华, 刘播. 微分方程数值解法\allowbreak[M]. 第四版. 北京: 高等教育出版社, 2009.
 %
-%\bibitem{Adams2003} Adams~R~A, Fournier~J~J~F. Sobolev spaces\allowbreak[M]. Elsevier, 2003.
+%\bibitem{Adams2003} Adams~R~A, Fournier~J~J~F. Sobolev spaces\allowbreak[M]. 2nd ed. Amsterdam: Elsevier, 2003.
 %
 %\bibitem{TreWei2014}Trefethen~L~N, Weideman~J~A~C. The exponentially convergent trapezoidal rule\allowbreak[J]. SIAM Rev., 2014, 56(3): 385-458.
 %
 %\bibitem{Shen1994} Shen~J. Efficient spectral-Galerkin method I. Direct solvers of second- and fourth-order equations using Legendre polynomials\allowbreak[J]. SIAM J. Sci. Comput., 1994, 15(6): 1489-1505.
 %
 %\end{thebibliography}
+
 
 
 
@@ -885,7 +934,7 @@ N  & A       & B    & C       & D      & E       & F   \\
 如图~\ref{fig:sinx2}.
 \begin{figure}[htp!]
   \centering
-  \includegraphics[width=0.45\linewidth]{image1.eps}
+  \includegraphics[width=0.45\linewidth]{image1}
   \caption{函数 $y=\sin(x)$ 的图像}\label{fig:sinx2}
 \end{figure}
 
