@@ -11,9 +11,14 @@
 \usepackage{framed}
 
 \usepackage{enumitem}
-\setlist{leftmargin=*} % noitemsep
-\renewcommand{\labelenumi}{[\arabic{enumi}]}
-\renewcommand{\labelenumii}{\alph{enumii}.}
+%\setlist{leftmargin=*} % noitemsep
+%\renewcommand{\labelenumi}{[\arabic{enumi}]}
+%\renewcommand{\labelenumii}{\alph{enumii}.}
+
+% new list for references
+\newlist{biblist}{enumerate}{2}
+\setlist[biblist,1]{leftmargin=*,label={[\arabic*]}}
+\setlist[biblist,2]{leftmargin=*,label={\alph*.}}
 
 \usepackage{hyperref}
 \hypersetup{colorlinks=true,linkcolor=blue,
@@ -64,7 +69,8 @@ filecolor=blue,citecolor=black,urlcolor=cyan}
     {\large \@date}%
   \end{center}%
   \par
-  \vskip 1.5em}
+  \vskip 1.5em
+}
 \makeatother
 
 %\numberwithin{equation}{section}
@@ -104,16 +110,15 @@ filecolor=blue,citecolor=black,urlcolor=cyan}
 
 \section*{Research Topic}
 
-\begin{enumerate}%[label={[\arabic*]}]
+\begin{biblist}
   \item Literature 1
-  \begin{enumerate}
+  \begin{biblist}
     \item Point one
     \item Point two
     \item Point three
-  \end{enumerate}
+  \end{biblist}
   \item Literature 2
   \item Literature 3
-\end{enumerate}
-
+\end{biblist}
 
 \end{document}

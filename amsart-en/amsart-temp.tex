@@ -88,11 +88,11 @@
 % graphic path
 \graphicspath{{./figures/}}
 
-% blankbox for figure
+% blank box for figure
 \newcommand{\blankbox}[2]{%
-\parbox{\columnwidth}{\centering
-\setlength{\fboxsep}{0pt}%
-\fbox{\raisebox{0pt}[#2]{\hspace{#1}}}}%
+  \parbox{\columnwidth}{\centering
+  \setlength{\fboxsep}{0pt}%
+  \fbox{\raisebox{0pt}[#2]{\hspace{#1}}}}%
 }
 
 % differential operator
@@ -110,13 +110,12 @@
 % Information for title and author
 \title[Short Title]{This is Full Title}
 
-\author[Author A \; \& \; Author B]{Author A${\,}^{1}$ \quad and \quad Author B${\,}^{2,*}$}
+\author[Author A and Author B]{Author A${}^{1}$ and Author B${}^{2,*}$}
 
-\thanks{${}^{*}$ Corresponding author (E-mail: \texttt{xyz@math.univ.edu}). \\
-\indent ${}^{1}$ Department of Computer Science, \LaTeX\ University. \\
-\indent ${}^{2}$ Department of Mechanical Engineering, \LaTeX\ University \\
-\indent This work is supported in part by NSFC grants No. 12345678 and ...
-}
+\thanks{${}^{*}$Corresponding author (E-mail: \texttt{xyz@math.univ.edu})}
+\thanks{${}^{1}$Department of Computer Science, \LaTeX\ University}
+\thanks{${}^{2}$Department of Mechanical Engineering, \LaTeX\ University}
+\thanks{This work is supported in part by NSFC grants No. 12345678 and ...}
 
 \date{\today}
 
@@ -140,7 +139,7 @@
 
 
 \section{Introduction}
-The introduction introduces the context and summarizes the manuscript. 
+The introduction introduces the context and summarizes the manuscript.
 It is importantly to clearly state the contributions of this piece of work.
 
 In this paper we present a new method for solving the model equation
@@ -171,7 +170,7 @@ The outline is not required, but we show an example here.
 
 The paper is organized as follows. Our main results are in
 \ref{sec:main}, our new algorithm is in \ref{sec:alg}, experimental
-results are in \ref{sec:experiments}, discussion is in \ref{sec:discussion} 
+results are in \ref{sec:experiments}, discussion is in \ref{sec:discussion}
 and the conclusions follow in \ref{sec:conclusions}.
 
 
@@ -214,7 +213,7 @@ This is a lemma environment
 \end{enumerate}
 \end{lemma}
 
-This is a citation example \cite{Adams2003}. This statement requires 
+This is a citation example \cite{Adams2003}. This statement requires
 citation \cite{Shen1994,Tadmor2012,TreWei2014}.
 
 Here we state our main result as \ref{thm:bigthm}.
@@ -395,7 +394,7 @@ N  & A       & B    & C       & D      & E     \\
 \end{tabularx}
 \end{table}
 
-Use \texttt{minipage} package to set images side-by-side, each with its own title, 
+Use \texttt{minipage} package to set images side-by-side, each with its own title,
 as shown in Figure~\ref{fig:A} and Figure~\ref{fig:B}.
 \begin{figure}[htp!]
 \begin{minipage}[t]{0.48\linewidth}
@@ -412,7 +411,6 @@ as shown in Figure~\ref{fig:A} and Figure~\ref{fig:B}.
    \label{fig:B}
 \end{minipage}
 \end{figure}
-
 
 
 Additional results are available in the supplement in Table~\ref{tab:foo}.
@@ -444,22 +442,22 @@ degree &  step-size~$h$  & $L^2$-errors  &  order  & $H^1$-errors & order & $L^\
 \section{Discussion of \texorpdfstring{{$Z=X \cup Y$}}{Z = X union Y}}
 \label{sec:discussion}
 
-Some discussions here. Some discussions here. Some discussions here. 
-Some discussions here. Some discussions here. Some discussions here. 
+Some discussions here. Some discussions here. Some discussions here.
+Some discussions here. Some discussions here. Some discussions here.
 Some discussions here. Some discussions here.
 
-Some discussions here. Some discussions here. Some discussions here. 
-Some discussions here. Some discussions here. Some discussions here. 
+Some discussions here. Some discussions here. Some discussions here.
+Some discussions here. Some discussions here. Some discussions here.
 Some discussions here. Some discussions here.
 
 \section{Conclusions}\label{sec:conclusions}
 
 Some conclusions here. Some conclusions here. Some conclusions here.
-Some conclusions here. Some conclusions here. Some conclusions here. 
+Some conclusions here. Some conclusions here. Some conclusions here.
 Some conclusions here.
 
-Some conclusions here. Some conclusions here. Some conclusions here. 
-Some conclusions here. Some conclusions here. Some conclusions here. 
+Some conclusions here. Some conclusions here. Some conclusions here.
+Some conclusions here. Some conclusions here. Some conclusions here.
 Some conclusions here. Some conclusions here.
 
 
@@ -490,6 +488,4 @@ together this example manuscript and supplement.
 
 
 \end{document}
-
-
 

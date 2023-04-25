@@ -28,10 +28,10 @@
 
 %----- 设置页眉页脚 -----
 \fancypagestyle{plain}{%
-	\fancyhf{} %清空原有样式
-	\fancyhead[C]{\kaishu\color{ecolor}\nouppercase{\leftmark}}
-	\fancyfoot[C]{\color{gray}\thepage}
-    \renewcommand{\headrulewidth}{0.5pt}
+  \fancyhf{} %清空原有样式
+  \fancyhead[C]{\kaishu\color{ecolor}\nouppercase{\leftmark}}
+  \fancyfoot[C]{\color{gray}\thepage}
+  \renewcommand{\headrulewidth}{0.5pt}
 }
 
 \pagestyle{plain}
@@ -47,37 +47,36 @@
 \makeatletter
 \renewcommand*{\maketitle}{
 \begin{titlepage}
-    % 取消标题页上的页眉和页脚
-    \pdfbookmark[1]{封面}{cover}
-    \centering   % 将所有内容放在标题页的中心
-    %\scshape     % 对标题页上的所有文本使用小写字母
-    \vspace*{5\baselineskip}   % 页面顶部的空白
-    \color{ecolor}
+  % 取消标题页上的页眉和页脚
+  \pdfbookmark[1]{封面}{cover}
+  \centering   % 将所有内容放在标题页的中心
+  %\scshape     % 对标题页上的所有文本使用小写字母
+  \vspace*{5\baselineskip}   % 页面顶部的空白
+  \color{ecolor}
 
-    %-------- 题目 ---------
-    \rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}  % 粗水平线
-    \rule{\textwidth}{0.4pt}   % 细水平线
-	
-    \vspace{0.75\baselineskip} % 标题上方的空白
+  %-------- 题目 ---------
+  \rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}  % 粗水平线
+  \rule{\textwidth}{0.4pt}   % 细水平线
 
-    {\zihao{-1}\bfseries \@title}
+  \vspace{0.75\baselineskip} % 标题上方的空白
 
-	\vspace{0.75\baselineskip} % 标题下方的空白
-	
-	\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} % 细水平线
-	\rule{\textwidth}{1.6pt}  % 粗水平线
-	
-	\vspace{4\baselineskip}   % 标题栏后的空白
+  {\zihao{-1}\bfseries \@title}
 
-    %----- 作者 -----
-    {\fangsong\Large \@author}
+  \vspace{0.75\baselineskip} % 标题下方的空白
 
-    \vspace{0.35\baselineskip}
+  \rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} % 细水平线
+  \rule{\textwidth}{1.6pt}  % 粗水平线
 
-    {\fangsong\Large \@date}
-	\vfill
+  \vspace{4\baselineskip}   % 标题栏后的空白
+
+  %----- 作者 -----
+  {\fangsong\Large \@author}
+
+  \vspace{0.35\baselineskip}
+
+  {\fangsong\Large \@date}
+  \vfill
 \end{titlepage}
-\thispagestyle{empty}
 }
 \makeatother
 
@@ -134,6 +133,7 @@
 %----- 生成封面 -----
 \maketitle
 
+%\thispagestyle{empty}
 
 %----- generate a empty page -----
 %\clearpage%

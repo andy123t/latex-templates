@@ -1,7 +1,7 @@
 % paper template
 
-\documentclass[10pt,reqno,final]{amsart}
-%\documentclass[10pt,reqno,draft]{amsart}
+\documentclass[10pt,twoside,reqno,final]{article}
+%\documentclass[10pt,reqno,draft]{article}
 
 % package for mathematics
 \usepackage{amsmath,amssymb,amsthm}
@@ -34,10 +34,18 @@
 % package for algorithm
 \usepackage{algorithm,algorithmicx}
 \usepackage{algpseudocode}
+% package for author and affiliation style
+\usepackage[affil-it]{authblk}
 % package for using box and verbatim
 \usepackage{fancybox}
-% package for address
-\usepackage[foot]{amsaddr}
+% package for page headers and footers
+\usepackage{fancyhdr}
+
+% package for section etc.
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries}{\thesection.}{1.2ex}{}
+\titleformat{\subsection}{\normalfont\bfseries}{\thesubsection.}{1.2ex}{}
+\titleformat{\subsubsection}{\normalfont\slshape}{\thesubsubsection.}{1.2ex}{}
 
 % package for bibliography support
 \usepackage[numbers,sort&compress]{natbib}
@@ -53,6 +61,34 @@
 %\setlength{\oddsidemargin}{0.5cm}
 %\setlength{\evensidemargin}{0.5cm}
 
+\makeatletter
+\newcommand\@shorttitle{}
+\newcommand\shorttitle[1]{\def\@shorttitle{#1}}
+\newcommand\@shortauthor{}
+\newcommand\shortauthor[1]{\def\@shortauthor{#1}}
+\makeatother
+
+% headers and footers setting
+%\pagestyle{fancy}
+%\fancyhf{}
+%\fancyhead[CO]{\uppercase{Title of Paper}}
+%\fancyhead[CE]{\uppercase{Author A, Author B \& Author C}}
+%\fancyfoot[C]{\thepage}
+%\renewcommand{\headrulewidth}{0pt}
+
+%\fancyhead[C]{\uppercase{Title of Paper}}
+%\fancyfoot[C]{\thepage}
+%\renewcommand{\headrulewidth}{0pt}
+
+\makeatletter
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[CO]{\@shorttitle}
+\fancyhead[CE]{\@shortauthor}
+\fancyhead[RO]{\thepage}
+\fancyhead[LE]{\thepage}
+\makeatother
+
 % command for line spacing
 \renewcommand{\baselinestretch}{1.1}
 
@@ -60,11 +96,16 @@
 %\usepackage[symbol]{footmisc}
 %\renewcommand{\thefootnote}{\fnsymbol{footnote}}
 
+% command for listsep
+\setlist{nolistsep}
+
 % command for equations, theorems and lemmas etc.
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}{Lemma}[section]
 \newtheorem{corollary}{Corollary}[section]
+%\newtheorem{lemma}[theorem]{Lemma}
+%\newtheorem{corollary}[theorem]{Corollary}
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
@@ -72,12 +113,13 @@
 \newtheorem{xca}{Exercise}[section]
 
 \theoremstyle{remark}
-\newtheorem{remark}{Remark}[section]
+\newtheorem{remark}[theorem]{Remark}
 
 % caption setting
-%\captionsetup{font={small,singlespacing},labelformat={default},labelsep=period}
-\captionsetup[figure]{position=bottom,skip={8pt},name={Figure}}
-\captionsetup[table]{position=top,skip={4pt},name={Table}}
+%\captionsetup{font={small,singlespacing},labelfont={bf},labelformat={default},labelsep=period}
+\captionsetup{font={small},labelformat={default},labelsep=period}
+\captionsetup[figure]{position=bottom,skip={5pt},name={Figure}}
+\captionsetup[table]{position=top,skip={2pt},name={Table}}
 %\setlength{\textfloatsep}{12pt plus 2pt minus 2pt}
 %\setlength{\floatsep}{10pt plus 2pt minus 2pt}
 %\setlength{\intextsep}{10pt plus 2pt minus 2pt}
@@ -89,15 +131,46 @@
 \numberwithin{figure}{section}
 \numberwithin{table}{section}
 
+
+% refine maketitle environment
+\makeatletter
+\def\@maketitle{%
+  \newpage
+  \null
+  %\vspace{-1.5em}%
+  \begin{center}%
+  \let \footnote \thanks
+    {\Large \bfseries \@title \par}%
+    \vskip 1.5em%
+    {\large
+      \lineskip 0.5em%
+      \begin{tabular}[t]{c}%
+        \@author
+      \end{tabular}\par}%
+    \vskip 0.5em%
+    {\large \@date}%
+  \end{center}%
+  \par
+  \vskip 1em
+}
+\makeatother
+
+% redefine abstract environment
+\makeatletter
+\renewenvironment{abstract}{%
+    \if@twocolumn
+      \section*{\abstractname}%
+    \else %% <- here removed \small
+      \begin{center}%
+        {\bfseries \large\abstractname\vspace{\z@}} %% <- here added \large
+      \end{center}%
+      \quotation
+    \fi}
+    {\if@twocolumn\else\endquotation\fi}
+\makeatother
+
 % graphic path
 \graphicspath{{./figures/}}
-
-% blank box for figure
-\newcommand{\blankbox}[2]{%
-  \parbox{\columnwidth}{\centering
-  \setlength{\fboxsep}{0pt}%
-  \fbox{\raisebox{0pt}[#2]{\hspace{#1}}}}%
-}
 
 % differential operator
 \newcommand{\dif}{\mathop{}\!\mathrm{d}}
@@ -112,34 +185,24 @@
 
 
 % Information for title and author
-\title[Short Title]{This is Full Title}
+\title{An Example Article}
 
-\author[Author A]{Author A$^{1}$}
-\author[Author B]{Author B$^{2}$}
-\author[Author C]{Author C$^{1,*}$}
-\address{$^{1}$Common address of authors A and B}
-\address{$^{2}$author C address}
+\shorttitle{Short Title of Article}
+\shortauthor{Author A, Author B \& Author C}
 
-%\author[Author A, Author B]{Author A$^{1}$, Author B$^{1,*}$}
-%\address{$^{1}$common address of authors A and B}
-%\author[Author C]{Author C$^{2}$}
-%\address{$^{2}$author C address}
+\author[1]{Author A\thanks{Email address: \texttt{A.A@university.edu}; Corresponding author.}}
+\author[1]{Author B\thanks{Email address: \texttt{B.B@university.edu}}}
+\author[2]{Author C\thanks{Email address: \texttt{C.C@university.edu}}}
+%\author[2]{Author D\thanks{Email address: \texttt{D.D@university.edu}}}
 
-\email{list of emails}
+\affil[1]{Department of Mathematics, \LaTeX\ University}
+\affil[2]{Department of Mechanical Engineering, \LaTeX\ University}
 
-\thanks{${}^{*}$Corresponding author}
-\thanks{The first author was supported in part by NSF Grant \#000000.}
-\thanks{Support information for the second author.}
-\thanks{Support information for the third author.}
-
-\subjclass[2000]{65L60, 65L05, 65L70}
-
-\date{\today}
-
-\keywords{Keyword 1, keyword 2, error analysis}
-
+\date{Date: \today}
 
 \begin{document}
+
+\maketitle
 
 \begin{abstract}
   This is an example \LaTeX\ article. This can be used as a
@@ -148,21 +211,27 @@
   equations, etc.  An abstract must consist of a single paragraph and
   be concise. Because of online formatting, abstracts must appear as
   plain as possible. Any equations should be inline.
+
+  \medskip
+  \noindent{\bf Keywords}: Example, \LaTeX, numerical methods
+
+  \medskip
+  \noindent{\bf 2000 Mathematics Subject Classification: } 65L60, 65L05, 65L70.
 \end{abstract}
 
-\maketitle
 
 
 \section{Introduction}
-The introduction introduces the context and summarizes the manuscript.
-It is importantly to clearly state the contributions of this piece of work.
+The introduction introduces the context and summarizes the
+manuscript. It is importantly to clearly state the contributions of
+this piece of work.
 
 In this paper we present a new method for solving the model equation
 \begin{equation}\label{eq:mulequ}
 \left\{\begin{aligned}
   & \partial_{t} u-\varepsilon^{2} \Delta u+u^{3}-u=0, \quad \text{in} ~\Omega\times\mathcal{T}, \\
-  &\, u(x,y,t) = g(t), \quad \text{on } ~ \partial \Omega, \\
-  &\, u(x,y,0)=\varphi(x, y), \quad \text{on } ~\Omega.
+  &\, u(x,y,t) = g(t), \quad \text{on} ~ \partial \Omega, \\
+  &\, u(x,y,0)=\varphi(x, y), \quad \text{on} ~\Omega.
 \end{aligned}\right.
 \end{equation}
 where $\varepsilon$ is a small parameter.
@@ -173,20 +242,18 @@ The merits of our method are as follows:
 \begin{itemize}
   \item item one
   \item item two
-  %\item item three
 \end{itemize}
 \begin{enumerate}
   \item item one
   \item item two
-  %\item item three
 \end{enumerate}
 
 The outline is not required, but we show an example here.
 
 The paper is organized as follows. Our main results are in
 \ref{sec:main}, our new algorithm is in \ref{sec:alg}, experimental
-results are in \ref{sec:experiments}, discussion is in \ref{sec:discussion}
-and the conclusions follow in \ref{sec:conclusions}.
+results are in \ref{sec:experiments}, discussion is in \ref{sec:discussion} and the conclusions follow in
+\ref{sec:conclusions}.
 
 
 \section{Preliminaries}
@@ -200,7 +267,8 @@ and the conclusions follow in \ref{sec:conclusions}.
 \section{Main results}
 \label{sec:main}
 
-We interleave text filler with some example theorems and theorem-like items.
+We interleave text filler with some example theorems and theorem-like
+items.
 
 \begin{definition}
 This is a definition environment.
@@ -228,8 +296,7 @@ This is a lemma environment
 \end{enumerate}
 \end{lemma}
 
-This is a citation example \cite{Adams2003}. This statement requires
-citation \cite{Shen1994,Tadmor2012,TreWei2014}.
+This is a citation example \cite{Adams2003}. This statement requires citation \cite{Shen1994,Tadmor2012,TreWei2014}.
 
 Here we state our main result as \ref{thm:bigthm}.
 
@@ -243,8 +310,8 @@ Here we state our main result as \ref{thm:bigthm}.
   such that $A=LDL^T$. The factorization is unique.
 \end{theorem}
 
-%LaTeX is a high-quality typesetting system; it includes features designed
-%for the production of technical and scientific documentation.
+LaTeX is a high-quality typesetting system; it includes features designed for the production of technical and scientific documentation.
+LaTeX is based on the idea that it is better to leave document design to document designers, and to let authors get on with writing documents.
 
 \begin{theorem}[Mean Value Theorem]\label{thm:mvt}
   Suppose $f$ is a function that is continuous on the closed interval
@@ -260,7 +327,8 @@ Here we state our main result as \ref{thm:bigthm}.
 \end{theorem}
 
 \begin{remark}
-Observe that \ref{thm:bigthm}, \ref{thm:mvt} correctly mix references to multiple labels.
+Observe that \ref{thm:bigthm}, \ref{thm:mvt} correctly mix references
+to multiple labels.
 \end{remark}
 
 % command cref package cleveref
@@ -279,7 +347,8 @@ Observe that \ref{thm:bigthm}, \ref{thm:mvt} correctly mix references to multipl
   \end{equation*}
 \end{proof}
 
-Note that it may require two \LaTeX\ compilations for the proof marks to show.
+Note that it may require two \LaTeX\ compilations for the proof marks
+to show.
 
 Display matrices can be rendered using environments from \texttt{amsmath}:
 \begin{equation}\label{eq:matrices}
@@ -302,7 +371,6 @@ We calculate the Fr\'{e}chet derivative of $F$ as follows:
 \end{align}
 \end{subequations}
 \ref{eq:aa} is the first line, and \ref{eq:bb} is the last line.
-
 
 \section{Algorithm}
 \label{sec:alg}
@@ -350,19 +418,11 @@ Adjust the width of the algorithm environment
 \section{Experimental results}
 \label{sec:experiments}
 
-Some experimental results here.
+Some experimental results here. Some experimental results here. Some experimental results here. Some experimental results here. Some experimental results here.Some experimental results here.
 
 \begin{example}
   This is example environment.
 \end{example}
-
-\begin{figure}[htp!]
-\blankbox{.6\columnwidth}{10pc}
-\caption{This is an example of a figure caption with text.}
-\label{fig:blackbox}
-\end{figure}
-
-\textbf{Some figures and tables here.}
 
 Figure~\ref{fig:foo} shows some example results.
 \begin{figure}[htp!]
@@ -372,7 +432,7 @@ Figure~\ref{fig:foo} shows some example results.
   \label{fig:foo}
 \end{figure}
 
-The two figures are placed side by side, sharing one title, as shown in \autoref{fig:twofigs}.
+The two figures are placed side by side, sharing the same title, as shown in \autoref{fig:twofigs}.
 \begin{figure}[htp!]
   \centering
   \includegraphics[width=0.45\linewidth]{fig1}
@@ -403,14 +463,13 @@ N  & A       & B    & C       & D      & E     \\
 8  & 8.50E-05 & 8.70E-05 & 1.90E-05 & 2.10E-05 & 3.00E-06 \\
 10 & 8.60E-05 & 9.30E-05 & 2.50E-05 & 2.00E-06 & 9.00E-06 \\
 12 & 1.70E-05 & 2.40E-05 & 7.60E-05 & 8.30E-05 & 9.00E-05 \\
-14 & 2.30E-05 & 5.00E-06 & 8.20E-05 & 8.90E-05 & 9.10E-05 \\
+%14 & 2.30E-05 & 5.00E-06 & 8.20E-05 & 8.90E-05 & 9.10E-05 \\
 %16 & 7.90E-05 & 6.00E-06 & 1.30E-05 & 9.50E-05 & 9.70E-05 \\
 \Xhline{2\arrayrulewidth}
 \end{tabularx}
 \end{table}
 
-Use \texttt{minipage} package to set images side-by-side, each with its own title,
-as shown in Figure~\ref{fig:A} and Figure~\ref{fig:B}.
+Use \texttt{minipage} package to set images side-by-side, each with its own title, as shown in Figure~\ref{fig:A} and Figure~\ref{fig:B}.
 \begin{figure}[htp!]
 \begin{minipage}[t]{0.48\linewidth}
   \centering
@@ -426,7 +485,6 @@ as shown in Figure~\ref{fig:A} and Figure~\ref{fig:B}.
    \label{fig:B}
 \end{minipage}
 \end{figure}
-
 
 Additional results are available in the supplement in Table~\ref{tab:foo}.
 
@@ -454,27 +512,20 @@ degree &  step-size~$h$  & $L^2$-errors  &  order  & $H^1$-errors & order & $L^\
 \end{tabular}
 \end{table}
 
-\section{Discussion of \texorpdfstring{{$Z=X \cup Y$}}{Z = X union Y}}
+
+\section{Discussion of \texorpdfstring{{\boldmath$Z=X \cup Y$}}{Z = X union Y}}
 \label{sec:discussion}
 
-Some discussions here. Some discussions here. Some discussions here.
-Some discussions here. Some discussions here. Some discussions here.
-Some discussions here. Some discussions here.
+Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here.
 
-Some discussions here. Some discussions here. Some discussions here.
-Some discussions here. Some discussions here. Some discussions here.
-Some discussions here. Some discussions here.
+Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here.
 
-\section{Conclusions}\label{sec:conclusions}
+\section{Conclusions}
+\label{sec:conclusions}
 
-Some conclusions here. Some conclusions here. Some conclusions here.
-Some conclusions here. Some conclusions here. Some conclusions here.
-Some conclusions here.
+Some conclusions here. Some conclusions here. Some conclusions here. Some conclusions here. Some conclusions here. Some conclusions here. Some conclusions here.
 
-Some conclusions here. Some conclusions here. Some conclusions here.
-Some conclusions here. Some conclusions here. Some conclusions here.
-Some conclusions here. Some conclusions here.
-
+Some conclusions here. Some conclusions here. Some conclusions here. Some conclusions here. Some conclusions here. Some conclusions here. Some conclusions here. Some conclusions here.
 
 \appendix
 \section{An example appendix}
@@ -486,7 +537,7 @@ Test Lemma.
 \end{lemma}
 
 This is a equation in appendix.
-\begin{equation}\label{eq:abc}
+\begin{equation}\label{eq:A1}
   a^2+b^2=c^2.
 \end{equation}
 
@@ -495,10 +546,8 @@ We would like to acknowledge the assistance of volunteers in putting
 together this example manuscript and supplement.
 
 
-% References
 \bibliographystyle{plain}
 %\bibliographystyle{abbrv}
-%\bibliographystyle{amsplain}
 
 \bibliography{reference}
 

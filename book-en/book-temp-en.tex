@@ -70,8 +70,11 @@
 %\setlength{\abovecaptionskip}{2pt plus 1pt minus 1pt}
 %\setlength{\belowcaptionskip}{3pt plus 1pt minus 2pt}
 
+%----- make index -----
 \makeindex
-%\bibliographystyle{plain}
+
+%----- bibliography style -----
+\bibliographystyle{plain}
 
 %---- header and footer position -----
 %\setlength{\headheight}{18pt}
@@ -138,6 +141,9 @@
 \numberwithin{figure}{chapter}
 \numberwithin{table}{chapter}
 
+% graphic path
+\graphicspath{{./figure/}{./figures/}{./image/}{./images/}}
+
 % differential operator
 \newcommand{\dif}{\mathop{}\!\mathrm{d}}
 
@@ -152,8 +158,6 @@
 \newcommand{\red}[1]{\textcolor{red}{#1}}
 
 \newcommand{\plogo}{\fbox{$\mathcal{PL}$}} % Generic dummy publisher logo
-
-\graphicspath{{./figure/}{./figures/}{./image/}{./images/}}
 
 
 %----- Book information -----
@@ -175,63 +179,59 @@
 
 \begin{titlepage} % Suppresses headers and footers on the title page
 
-    \pdfbookmark[0]{Cover}{cover} % book cover
+  \pdfbookmark[0]{Cover}{cover} % book cover
 
-	\centering % Centre everything on the title page
-	
-	\scshape % Use small caps for all text on the title page
-	
-	\vspace*{2\baselineskip} % White space at the top of the page
-	
-	%------------------------------------------------
-	%	Title
-	%------------------------------------------------
-	
-	\rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt} % Thick horizontal rule
-	\rule{\textwidth}{0.4pt} % Thin horizontal rule
-	
-	\vspace{0.75\baselineskip} % Whitespace above the title
-	
-    \makeatletter
+  \centering % Centre everything on the title page
 
-	{\LARGE\bfseries \@title \\} % Title
-	
-	\vspace{0.75\baselineskip} % Whitespace below the title
-	
-	\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} % Thin horizontal rule
-	\rule{\textwidth}{1.6pt} % Thick horizontal rule
-	
-	\vspace{5\baselineskip} % Whitespace after the title block
+  \scshape % Use small caps for all text on the title page
 
-	%------------------------------------------------
-	%	Editor(s)
-	%------------------------------------------------
-	
-	Edited By
-	
-	\vspace{0.5\baselineskip} % Whitespace before the editors
-	
-	{\scshape\Large \@author \\} % Editor list
-	
-	\vspace{0.5\baselineskip} % Whitespace below the editor list
-	
-	\textit{The University Name} % Editor affiliation
-	
-	\vfill % Whitespace between editor names and publisher logo
-	
-    \makeatletter
+  \vspace*{2\baselineskip} % White space at the top of the page
 
-	%------------------------------------------------
-	%	Publisher
-	%------------------------------------------------
-	
-	\plogo % Publisher logo
-	
-	\vspace{0.3\baselineskip} % Whitespace under the publisher logo
-	
-	202X % Publication year
+  %------------------------------------------------
+  % Title
+  %------------------------------------------------
 
-	{\large publisher} % Publisher
+  \rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt} % Thick horizontal rule
+  \rule{\textwidth}{0.4pt} % Thin horizontal rule
+
+  \vspace{0.75\baselineskip} % Whitespace above the title
+
+  {\LARGE\bfseries \makeatletter\@title\makeatother \\} % Title
+
+  \vspace{0.75\baselineskip} % Whitespace below the title
+
+  \rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} % Thin horizontal rule
+  \rule{\textwidth}{1.6pt} % Thick horizontal rule
+
+  \vspace{5\baselineskip} % Whitespace after the title block
+
+  %------------------------------------------------
+  % Editor(s)
+  %------------------------------------------------
+
+  Edited By
+
+  \vspace{0.5\baselineskip} % Whitespace before the editors
+
+  {\scshape\Large \makeatletter\@author\makeatother} % Editor list
+
+  \vspace{0.5\baselineskip} % Whitespace below the editor list
+
+  \textit{The University Name} % Editor affiliation
+
+  \vfill % Whitespace between editor names and publisher logo
+
+  %------------------------------------------------
+  % Publisher
+  %------------------------------------------------
+
+  \plogo % Publisher logo
+
+  \vspace{0.3\baselineskip} % Whitespace under the publisher logo
+
+  202X % Publication year
+
+  {\large publisher} % Publisher
 
 \end{titlepage}
 
@@ -690,15 +690,15 @@ The following table: Table~\ref{tab2:heightweight}. Use \verb|autoref|: \autoref
 % PLCR is defined in the preamble
 \begin{tabularx}{0.8\textwidth}{lCCC}
    \toprule %\Xhline{2\arrayrulewidth}
-	Number &  Age & Height & Weight\\
-	\midrule
-	1&14&156&42\\
-	2&16&158&45\\
-	3&14&162&48\\
-	4&15&163&50\\
+  Number &  Age & Height & Weight\\
+  \midrule
+  1&14&156&42\\
+  2&16&158&45\\
+  3&14&162&48\\
+  4&15&163&50\\
     \cmidrule{2-4}
-	Mean &15&159.75&46.25\\
-	\bottomrule
+  Mean &15&159.75&46.25\\
+  \bottomrule
 \end{tabularx}
 \end{table}
 
@@ -751,7 +751,6 @@ The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the 
 \phantomsection
 \addcontentsline{toc}{chapter}{\bibname}
 
-\bibliographystyle{plain}
 \bibliography{reference}
 
 

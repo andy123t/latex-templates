@@ -76,7 +76,7 @@
 \setlist{nolistsep}
 % \setlength{\itemsep}{3pt plus1pt minus2pt}
 
-\usepackage{indentfirst}                % 首行缩进宏包
+%\usepackage{indentfirst}  % 首行缩进宏包
 %\usepackage[perpage,symbol]{footmisc}  % 脚注控制
 
 \usepackage[cleardoublepage=plain]{scrextend}
@@ -84,7 +84,7 @@
 %----- 设置页眉和页脚 -----
 \usepackage{fancyhdr,fancyref}
 \pagestyle{fancy}
-\fancyhf{}  %清除以前对页眉页脚的设置
+\fancyhf{}
 \fancyhead[RO,LE]{\fangsong \zihao{5} ~\thepage~}
 \fancyhead[LO]{\fangsong \zihao{5} \leftmark}
 \fancyhead[RE]{\fangsong \zihao{5} \rightmark}
@@ -275,58 +275,57 @@
 
 \begin{titlepage}
     \pdfbookmark[0]{封~~面}{cover}
-    % 取消标题页上的页眉和页脚
     \centering   % 将所有内容放在标题页的中心
     \scshape     % 对标题页上的所有文本使用小写字母
     \vspace*{2\baselineskip}   % 页面顶部的空白
 
     %------------------------------------------------
-    %	题目
+    %   题目
     %------------------------------------------------
-	
+
     \rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}  % 粗水平线
     \rule{\textwidth}{0.4pt}   % 细水平线
-	
+
     \vspace{0.75\baselineskip} % 标题上方的空白
 
     \makeatletter
     {\LARGE\bfseries \@title \\} % 题目
 
-	\vspace{0.75\baselineskip} % 标题下方的空白
-	
-	\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} % 细水平线
-	\rule{\textwidth}{1.6pt}  % 粗水平线
-	
-	\vspace{2\baselineskip}   % 标题栏后的空白
-	
+    \vspace{0.75\baselineskip} % 标题下方的空白
+
+    \rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} % 细水平线
+    \rule{\textwidth}{1.6pt}  % 粗水平线
+
+    \vspace{2\baselineskip}   % 标题栏后的空白
+
     %------------------------------------------------
-    %	作者
+    %   作者
     %------------------------------------------------
-	
-	% {\scshape\Large 某某某  \quad 编著 \\}
+
+    % {\scshape\Large 某某某  \quad 编著 \\}
     {\fangsong\large \@author \\[10pt] }
-	
+
     {\fangsong\large \@date \\}
 
     \makeatother
 
-	%\vspace{2\baselineskip}
+    %\vspace{2\baselineskip}
 
-	%\textit{机构的名字 \\ 地点}
-	
-	\vfill % Whitespace between editor names and publisher logo
-	
-	%------------------------------------------------
-	%	出版社
-	%------------------------------------------------
-	
-	\plogo % Publisher logo
-	
-	\vspace{0.3\baselineskip} % Whitespace under the publisher logo
-	
-	202X % Publication year
+    %\textit{机构的名字 \\ 地点}
 
-	{\large publisher} % Publisher
+    \vfill % Whitespace between editor names and publisher logo
+
+    %------------------------------------------------
+    %   出版社
+    %------------------------------------------------
+
+    \plogo % Publisher logo
+
+    \vspace{0.3\baselineskip} % Whitespace under the publisher logo
+
+    202X % Publication year
+
+    {\large publisher} % Publisher
 \end{titlepage}
 
 \thispagestyle{empty}
@@ -404,24 +403,24 @@
 
 这是一个计数的列表.
 \begin{enumerate}%[label={\rm (\arabic*)}]%\roman
-	\item 第一项
-		\begin{enumerate}
-			\item 第一项中的第一项
-			\item 第一项中的第二项
-		\end{enumerate}
-	\item 第二项
-	\item 第三项
+    \item 第一项
+        \begin{enumerate}
+            \item 第一项中的第一项
+            \item 第一项中的第二项
+        \end{enumerate}
+    \item 第二项
+    \item 第三项
 \end{enumerate}
 
 这是一个不计数的列表.
 \begin{itemize}%[label={$\bullet$}]
-	\item 第一项
-	\begin{itemize}
-		\item 第一项中的第一项
-		\item 第一项中的第二项
-	\end{itemize}
-	\item 第二项
-	\item 第三项
+    \item 第一项
+    \begin{itemize}
+        \item 第一项中的第一项
+        \item 第一项中的第二项
+    \end{itemize}
+    \item 第二项
+    \item 第三项
 \end{itemize}
 
 
@@ -773,15 +772,15 @@ LaTeX 的 Table 环境一个浮动体环境, 浮动体排版与 Figure 环境类
 \label{tab:heightweight}
 \begin{tabularx}{0.9\textwidth}{lCCC}
    \toprule
-	序号 & 年龄 & 身高 & 体重 \\
-	\midrule
-	001 & 15 & 156 & 42 \\
-	002 & 16 & 158 & 45 \\
-	003 & 14 & 162 & 48 \\
-	004 & 15 & 163 & 50 \\
+    序号 & 年龄 & 身高 & 体重 \\
+    \midrule
+    001 & 15 & 156 & 42 \\
+    002 & 16 & 158 & 45 \\
+    003 & 14 & 162 & 48 \\
+    004 & 15 & 163 & 50 \\
     \cmidrule{2-4}
-	平均 & 15 & 159.75 & 46.25 \\
-	\bottomrule
+    平均 & 15 & 159.75 & 46.25 \\
+    \bottomrule
 \end{tabularx}
 \end{table}
 
@@ -905,15 +904,15 @@ N  & A       & B    & C       & D      & E       & F   \\
 \label{tab:heightweight2}
 \begin{tabularx}{0.9\textwidth}{lCCC}
    \toprule
-	序号 & 年龄 & 身高 & 体重\\
-	\midrule
-	001 & 14 & 156 & 42 \\
-	002 & 16 & 158 & 45 \\
-	003 & 14 & 162 & 48 \\
-	004 & 15 & 163 & 50 \\
+    序号 & 年龄 & 身高 & 体重\\
+    \midrule
+    001 & 14 & 156 & 42 \\
+    002 & 16 & 158 & 45 \\
+    003 & 14 & 162 & 48 \\
+    004 & 15 & 163 & 50 \\
     \cmidrule{2-4}
-	平均 & 15 & 159.75 & 46.25 \\
-	\bottomrule
+    平均 & 15 & 159.75 & 46.25 \\
+    \bottomrule
 \end{tabularx}
 \end{table}
 

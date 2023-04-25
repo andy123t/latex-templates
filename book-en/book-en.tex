@@ -67,8 +67,11 @@
 %\setlength{\abovecaptionskip}{2pt plus 1pt minus 1pt}
 %\setlength{\belowcaptionskip}{3pt plus 1pt minus 2pt}
 
+%----- make index -----
 \makeindex
-%\bibliographystyle{plain}
+
+%----- bibliography style -----
+\bibliographystyle{plain}
 
 %---- header and footer position -----
 %\setlength{\headheight}{18pt}
@@ -87,7 +90,7 @@
 %\renewcommand{\chaptermark}[1]{\markboth{\thechapter ~ #1}{}}
 %\renewcommand{\sectionmark}[1]{\markright{\thesection ~ #1}{}}
 \fancyhf{}  % remove the original style
-\fancyhead[RO,LE]{~\thepage~}
+\fancyhead[RO,LE]{\thepage}
 \fancyhead[LO]{\rmfamily \rightmark}
 \fancyhead[RE]{\rmfamily \leftmark}
 
@@ -123,6 +126,9 @@
 \numberwithin{figure}{chapter}
 \numberwithin{table}{chapter}
 
+% graphic path
+\graphicspath{{./figure/}{./figures/}{./image/}{./images/}}
+
 % define new command
 \newcommand{\CC}{\ensuremath{\mathbb{C}}}
 \newcommand{\RR}{\ensuremath{\mathbb{R}}}
@@ -135,8 +141,6 @@
 \newcommand{\red}[1]{\textcolor{red}{#1}}
 
 \newcommand{\plogo}{\fbox{$\mathcal{PL}$}} % Generic dummy publisher logo
-
-\graphicspath{{./figure/}{./figures/}{./image/}{./images/}}
 
 
 %----- Book information -----
@@ -655,7 +659,6 @@ The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the 
 \phantomsection
 \addcontentsline{toc}{chapter}{\bibname}
 
-\bibliographystyle{plain}
 \bibliography{reference}
 
 

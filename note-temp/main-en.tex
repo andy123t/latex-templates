@@ -19,10 +19,10 @@
 
 %----- header and footer -----
 \fancypagestyle{plain}{%
-	\fancyhf{}
-	\fancyhead[C]{\color{ecolor}\nouppercase{\leftmark}}
-	\fancyfoot[C]{\color{gray}\thepage}
-    \renewcommand{\headrulewidth}{0.5pt}
+  \fancyhf{}
+  \fancyhead[C]{\color{ecolor}\nouppercase{\leftmark}}
+  \fancyfoot[C]{\color{gray}\thepage}
+  \renewcommand{\headrulewidth}{0.5pt}
 }
 
 \pagestyle{plain}
@@ -38,36 +38,35 @@
 \makeatletter
 \renewcommand*{\maketitle}{
 \begin{titlepage}
-    \pdfbookmark[1]{Cover}{cover}
-    \centering
-    %\scshape
-    \vspace*{5\baselineskip}
-    \color{ecolor}
+  \pdfbookmark[1]{Cover}{cover}
+  \centering
+  %\scshape
+  \vspace*{5\baselineskip}
+  \color{ecolor}
 
-    %-------- title ---------
-    \rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}
-    \rule{\textwidth}{0.4pt}
-	
-    \vspace{0.75\baselineskip}
+  %-------- title ---------
+  \rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}
+  \rule{\textwidth}{0.4pt}
 
-    {\LARGE\bfseries \@title}
+  \vspace{0.75\baselineskip}
 
-	\vspace{0.75\baselineskip}
-	
-	\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt}
-	\rule{\textwidth}{1.6pt}
-	
-	\vspace{4\baselineskip}
+  {\LARGE\bfseries \@title}
 
-    %----- Author -----
-    {\Large \@author}
+  \vspace{0.75\baselineskip}
 
-    \vspace{0.35\baselineskip}	
+  \rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt}
+  \rule{\textwidth}{1.6pt}
 
-    {\Large \@date}
+  \vspace{4\baselineskip}
+
+  %----- Author -----
+  {\Large \@author}
+
+  \vspace{0.35\baselineskip}	
+
+  {\Large \@date}
 	\vfill
 \end{titlepage}
-\thispagestyle{empty}
 }
 \makeatother
 
@@ -113,6 +112,8 @@
 \begin{document}
 
 \maketitle
+
+%\thispagestyle{empty}
 
 %----- generate a empty page -----
 %\clearpage%
