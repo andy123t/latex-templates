@@ -117,9 +117,9 @@
 
 % caption setting
 %\captionsetup{font={small,singlespacing},labelfont={bf},labelformat={default},labelsep=period}
-\captionsetup{font={small},labelformat={default},labelsep=period}
-\captionsetup[figure]{position=bottom,skip={5pt},name={Figure}}
-\captionsetup[table]{position=top,skip={2pt},name={Table}}
+\captionsetup{labelformat={default},labelsep=period}
+\captionsetup[figure]{position=bottom,skip={8pt},name={Figure}}
+\captionsetup[table]{position=top,skip={4pt},name={Table}}
 %\setlength{\textfloatsep}{12pt plus 2pt minus 2pt}
 %\setlength{\floatsep}{10pt plus 2pt minus 2pt}
 %\setlength{\intextsep}{10pt plus 2pt minus 2pt}
@@ -131,15 +131,14 @@
 \numberwithin{figure}{section}
 \numberwithin{table}{section}
 
-
-% refine maketitle environment
+% redefine maketitle environment
 \makeatletter
 \def\@maketitle{%
   \newpage
   \null
   %\vspace{-1.5em}%
   \begin{center}%
-  \let \footnote \thanks
+    \let \footnote \thanks
     {\Large \bfseries \@title \par}%
     \vskip 1.5em%
     {\large
@@ -158,15 +157,16 @@
 % redefine abstract environment
 \makeatletter
 \renewenvironment{abstract}{%
-    \if@twocolumn
-      \section*{\abstractname}%
-    \else %% <- here removed \small
-      \begin{center}%
-        {\bfseries \large\abstractname\vspace{\z@}} %% <- here added \large
-      \end{center}%
-      \quotation
-    \fi}
-    {\if@twocolumn\else\endquotation\fi}
+  \if@twocolumn
+    \section*{\abstractname}%
+  \else %% <- here removed \small
+    \begin{center}%
+      {\bfseries \large\abstractname\vspace{\z@}} %% <- here added \large
+    \end{center}%
+    \quotation
+  \fi}{
+  \if@twocolumn\else\endquotation\fi
+}
 \makeatother
 
 % graphic path
@@ -188,13 +188,12 @@
 \title{An Example Article}
 
 \shorttitle{Short Title of Article}
-\shortauthor{Author A, Author B \& Author C}
+\shortauthor{Author A, Author B, and Author C}
 
 \author[1]{Author A\thanks{Email address: \texttt{A.A@university.edu}; Corresponding author.}}
 \author[1]{Author B\thanks{Email address: \texttt{B.B@university.edu}}}
 \author[2]{Author C\thanks{Email address: \texttt{C.C@university.edu}}}
 %\author[2]{Author D\thanks{Email address: \texttt{D.D@university.edu}}}
-
 \affil[1]{Department of Mathematics, \LaTeX\ University}
 \affil[2]{Department of Mechanical Engineering, \LaTeX\ University}
 

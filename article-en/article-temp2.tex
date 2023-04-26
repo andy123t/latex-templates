@@ -34,18 +34,8 @@
 % package for algorithm
 \usepackage{algorithm,algorithmicx}
 \usepackage{algpseudocode}
-% package for author and affiliation style
-\usepackage[affil-it]{authblk}
 % package for using box and verbatim
 \usepackage{fancybox}
-% package for page headers and footers
-\usepackage{fancyhdr}
-
-% package for section etc.
-\usepackage{titlesec}
-\titleformat{\section}{\large\bfseries}{\thesection.}{1.2ex}{}
-\titleformat{\subsection}{\normalfont\bfseries}{\thesubsection.}{1.2ex}{}
-\titleformat{\subsubsection}{\normalfont\slshape}{\thesubsubsection.}{1.2ex}{}
 
 % package for bibliography support
 \usepackage[numbers,sort&compress]{natbib}
@@ -60,23 +50,6 @@
 %\setlength{\textheight}{21.6cm}
 %\setlength{\oddsidemargin}{0.5cm}
 %\setlength{\evensidemargin}{0.5cm}
-
-% headers and footers setting
-%\pagestyle{fancy}
-%\fancyhf{}
-%\fancyhead[CO]{\uppercase{Title of Paper}}
-%\fancyhead[CE]{\uppercase{Author A, Author B \& Author C}}
-%\fancyfoot[C]{\thepage}
-%\renewcommand{\headrulewidth}{0pt}
-
-%\fancyhead[C]{\uppercase{Title of Paper}}
-%\fancyfoot[C]{\thepage}
-%\renewcommand{\headrulewidth}{0pt}
-
-%\fancyhead[CO]{\uppercase{Title of Paper}}
-%\fancyhead[CE]{\uppercase{Author A, Author B \& Author C}}
-%\fancyhead[RO]{\thepage}
-%\fancyhead[LE]{\thepage}
 
 % command for line spacing
 \renewcommand{\baselinestretch}{1.1}
@@ -102,13 +75,12 @@
 \newtheorem{xca}{Exercise}[section]
 
 \theoremstyle{remark}
-\newtheorem{remark}[theorem]{Remark}
+\newtheorem{remark}{Remark}[section]
 
 % caption setting
-%\captionsetup{font={small,singlespacing},labelfont={bf},labelformat={default},labelsep=period}
-\captionsetup{font={small},labelformat={default},labelsep=period}
-\captionsetup[figure]{position=bottom,skip={5pt},name={Figure}}
-\captionsetup[table]{position=top,skip={2pt},name={Table}}
+%\captionsetup{font={small,singlespacing},labelformat={default},labelsep=period}
+\captionsetup[figure]{position=bottom,skip={8pt},name={Figure}}
+\captionsetup[table]{position=top,skip={4pt},name={Table}}
 %\setlength{\textfloatsep}{12pt plus 2pt minus 2pt}
 %\setlength{\floatsep}{10pt plus 2pt minus 2pt}
 %\setlength{\intextsep}{10pt plus 2pt minus 2pt}
@@ -119,20 +91,6 @@
 \numberwithin{equation}{section}
 \numberwithin{figure}{section}
 \numberwithin{table}{section}
-
-% redefine abstract environment
-\makeatletter
-\renewenvironment{abstract}{%
-    \if@twocolumn
-      \section*{\abstractname}%
-    \else %% <- here removed \small
-      \begin{center}%
-        {\bfseries \large\abstractname\vspace{\z@}} %% <- here added \large
-      \end{center}%
-      \quotation
-    \fi}
-    {\if@twocolumn\else\endquotation\fi}
-\makeatother
 
 % graphic path
 \graphicspath{{./figures/}}
@@ -152,14 +110,20 @@
 % Information for title and author
 \title{An Example Article}
 
-\author[1]{Author A\thanks{Email address: \texttt{A.A@university.edu}; Corresponding author.}}
-\author[1]{Author B\thanks{Email address: \texttt{B.B@university.edu}}}
-\author[2]{Author C\thanks{Email address: \texttt{C.C@university.edu}}}
-%\author[2]{Author D\thanks{Email address: \texttt{D.D@university.edu}}}
-\affil[1]{Department of Mathematics, \LaTeX\ University}
-\affil[2]{Department of Mechanical Engineering, \LaTeX\ University}
+%\author{Author A, Author B, and J. E. Smith\thanks{Corresponding author (\textit{E-mail address:} \texttt{xyz@math.univ.edu}).} }
 
-\date{Date: \today}
+\author{
+  Author A \\
+  {\itshape Department of Computer Science, \LaTeX\ University} \\
+  \and
+  Author B\thanks{Email address: \texttt{xyz@math.univ.edu}} \\
+  {\itshape Department of Mathematics, \LaTeX\ University} \\
+  \and
+  Author C\thanks{This author was supported in part by NSF Grant No. 12345678.} \\
+  {\itshape Department of Mechanical Engineering, \LaTeX\ University} \\
+}
+
+\date{\today}
 
 \begin{document}
 
@@ -179,7 +143,6 @@
   \medskip
   \noindent{\bf 2000 Mathematics Subject Classification: } 65L60, 65L05, 65L70.
 \end{abstract}
-
 
 
 \section{Introduction}
@@ -203,10 +166,12 @@ The merits of our method are as follows:
 \begin{itemize}
   \item item one
   \item item two
+  %\item item three
 \end{itemize}
 \begin{enumerate}
   \item item one
   \item item two
+  %\item item three
 \end{enumerate}
 
 The outline is not required, but we show an example here.
@@ -228,8 +193,7 @@ results are in \ref{sec:experiments}, discussion is in \ref{sec:discussion} and 
 \section{Main results}
 \label{sec:main}
 
-We interleave text filler with some example theorems and theorem-like
-items.
+We interleave text filler with some example theorems and theorem-like items.
 
 \begin{definition}
 This is a definition environment.
@@ -271,8 +235,8 @@ Here we state our main result as \ref{thm:bigthm}.
   such that $A=LDL^T$. The factorization is unique.
 \end{theorem}
 
-LaTeX is a high-quality typesetting system; it includes features designed for the production of technical and scientific documentation.
-LaTeX is based on the idea that it is better to leave document design to document designers, and to let authors get on with writing documents.
+%LaTeX is a high-quality typesetting system; it includes features designed for the production of technical and scientific documentation.
+%LaTeX is based on the idea that it is better to leave document design to document designers, and to let authors get on with writing documents.
 
 \begin{theorem}[Mean Value Theorem]\label{thm:mvt}
   Suppose $f$ is a function that is continuous on the closed interval
@@ -456,7 +420,7 @@ Additional results are available in the supplement in Table~\ref{tab:foo}.
 \label{tab:foo}
 \begin{tabular}{c|c|cc|cc|cc}
 \hline
-degree &  step-size~$h$  & $L^2$-errors  &  order  & $H^1$-errors & order & $L^\infty$-errors  &  order \\
+degree & step-size~$h$ & $L^2$-errors & order & $H^1$-errors & order & $L^\infty$-errors & order \\
 \hline
    &  1/128    & 9.18E-06    &2.02    & 7.70E-03  &1.01       & 6.46E-07    &2.02   \\
 1  &  1/256    & 2.29E-06    &2.01    & 1.92E-03  &1.00       & 1.61E-07    &2.01   \\
@@ -477,16 +441,24 @@ degree &  step-size~$h$  & $L^2$-errors  &  order  & $H^1$-errors & order & $L^\
 \section{Discussion of \texorpdfstring{{\boldmath$Z=X \cup Y$}}{Z = X union Y}}
 \label{sec:discussion}
 
-Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here.
+Some discussions here. Some discussions here. Some discussions here.
+Some discussions here. Some discussions here. Some discussions here.
+Some discussions here. Some discussions here.
 
-Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here. Some discussions here.
+Some discussions here. Some discussions here. Some discussions here.
+Some discussions here. Some discussions here. Some discussions here.
+Some discussions here. Some discussions here.
 
 \section{Conclusions}
 \label{sec:conclusions}
 
-Some conclusions here. Some conclusions here. Some conclusions here. Some conclusions here. Some conclusions here. Some conclusions here. Some conclusions here.
+Some conclusions here. Some conclusions here. Some conclusions here.
+Some conclusions here. Some conclusions here. Some conclusions here.
+Some conclusions here.
 
-Some conclusions here. Some conclusions here. Some conclusions here. Some conclusions here. Some conclusions here. Some conclusions here. Some conclusions here. Some conclusions here.
+Some conclusions here. Some conclusions here. Some conclusions here.
+Some conclusions here. Some conclusions here. Some conclusions here.
+Some conclusions here. Some conclusions here.
 
 \appendix
 \section{An example appendix}
