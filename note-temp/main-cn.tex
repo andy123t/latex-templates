@@ -22,9 +22,8 @@
 \setlength{\bibsep}{8pt}  % 调整参考文献间距
 
 % bibliography style
-%\bibliographystyle{thuthesis-numeric}
-\bibliographystyle{plain}
-
+%\bibliographystyle{plain}
+\bibliographystyle{thuthesis-numeric}
 
 %----- 设置页眉页脚 -----
 \fancypagestyle{plain}{%
@@ -32,6 +31,9 @@
   \fancyhead[C]{\kaishu\color{ecolor}\nouppercase{\leftmark}}
   \fancyfoot[C]{\color{gray}\thepage}
   \renewcommand{\headrulewidth}{0.5pt}
+  \renewcommand{\headrule}{\vspace{-0.6\baselineskip} \hbox to \headwidth{%
+    \color{ecolor}\leaders\hrule height \headrulewidth\hfill}}
+  \renewcommand{\footrulewidth}{0pt}
 }
 
 \pagestyle{plain}

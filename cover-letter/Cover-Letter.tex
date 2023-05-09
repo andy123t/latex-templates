@@ -1,41 +1,40 @@
-% LaTeX Cover Letter Template
+% LaTeX cover letter template
 
-\documentclass[a4paper]{article}
+\documentclass[11pt]{article}
 
+% all kinds of packages needed
 \usepackage[utf8]{inputenc}
-\usepackage{fullpage}
-%\usepackage{geometry}
-%\geometry{margin=1.25in}
-%showframe  % Uncomment to show frames around the margins
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{bm,mathrsfs}
+\usepackage{graphicx}
+\usepackage{color,xcolor}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{mathtools}
+%\usepackage{charter} % Charter font
+\usepackage{geometry}
+\geometry{left=1.25in,right=1.25in,top=1in,bottom=1in}
 
 % Default font family: sans serif
 %\usepackage{helvet}
 %\renewcommand{\familydefault}{\sfdefault}
-
 \pagenumbering{gobble} % No page numbering
 
-\usepackage{amsmath,amsthm,amssymb}
-\usepackage{amsfonts,bm,version}
-\usepackage{graphicx,fancybox,mathrsfs}
-\usepackage{color,xcolor}
-\usepackage{mathtools}
-\usepackage{enumerate}
-\usepackage{caption}
+% allow page breaks between multiline formulas
 \allowdisplaybreaks
 
-%\usepackage{charter} % Charter font
-
-\setlength{\parindent}{0pt}     % Paragraph indentation
-\setlength{\parskip}{1em}       % Vertical space between paragraphs
+\setlength{\parindent}{0pt}  % Paragraph indentation
+\setlength{\parskip}{1em}    % Vertical space between paragraphs
 
 
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------
 
 \begin{document}
 
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------
 %	First page header
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------
 
 %\includegraphics[width=0.5\textwidth]{UnivLogo.png} % Logo
 
@@ -45,9 +44,9 @@
 
 \vskip2.5em
 
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------
 %	Your information
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------
 
 \hfill
 \begin{tabular}{l @{}}
@@ -71,9 +70,9 @@ Dear Editor,
 
 \bigskip
 
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------
 %	Letter body
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------
 
 Please find attached the manuscript ``PAPER TITLE" by Author A and Author B for consideration as a Research Article in XX.
 

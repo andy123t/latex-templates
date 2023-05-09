@@ -1,20 +1,21 @@
 % LaTeX response letter template
 
 \documentclass[11pt]{article}
-\usepackage[utf8]{inputenc}
-%\usepackage{lipsum} % to generate some filler text
-\usepackage{fullpage}
-%\usepackage[letterpaper,margin=1in]{geometry}
 
-% Package needed for optional arguments
-\usepackage{xifthen}
+% all kinds of packages needed
+\usepackage[utf8]{inputenc}
 \usepackage{amsmath,amsthm,amssymb}
-\usepackage{amsfonts,bm,version}
-\usepackage{graphicx,fancybox,mathrsfs}
+\usepackage{bm,mathrsfs}
+\usepackage{graphicx}
 \usepackage{color,xcolor}
 \usepackage{mathtools}
-\usepackage{enumerate}
+\usepackage{enumitem}
 \usepackage{caption}
+\usepackage{mathtools}
+\usepackage{geometry}
+\geometry{left=1.25in,right=1.25in,top=1in,bottom=1in}
+
+% allow page breaks between multiline formulas
 \allowdisplaybreaks
 
 % define counters for reviewers and their points
@@ -23,17 +24,23 @@
 \newcounter{point}[reviewer]
 \setcounter{point}{0}
 
-% Command declarations for reviewer comments and our responses
-\newcommand{\reviewersection}{\stepcounter{reviewer} \bigskip \hrule \section*{Reviewer \thereviewer}}
+% package for section etc.
+%\usepackage{titlesec}
+%\titleformat{\section}{\large\bfseries}{\thesection}{}{}
+%\titleformat{\subsection}{\normalfont\bfseries}{\thesubsection}{}{}
 
-% Comments to the Author
-\newenvironment{comments}{\medskip \noindent {\textbf{Comments}}:\ \itshape}{\par}
+% command declarations for reviewer comments and our responses
+\newcommand{\reviewersection}{\stepcounter{reviewer} \bigskip \hrule \section*{Reviewer~\thereviewer}}
 
-\newenvironment{point}{\refstepcounter{point} \bigskip \noindent {\textbf{Comment~\arabic{point}}}:\ \itshape}{\par }
+% comments to the author
+\newenvironment{comments}{\medskip \noindent {\textbf{Comments}}:~\itshape}{\par}
 
-% Author's Reply
-\newenvironment{reply}{\medskip \noindent \textbf{Reply}:\ }{\medskip}
+\newenvironment{point}{\refstepcounter{point} \bigskip \noindent {\textbf{Comment~\arabic{point}}}:~\itshape}{\par }
 
+% author's reply
+\newenvironment{reply}{\medskip \noindent \textbf{Reply}:~}{\medskip}
+
+% define maketitle
 \makeatletter
 \def\@maketitle{%
   \newpage
@@ -51,43 +58,39 @@
         \@author
       \end{tabular}\par}%
     \vskip 1em%
-    %{\large \@date}%
+    {\large \@date}%
   \end{center}%
   \par
   \vskip 1.5em}
 \makeatother
 
-
-% define the new command
-\newcommand{\dx}[1][x]{\,{\rm d}#1}
-\newcommand{\red}[1]{\textcolor{red}{#1}}
-\newcommand{\blue}[1]{\textcolor{blue}{#1}}
-
+% graphical path
 \graphicspath{{./figures/}}
 
-% \title{Journal-001: Response to Reviewer Comments}
+% differential operator
+\newcommand{\dif}{\mathop{}\!\mathrm{d}}
+
+% new command
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\dx}[1][x]{\mathop{}\!\mathrm{d}#1}
+\newcommand{\ii}{\mathrm{i}\mkern1mu}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+
+
+% information for title and author
 \title{Journal-001: The full title of the submitted paper}
 \author{by \quad \textsc{Author A} ~ and ~ \textsc{Author B}}
-%\date{October 27, 2022}
+\date{}
+
 
 \begin{document}
 
 \maketitle
 
-% title of submitted paper
-%{\leftline{Reply to the review report on}}
-%\vskip 15pt
-%\begin{center}
-%{\large\bfseries Journal-001: The full title of the submitted paper }
-%
-%\vskip15pt
-%
-%by \quad Author A and Author B
-%\end{center}
-%\bigskip
 
-
-%\section*{Response to the reviewers}
+%\section*{Response to Reviewer Comments}
 
 % General intro text goes here
 The authors thank the reviewers for their critical assessment of our work.
@@ -125,7 +128,7 @@ Please see Page 5 line 10 of the revised version.
 % Begin a new reviewer section
 \reviewersection
 
-% comment 2
+% comment 1
 \begin{point}
 This is comment 1 of Reviewer \thereviewer.
 \end{point}
@@ -160,5 +163,4 @@ This is comments of Reviewer \thereviewer. With some more words foo bar foo bar 
 
 
 \end{document}
-
 

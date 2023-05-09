@@ -17,12 +17,19 @@
 %\def\bibfont{\small}      % bib font size
 %\setlength{\bibsep}{8pt}  % vertical space of bib
 
+% bibliography style
+%\bibliographystyle{thuthesis-numeric}
+\bibliographystyle{plain}
+
 %----- header and footer -----
 \fancypagestyle{plain}{%
   \fancyhf{}
   \fancyhead[C]{\color{ecolor}\nouppercase{\leftmark}}
   \fancyfoot[C]{\color{gray}\thepage}
   \renewcommand{\headrulewidth}{0.5pt}
+  \renewcommand{\headrule}{\vspace{-0.6\baselineskip} \hbox to \headwidth{%
+    \color{ecolor}\leaders\hrule height \headrulewidth\hfill}}
+  \renewcommand{\footrulewidth}{0pt}
 }
 
 \pagestyle{plain}
@@ -83,10 +90,6 @@
 %\makeatletter
 %\newcommand\HUGE{\@setfontsize\Huge{32}{36}}
 %\makeatother
-
-% bibliography style
-%\bibliographystyle{thuthesis-numeric}
-\bibliographystyle{plain}
 
 %----- define new command -----
 \newcommand{\CC}{\ensuremath{\mathbb{C}}}

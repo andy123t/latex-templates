@@ -1,24 +1,29 @@
-% LaTeX Cover Letter Template
+% LaTeX cover letter template
 
-\documentclass{article}
+\documentclass[11pt]{article}
 
-\usepackage{charter} % Use the Charter font
+% all kinds of packages needed
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{bm,mathrsfs}
+\usepackage{graphicx}
+\usepackage{color,xcolor}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{mathtools}
+%\usepackage{charter} % Charter font
+\usepackage{geometry}
+\geometry{left=1.25in,right=1.25in,top=1in,bottom=1in}
 
-\usepackage[
-	a4paper,    % Paper size
-	top=1in,    % Top margin
-	bottom=1in, % Bottom margin
-	left=1in,   % Left margin
-	right=1in,  % Right margin
-	%showframe  % Uncomment to show frames around the margins for debugging purposes
-]{geometry}
+% allow page breaks between multiline formulas
+\allowdisplaybreaks
 
-\setlength{\parindent}{0pt}     % Paragraph indentation
-\setlength{\parskip}{1em}       % Vertical space between paragraphs
+\setlength{\parindent}{0pt}  % Paragraph indentation
+\setlength{\parskip}{1em}    % Vertical space between paragraphs
 
-\usepackage{graphicx}       % Required for including images
-
-\usepackage{fancyhdr}       % Required for customizing headers and footers
+% package for header and footer
+\usepackage{fancyhdr}
 
 \fancypagestyle{firstpage}{%
 	\fancyhf{} % Clear default headers/footers
@@ -35,13 +40,13 @@
 \AtBeginDocument{\thispagestyle{firstpage}} % Use the first page headers/footers style on the first page
 \pagestyle{subsequentpages} % Use the subsequent pages headers/footers style on subsequent pages
 
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------
 
 \begin{document}
 
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------
 %	First page header
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------
 
 \includegraphics[width=0.5\textwidth]{UnivLogo.png} % Logo
 
@@ -51,9 +56,9 @@
 
 \bigskip\bigskip % Vertical whitespace
 
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------
 %	YOUR NAME AND CONTACT INFORMATION
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------
 
 \hfill
 \begin{tabular}{l @{}}
@@ -67,9 +72,9 @@
 
 \bigskip % Vertical whitespace
 
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------
 %	ADDRESSEE AND GREETING
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------
 
 \begin{tabular}{@{} l}
 	Mr.\ XXX \\
@@ -85,9 +90,9 @@ Dear Mrs.\ XXX,
 
 \bigskip % Vertical whitespace
 
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------
 %	LETTER CONTENT
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------
 
 PARAGRAPH ONE: State the reason for the letter, name the position or type of work you are applying for and identify the source from which you learned of the opening (i.e. career development center, newspaper, employment service, personal contact).
 
@@ -106,4 +111,5 @@ Sincerely yours,
 Andy
 
 \end{document}
+
 
