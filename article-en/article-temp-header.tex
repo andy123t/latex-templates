@@ -71,22 +71,23 @@
 % headers and footers setting
 %\pagestyle{fancy}
 %\fancyhf{}
-%\fancyhead[CO]{\uppercase{Title of Paper}}
-%\fancyhead[CE]{\uppercase{Author A, Author B \& Author C}}
-%\fancyfoot[C]{\thepage}
+%\fancyhead[CO]{\footnotesize\uppercase{Title of Paper}}
+%\fancyhead[CE]{\footnotesize\uppercase{Author A, Author B \& Author C}}
+%\fancyfoot[C]{\footnotesize\thepage}
 %\renewcommand{\headrulewidth}{0pt}
 
-%\fancyhead[C]{\uppercase{Title of Paper}}
-%\fancyfoot[C]{\thepage}
+%\fancyhead[C]{\footnotesize\uppercase{Title of Paper}}
+%\fancyfoot[C]{\footnotesize\thepage}
 %\renewcommand{\headrulewidth}{0pt}
 
 \makeatletter
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[CO]{\@shorttitle}
-\fancyhead[CE]{\@shortauthor}
-\fancyhead[RO]{\thepage}
-\fancyhead[LE]{\thepage}
+\fancyhead[CO]{\footnotesize\MakeUppercase{\@shorttitle}}
+\fancyhead[CE]{\footnotesize\MakeUppercase{\@shortauthor}}
+\fancyhead[RO]{\footnotesize\thepage}
+\fancyhead[LE]{\footnotesize\thepage}
+\renewcommand{\headrulewidth}{0pt}
 \makeatother
 
 % command for line spacing
@@ -187,8 +188,8 @@
 % Information for title and author
 \title{An Example Article}
 
-\shorttitle{Short Title of Article}
-\shortauthor{Author A, Author B, and Author C}
+% Short title for running heads:
+\shorttitle{A posteriori error analysis for CG methods for PDDEs}
 
 \author[1]{Author A\thanks{Email address: \texttt{A.A@university.edu}; Corresponding author.}}
 \author[1]{Author B\thanks{Email address: \texttt{B.B@university.edu}}}
@@ -196,6 +197,9 @@
 %\author[2]{Author D\thanks{Email address: \texttt{D.D@university.edu}}}
 \affil[1]{Department of Mathematics, \LaTeX\ University}
 \affil[2]{Department of Mechanical Engineering, \LaTeX\ University}
+
+% Short list of authors for running heads:
+\shortauthor{Author A, Author B, and Author C}
 
 \date{Date: \today}
 

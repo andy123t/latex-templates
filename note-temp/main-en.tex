@@ -1,17 +1,19 @@
 %!TEX program = xelatex
+
 %\documentclass[en,hazy,normal,blue,11pt]{elegantnote}
 \documentclass[en,normal,12pt,blue]{elegantnote}
-\usepackage{amssymb,mathrsfs,multirow}
+
+\usepackage{amssymb,mathrsfs}
 %\usepackage[notcite,notref]{showkeys}
 %\usepackage{epsfig}
-%\usepackage{tabularx}
 \usepackage{diagbox}
-%\usepackage{bookmark}
-\usetikzlibrary{arrows,shapes}
+\usepackage[numbered]{bookmark}
 \usepackage{array,makecell}
+\usepackage{multirow}
+%\usepackage{subfig}
 %\usepackage{tikz}
 %\usepackage{tikzpagenodes}
-%\usetikzlibrary{shapes.geometric,shapes.symbols,shapes.callouts,decorations.markings,shapes.misc,shapes.arrows}
+%\usetikzlibrary{arrows,shapes}
 
 \usepackage[numbers,sort&compress]{natbib}
 %\def\bibfont{\small}      % bib font size
@@ -24,8 +26,8 @@
 %----- header and footer -----
 \fancypagestyle{plain}{%
   \fancyhf{}
-  \fancyhead[C]{\color{ecolor}\nouppercase{\leftmark}}
-  \fancyfoot[C]{\color{gray}\thepage}
+  \fancyhead[C]{\small\color{ecolor}\nouppercase{\leftmark}}
+  \fancyfoot[C]{\small\color{gray}\thepage}
   \renewcommand{\headrulewidth}{0.5pt}
   \renewcommand{\headrule}{\vspace{-0.6\baselineskip} \hbox to \headwidth{%
     \color{ecolor}\leaders\hrule height \headrulewidth\hfill}}
@@ -33,6 +35,8 @@
 }
 
 \pagestyle{plain}
+
+\setlength{\headheight}{16pt}
 
 %----- package for algorithm -----
 \usepackage{algorithm}
@@ -51,7 +55,7 @@
   \vspace*{5\baselineskip}
   \color{ecolor}
 
-  %-------- title ---------
+  %----- title -----
   \rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}
   \rule{\textwidth}{0.4pt}
 
@@ -71,6 +75,7 @@
 
   \vspace{0.35\baselineskip}	
 
+  %----- Date -----
   {\Large \@date}
 	\vfill
 \end{titlepage}
@@ -112,8 +117,10 @@
 %\date{\zhtoday}
 \date{June, 2022}
 
+
 \begin{document}
 
+%----- make cover -----
 \maketitle
 
 %\thispagestyle{empty}
@@ -126,11 +133,11 @@
 %\clearpage
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \pagenumbering{Roman} % page is Roman numerals
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \clearpage
 %\phantomsection
@@ -140,11 +147,11 @@
 
 \setlist[itemize]{label=$\circ$}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \pagenumbering{arabic}  % page is arabic numerals
 
-%%%%%%%%%%%%%%%%%%%%%% Body Here %%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Body Here %%%%%%%%%%%%%%%%%%
 
 
 \section{ElegantNote Instructions}
@@ -410,7 +417,7 @@ t.done()
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%% References %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%% References %%%%%%%%%%%%%%%%%%%
 
 \clearpage
 \phantomsection

@@ -3,18 +3,17 @@
 %\documentclass[en,hazy,normal,blue,11pt]{elegantnote}
 \documentclass[cn,normal,12pt,blue]{elegantnote}
 
-\usepackage{amssymb,mathrsfs,multirow}
+\usepackage{amssymb,mathrsfs}
 %\usepackage[notcite,notref]{showkeys}
 %\usepackage{epsfig}
-%\usepackage{tabularx}
 \usepackage{diagbox}
-%\usepackage{bookmark}
-\usetikzlibrary{arrows,shapes}
+\usepackage[numbered]{bookmark}
 \usepackage{array,makecell}
+\usepackage{multirow}
 %\usepackage{subfig}
 %\usepackage{tikz}
 %\usepackage{tikzpagenodes}
-%\usetikzlibrary{shapes.geometric,shapes.symbols,shapes.callouts,decorations.markings,shapes.misc,shapes.arrows}
+%\usetikzlibrary{arrows,shapes}
 
 % 参考文献格式
 \usepackage[numbers,sort&compress]{natbib}
@@ -28,8 +27,8 @@
 %----- 设置页眉页脚 -----
 \fancypagestyle{plain}{%
   \fancyhf{} %清空原有样式
-  \fancyhead[C]{\kaishu\color{ecolor}\nouppercase{\leftmark}}
-  \fancyfoot[C]{\color{gray}\thepage}
+  \fancyhead[C]{\small\kaishu\color{ecolor}\nouppercase{\leftmark}}
+  \fancyfoot[C]{\small\color{gray}\thepage}
   \renewcommand{\headrulewidth}{0.5pt}
   \renewcommand{\headrule}{\vspace{-0.6\baselineskip} \hbox to \headwidth{%
     \color{ecolor}\leaders\hrule height \headrulewidth\hfill}}
@@ -37,6 +36,8 @@
 }
 
 \pagestyle{plain}
+
+\setlength{\headheight}{16pt}
 
 %----- 算法宏包及设置 -----
 \usepackage{algorithm}
@@ -56,7 +57,7 @@
   \vspace*{5\baselineskip}   % 页面顶部的空白
   \color{ecolor}
 
-  %-------- 题目 ---------
+  %----- 题目 -----
   \rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}  % 粗水平线
   \rule{\textwidth}{0.4pt}   % 细水平线
 
@@ -76,6 +77,7 @@
 
   \vspace{0.35\baselineskip}
 
+  %----- 日期 -----
   {\fangsong\Large \@date}
   \vfill
 \end{titlepage}
@@ -129,8 +131,6 @@
 
 
 \begin{document}
-%\maketitle
-
 
 %----- 生成封面 -----
 \maketitle
@@ -144,22 +144,22 @@
 %\null%
 %\clearpage
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \pagenumbering{Roman} % 页码为大写罗马数字
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \clearpage
 \pdfbookmark[1]{目录}{toc}
 \tableofcontents
 \clearpage
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \pagenumbering{arabic}  % 页码为阿拉伯数字
 
-%%%%%%%%%%%%%%%%%%%% 正文内容  %%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%% 正文内容  %%%%%%%%%%%%%%%%%%%%%%
 
 
 \section{第一节}
@@ -183,7 +183,7 @@
 
 
 
-%%%%%%%%%%%%%%%%%%%% LaTeX 常用环境 %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%% LaTeX 常用环境 %%%%%%%%%%%%%%%%%%
 
 \section{LaTeX 常用环境}
 
@@ -390,7 +390,7 @@ aligned 与 equation 环境套用, 公式间距自动调节, 如果有分式, �
 
 
 
-%%%%%%%%%%%%%%%%%%%% 微分方程的数值方法 %%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%% 微分方程的数值方法 %%%%%%%%%%%%%%
 
 \section{微分方程的数值方法}
 
@@ -403,7 +403,7 @@ aligned 与 equation 环境套用, 公式间距自动调节, 如果有分式, �
 \end{equation}
 其中 $q, f$ 为 $[a,b]$ 上的连续函数, $q \geqslant 0$; $\alpha, \beta$ 为给定常数. 这是最简单的椭圆方程第一边值问题 .
 
-问题 \eqref{eqn:pde} 存在唯一解 (引用示例参考文献 \cite{LiLiu1997}).
+问题 \eqref{eq:pde} 存在唯一解 (引用示例参考文献 \cite{LiLiu1997}).
 
 
 \subsection{有限差分方法}
@@ -472,7 +472,7 @@ aligned 与 equation 环境套用, 公式间距自动调节, 如果有分式, �
 
 
 
-%%%%%%%%%%%%%%%%%%%%%% 插图环境 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%% 插图环境 %%%%%%%%%%%%%%%%%%%%%
 
 \section{插图环境}
 
@@ -519,7 +519,7 @@ XeLaTeX 环境下可以使用 EPS、PDF、PNG、JPEG、BMP 格式的图片, 当�
 
 
 
-%%%%%%%%%%%%%%%%%%%%% 表格环境 %%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%% 表格环境 %%%%%%%%%%%%%%%%%%%%%%
 
 \section{表格环境}
 
@@ -626,7 +626,7 @@ t.done()
 \end{lstlisting}
 
 
-%%%%%%%%%%%%%%%%%%%%% 参考文献 %%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%% 参考文献 %%%%%%%%%%%%%%%%%%%%%
 
 \clearpage
 \phantomsection
