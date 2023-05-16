@@ -47,6 +47,15 @@
 \titleformat{\subsection}{\normalfont\bfseries}{\thesubsection.}{1.2ex}{}
 \titleformat{\subsubsection}{\normalfont\slshape}{\thesubsubsection.}{1.2ex}{}
 
+% hyperlink setting
+\hypersetup{
+  colorlinks = true,
+  linkcolor = magenta,
+  citecolor = blue,
+  filecolor = blue,
+  urlcolor = blue,
+}
+
 % package for bibliography support
 \usepackage[numbers,sort&compress]{natbib}
 
@@ -221,7 +230,6 @@
   \medskip
   \noindent{\bf 2000 Mathematics Subject Classification: } 65L60, 65L05, 65L70.
 \end{abstract}
-
 
 
 \section{Introduction}
@@ -549,9 +557,12 @@ We would like to acknowledge the assistance of volunteers in putting
 together this example manuscript and supplement.
 
 
+% References
 \bibliographystyle{plain}
 %\bibliographystyle{abbrv}
 
+\phantomsection
+\addcontentsline{toc}{section}{\refname}
 \bibliography{reference}
 
 
