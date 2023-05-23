@@ -2,13 +2,13 @@
 %%  This is file `homework.cls',
 %%
 %%  @author andy123t
-%%  @date 2023/04/02
-%%  @version v1.0
+%%  @date 2023/05/23
+%%  @version v1.2
 %%
 
 %----- Identification -----%
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{homework}[2023/04/01]
+\ProvidesClass{homework}[2023/05/23]
 
 %----- New Options -----%
 \newif\ifhw@en
@@ -52,7 +52,7 @@
 \RequirePackage{float}
 \RequirePackage{longtable}
 \RequirePackage{multirow}
-\RequirePackage{enumerate}
+\RequirePackage{enumitem}
 \RequirePackage{graphicx}
 \RequirePackage{color,xcolor}
 \RequirePackage{tikz}
@@ -64,9 +64,6 @@
 %----- hardcode some language options -----%
 \ifhw@en
     \RequirePackage[english]{babel}
-    %\newcommand{\CourseLang}{Course}
-    \newcommand{\DateLang}{Date}
-    \newcommand{\StudentLang}{Name}
     \newcommand{\problemname}{Problem}
     \newcommand{\solutionname}{Solution}
     \renewcommand{\proofname}{Proof}
@@ -79,9 +76,6 @@
     \newcommand{\remname}{Remark}
     \newcommand{\exaname}{Example}
     \else
-    %\newcommand{\CourseLang}{课程}
-    \newcommand{\DateLang}{日期}
-    \newcommand{\StudentLang}{姓名}
     \newcommand{\problemname}{问题}
     \newcommand{\solutionname}{解}
     \renewcommand{\proofname}{证明}
@@ -97,14 +91,16 @@
 
 %----- preliminary declarations -----%
 % define the macro for information of the course
-\newcommand{\courseinfo}[1]{\def\courseinfoloc{#1}}
+\newcommand{\courseinfo}[1]{\def\@courseinfo{#1}}
 % define the macro for the name of the institution
-\newcommand{\institute}[1]{\def\instituteloc{#1}}
+\newcommand{\institute}[1]{\def\@institute{#1}}
 % define the macro for information of the student
-\newcommand{\studentinfo}[1]{\def\studentinfoloc{#1} }
+\newcommand{\studentinfo}[1]{\def\@studentinfo{#1} }
 
 % define the macro for the header
-\newcommand{\header}[1]{\def\headerloc{#1}}
+\newcommand{\header}[1]{\def\@header{#1}}
+% define the macro for the footer
+\newcommand{\footer}[1]{\def\@footer{#1}}
 
 %----- graphics path -----%
 \graphicspath{{./figure/}{./figures/}{./image/}{./images/}}
@@ -122,11 +118,10 @@
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
-\fancyhead[RO]{\footnotesize\thepage}
-%\fancyhead[LO]{\footnotesize{\ifx\courseinfoloc\undefined{}\else\itshape\courseinfoloc{~}--{}
-%\fi}\makeatletter\@title\makeatother}
-\fancyhead[LO]{\footnotesize{\ifx\headerloc\undefined{}\makeatletter\@title\makeatother\else\itshape\headerloc\fi}}
-\fancyfoot[RO]{\footnotesize\itshape\makeatletter\@author\makeatother}
+\fancyhead[RO]{\footnotesize\thinspace\thepage\thinspace}
+\fancyhead[LO]{\footnotesize{\ifx\@header\undefined{}\makeatletter\@title\makeatother\else\@header\fi}}
+\fancyfoot[RO]{\footnotesize{\ifx\@footer\undefined{}\else\@footer\fi}}
+
 %\setlength{\headheight}{15pt}
 \setlength{\headsep}{18pt}
 
@@ -134,17 +129,16 @@
 \renewcommand{\maketitle}{%
     \thispagestyle{plain}
     \begin{center}
-        \ifx\instituteloc\undefined{}\else{\scshape \instituteloc} \\[10pt] \fi
+        \ifx\@institute\undefined{}\else{\@institute} \\[10pt] \fi
         \hrule
         \vspace{15pt}
         {\LARGE \bfseries \@title} \\[10pt]
-        \ifx\courseinfoloc\undefined{}\else{\large\courseinfoloc{}}\\[6pt]\fi
-        \StudentLang: \@author
-        \ifx\studentinfoloc\undefined{}\else\quad \studentinfoloc{} \fi
-        \vspace{10pt}
+        \ifx\@courseinfo\undefined{}\else{\large\@courseinfo{}}\\[6pt]\fi
+        \ifx\@studentinfo\undefined{}\else\@studentinfo{}\\[6pt]\fi
+        \vspace{4pt}
         \hrule
         \vspace{12pt}
-        \DateLang: {\@date}
+        {\@date}
         \vspace{15pt}
     \end{center}
 }
@@ -157,6 +151,30 @@
     \textbf{\problemname~\arabic{problemname}. 
 }}{
 \par %\medskip
+}
+
+%----- definition of hframe environment -----%
+\RequirePackage[framemethod=TikZ]{mdframed}
+\mdfdefinestyle{hframed}{%
+    linecolor=black!60,
+    backgroundcolor=gray!5,
+    outerlinewidth=1pt,
+    roundcorner=5pt,
+    innertopmargin=0.5\baselineskip,
+    innerrightmargin=10pt,
+    innerleftmargin=10pt,
+    innerbottommargin=0.5\baselineskip,
+}
+
+\newenvironment{hframe}{
+\begin{mdframed}[%
+    linecolor=black!60,backgroundcolor=gray!5,
+    outerlinewidth=1pt,roundcorner=5pt,
+    innertopmargin=0.5\baselineskip,
+    innerbottommargin=0.5\baselineskip,
+    innerrightmargin=10pt,innerleftmargin=10pt]%
+}{
+\end{mdframed}
 }
 
 %----- formula spacing -----%
@@ -205,7 +223,6 @@
 \renewcommand\qedsymbol{}\begin{proof}[{\solutionname}]
 }{\end{proof}
 }
-
 
 %----- code highlighting -----%
 \RequirePackage{listings}

@@ -14,7 +14,7 @@
 %\usepackage{mathptmx}
 %\usepackage{mathpazo}
 
-% custom theorem
+%----- custom theorem -----
 \newtheorem{innercustomgeneric}{\customgenericname}
 \providecommand{\customgenericname}{}
 \newcommand{\newcustomtheorem}[2]{%
@@ -30,6 +30,9 @@
 \newcustomtheorem{ntheorem}{定理}
 \newcustomtheorem{nlemma}{引理}
 
+%----- list style -----
+\setlist{nolistsep}
+
 % differential operator
 \newcommand{\dif}{\mathop{}\!\mathrm{d}}
 
@@ -44,33 +47,32 @@
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 \newcommand{\red}[1]{\textcolor{red}{#1}}
 
-%------------------------------------------------------------
+%----------------------------------------------------
 %	ASSIGNMENT INFORMATION
-%------------------------------------------------------------
+%----------------------------------------------------
 
-\header{XX 课程 -- 作业 \#1} % 页眉
+\header{\itshape XX 课程 -- 作业 \#1} % 页眉
+\footer{\itshape 学生名字} % 页脚
+
 
 \title{作业 \#1} % 作业名字
 
-\author{\textsl{学生名字}} % 学生姓名
-
-%\date{\today}
-\date{202X年X月X日} % 日期
+\date{日期: \today} % 日期
 
 \institute{XX 大学 XX 学院} % 学院或学校
 
 \courseinfo{课程: XX 课程 } % 课程信息
 
-\studentinfo{专业: \textsl{专业名称} \quad 学号: 123002584} % 学号
+\studentinfo{姓名: \textit{学生名字} \quad 专业: \textit{专业名称} \quad 学号: 123002584} % 学生信息
 
 
 \begin{document}
 
 \maketitle
 
-%------------------------------------------------------------
+%----------------------------------------------------
 %	作业内容
-%------------------------------------------------------------
+%----------------------------------------------------
 
 %\section*{作业题目}
 
@@ -96,7 +98,20 @@
 
 %------------------------------%
 
-\vspace{3em}
+\begin{hframe}
+这里定义了一个新的盒子环境 \verb|hframe|, 它是没有编号的.
+使用者可以写问题, 或者答案, 或者其他任何内容.
+\begin{enumerate}
+  \item 第一项
+  \item 第二项
+  \item 第三项
+\end{enumerate}
+\end{hframe}
+
+
+%------------------------------%
+
+\section*{定理环境}
 
 \begin{definition}\label{def:foo}
 这是一个定义.
@@ -138,7 +153,7 @@
 \end{ntheorem}
 
 
-%------------------------------------------------------------
+%----------------------------------------------------
 
 \clearpage
 

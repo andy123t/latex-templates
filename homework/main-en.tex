@@ -14,7 +14,7 @@
 %\usepackage{mathptmx}
 %\usepackage{mathpazo}
 
-% custom theorem
+%----- custom theorem -----
 \newtheorem{innercustomgeneric}{\customgenericname}
 \providecommand{\customgenericname}{}
 \newcommand{\newcustomtheorem}[2]{%
@@ -30,6 +30,9 @@
 \newcustomtheorem{ntheorem}{Theorem}
 \newcustomtheorem{nlemma}{Lemma}
 
+%----- list style -----
+\setlist{nolistsep}
+
 % differential operator
 \newcommand{\dif}{\mathop{}\!\mathrm{d}}
 
@@ -44,33 +47,31 @@
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 \newcommand{\red}[1]{\textcolor{red}{#1}}
 
-%------------------------------------------------------------
+%----------------------------------------------------
 %	ASSIGNMENT INFORMATION
-%------------------------------------------------------------
+%----------------------------------------------------
 
-\header{Numerical methods of differential equation: Assignment \#1} % Header
+\header{\itshape Numerical methods of differential equation: Assignment \#1} % Header
+\footer{\itshape Student name} % Footer
 
 \title{Assignment \#1} % Assignment
 
-\author{Student name} % Student name
+\date{Date: \today} % Date
 
-\date{\today} % Date
-%\date{April 2, 2023}
-
-\institute{Institute or school name} % Institute or school name
+\institute{\scshape Institute or school name} % Institute or school name
 
 \courseinfo{Course: Numerical methods of differential equation} % Course info
 
-\studentinfo{Major: XXX \quad Student ID: 123002584} % Student info
+\studentinfo{Name: Student name \quad Major: XXX \quad Student ID: 123002584} % Student info
 
 
 \begin{document}
 
 \maketitle
 
-%------------------------------------------------------------
+%----------------------------------------------------
 %	ASSIGNMENT CONTENT
-%------------------------------------------------------------
+%----------------------------------------------------
 
 %\section*{Problem}
 
@@ -94,9 +95,23 @@ Here is a proof question.
 Here is the proof of the problem.
 \end{proof}
 
+
 %------------------------------%
 
-\vspace{3em}
+\begin{hframe}
+A new box environment \verb|hframe| has been defined here, which is not numbered.
+Users can write questions, answers, or any other thing.
+\begin{enumerate}
+  \item item one
+  \item item two
+  \item item three
+\end{enumerate}
+\end{hframe}
+
+
+%------------------------------%
+
+\section*{Theorem}
 
 \begin{definition}\label{def:foo}
 This is a definition.
@@ -139,7 +154,7 @@ This is a custom theorem.
 \end{ntheorem}
 
 
-%------------------------------------------------------------
+%----------------------------------------------------
 
 \clearpage
 
