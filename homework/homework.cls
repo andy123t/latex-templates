@@ -2,13 +2,13 @@
 %%  This is file `homework.cls',
 %%
 %%  @author andy123t
-%%  @date 2023/05/23
+%%  @date 2023/05/24
 %%  @version v1.2
 %%
 
 %----- Identification -----%
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{homework}[2023/05/23]
+\ProvidesClass{homework}[2023/05/24]
 
 %----- New Options -----%
 \newif\ifhw@en
@@ -118,9 +118,15 @@
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
-\fancyhead[RO]{\footnotesize\thinspace\thepage\thinspace}
-\fancyhead[LO]{\footnotesize{\ifx\@header\undefined{}\makeatletter\@title\makeatother\else\@header\fi}}
-\fancyfoot[RO]{\footnotesize{\ifx\@footer\undefined{}\else\@footer\fi}}
+\if@twoside
+\fancyhead[LE,RO]{\footnotesize\thinspace\thepage\thinspace}
+\fancyhead[LO,RE]{\footnotesize{\ifx\@header\undefined{}\makeatletter\@title\makeatother\else\@header\fi}}
+\fancyfoot[LE,RO]{\footnotesize{\ifx\@footer\undefined{}\else\@footer\fi}}
+\else
+\fancyhead[R]{\footnotesize\thinspace\thepage\thinspace}
+\fancyhead[L]{\footnotesize{\ifx\@header\undefined{}\makeatletter\@title\makeatother\else\@header\fi}}
+\fancyfoot[R]{\footnotesize{\ifx\@footer\undefined{}\else\@footer\fi}}
+\fi
 
 %\setlength{\headheight}{15pt}
 \setlength{\headsep}{18pt}
@@ -129,15 +135,16 @@
 \renewcommand{\maketitle}{%
     \thispagestyle{plain}
     \begin{center}
-        \ifx\@institute\undefined{}\else{\@institute} \\[10pt] \fi
+        \ifx\@institute\undefined{}\else{\@institute}\\[10pt]\fi
         \hrule
-        \vspace{15pt}
-        {\LARGE \bfseries \@title} \\[10pt]
+        \vspace{14pt}
+        {\LARGE \bfseries \@title \par}
+        \vspace{10pt}
         \ifx\@courseinfo\undefined{}\else{\large\@courseinfo{}}\\[6pt]\fi
         \ifx\@studentinfo\undefined{}\else\@studentinfo{}\\[6pt]\fi
         \vspace{4pt}
         \hrule
-        \vspace{12pt}
+        \vspace{10pt}
         {\@date}
         \vspace{15pt}
     \end{center}
