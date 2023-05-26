@@ -45,7 +45,7 @@
 \usepackage{titlesec}
 \titleformat{\section}{\large\bfseries}{\thesection.}{1.2ex}{}
 \titleformat{\subsection}{\normalfont\bfseries}{\thesubsection.}{1.2ex}{}
-\titleformat{\subsubsection}{\normalfont\slshape}{\thesubsubsection.}{1.2ex}{}
+\titleformat{\subsubsection}{\normalfont\itshape}{\normalfont\thesubsubsection.}{1.2ex}{}
 
 % hyperlink setting
 \hypersetup{
@@ -200,10 +200,9 @@
 % Short title for running heads:
 \shorttitle{A posteriori error analysis for CG methods for PDDEs}
 
-\author[1]{Author A\thanks{Email address: \texttt{A.A@university.edu}; Corresponding author.}}
-\author[1]{Author B\thanks{Email address: \texttt{B.B@university.edu}}}
-\author[2]{Author C\thanks{Email address: \texttt{C.C@university.edu}}}
-%\author[2]{Author D\thanks{Email address: \texttt{D.D@university.edu}}}
+\author[1]{Author A}
+\author[2]{Author B}
+\author[1]{Author C\thanks{Email address: \texttt{xyz@math.univ.edu}; Corresponding author.}}
 \affil[1]{Department of Mathematics, \LaTeX\ University}
 \affil[2]{Department of Mechanical Engineering, \LaTeX\ University}
 
@@ -253,10 +252,12 @@ The merits of our method are as follows:
 \begin{itemize}
   \item item one
   \item item two
+  \item item three
 \end{itemize}
 \begin{enumerate}
   \item item one
   \item item two
+  \item item three
 \end{enumerate}
 
 The outline is not required, but we show an example here.

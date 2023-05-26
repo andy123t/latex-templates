@@ -1,43 +1,19 @@
 % !TEX program = xelatex
+
 \documentclass[a4paper,12pt]{article}
 
-\usepackage{ctex}
-\usepackage{geometry}
+%-----中文宏包-----
+\usepackage[UTF8]{ctex}
+
 %-----数学宏包-----
 \usepackage{amsmath,amsthm,amssymb}
 \usepackage{mathrsfs,bm}
-% 设置目录
-\usepackage{titletoc}
-% 设置颜色
-\usepackage{color,xcolor}
-% 插入图片
-\usepackage{graphicx}
-% 表格
-\usepackage{array}
-% 长表格
-\usepackage{longtable}
-% booktabs 提供了\toprule 等命令.
-\usepackage{booktabs}
-% multirow 支持在表格中跨行
-\usepackage{multirow}
-% 调整间隔, 让表格更好看些
-\usepackage{bigstrut}
-% 在跨行表格中输入定界符
-\usepackage{bigdelim}
-% 保护脆落命令
-\usepackage{cprotect}
-% 设置代码环境
-\usepackage{listings}
-% 首行缩进
-\usepackage{indentfirst}
-% 设置浮动体的标题
-\usepackage{caption}
-% 定制列表环境
-\usepackage{enumitem}
-% 下划线
-\usepackage{ulem}
-% 尺寸计算
-\usepackage{calc}
+%-----draft下 label提示-----
+%\usepackage[notcite,notref]{showkeys}
+%-----页面布局-----
+\usepackage{geometry}
+\geometry{left=1.25in,right=1.25in,top=1in,bottom=1in}
+%\geometry{left=1in,right=1in,top=1in,bottom=1in}
 
 %----- 设置超链接 -----
 \usepackage{hyperref}
@@ -49,8 +25,39 @@
   urlcolor = blue,
 }
 
-%----- 页面布局 -----
-\geometry{top=1in,bottom=1in,left=1in,right=1in}
+%-----制作目录-----
+\usepackage{imakeidx}
+% 设置颜色
+\usepackage{color,xcolor}
+% 插入图片
+\usepackage{graphicx}
+\usepackage{epsfig}
+%-----设置表格-----
+\usepackage{tabularx,array}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{fancybox}
+%-----调整单元格格式-----
+\usepackage{makecell}
+%-----操作字符串-----
+\usepackage{xstring}
+%-----多语种处理-----
+%\usepackage[english]{babel}
+%-----设置代码环境-----
+\usepackage{listings}
+%-----设置章节标题和目录-----
+%\usepackage{titletoc}
+\usepackage{titlesec}
+%-----数学公式扩展-----
+\usepackage{mathtools}
+%-----浮动体设置-----
+\usepackage{float}
+%-----书签设置-----
+\usepackage[numbered]{bookmark}
+%-----设置页眉页脚格式-----
+\usepackage{fancyhdr}
 
 %----- 设置行间距 -----
 \renewcommand*{\baselinestretch}{1.35}
@@ -58,11 +65,9 @@
 %----- 定义列表项的样式 -----
 \usepackage{enumitem}
 \setlist{nolistsep}
-% \setlength{\itemsep}{3pt plus1pt minus2pt}
+%\setlength{\itemsep}{3pt plus1pt minus2pt}
 
-%----- 证明结束黑框 ----
-% \renewcommand{\qedsymbol}{$\blacksquare$}
-
+%----- 设置字体 -----
 %\setmainfont{Times New Roman}
 %\setmonofont{Courier New}
 %\setsansfont{Arial}
@@ -70,6 +75,11 @@
 %\newcommand*{\kai}{\CJKfamily{kai}}
 %\setCJKfamilyfont{song}[AutoFakeBold]{SimSun}
 %\newcommand*{\song}{\CJKfamily{song}}
+
+%----- 设置节标题格式 -----
+\titleformat{\section}{\bfseries\zihao{3}}{\arabic{section}}{1em}{}
+\titleformat{\subsection}{\bfseries\zihao{4}}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\bfseries\zihao{-4}}{\thesubsection}{1em}{}
 
 %----- 参考文献格式 -----
 %\bibliographystyle{plain} % abbrv, unsrt, siam
@@ -86,10 +96,10 @@
 \usepackage{newtxtext}  % for text fonts
 
 %----- 设置数学字体 -----
-% \usepackage{newtxmath}
-% \usepackage{mathptmx}
+%\usepackage{newtxmath}
+%\usepackage{mathptmx}
 
-%----- 算法宏包及设置 ---
+%----- 算法宏包及设置 -----
 \usepackage{algorithm}
 \usepackage{algorithmicx}
 \usepackage{algpseudocode}
@@ -119,6 +129,9 @@
 \newtheorem{conjecture}{猜想}[section]
 \renewcommand{\proofname}{\textbf{证明}}
 
+%----- 证明结束黑框 -----
+%\renewcommand{\qedsymbol}{$\blacksquare$}
+
 %----- 设置代码高亮 -----
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
@@ -146,10 +159,6 @@
   tabsize=3,
 }
 
-%----- 设置节标题格式 -----
-%\titleformat{\section}{\bfseries \Large}{\arabic{section}}{1em}{}
-%\titleformat{\subsection}{\bfseries\large}{\thesubsection}{1em}{}
-
 %----- 设置浮动体间距 ------
 \setlength{\textfloatsep}{0pt}
 \setlength{\floatsep}{10pt plus 3pt minus 2pt}
@@ -161,7 +170,7 @@
 %-----设置图片的路径 -----
 \graphicspath{{./figure/}{./figures/}}
 
-%----- 设置公式间距为零 ------
+%----- 设置公式间距 -----
 \AtBeginDocument{
 	\setlength{\abovedisplayskip}{5pt plus1pt minus1pt}
 	\setlength{\belowdisplayskip}{5pt plus1pt minus1pt}
@@ -175,7 +184,7 @@
 \def\@maketitle{%
   \newpage
   \null
-  \vspace{-1.5em}%
+  %\vspace{-1.5em}%
   \begin{center}%
   \let \footnote \thanks
     {\LARGE \bfseries \@title \par}%
@@ -192,7 +201,7 @@
   \vskip 1em
 }
 \makeatother
-%----- abstract -------
+%----- abstract -----
 \renewenvironment{abstract}{
 \phantomsection
 \addcontentsline{toc}{section}{摘要}
@@ -307,7 +316,7 @@ a ={} & b + c \\
 ={} & p + q + r + s.
 \end{align}
 
-如果我们不需要按等号对齐, 只需罗列数个公式, gather 将是一个很好用的环境:
+如果不需要按等号对齐, 只需罗列数个公式, gather 将是一个很好用的环境:
 \begin{gather}
 a = b + c \\
 d = e + f + g \\
