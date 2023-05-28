@@ -6,11 +6,11 @@
   编译：XeLaTeX -> BibTeX -> XeLaTeX -> XeLaTeX
   
   ctexart-temp.tex
-  ctexart 类中文文章模板 (修改默认章节格式)
+  ctexart 类中文文章模板
   编译：XeLaTeX -> BibTeX -> XeLaTeX -> XeLaTeX
 	
   ctexart-temp2.tex
-  ctexart 类中文文章模板 (oneside 页眉页脚居中)
+  ctexart 类中文文章模板 (oneside 页眉页脚居中, 可通过 \header 添加页眉)
   编译：XeLaTeX -> BibTeX -> XeLaTeX -> XeLaTeX
 	
   ctexart-temp3.tex

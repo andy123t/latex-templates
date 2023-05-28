@@ -8,7 +8,6 @@
 \usepackage{mathrsfs,bm}
 \usepackage{graphicx}
 \usepackage{subfig}
-%\usepackage{parskip}
 %\usepackage[english]{babel}
 \usepackage{color,xcolor}
 \usepackage{enumitem}
@@ -22,8 +21,8 @@
 \usepackage{makecell}
 \usepackage{anyfontsize}
 \usepackage{geometry}
-%\geometry{left=1.25in,right=1.25in,top=1in,bottom=1in}
-\geometry{left=3cm,right=3cm,top=3cm,bottom=3cm}
+\geometry{left=1.25in,right=1.25in,top=1in,bottom=1in}
+%\geometry{left=3cm,right=3cm,top=3cm,bottom=3cm}
 
 %----- 设置超链接 -----
 \usepackage{hyperref}
@@ -57,7 +56,7 @@
 \renewcommand{\equationautorefname}{公式}
 
 %----- 设置各种间距 -----
-%\renewcommand{\baselinestretch}{1.35} % 定义行距
+%\renewcommand{\baselinestretch}{1.35}
 %\setlength{\parindent}{2em}
 %\ziju{0.1}  % 控制中文字间距
 %\setlength{\parskip}{3pt plus1pt minus1pt}
@@ -82,7 +81,7 @@
 \newcolumntype{R}{>{\raggedleft \arraybackslash}X}
 \newcolumntype{P}[1]{>{\centering \arraybackslash}p{#1}}
 
-%------------- 数学定理设置 ---------------
+%----- 数学定理设置 -----
 \theoremstyle{plain}
 \newtheorem{definition}{定义}[section]
 \newtheorem{proposition}{命题}[section]
@@ -91,7 +90,7 @@
 \newtheorem{example}{例}
 \newtheorem{corollary}{推论}[section]
 \newtheorem{remark}{注}[section]
-%\renewcommand{\proofname}{\heiti 证明}
+%\renewcommand{\proofname}{证明}
 
 %----- 参考文献格式 -----
 %\bibliographystyle{plain} % abbrv, unsrt, siam
@@ -520,6 +519,7 @@ XeLaTeX 环境下可以使用 EPS、PDF、PNG、JPEG、BMP 格式的图片, 当�
 
 %%%%%%%%%%%%%%%%% 表格环境  %%%%%%%%%%%%%%%%%%%
 
+\clearpage
 \section{表格环境}
 
 \subsection{表的使用}
@@ -577,6 +577,7 @@ LaTeX 的 Table 环境一个浮动体环境, 浮动体排版与 Figure 环境类
 \end{tabularx}
 \end{table}
 
+\clearpage
 基于 tabular 环境设置一些格式: 上下表格线加粗, 如表~\ref{tab:error1}.
 \begin{table}[!htp]
 %\small

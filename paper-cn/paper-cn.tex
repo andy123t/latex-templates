@@ -127,7 +127,17 @@
 \newtheorem{axiom}{公理}[section]
 \newtheorem{property}{性质}[section]
 \newtheorem{conjecture}{猜想}[section]
-\renewcommand{\proofname}{\textbf{证明}}
+\renewcommand{\proofname}{证明}
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{\par
+    \pushQED{\qed}%
+    \normalfont \topsep6\p@\@plus6\p@\relax
+    \trivlist\item[\hskip\labelsep
+    \bfseries #1\@addpunct{\,:\,}]\ignorespaces
+}{%
+    \popQED\endtrivlist\@endpefalse
+}
+\makeatother
 
 %----- 证明结束黑框 -----
 %\renewcommand{\qedsymbol}{$\blacksquare$}
@@ -159,7 +169,7 @@
   tabsize=3,
 }
 
-%----- 设置浮动体间距 ------
+%----- 设置浮动体间距 -----
 \setlength{\textfloatsep}{0pt}
 \setlength{\floatsep}{10pt plus 3pt minus 2pt}
 \setlength{\intextsep}{10pt}

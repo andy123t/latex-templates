@@ -7,7 +7,6 @@
 \usepackage{mathrsfs,bm}
 \usepackage{graphicx}
 \usepackage{subfig}
-%\usepackage{parskip}
 %\usepackage[english]{babel}
 \usepackage{color,xcolor}
 \usepackage{enumitem}
@@ -28,13 +27,13 @@
 \usepackage{hyperref}
 \hypersetup{
   colorlinks = true,
-  linkcolor = black,
+  linkcolor = magenta,
   citecolor = blue,
   filecolor = blue,
   urlcolor = blue,
 }
 
-% 允许多行公式跨页显示
+%----- 允许多行公式跨页显示 -----
 \allowdisplaybreaks
 
 %----- 设置章节 -----
@@ -76,8 +75,8 @@
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[LE,RO]{$\cdot$\:\thepage\:$\cdot$}
-\fancyhead[RE]{\kaishu\nouppercase{\leftmark}}
-\fancyhead[LO]{\kaishu\nouppercase{\rightmark}}
+\fancyhead[RE]{\small\kaishu\nouppercase{\leftmark}}
+\fancyhead[LO]{\small\kaishu\nouppercase{\rightmark}}
 \renewcommand{\headrulewidth}{0.5pt}
 \setlength{\headheight}{15pt}
 \setlength{\headsep}{18pt}
@@ -132,7 +131,7 @@
 \newcolumntype{R}{>{\raggedleft \arraybackslash}X}
 \newcolumntype{P}[1]{>{\centering \arraybackslash}p{#1}}
 
-%------------- 数学定理设置 ---------------
+%----- 数学定理设置 -----
 \theoremstyle{plain}
 \newtheorem{definition}{定义}[section]
 \newtheorem{proposition}{命题}[section]
@@ -141,7 +140,17 @@
 \newtheorem{example}{例}
 \newtheorem{corollary}{推论}[section]
 \newtheorem{remark}{注}[section]
-%\renewcommand{\proofname}{\heiti 证明}
+\renewcommand{\proofname}{证明}
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{\par
+    \pushQED{\qed}%
+    \normalfont \topsep6\p@\@plus6\p@\relax
+    \trivlist\item[\hskip\labelsep
+    \bfseries #1\@addpunct{\,:\,}]\ignorespaces
+}{%
+    \popQED\endtrivlist\@endpefalse
+}
+\makeatother
 
 %----- 参考文献格式 -----
 %\bibliographystyle{plain} % abbrv, unsrt, siam

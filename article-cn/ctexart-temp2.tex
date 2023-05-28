@@ -7,7 +7,6 @@
 \usepackage{mathrsfs,bm}
 \usepackage{graphicx}
 \usepackage{subfig}
-%\usepackage{parskip}
 %\usepackage[english]{babel}
 \usepackage{color,xcolor}
 \usepackage{enumitem}
@@ -28,24 +27,47 @@
 \usepackage{hyperref}
 \hypersetup{
   colorlinks = true,
-  linkcolor = black,
+  linkcolor = magenta,
   citecolor = blue,
   filecolor = blue,
   urlcolor = blue,
 }
 
-% 允许多行公式跨页显示
+%----- 允许多行公式跨页显示 -----
 \allowdisplaybreaks
+
+%----- 定义页眉-----
+\makeatletter
+\newcommand\@header{}
+\newcommand\header[1]{\def\@header{#1}}
+\makeatother
 
 %----- 页眉页脚 -----
 \usepackage{fancyhdr}
+\makeatletter
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[C]{\kaishu 论文的题目}
-\fancyfoot[C]{\thepage}
+\fancyhead[C]{\small\kaishu\@header}
+\fancyfoot[C]{\small\thepage}
 \renewcommand{\headrulewidth}{0.5pt}
 \setlength{\headheight}{15pt}
 \setlength{\headsep}{18pt}
+\makeatother
+
+%----- 重定义摘要环境 -----
+\makeatletter
+\renewenvironment{abstract}{%
+  \if@twocolumn
+    \section*{\abstractname}%
+  \else %% <- here removed \small
+    \begin{center}%
+      {\bfseries \large\abstractname\vspace{\z@}} %% <- here added \large
+    \end{center}%
+    \quotation
+  \fi}{
+  \if@twocolumn\else\endquotation\fi
+}
+\makeatother
 
 %-----设置英文字体 -----
 \usepackage{newtxtext}
@@ -91,7 +113,7 @@
 \newcolumntype{R}{>{\raggedleft \arraybackslash}X}
 \newcolumntype{P}[1]{>{\centering \arraybackslash}p{#1}}
 
-%------------- 数学定理设置 ---------------
+%----- 数学定理设置 -----
 \theoremstyle{plain}
 \newtheorem{definition}{定义}[section]
 \newtheorem{proposition}{命题}[section]
@@ -100,7 +122,17 @@
 \newtheorem{example}{例}
 \newtheorem{corollary}{推论}[section]
 \newtheorem{remark}{注}[section]
-%\renewcommand{\proofname}{\heiti 证明}
+\renewcommand{\proofname}{证明}
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{\par
+    \pushQED{\qed}%
+    \normalfont \topsep6\p@\@plus6\p@\relax
+    \trivlist\item[\hskip\labelsep
+    \bfseries #1\@addpunct{\,:\,}]\ignorespaces
+}{%
+    \popQED\endtrivlist\@endpefalse
+}
+\makeatother
 
 %----- 参考文献格式 -----
 %\bibliographystyle{plain} % abbrv, unsrt, siam
@@ -130,6 +162,8 @@
 
 
 %----- 论文信息 -----
+\header{论文的题目}
+
 \title{论文的题目}
 \author{作者\thanks{作者的信息}}
 \date{\today}

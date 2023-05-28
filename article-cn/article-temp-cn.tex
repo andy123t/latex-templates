@@ -9,7 +9,6 @@
 \usepackage{mathrsfs,bm}
 \usepackage{graphicx}
 \usepackage{subfig}
-%\usepackage{parskip}
 %\usepackage[english]{babel}
 \usepackage{color,xcolor}
 \usepackage{enumitem}
@@ -23,8 +22,8 @@
 \usepackage{makecell}
 \usepackage{anyfontsize}
 \usepackage{geometry}
-%\geometry{left=1.25in,right=1.25in,top=1in,bottom=1in}
-\geometry{left=3cm,right=3cm,top=3cm,bottom=3cm}
+\geometry{left=1.25in,right=1.25in,top=1in,bottom=1in}
+%\geometry{left=3cm,right=3cm,top=3cm,bottom=3cm}
 
 %----- 设置超链接 -----
 \usepackage{hyperref}
@@ -39,15 +38,24 @@
 % 允许多行公式跨页显示
 \allowdisplaybreaks
 
+%----- 定义页眉-----
+\makeatletter
+\newcommand\@header{}
+\newcommand\header[1]{\def\@header{#1}}
+\makeatother
+
 %----- 页眉页脚 -----
 \usepackage{fancyhdr}
+\makeatletter
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[C]{\kaishu\nouppercase{论文的题目}} %\leftmark
-\fancyfoot[C]{\thepage}
+\fancyhead[C]{\small\kaishu\@header}
+\fancyfoot[C]{\small\thepage}
 \renewcommand{\headrulewidth}{0.5pt}
 \setlength{\headheight}{15pt}
 \setlength{\headsep}{18pt}
+\makeatother
+
 
 %-----设置英文字体 -----
 \usepackage{newtxtext}
@@ -68,7 +76,7 @@
 \renewcommand{\equationautorefname}{公式}
 
 %----- 设置各种间距 -----
-%\renewcommand{\baselinestretch}{1.35}  % 定义行距
+%\renewcommand{\baselinestretch}{1.35}
 %\setlength{\parindent}{2em}
 %\ziju{0.1}  % 控制中文字间距
 %\setlength{\parskip}{3pt plus1pt minus1pt}
@@ -102,7 +110,17 @@
 \newtheorem{example}{例}
 \newtheorem{corollary}{推论}[section]
 \newtheorem{remark}{注}[section]
-%\renewcommand{\proofname}{\heiti 证明}
+\renewcommand{\proofname}{证明}
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{\par
+    \pushQED{\qed}%
+    \normalfont \topsep6\p@\@plus6\p@\relax
+    \trivlist\item[\hskip\labelsep
+    \bfseries #1\@addpunct{\,:\,}]\ignorespaces
+}{%
+    \popQED\endtrivlist\@endpefalse
+}
+\makeatother
 
 %----- 参考文献格式 -----
 %\bibliographystyle{plain} % abbrv, unsrt, siam
@@ -131,6 +149,8 @@
 \newcommand{\red}[1]{\textcolor{red}{#1}}
 
 %----- 论文信息 -----
+\header{论文的题目}
+
 \title{论文的题目}
 \author{作者}
 \date{\today}
@@ -530,6 +550,7 @@ XeLaTeX 环境下可以使用 EPS、PDF、PNG、JPEG、BMP 格式的图片, 当�
 
 %%%%%%%%%%%%%%%%% 表格环境  %%%%%%%%%%%%%%%%%%%
 
+\clearpage
 \section{表格环境}
 
 \subsection{表的使用}
@@ -587,6 +608,7 @@ LaTeX 的 Table 环境一个浮动体环境, 浮动体排版与 Figure 环境类
 \end{tabularx}
 \end{table}
 
+\clearpage
 基于 tabular 环境设置一些格式: 上下表格线加粗, 如表~\ref{tab:error1}.
 \begin{table}[!htp]
 %\small
