@@ -70,30 +70,27 @@
 %\setlength{\oddsidemargin}{0.5cm}
 %\setlength{\evensidemargin}{0.5cm}
 
+% define some new commands
 \makeatletter
-\newcommand\@shorttitle{}
+\newcommand\cortext[1]{\def\@cortext{#1}}
 \newcommand\shorttitle[1]{\def\@shorttitle{#1}}
-\newcommand\@shortauthor{}
 \newcommand\shortauthor[1]{\def\@shortauthor{#1}}
 \makeatother
 
+\newcommand\cormark{\raisebox{0.5pt}{$*$}}
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  %\addtocounter{footnote}{-1}%
+  \endgroup
+}
+
 % headers and footers setting
-%\pagestyle{fancy}
-%\fancyhf{}
-%\fancyhead[CO]{\footnotesize\uppercase{Title of Paper}}
-%\fancyhead[CE]{\footnotesize\uppercase{Author A, Author B \& Author C}}
-%\fancyfoot[C]{\footnotesize\thepage}
-%\renewcommand{\headrulewidth}{0pt}
-
-%\fancyhead[C]{\footnotesize\uppercase{Title of Paper}}
-%\fancyfoot[C]{\footnotesize\thepage}
-%\renewcommand{\headrulewidth}{0pt}
-
 \makeatletter
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[CO]{\footnotesize\MakeUppercase{\@shorttitle}}
-\fancyhead[CE]{\footnotesize\MakeUppercase{\@shortauthor}}
+\fancyhead[CO]{\footnotesize\MakeUppercase{\ifx\@shorttitle\undefined{}\else\@shorttitle\fi}}
+\fancyhead[CE]{\footnotesize\MakeUppercase{\ifx\@shortauthor\undefined{}\else\@shortauthor\fi}}
 \fancyhead[RO]{\footnotesize\thepage}
 \fancyhead[LE]{\footnotesize\thepage}
 \renewcommand{\headrulewidth}{0pt}
@@ -149,7 +146,7 @@
   %\vspace{-1.5em}%
   \begin{center}%
     \let \footnote \thanks
-    {\Large \bfseries \@title \par}%
+    {\Large \bfseries \@title \ifx\@cortext\undefined{}\else\blfootnote{\@cortext}\fi \par}%
     \vskip 1.5em%
     {\large
       \lineskip 0.5em%
@@ -197,14 +194,16 @@
 % Information for title and author
 \title{An Example Article}
 
+
 % Short title for running heads:
-\shorttitle{A posteriori error analysis for CG methods for PDDEs}
+\shorttitle{Short Title of the Article}
 
 \author[1]{Author A}
 \author[2]{Author B}
-\author[1]{Author C\thanks{Email address: \texttt{xyz@math.univ.edu}; Corresponding author.}}
+\author[1,\cormark]{Author C}
 \affil[1]{Department of Mathematics, \LaTeX\ University}
 \affil[2]{Department of Mechanical Engineering, \LaTeX\ University}
+\cortext{Corresponding author. Email address: \texttt{xyz@math.univ.edu}}
 
 % Short list of authors for running heads:
 \shortauthor{Author A, Author B, and Author C}
