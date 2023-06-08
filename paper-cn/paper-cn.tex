@@ -92,8 +92,8 @@
 %----- 参考文献引用格式 -----
 \usepackage[numbers,sort&compress]{natbib}
 %\usepackage[numbers,super,square,sort&compress]{natbib}
-\def\bibfont{\small}      % 修改参考文献字体
-\setlength{\bibsep}{8pt}  % 调整参考文献间距
+\def\bibfont{\small}  % 修改参考文献字体
+\setlength{\bibsep}{7pt plus 3pt minus 3pt}  % 调整参考文献间距
 
 %----- 设置英文字体 -----
 \usepackage{newtxtext}  % for text fonts
@@ -117,6 +117,10 @@
 %\usepackage[cleardoublepage=plain]{scrextend}
 
 %----- 设置定理环境 -----
+\newtheoremstyle{plain}
+{0.5\topsep}{0.5\topsep}
+{\itshape}{}{\bfseries}
+{.}{5pt plus 1pt minus 1pt}{}
 \theoremstyle{plain}
 \newtheorem{definition}{定义}[section]
 \newtheorem{proposition}{命题}[section]
@@ -134,7 +138,8 @@
 \makeatletter
 \renewenvironment{proof}[1][\proofname]{\par
     \pushQED{\qed}%
-    \normalfont \topsep6\p@\@plus6\p@\relax
+    %\normalfont \topsep6\p@\@plus6\p@\relax
+    \normalfont \topsep0\p@\@plus3\p@\relax
     \trivlist\item[\hskip\labelsep
     \bfseries #1\@addpunct{\,:\,}]\ignorespaces
 }{%
@@ -292,7 +297,12 @@
 
 \section{文献引用}
 
-参考文献采用 BibTeX 的方式生成 (内容写在文件 \verb|mybib.bib| 中), 参考文献的样式为 \verb|shnuthesis-numeric|, 符合国家标准《信息与文献参考文献著录规则》GB/T7714-2015, 论文中引用和参考的文献必须列出. 参考文献序号按所引文献在论文中出现的先后次序排列. 引用文献应在论文中的引用处加注文献序号, 并加注方括弧.
+参考文献可采用 BibTeX 的方式生成 (文献信息写在文件 \verb|reference.bib| 中), 
+参考文献的样式为 \verb|thuthesis-numeric| (对应的引用格式可选 \verb|numbers| 或  \verb|super|) 
+和 \verb|thuthesis-author-year| (对应的引用格式 \verb|authoryear|), 
+符合国家标准《信息与文献参考文献著录规则》GB/T 7714-2015, 论文中引用和参考的文献必须列出. 
+参考文献序号按所引文献在论文中出现的先后次序排列. 
+引用文献应在论文中的引用处加注文献序号, 并加注方括弧.
 
 文献引用示例 \cite{Tadmor2012} 和 \cite{LiLiu1997,Adams2003,TreWei2014}.
 
@@ -302,15 +312,15 @@
 \section{数学公式}
 
 \subsection{公式}
-数学公式的使用请参考公式手册 symbols-a4, 或者 《一份(不太)简短的 \LaTeX~2$\varepsilon$ 介绍》 (lshort-zh-cn).
+数学公式的使用请参考《一份(不太)简短的 \LaTeX~2$\varepsilon$ 介绍》 (lshort-zh-cn), 更多的数学符号参考 The Comprehensive LaTeX Symbol List (symbols-a4).
 
 自定义命令表示的几个数学符号 $\RR$, $\CC$, $\A$, $\ii$, $\bA$. 微分符号 $\dif$ 以及 $\dx$, $\dx[t]$.
 
 在文中行内公式可以这么写: $a^2+b^2=c^2$, 这是勾股定理, 它还可以表示为 $c=\sqrt{a^2+b^2}$, 还可以让公式单独一段并且加上编号
-\begin{equation}\label{eqn:trifun}
+\begin{equation}\label{eq:trifun}
 \sin^2{\theta}+\cos^2{\theta}=1.
 \end{equation}
-还可以通过添加标签在正文中引用公式, 如等式~\eqref{eqn:trifun} 或者 \ref{eqn:trifun}.
+还可以通过添加标签在正文中引用公式, 如等式~\eqref{eq:trifun} 或者 \ref{eq:trifun}.
 
 读者可能阅读过其它手册或者资料, 知道 LaTeX 提供了 eqnarray 环境. 它按照等号左边—等号—等号右边呈三列对齐, 但等号周围的空隙过大, 加上公式编号等一些 bug, 目前已不推荐使用. (摘自 lshort-zh-cn)
 
@@ -332,20 +342,19 @@ a ={} & b + c \\
 如果不需要按等号对齐, 只需罗列数个公式, gather 将是一个很好用的环境:
 \begin{gather}
 a = b + c \\
-d = e + f + g \\
-h + i = j + k \notag \\
-l + m = n
+d = e + f + g \notag \\
+h + i = j
 \end{gather}
 
-align 和 gather 有对应的不带编号的版本 align* 和 gather*.
-对于 align、 gather、align* 与 gather* 等环境, 若添加命令 \verb|\allowdisplaybreaks| 后 (已添加), 公式可以跨页显示.
+align 和 gather 有对应不带编号的环境 align* 和 gather*.
+对于 align, gather, align* 与 gather* 等环境, 若添加命令 \verb|\allowdisplaybreaks| 后 (已添加), 公式可以跨页显示.
 
 多个公式组在一起公用一个编号, 编号位于公式的居中位置, amsmath 宏包提供了诸如 aligned、gathered 等环境, 与 equation 环境套用.
 
 这个公式使用 aligned 环境 (\textbf{推荐使用})
 \begin{equation}\label{eq:alignedEq}
 \left\{\begin{aligned}
-  &-\frac{{\dif}^{2} u}{\dif x^{2}}+\frac{\dif u}{\dif x}=\pi^{2} \sin (\pi x)+\pi \cos (\pi x),\quad x \in [0,1], \\
+  &-\frac{{\dif}^{2} u}{\dif x^{2}}+\frac{\mathrm{d} u}{\dif x}=\pi^{2} \sin (\pi x)+\pi \cos (\pi x),\quad x \in [0,1], \\
   &u(0)=0,\quad u(1)=0.
 \end{aligned} \right.
 \end{equation}
@@ -360,7 +369,7 @@ u(0)=0,\quad u(1)=0.
 \end{array} \right.
 \end{equation}
 
-aligned 与 equation 环境套用, 公式间距是自动调节的, 如果有分式, 分式也是行间显示. 如果用 array 与 equation 环境套用, 有时候需要手动调整公式行间距和行间显示.
+aligned 与 equation 环境套用, 公式间距自动调节, 如果有分式, 分式也是行间显示. 如果用 array 与 equation 环境套用, 需要手动调整公式行间距和行间显示.
 
 \subsection{定理环境}
 

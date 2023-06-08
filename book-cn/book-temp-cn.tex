@@ -208,14 +208,13 @@
 \newcolumntype{R}{>{\raggedleft \arraybackslash}X}
 \newcolumntype{P}[1]{>{\centering \arraybackslash}p{#1}}
 
-
 %-----设置公式间距-----
 \AtBeginDocument{
-  \setlength{\abovedisplayskip}{4pt plus 1pt minus 1pt}
-  \setlength{\belowdisplayskip}{4pt plus 1pt minus 1pt}
-  \setlength{\abovedisplayshortskip}{2pt}
-  \setlength{\belowdisplayshortskip}{2pt}
-  \setlength{\arraycolsep}{2pt}
+    \setlength{\abovedisplayskip}{6pt plus 2pt minus 2pt}
+    \setlength{\belowdisplayskip}{6pt plus 2pt minus 2pt}
+    \setlength{\abovedisplayshortskip}{3pt plus 1pt minus 1pt}
+    \setlength{\belowdisplayshortskip}{3pt plus 1pt minus 1pt}
+    %\setlength{\arraycolsep}{2pt}
 }
 
 %-----定义新的目录页面 -----
@@ -267,8 +266,8 @@
 %----- 参考文献引用格式 -----
 \usepackage[numbers,sort&compress]{natbib}
 %\usepackage[numbers,super,square,sort&compress]{natbib}
-\def\bibfont{\small}      % 修改参考文献字体
-\setlength{\bibsep}{8pt}  % 调整参考文献间距
+\def\bibfont{\small}  % 修改参考文献字体
+\setlength{\bibsep}{7pt plus 3pt minus 3pt}  % 调整参考文献间距
 
 %----- 微分符号 -----
 \newcommand{\dif}{\mathop{}\!\mathrm{d}}

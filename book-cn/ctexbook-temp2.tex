@@ -97,6 +97,10 @@
 \rfoot{}
 
 %----- 定义定理格式 -----
+\newtheoremstyle{plain}
+{0.5\topsep}{0.5\topsep}
+{\itshape}{}{\bfseries}
+{.}{5pt plus 1pt minus 1pt}{}
 \theoremstyle{plain}
 \newtheorem{definition}{定义}[chapter]
 \newtheorem{proposition}{命题}[chapter]
@@ -114,7 +118,8 @@
 \makeatletter
 \renewenvironment{proof}[1][\proofname]{\par
   \pushQED{\qed}%
-  \normalfont \topsep6\p@\@plus6\p@\relax
+  %\normalfont \topsep6\p@\@plus6\p@\relax
+  \normalfont \topsep0\p@\@plus3\p@\relax
   \trivlist
   \item[\hskip\labelsep\bfseries
   #1\@addpunct{\,:\,}]\ignorespaces
@@ -135,6 +140,15 @@
 \newcolumntype{C}{>{\centering \arraybackslash}X}
 \newcolumntype{R}{>{\raggedleft \arraybackslash}X}
 \newcolumntype{P}[1]{>{\centering \arraybackslash}p{#1}}
+
+%-----设置公式间距-----
+\AtBeginDocument{
+    \setlength{\abovedisplayskip}{6pt plus 2pt minus 2pt}
+    \setlength{\belowdisplayskip}{6pt plus 2pt minus 2pt}
+    \setlength{\abovedisplayshortskip}{3pt plus 1pt minus 1pt}
+    \setlength{\belowdisplayshortskip}{3pt plus 1pt minus 1pt}
+    %\setlength{\arraycolsep}{2pt}
+}
 
 %---------- 定义章节标题格式 ------------
 %\renewcommand{\appendixname}{附录}
@@ -242,8 +256,8 @@
 %----- 参考文献引用格式 -----
 \usepackage[numbers,sort&compress]{natbib}
 %\usepackage[numbers,super,square,sort&compress]{natbib}
-\def\bibfont{\small}      % 修改参考文献字体
-\setlength{\bibsep}{8pt}  % 调整参考文献间距
+\def\bibfont{\small}  % 修改参考文献字体
+\setlength{\bibsep}{7pt plus 3pt minus 3pt}  % 调整参考文献间距
 
 %----- 微分符号 -----
 \newcommand{\dif}{\mathop{}\!\mathrm{d}}

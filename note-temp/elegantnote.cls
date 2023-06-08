@@ -296,8 +296,8 @@
   \color{ecolor}\bfseries}{}{%
   0.5em}{}
 
-\newtheoremstyle{remark}{\topsep}{\topsep}{\cnormal}{}{
-  \color{ecolor}\bfseries}{}{
+\newtheoremstyle{remark}{\topsep}{\topsep}{\cnormal}{}{%
+  \color{ecolor}\bfseries}{}{%
   0.5em}{}
 
 % caption settings
