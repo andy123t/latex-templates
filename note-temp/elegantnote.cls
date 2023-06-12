@@ -177,6 +177,15 @@
   \newtheorem*{note}{\normalfont\bfseries 注} %
   \newtheorem{case}{\normalfont\bfseries 案例} %
   \renewcommand*{\proofname}{\normalfont\bfseries\color{ecolor}证明} %
+  \renewenvironment{proof}[1][\proofname]{\par
+    \pushQED{\qed}%
+    %\normalfont \topsep6\p@\@plus6\p@\relax
+    \normalfont \topsep3\p@\@plus3\p@\relax
+    \trivlist\item[\hskip\labelsep
+    \bfseries #1\@addpunct{\,:\,}]\ignorespaces
+  }{%
+    \popQED\endtrivlist\@endpefalse
+  }
   \renewcommand\contentsname{\color{ecolor}目~~录}
   \newcommand{\figureautorefname}{图}
   \newcommand{\tableautorefname}{表}
@@ -208,6 +217,15 @@
   \newtheorem{case}{Case}
   \renewcommand*{\proofname}{%
     \normalfont\bfseries\color{ecolor} Proof}
+  \renewenvironment{proof}[1][\proofname]{\par
+    \pushQED{\qed}%
+    %\normalfont \topsep6\p@\@plus6\p@\relax
+    \normalfont \topsep3\p@\@plus3\p@\relax
+    \trivlist\item[\hskip\labelsep
+    \bfseries #1\@addpunct{\,.\,}]\ignorespaces
+  }{%
+    \popQED\endtrivlist\@endpefalse
+  }
   \newcommand\versiontext{Version: }%
   \newcommand\updatetext{Update: }}{\relax}
 
