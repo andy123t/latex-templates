@@ -52,7 +52,7 @@
 }
 
 %----- 设置英文字体 -----
-\usepackage{newtxtext}  % for text fonts
+%\sepackage{newtxtext}  % for text fonts
 %\setmainfont{Times New Roman}
 %\setmonofont{Courier New}
 %\setsansfont{Arial}
@@ -79,7 +79,15 @@
 %\usepackage{indentfirst}  % 首行缩进宏包
 %\usepackage[perpage,symbol]{footmisc}  % 脚注控制
 
-\usepackage[cleardoublepage=plain]{scrextend}
+%-----设置cleardoublepage-----
+%\usepackage[cleardoublepage=plain]{scrextend}
+\makeatletter
+\renewcommand{\cleardoublepage}{\clearpage
+    \clearpage\if@twoside\ifodd\c@page\else%
+    \thispagestyle{empty}%
+    \hbox{}\newpage\if@twocolumn\hbox{}\newpage\fi\fi\fi%
+}
+\makeatother
 
 %----- 设置页眉和页脚 -----
 \usepackage{fancyhdr,fancyref}
@@ -147,12 +155,11 @@
 }
 
 %---------- 定义章节标题格式 ------------
-%\renewcommand{\appendixname}{附录}
-\newcommand{\chpzihao}{\fontsize{20pt}{20pt}\selectfont}
+\newcommand{\chapfont}{\fontsize{20pt}{20pt}\selectfont}
 %--- chapter ---
 \ctexset{
     chapter = {
-        format = \linespread{1.0}\heiti\chpzihao\centering,
+        format = \linespread{1.0}\bfseries\chapfont\centering,
         nameformat = {},
         titleformat = {},
         number = \arabic{chapter},
@@ -166,7 +173,7 @@
 %--- section ---
 \ctexset{
     section = {
-        format = \linespread{1.0}\heiti\zihao{-3}\raggedright,
+        format = \linespread{1.0}\bfseries\zihao{-3}\raggedright,
         numberformat = {},
         aftername = \quad,
         beforeskip = {24pt},
@@ -176,7 +183,7 @@
 %--- subsection ---
 \ctexset{
     subsection = {
-        format = \linespread{1.0}\heiti\zihao{4}\raggedright,
+        format = \linespread{1.0}\bfseries\zihao{4}\raggedright,
         numberformat = {},
         aftername = \quad,
         beforeskip = {12pt},
@@ -186,7 +193,7 @@
 %--- subsubsection ---
 \ctexset{
     subsubsection = {
-        format = \linespread{1.0}\heiti\zihao{-4}\raggedright,
+        format = \linespread{1.0}\bfseries\zihao{-4}\raggedright,
         numberformat = {},
         aftername = \quad,
         beforeskip = {12pt},
@@ -210,7 +217,7 @@
 
 %------------- 定义新的目录页面 ----------------
 \usepackage{tocloft}
-\renewcommand{\cfttoctitlefont}{\hfill \heiti \chpzihao}
+\renewcommand{\cfttoctitlefont}{\hfill \bfseries\chapfont}
 %\renewcommand{\cftchappresnum}{第}
 %\renewcommand{\cftchapaftersnum}{章}
 \renewcommand{\contentsname}{目~~录}%\LARGE

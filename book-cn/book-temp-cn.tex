@@ -100,8 +100,15 @@
 \setlist{nolistsep}
 %\setlength{\itemsep}{3pt plus1pt minus2pt}
 
-%-----设置空白页的页眉-----
-\usepackage[cleardoublepage=plain]{scrextend}
+%-----设置cleardoublepage-----
+%\usepackage[cleardoublepage=plain]{scrextend}
+\makeatletter
+\renewcommand{\cleardoublepage}{\clearpage
+    \clearpage\if@twoside\ifodd\c@page\else%
+    \thispagestyle{empty}%
+    \hbox{}\newpage\if@twocolumn\hbox{}\newpage\fi\fi\fi%
+}
+\makeatother
 
 %-----设置页眉页脚格式-----
 \usepackage{fancyhdr,fancyref}

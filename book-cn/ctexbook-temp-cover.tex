@@ -55,7 +55,7 @@
 }
 
 %----- 设置英文字体 -----
-\usepackage{newtxtext}  % for text fonts
+%\usepackage{newtxtext}  % for text fonts
 %\setmainfont{Times New Roman}
 %\setmonofont{Courier New}
 %\setsansfont{Arial}
@@ -82,7 +82,15 @@
 %\usepackage{indentfirst}  % 首行缩进宏包
 %\usepackage[perpage,symbol]{footmisc}  % 脚注控制
 
-\usepackage[cleardoublepage=plain]{scrextend}
+%-----设置cleardoublepage-----
+%\usepackage[cleardoublepage=plain]{scrextend}
+\makeatletter
+\renewcommand{\cleardoublepage}{\clearpage
+    \clearpage\if@twoside\ifodd\c@page\else%
+    \thispagestyle{empty}%
+    \hbox{}\newpage\if@twocolumn\hbox{}\newpage\fi\fi\fi%
+}
+\makeatother
 
 %----- 自定义颜色 -----
 %\definecolor{wintered}{RGB}{128,0,0}
@@ -174,12 +182,11 @@
 }
 
 %---------- 定义章节标题格式 ------------
-%\renewcommand{\appendixname}{附录}
 \newcommand{\chapfont}{\fontsize{20pt}{20pt}\selectfont}
 %--- chapter ---
 \ctexset{
     chapter = {
-        format = \linespread{1.0}\color{structure}\heiti\chapfont\centering,
+        format = \linespread{1.0}\color{structure}\bfseries\chapfont\centering,
         nameformat = {},
         titleformat = {},
         number = \arabic{chapter},
@@ -193,7 +200,7 @@
 %--- section ---
 \ctexset{
     section = {
-        format = \linespread{1.0}\color{structure}\heiti\zihao{-3}\raggedright,
+        format = \linespread{1.0}\color{structure}\bfseries\zihao{-3}\raggedright,
         numberformat = {},
         aftername = \quad,
         beforeskip = {24pt},
@@ -203,7 +210,7 @@
 %--- subsection ---
 \ctexset{
     subsection = {
-        format = \linespread{1.0}\color{structure}\heiti\zihao{4}\raggedright,
+        format = \linespread{1.0}\color{structure}\bfseries\zihao{4}\raggedright,
         numberformat = {},
         aftername = \quad,
         beforeskip = {12pt},
@@ -213,7 +220,7 @@
 %--- subsubsection ---
 \ctexset{
     subsubsection = {
-        format = \linespread{1.0}\color{structure}\heiti\zihao{-4}\raggedright,
+        format = \linespread{1.0}\color{structure}\bfseries\zihao{-4}\raggedright,
         numberformat = {},
         aftername = \quad,
         beforeskip = {12pt},
