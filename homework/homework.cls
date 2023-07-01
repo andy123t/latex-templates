@@ -2,13 +2,13 @@
 %%  This is file `homework.cls',
 %%
 %%  @author andy123t
-%%  @date 2023/05/24
+%%  @date 2023/07/01
 %%  @version v1.2
 %%
 
 %----- Identification -----%
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{homework}[2023/05/24]
+\ProvidesClass{homework}[2023/07/01]
 
 %----- New Options -----%
 \newif\ifhw@en
@@ -100,7 +100,7 @@
 % define the macro for the header
 \newcommand{\header}[1]{\def\@header{#1}}
 % define the macro for the footer
-\newcommand{\footer}[1]{\def\@footer{#1}}
+%\newcommand{\footer}[1]{\def\@footer{#1}}
 
 %----- graphics path -----%
 \graphicspath{{./figure/}{./figures/}{./image/}{./images/}}
@@ -117,16 +117,9 @@
 \fancyfoot{}
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\footrulewidth}{0.4pt}
-\if@twoside
-\fancyhead[LE,RO]{\footnotesize\thinspace\thepage\thinspace}
-\fancyhead[LO,RE]{\footnotesize{\ifx\@header\undefined{}\makeatletter\@title\makeatother\else\@header\fi}}
-\fancyfoot[LE,RO]{\footnotesize{\ifx\@footer\undefined{}\else\@footer\fi}}
-\else
-\fancyhead[R]{\footnotesize\thinspace\thepage\thinspace}
-\fancyhead[L]{\footnotesize{\ifx\@header\undefined{}\makeatletter\@title\makeatother\else\@header\fi}}
-\fancyfoot[R]{\footnotesize{\ifx\@footer\undefined{}\else\@footer\fi}}
-\fi
+\renewcommand{\footrulewidth}{0pt}
+\fancyhead[C]{\footnotesize{\ifx\@header\undefined{}\makeatletter\@title\makeatother\else\@header\fi}}
+\fancyfoot[C]{\footnotesize\thepage}
 
 %\setlength{\headheight}{15pt}
 \setlength{\headsep}{18pt}
@@ -135,16 +128,15 @@
 \renewcommand{\maketitle}{%
     \thispagestyle{plain}
     \begin{center}
-        \ifx\@institute\undefined{}\else{\@institute}\\[10pt]\fi
+        \ifx\@institute\undefined{}\else{\@institute} \\[10pt] \fi
         \hrule
-        \vspace{14pt}
-        {\LARGE \bfseries \@title \par}
-        \vspace{10pt}
+        \vspace{15pt}
+        {\LARGE \bfseries \@title} \\[10pt]
         \ifx\@courseinfo\undefined{}\else{\large\@courseinfo{}}\\[6pt]\fi
         \ifx\@studentinfo\undefined{}\else\@studentinfo{}\\[6pt]\fi
         \vspace{4pt}
         \hrule
-        \vspace{10pt}
+        \vspace{12pt}
         {\@date}
         \vspace{15pt}
     \end{center}
@@ -155,28 +147,31 @@
 \newenvironment{problem}{
     \stepcounter{problemname}
     \par\noindent
-    \textbf{\problemname~\arabic{problemname}. 
-}}{
+    \textbf{\problemname~\arabic{problemname}.}
+}{
+\par %\medskip
+}
+\newenvironment{problem*}{
+    \par\noindent
+    \textbf{\problemname\,:}
+}{
 \par %\medskip
 }
 
 %----- definition of hframe environment -----%
 \RequirePackage[framemethod=TikZ]{mdframed}
 \mdfdefinestyle{hframed}{%
-    linecolor=black!60,
-    backgroundcolor=gray!5,
-    outerlinewidth=1pt,
-    roundcorner=5pt,
+    linecolor=black!68,backgroundcolor=gray!5,
+    outerlinewidth=0.6pt,roundcorner=4pt,
     innertopmargin=0.5\baselineskip,
-    innerrightmargin=10pt,
-    innerleftmargin=10pt,
+    innerrightmargin=10pt,innerleftmargin=10pt,
     innerbottommargin=0.5\baselineskip,
 }
 
 \newenvironment{hframe}{
 \begin{mdframed}[%
-    linecolor=black!60,backgroundcolor=gray!5,
-    outerlinewidth=1pt,roundcorner=5pt,
+    linecolor=black!68,backgroundcolor=gray!5,
+    outerlinewidth=0.6pt,roundcorner=4pt,
     innertopmargin=0.5\baselineskip,
     innerbottommargin=0.5\baselineskip,
     innerrightmargin=10pt,innerleftmargin=10pt]%
