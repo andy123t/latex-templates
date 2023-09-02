@@ -13,7 +13,7 @@
 \usepackage[english]{babel}
 % package for figures
 \usepackage{graphicx}
-\usepackage{subfigure}
+\usepackage{subfig}
 % package for hyperlink
 \usepackage{hyperref}
 % package for layout of list
@@ -119,7 +119,7 @@
 
 \date{\today}
 
-\subjclass[2000]{65L60, 65L05, 65L70}
+\subjclass[2000]{65M60, 65M12}
 
 \keywords{Keyword 1, keyword 2, error analysis}
 
@@ -358,6 +358,7 @@ Figure~\ref{fig:foo} shows some example results.
 \end{figure}
 
 The two figures are placed side by side, sharing one title, as shown in \autoref{fig:twofigs}.
+
 \begin{figure}[htp!]
   \centering
   \includegraphics[width=0.45\linewidth]{fig1}
@@ -388,14 +389,17 @@ N  & A       & B    & C       & D      & E     \\
 8  & 8.50E-05 & 8.70E-05 & 1.90E-05 & 2.10E-05 & 3.00E-06 \\
 10 & 8.60E-05 & 9.30E-05 & 2.50E-05 & 2.00E-06 & 9.00E-06 \\
 12 & 1.70E-05 & 2.40E-05 & 7.60E-05 & 8.30E-05 & 9.00E-05 \\
-14 & 2.30E-05 & 5.00E-06 & 8.20E-05 & 8.90E-05 & 9.10E-05 \\
+%14 & 2.30E-05 & 5.00E-06 & 8.20E-05 & 8.90E-05 & 9.10E-05 \\
 %16 & 7.90E-05 & 6.00E-06 & 1.30E-05 & 9.50E-05 & 9.70E-05 \\
 \Xhline{2\arrayrulewidth}
 \end{tabularx}
 \end{table}
 
+Some description and explanation about figures and tables.
+
 Use \texttt{minipage} package to set images side-by-side, each with its own title,
 as shown in Figure~\ref{fig:A} and Figure~\ref{fig:B}.
+
 \begin{figure}[htp!]
 \begin{minipage}[t]{0.48\linewidth}
   \centering
@@ -412,6 +416,16 @@ as shown in Figure~\ref{fig:A} and Figure~\ref{fig:B}.
 \end{minipage}
 \end{figure}
 
+Use \texttt{subfig} package to set subfigure, each with its subcaption, as shown in Figure~\ref{fig:twosubfig}.
+
+\begin{figure}[htp!]
+\centering
+\subfloat[Subcaption A]{\includegraphics[width=0.46\linewidth]{fig1}}
+\qquad
+\subfloat[Subcaption B]{\includegraphics[width=0.46\linewidth]{fig2}}
+\caption{Two subfigures}
+\label{fig:twosubfig}
+\end{figure}
 
 Additional results are available in the supplement in Table~\ref{tab:foo}.
 
@@ -422,22 +436,23 @@ Additional results are available in the supplement in Table~\ref{tab:foo}.
 \label{tab:foo}
 \begin{tabular}{c|c|cc|cc|cc}
 \hline
-degree &  step-size~$h$  & $L^2$-errors  &  order  & $H^1$-errors & order & $L^\infty$-errors  &  order \\
+degree & step-size~$h$ & $L^2$-errors & order & $H^1$-errors & order & $L^\infty$-errors & order \\
 \hline
-   &  1/128    & 9.18E-06    &2.02    & 7.70E-03  &1.01       & 6.46E-07    &2.02   \\
-1  &  1/256    & 2.29E-06    &2.01    & 1.92E-03  &1.00       & 1.61E-07    &2.01   \\
-   &  1/512    & 5.70E-07    &2.00    & 9.56E-04  &1.00       & 4.01E-08    &2.00   \\
+  & 1/128 & 9.18E-06 & 2.02 & 7.70E-03 & 1.01 & 6.46E-07 & 2.02 \\
+1 & 1/256 & 2.29E-06 & 2.01 & 1.92E-03 & 1.00 & 1.61E-07 & 2.01 \\
+  & 1/512 & 5.70E-07 & 2.00 & 9.56E-04 & 1.00 & 4.01E-08 & 2.00 \\
 \hline  % \cline{1-8}
-   &  1/128    & 1.39E-08    &3.01    & 1.15E-05  &2.01       & 3.48E-12   &4.02    \\
-2  &  1/256    & 1.73E-09    &3.01    & 2.88E-06  &2.01       & 3.27E-13   &3.94    \\
-   &  1/512    & 2.17E-10    &3.00    & 7.24E-06  &2.00       & 6.66E-13   &1.55    \\
+  & 1/128 & 1.39E-08 & 3.01 & 1.15E-05 & 2.01 & 3.48E-12 & 4.02 \\
+2 & 1/256 & 1.73E-09 & 3.01 & 2.88E-06 & 2.01 & 3.27E-13 & 3.94 \\
+  & 1/512 & 2.17E-10 & 3.00 & 7.24E-06 & 2.00 & 6.66E-13 & 1.55 \\
 \hline  % \cline{1-8}
-   &  1/32     & 2.28E-09    &4.05    & 6.92E-07  &3.04       & 1.45E-15   &8.21    \\
-3  &  1/64     & 1.42E-10    &4.03    & 8.65E-08  &3.02       & 2.06E-14   &3.85    \\
-   &  1/128    & 8.91E-12    &4.01    & 1.08E-08  &3.01       & 3.86E-14   &0.91    \\
+  & 1/32  & 2.28E-09 & 4.05 & 6.92E-07 & 3.04 & 1.45E-15 & 8.21 \\
+3 & 1/64  & 1.42E-10 & 4.03 & 8.65E-08 & 3.02 & 2.06E-14 & 3.85 \\
+  & 1/128 & 8.91E-12 & 4.01 & 1.08E-08 & 3.01 & 3.86E-14 & 0.91 \\
 \hline
 \end{tabular}
 \end{table}
+
 
 \section{Discussion of \texorpdfstring{{$Z=X \cup Y$}}{Z = X union Y}}
 \label{sec:discussion}
