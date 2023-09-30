@@ -14,6 +14,8 @@ book-en: English book template | 英文书籍模板
 
 cover-letter: Cover letter template | 投稿信模板
 
+cv: Curriculum Vitae template | 简历模板
+
 faq: FAQ template | 常见问题模板
 
 homework: Homework template | 作业模板

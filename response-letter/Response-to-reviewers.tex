@@ -18,6 +18,14 @@
 % allow page breaks between multiline formulas
 \allowdisplaybreaks
 
+% command for listsep
+\setlist{nolistsep}
+\setlist[itemize]{itemsep=3pt}
+\setlist[enumerate]{itemsep=3pt}
+
+% command for line spacing
+\renewcommand{\baselinestretch}{1.1}
+
 % define counters for reviewers and their points
 \newcounter{reviewer}
 \setcounter{reviewer}{0}
@@ -30,15 +38,18 @@
 %\titleformat{\subsection}{\normalfont\bfseries}{\thesubsection}{}{}
 
 % command declarations for reviewer comments and our responses
-\newcommand{\reviewersection}{\stepcounter{reviewer} \bigskip \hrule \section*{Reviewer~\thereviewer}}
+\newcommand{\reviewersection}{\stepcounter{reviewer}%
+\bigskip \hrule \section*{Reviewer~\thereviewer}}
 
 % comments to the author
-\newenvironment{comments}{\medskip \noindent {\textbf{Comments}}:~\itshape}{\par}
+\newenvironment{comments}{\noindent%
+{\textbf{Comments}}:~\itshape}{\par\medskip}%
 
-\newenvironment{point}{\refstepcounter{point} \bigskip \noindent {\textbf{Comment~\arabic{point}}}:~\itshape}{\par }
+\newenvironment{point}{\refstepcounter{point}\noindent%
+{\textbf{Comment~\arabic{point}}}:~\itshape}{\par\medskip}
 
 % author's reply
-\newenvironment{reply}{\medskip \noindent \textbf{Reply}:~}{\medskip}
+\newenvironment{reply}{\noindent\textbf{Reply}:~}{\par\medskip}
 
 % graphical path
 \graphicspath{{./figures/}}
@@ -74,25 +85,25 @@ This is comments of Reviewer \thereviewer. With some more words foo bar foo bar 
 \begin{enumerate}
   \item Point one
   \item Point two
-  \item Point three
+  %\item Point three
 \end{enumerate}
 Suggestion: it's better to test a case with ...
 \end{comments}
 
-\vskip 8pt
 % Our reply
 \begin{reply}
 We agree with the reviewer on this important point. This is what we did to fix it.
 \begin{enumerate}
   \item Reply one
   \item Reply two
-  \item Reply three
+  %\item Reply three
 \end{enumerate}
 \begin{equation}\label{eq:abc}
   a^2+b^2=c^2.
 \end{equation}
 Please see Page 5 line 10 of the revised version.
 \end{reply}
+
 
 % Begin a new reviewer section
 \reviewersection
@@ -102,7 +113,6 @@ Please see Page 5 line 10 of the revised version.
 This is comment 1 of Reviewer \thereviewer.
 \end{point}
 
-\vskip 5pt
 \begin{reply}
 Our reply to This is comment 1 of Reviewer \thereviewer.
 \end{reply}
@@ -112,10 +122,10 @@ Our reply to This is comment 1 of Reviewer \thereviewer.
 This is comment 2 of Reviewer \thereviewer.
 \end{point}
 
-\vskip 5pt
 \begin{reply}
 Our reply to This is comment 2 of Reviewer \thereviewer.
 \end{reply}
+
 
 % Begin a new reviewer section
 \reviewersection
@@ -124,10 +134,8 @@ Our reply to This is comment 2 of Reviewer \thereviewer.
 This is comments of Reviewer \thereviewer. With some more words foo bar foo bar ...
 \end{comments}
 
-\vskip 5pt
 \begin{reply}
-	Our reply to it with reference to one of our points above using the \LaTeX's
-	label/ref system (see also \ref{eq:abc}).
+Our reply to it with reference to one of our points above using the {\LaTeX}'s label/ref system (see also \ref{eq:abc}).
 \end{reply}
 
 

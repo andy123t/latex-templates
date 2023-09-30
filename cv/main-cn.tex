@@ -1,0 +1,203 @@
+%-------------------------------------------%
+% CV in Chinese
+% Author: andy123t
+%-------------------------------------------%
+
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amsmath,amssymb}
+\usepackage{color,xcolor}
+\usepackage{float}
+\usepackage{ragged2e}
+%\usepackage[empty]{fullpage}
+\usepackage{etoolbox}
+\usepackage{tabularx}
+%\usepackage{titlesec}
+\usepackage{geometry}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{fontawesome}
+\usepackage{multicol}
+\usepackage{graphicx}
+
+\usepackage[UTF8]{ctex}
+\CJKsetecglue{\hskip0.15em plus0.05em minus 0.05em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\geometry{left=2cm,right=2cm,top=1.8cm,bottom=1.8cm}
+%\geometry{left=2cm,right=2cm,top=1.8cm,bottom=1.8cm,showframe=true,nomarginpar}
+
+\urlstyle{same}
+
+\setlength{\multicolsep}{0pt}
+\setlength{\parindent}{0pt}
+
+% command for line spacing
+\renewcommand{\baselinestretch}{1.2}
+
+% define color for cv
+\definecolor{deepgreen}{RGB}{0,111,104}
+
+% command for listsep
+\setlist{nolistsep}
+
+%-------------------------------------------%
+\newcommand{\hangpara}[2]{\hangindent#1\hangafter#2\noindent}
+\newcommand{\cvindent}[1]{\hangpara{1em}{0}{#1}}
+
+\makeatletter
+\newcommand{\cvsection}[2][]{%
+  \bigskip%
+  \ifstrequal{#1}{}{}{\marginpar{\vspace*{\dimexpr1pt-\baselineskip}\raggedright\input{#1}}}%
+  {\Large\bfseries\textsc{#2}}\\[-1.6ex]%
+  {\rule{\linewidth}{0.5pt}\par}%
+  \smallskip
+}
+\newcommand{\cvevent}[4][]{%
+  {#1 \large\textbf{#2}}%
+  \hangpara{1em}{1}{\ifstrequal{#3}{}{}{#3}}%
+  {\hfill\ifstrequal{#4}{}{}{#4}}\par
+  %\smallskip
+}
+\newcommand{\cvstate}[2]{%
+  {\large\textbf{#1}}%
+  {\ifstrequal{#2}{}{}{#2}}\par%
+  %\smallskip
+}
+\makeatother
+
+\newcommand{\cvbullet}{\thinspace\raisebox{1.5pt}{\footnotesize$\bullet$}}%
+\newcommand{\cvast}{\thinspace\raisebox{1.0pt}{\scalebox{1.1}{\boldmath$\ast$}}}%
+\newcommand{\cvstar}{\thinspace\raisebox{2.2pt}{\scalebox{0.6}{$\bigstar$}}}%
+
+% new list for cv
+%\newlist{cvlist}{itemize}{2}
+%\setlist[cvlist,1]{leftmargin=2em,label={--}}
+
+\newcommand{\green}[1]{{\color{deepgreen}#1}}
+
+%-------------------------------------------%
+
+
+
+\begin{document}
+
+%------------------HEADING------------------%
+
+% Left side of heading
+\begin{minipage}{\dimexpr\linewidth-4cm}%
+\raggedright%
+{\LARGE\textbf{你的姓名}\par}
+{\Large\textbf{你的职业}\par}
+\smallskip
+{\green{\footnotesize\faEnvelope} \texttt{xxx@univ.edu.com} \quad \green{\small\faPhone} 123456789 \par}%
+{\green{\small\faMapMarker} xxx Street, City \quad \green{\small\faChain} \texttt{https://univ.edu.com/name} \par}%
+{\green{\small\faGithub} \texttt{https://github.com/name} }
+%{邮箱: \texttt{xxx@univ.edu.com} \quad 手机: 123456789 \par}%
+%{地址: xxx Street, City \quad 主页: \texttt{https://univ.edu.com/name} \par}%
+%{其他: Bala Bala\par}%
+\end{minipage}\hfill%
+% Right side of heading
+\begin{minipage}{3cm}%
+\centering
+\includegraphics[width=0.9\linewidth]{photo}
+\end{minipage}
+\par%
+\medskip
+
+
+%--------------------BODY-------------------%
+
+%-------------------------------------------%
+\cvsection{教育经历}
+
+\cvevent[\cvbullet]{大学一}%
+{\hfill  地址 \\ 描述信息 }%
+{\kaishu 20xx年xx月--20xx年xx月}
+
+\begin{itemize}[leftmargin=2em,label={--}]
+  \item 第一项
+  \item 第二项
+\end{itemize}
+\smallskip
+
+\cvevent[\cvbullet]{大学二}%
+{, 地址或其他信息}%
+{\kaishu 20xx年xx月--20xx年xx月}
+
+\begin{enumerate}[leftmargin=2.3em,label={\arabic*.}]
+  \item 第一项
+  \item 第二项
+\end{enumerate}
+
+
+%-------------------------------------------%
+\cvsection{工作经历}
+
+\cvevent[\cvstar]{公司一}%
+{\hfill\kaishu 20xx年xx月--20xx年xx月 \\ 你的职位 }%
+{地址}
+\smallskip
+
+\cvevent[\cvast]{公司二}%
+{, 你的职位或其他信息}%
+{\kaishu 20xx年xx月--20xx年xx月}
+
+\cvindent{\kaishu 这个工作的描述}
+
+\begin{itemize}[leftmargin=2em,label={--}]
+  \item 第一项
+  \item 第二项
+\end{itemize}
+
+
+%-------------------------------------------%
+\cvsection{个人项目}
+
+\cvevent[\cvbullet]{项目名称}%
+{}%
+{\kaishu 20xx年xx月--20xx年xx月}%
+
+\cvindent{项目描述}
+
+\begin{itemize}[leftmargin=2em,label={--}]
+  \item 第一项
+  \item 第二项
+\end{itemize}
+
+
+%-------------------------------------------%
+\cvsection{技能和兴趣}
+\cvstate{语言:~}{英语, 法语}%
+\cvstate{兴趣:~}{篮球, 看书, 旅行}%
+
+
+%-------------------------------------------%
+\cvsection{荣誉}
+\cvevent[\cvstar]{荣誉 1, }%
+{描述}%
+{\itshape 时间}
+\smallskip
+
+\cvevent[\cvstar]{荣誉 2, }%
+{描述}%
+{\itshape 时间}
+\smallskip
+
+%-------------------------------------------%
+\cvsection{论文}
+\begin{enumerate}[leftmargin=*,label={[\arabic*]}]
+  \item 论文一
+  \item 论文二
+\end{enumerate}
+
+
+\end{document}
+
