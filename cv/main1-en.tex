@@ -1,0 +1,205 @@
+%-------------------------------------------%
+% CV in English
+% Author: andy123t
+%-------------------------------------------%
+
+
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amsmath,amssymb}
+\usepackage{color,xcolor}
+\usepackage{float}
+\usepackage{ragged2e}
+%\usepackage[empty]{fullpage}
+\usepackage{etoolbox}
+\usepackage{tabularx}
+%\usepackage{titlesec}
+\usepackage{geometry}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{fontawesome}
+\usepackage{multicol}
+\usepackage{graphicx}
+
+\usepackage[T1]{fontenc}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\geometry{left=2cm,right=2cm,top=1.8cm,bottom=1.8cm}
+%\geometry{left=2cm,right=2cm,top=1.8cm,bottom=1.8cm,showframe=true,nomarginpar}
+
+\urlstyle{same}
+
+\setlength{\multicolsep}{0pt}
+\setlength{\parindent}{0pt}
+
+% command for line spacing
+\renewcommand{\baselinestretch}{1.2}
+
+% define color for cv
+\definecolor{deepgreen}{RGB}{0,111,104}
+
+% command for listsep
+\setlist{nolistsep}
+
+%-------------------------------------------%
+\newcommand{\hangpara}[2]{\hangindent#1\hangafter#2\noindent}
+\newcommand{\cvindent}[2][1em]{\hangpara{#1}{0}{#2}}
+
+\makeatletter
+\newcommand{\cvsection}[2][]{%
+  \bigskip%
+  \ifstrequal{#1}{}{}{\marginpar{\vspace*{\dimexpr1pt-\baselineskip}\raggedright\input{#1}}}%
+  {\Large\bfseries\textsc{#2}}\\[-1.6ex]%
+  {\rule{\linewidth}{0.5pt}\par}%
+  \smallskip
+}
+\newcommand{\cvevent}[4][]{%
+  {#1 \large\textbf{#2}}%
+  \hangpara{1em}{1}{\ifstrequal{#3}{}{}{#3}}%
+  {\hfill\ifstrequal{#4}{}{}{#4}}\par
+  %\smallskip
+}
+\newcommand{\cvstate}[2]{%
+  {\large\textbf{#1}}%
+  {\ifstrequal{#2}{}{}{#2}}\par%
+  %\smallskip
+}
+\makeatother
+
+\newcommand{\cvbullet}{\thinspace\raisebox{1.5pt}{\footnotesize\color{deepgreen}$\bullet$}}%
+\newcommand{\cvast}{\thinspace\raisebox{1.0pt}{\color{deepgreen}\scalebox{1.1}{\boldmath$\ast$}}}%
+\newcommand{\cvstar}{\thinspace\raisebox{2.2pt}{\color{deepgreen}\scalebox{0.6}{$\bigstar$}}}%
+
+% new list for cv
+%\newlist{cvlist}{itemize}{2}
+%\setlist[cvlist,1]{leftmargin=2em,label={--}}
+
+\newcommand{\green}[1]{{\color{deepgreen}#1}}
+
+%-------------------------------------------%
+
+
+
+\begin{document}
+
+%------------------HEADING------------------%
+
+% Left side of heading
+\begin{minipage}{\dimexpr\linewidth-4cm}%
+\raggedright%
+{\LARGE\bfseries\MakeUppercase{Your Name}\par}%
+{\Large\textbf{Your occupation}\par}%
+\smallskip
+% TYPE 1
+{\green{\footnotesize\faEnvelope} \texttt{xxx@univ.edu.com} \quad \green{\small\faPhone} 123456789 \par}%
+{\green{\small\faMapMarker} xxx Street, City \quad \green{\small\faChain} \texttt{https://univ.edu.com/name} \par}%
+{\green{\small\faGithub} \texttt{https://github.com/name} }
+% TYPE 2
+%{Email: \texttt{xxx@univ.edu.com} \quad Phone: 123456789 \par}%
+%{Address: xxx Street, City \quad Homepage: \texttt{https://univ.edu.com/name} \par}%
+%{Other: Bala Bala\par}
+\end{minipage}\hfill%
+% Right side of heading
+\begin{minipage}{3cm}%
+\centering
+\includegraphics[width=0.9\linewidth]{photo}
+\end{minipage}
+\par%
+\medskip
+
+
+%--------------------BODY-------------------%
+
+%-------------------------------------------%
+\cvsection{Education}
+
+\cvevent[\cvbullet]{Your University 1}%
+{\hfill  Plance 1 \\ Description }%
+{20xx.xx--20xx.xx}
+
+\begin{itemize}[leftmargin=2em,label={--}]
+  \item item one
+  \item item two
+\end{itemize}
+\smallskip
+
+\cvevent[\cvbullet]{Your University 2, }%
+{Plance or other information}%
+{20xx.xx--20xx.xx}
+
+\begin{enumerate}[leftmargin=2.3em,label={\arabic*.}]
+  \item item one
+  \item item two
+\end{enumerate}
+
+
+%-------------------------------------------%
+\cvsection{Experience}
+
+\cvevent[\cvstar]{Company 1}%
+{\hfill 20xx.xx--20xx.xx \\ \textit{Your job title} }%
+{Place}
+\medskip
+
+\cvevent[\cvast]{Company 2, }%
+{Your job title or other information}%
+{20xx.xx--20xx.xx}%
+
+\cvindent{Description of this job}
+
+\begin{itemize}[leftmargin=2em,label={--}]
+  \item item one
+  \item item two
+\end{itemize}
+
+
+%-------------------------------------------%
+\cvsection{Personal Projects}
+
+\cvevent[\cvbullet]{Project Name}%
+{}%
+{20xx.xx--20xx.xx}
+
+\cvindent{\itshape Project description}
+
+\begin{itemize}[leftmargin=2em,label={--}]
+  \item item one
+  \item item two
+\end{itemize}
+
+
+%-------------------------------------------%
+\cvsection{Skills and Interests}
+\cvstate{Language: }{English, Chinese}%
+\cvstate{Interest: }{Basketball, Reading, Traveling}%
+
+
+%-------------------------------------------%
+\cvsection{Achievements}
+\cvevent[\cvstar]{Achievement 1, }%
+{Description}%
+{\itshape Event dates}
+\smallskip
+
+\cvevent[\cvstar]{Achievement 2, }%
+{Description}%
+{\itshape Event dates}
+
+
+%-------------------------------------------%
+\cvsection{Papers}
+\begin{enumerate}[leftmargin=*,label={[\arabic*]}]
+  \item paper one
+  \item paper two
+\end{enumerate}
+
+
+\end{document}
+

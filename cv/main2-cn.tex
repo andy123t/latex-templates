@@ -1,8 +1,7 @@
 %-------------------------------------------%
-% CV in English
+% CV in Chinese
 % Author: andy123t
 %-------------------------------------------%
-
 
 \documentclass[a4paper,11pt]{article}
 
@@ -24,7 +23,8 @@
 \usepackage{multicol}
 \usepackage{graphicx}
 
-\usepackage[T1]{fontenc}
+\usepackage[UTF8]{ctex}
+\CJKsetecglue{\hskip0.15em plus0.05em minus 0.05em}
 
 \pagestyle{fancy}
 \fancyhf{}
@@ -44,38 +44,39 @@
 
 % define color for cv
 \definecolor{deepgreen}{RGB}{0,111,104}
+\definecolor{deepblue}{RGB}{0,111,190}
 
 % command for listsep
 \setlist{nolistsep}
 
 %-------------------------------------------%
 \newcommand{\hangpara}[2]{\hangindent#1\hangafter#2\noindent}
-\newcommand{\cvindent}[1]{\hangpara{1em}{0}{#1}}
+\newcommand{\cvindent}[2][1em]{\hangpara{#1}{0}{#2}}
 
 \makeatletter
 \newcommand{\cvsection}[2][]{%
   \bigskip%
   \ifstrequal{#1}{}{}{\marginpar{\vspace*{\dimexpr1pt-\baselineskip}\raggedright\input{#1}}}%
-  {\Large\bfseries\textsc{#2}}\\[-1.6ex]%
+  {\large\bfseries\color{deepblue}\MakeUppercase{#2}}\\[-1.6ex]%
   {\rule{\linewidth}{0.5pt}\par}%
   \smallskip
 }
 \newcommand{\cvevent}[4][]{%
-  {#1 \large\textbf{#2}}%
+  {#1 #2}%
   \hangpara{1em}{1}{\ifstrequal{#3}{}{}{#3}}%
   {\hfill\ifstrequal{#4}{}{}{#4}}\par
   %\smallskip
 }
 \newcommand{\cvstate}[2]{%
-  {\large\textbf{#1}}%
+  {#1}%
   {\ifstrequal{#2}{}{}{#2}}\par%
   %\smallskip
 }
 \makeatother
 
-\newcommand{\cvbullet}{\thinspace\raisebox{1.5pt}{\footnotesize$\bullet$}}%
-\newcommand{\cvast}{\thinspace\raisebox{1.0pt}{\scalebox{1.1}{\boldmath$\ast$}}}%
-\newcommand{\cvstar}{\thinspace\raisebox{2.2pt}{\scalebox{0.6}{$\bigstar$}}}%
+\newcommand{\cvbullet}{\thinspace\raisebox{1.5pt}{\footnotesize\color{deepblue}$\bullet$}}%
+\newcommand{\cvast}{\thinspace\raisebox{1.0pt}{\color{deepblue}\scalebox{1.1}{\boldmath$\ast$}}}%
+\newcommand{\cvstar}{\thinspace\raisebox{2.2pt}{\color{deepblue}\scalebox{0.6}{$\bigstar$}}}%
 
 % new list for cv
 %\newlist{cvlist}{itemize}{2}
@@ -91,111 +92,112 @@
 
 %------------------HEADING------------------%
 
-% Left side of heading
-\begin{minipage}{\dimexpr\linewidth-4cm}%
-\raggedright%
-{\LARGE\bfseries\MakeUppercase{Your Name}\par}
-{\Large\textbf{Your occupation}\par}
+\begin{center}
+% TYPE 1
+{\LARGE\bfseries\textbf{你的姓名}}\par%
+\bigskip
+你的职业或职位 $\diamond$ 你所在的公司或大学 \\
+你的地址 $\diamond$ 你的其他信息 \\
+{\color{blue}\texttt{https://univ.edu.com/name}} $\diamond$ (021)-1234-5678 \\
 \smallskip
-{\green{\footnotesize\faEnvelope} \texttt{xxx@univ.edu.com} \quad \green{\small\faPhone} 123456789 \par}%
-{\green{\small\faMapMarker} xxx Street, City \quad \green{\small\faChain} \texttt{https://univ.edu.com/name} \par}%
-{\green{\small\faGithub} \texttt{https://github.com/name} }
-%{Email: \texttt{xxx@univ.edu.com} \quad Phone: 123456789 \par}%
-%{Address: xxx Street, City \quad Homepage: \texttt{https://univ.edu.com/name} \par}%
-%{Other: Bala Bala\par}
-\end{minipage}\hfill%
-% Right side of heading
-\begin{minipage}{3cm}%
-\centering
-\includegraphics[width=0.9\linewidth]{photo}
-\end{minipage}
-\par%
+% TYPE 2
+%{\green{\footnotesize\faEnvelope} \texttt{xxx@univ.edu.com} \quad \green{\small\faPhone} 123456789 \par}%
+%{\green{\small\faMapMarker} 你的地址 \quad \green{\small\faChain} \texttt{https://univ.edu.com/name} \par}%
+%{\green{\small\faGithub} \texttt{https://github.com/name} }%
+% TYPE 3
+%{邮箱: \texttt{xxx@univ.edu.com} \quad 手机: 123456789 \par}%
+%{地址: 你的地址  \quad 主页: \texttt{https://univ.edu.com/name} \par}%
+%{其他: Bala Bala\par}%
+\end{center}
 \medskip
 
 
 %--------------------BODY-------------------%
 
-%-------------------------------------------%
-\cvsection{Education}
+\cvsection{研究领域}
+\cvindent{机器学习和计算机视觉 (CV)}
 
-\cvevent[\cvbullet]{Your University 1}%
-{\hfill  Plance 1 \\ Description }%
-{20xx.xx--20xx.xx}
+%-------------------------------------------%
+\cvsection{教育经历}
+
+\cvevent[\cvbullet]{大学一}%
+{\hfill  地址 \\ 描述信息 }%
+{\kaishu 20xx年xx月--20xx年xx月}
 
 \begin{itemize}[leftmargin=2em,label={--}]
-  \item item one
-  \item item two
+  \item 第一项
+  \item 第二项
 \end{itemize}
 \smallskip
 
-\cvevent[\cvbullet]{Your University 2, }%
-{Plance or other information}%
-{20xx.xx--20xx.xx}
+\cvevent[\cvbullet]{大学二}%
+{, 地址或其他信息}%
+{\kaishu 20xx年xx月--20xx年xx月}
 
 \begin{enumerate}[leftmargin=2.3em,label={\arabic*.}]
-  \item item one
-  \item item two
+  \item 第一项
+  \item 第二项
 \end{enumerate}
 
 
 %-------------------------------------------%
-\cvsection{Experience}
+\cvsection{工作经历}
 
-\cvevent[\cvstar]{Company 1}%
-{\hfill 20xx.xx--20xx.xx \\ \textit{Your job title} }%
-{Place}
-\medskip
-
-\cvevent[\cvast]{Company 2, }%
-{Your job title or other information}%
-{20xx.xx--20xx.xx}%
-
-\cvindent{Description of this job}
-
-\begin{itemize}[leftmargin=2em,label={--}]
-  \item item one
-  \item item two
-\end{itemize}
-
-
-%-------------------------------------------%
-\cvsection{Personal Projects}
-
-\cvevent[\cvbullet]{Project Name}%
-{}%
-{20xx.xx--20xx.xx}
-
-\cvindent{\itshape Project description}
-
-\begin{itemize}[leftmargin=2em,label={--}]
-  \item item one
-  \item item two
-\end{itemize}
-
-
-%-------------------------------------------%
-\cvsection{Skills and Interests}
-\cvstate{Language: }{English, Chinese}%
-\cvstate{Interest: }{Basketball, Reading, Traveling}%
-
-
-%-------------------------------------------%
-\cvsection{Achievements}
-\cvevent[\cvstar]{Achievement 1, }%
-{Description}%
-{\itshape Event dates}
+\cvevent[\cvstar]{公司一}%
+{\hfill\kaishu 20xx年xx月--20xx年xx月 \\ 你的职位 }%
+{地址}
 \smallskip
 
-\cvevent[\cvstar]{Achievement 2, }%
-{Description}%
-{\itshape Event dates}
+\cvevent[\cvast]{公司二}%
+{, 你的职位或其他信息}%
+{\kaishu 20xx年xx月--20xx年xx月}
+
+\cvindent{\kaishu 这个工作的描述}
+
+\begin{itemize}[leftmargin=2em,label={--}]
+  \item 第一项
+  \item 第二项
+\end{itemize}
 
 
 %-------------------------------------------%
-\cvsection{Papers}
+\cvsection{个人项目}
+
+\cvevent[\cvbullet]{项目名称}%
+{}%
+{\kaishu 20xx年xx月--20xx年xx月}%
+
+\cvindent{项目描述}
+
+\begin{itemize}[leftmargin=2em,label={--}]
+  \item 第一项
+  \item 第二项
+\end{itemize}
+
+
+%-------------------------------------------%
+\cvsection{技能和兴趣}
+\cvstate{语言:~}{英语, 法语}%
+\cvstate{兴趣:~}{篮球, 看书, 旅行}%
+
+
+%-------------------------------------------%
+\cvsection{荣誉}
+\cvevent[\cvstar]{荣誉 1, }%
+{描述}%
+{\itshape 时间}
+\smallskip
+
+\cvevent[\cvstar]{荣誉 2, }%
+{描述}%
+{\itshape 时间}
+\smallskip
+
+%-------------------------------------------%
+\cvsection{论文}
 \begin{enumerate}[leftmargin=*,label={[\arabic*]}]
-  \item paper one
-  \item paper two
+  \item 论文一
+  \item 论文二
 \end{enumerate}
 
 

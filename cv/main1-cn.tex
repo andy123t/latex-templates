@@ -50,7 +50,7 @@
 
 %-------------------------------------------%
 \newcommand{\hangpara}[2]{\hangindent#1\hangafter#2\noindent}
-\newcommand{\cvindent}[1]{\hangpara{1em}{0}{#1}}
+\newcommand{\cvindent}[2][1em]{\hangpara{#1}{0}{#2}}
 
 \makeatletter
 \newcommand{\cvsection}[2][]{%
@@ -73,9 +73,9 @@
 }
 \makeatother
 
-\newcommand{\cvbullet}{\thinspace\raisebox{1.5pt}{\footnotesize$\bullet$}}%
-\newcommand{\cvast}{\thinspace\raisebox{1.0pt}{\scalebox{1.1}{\boldmath$\ast$}}}%
-\newcommand{\cvstar}{\thinspace\raisebox{2.2pt}{\scalebox{0.6}{$\bigstar$}}}%
+\newcommand{\cvbullet}{\thinspace\raisebox{1.5pt}{\footnotesize\color{deepgreen}$\bullet$}}%
+\newcommand{\cvast}{\thinspace\raisebox{1.0pt}{\color{deepgreen}\scalebox{1.1}{\boldmath$\ast$}}}%
+\newcommand{\cvstar}{\thinspace\raisebox{2.2pt}{\color{deepgreen}\scalebox{0.6}{$\bigstar$}}}%
 
 % new list for cv
 %\newlist{cvlist}{itemize}{2}
@@ -94,14 +94,16 @@
 % Left side of heading
 \begin{minipage}{\dimexpr\linewidth-4cm}%
 \raggedright%
+% TYPE 1
 {\LARGE\textbf{你的姓名}\par}
 {\Large\textbf{你的职业}\par}
 \smallskip
 {\green{\footnotesize\faEnvelope} \texttt{xxx@univ.edu.com} \quad \green{\small\faPhone} 123456789 \par}%
-{\green{\small\faMapMarker} xxx Street, City \quad \green{\small\faChain} \texttt{https://univ.edu.com/name} \par}%
+{\green{\small\faMapMarker} 你的地址 \quad \green{\small\faChain} \texttt{https://univ.edu.com/name} \par}%
 {\green{\small\faGithub} \texttt{https://github.com/name} }
+% TYPE 2
 %{邮箱: \texttt{xxx@univ.edu.com} \quad 手机: 123456789 \par}%
-%{地址: xxx Street, City \quad 主页: \texttt{https://univ.edu.com/name} \par}%
+%{地址: 你的地址 \quad 主页: \texttt{https://univ.edu.com/name} \par}%
 %{其他: Bala Bala\par}%
 \end{minipage}\hfill%
 % Right side of heading
