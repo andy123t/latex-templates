@@ -1,78 +1,67 @@
-% LaTeX cover letter template
+% LaTeX letter template
 
-\documentclass[11pt]{article}
+\documentclass[a4paper,12pt]{letter}
 
-% all kinds of packages needed
+% Font setting
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+%\usepackage{fouriernc} % URW Schoolbook L font
+\usepackage{charter} % Charter font
+
+% Required packages
 \usepackage{amsmath,amsthm,amssymb}
-\usepackage{bm,mathrsfs}
+\usepackage{mathrsfs}
 \usepackage{graphicx}
 \usepackage{color,xcolor}
-\usepackage{mathtools}
 \usepackage{enumitem}
 \usepackage{caption}
 \usepackage{mathtools}
-%\usepackage{charter} % Charter font
+
 \usepackage{geometry}
 \geometry{left=1.25in,right=1.25in,top=1in,bottom=1in}
-
-% Default font family: sans serif
-%\usepackage{helvet}
-%\renewcommand{\familydefault}{\sfdefault}
-\pagenumbering{gobble} % No page numbering
 
 % allow page breaks between multiline formulas
 \allowdisplaybreaks
 
-\setlength{\parindent}{0pt}  % Paragraph indentation
-\setlength{\parskip}{1em}    % Vertical space between paragraphs
+% command for line spacing
+\renewcommand{\baselinestretch}{1.1}
 
 
 %-----------------------------------------------------
+
+% Address of the sender
+\address{
+\textbf{Department of Mathematics} \\
+University of XXXX \\
+XX Building, XX Road \\
+City 200123, P. R. China. \\[1em]
+\textbf{Dr. Who} \\
+Email: xxx@univ.edu.cn \\[1em]
+}
+
+\date{\today}
+
+\signature{Andy}
 
 \begin{document}
 
 %-----------------------------------------------------
-%	First page header
-%-----------------------------------------------------
 
-%\includegraphics[width=0.5\textwidth]{UnivLogo.png} % Logo
+\begin{letter}{
+  % Name and address of the recipient
+	Dr. John Smith \\
+  University of XXXX \\
+  XX Building, XX Road \\
+	City, Country
+}
 
-%\vspace{-1em}
-
-%\rule{\linewidth}{0.5pt} % Horizontal rule
-
-\vskip2.5em
-
-%-----------------------------------------------------
-%	Your information
-%-----------------------------------------------------
-
-\hfill
-\begin{tabular}{l @{}}
-	\textbf{XX research group} \\
-    \textbf{Department of Mathematics} \\
-    University of XXXX \\
-    XX Building, XX Road \\
-	City 200123, P. R. China. \\[10pt] % Address
-    \textbf{Dr. Who} \\
-	Email: xxx@univ.edu.cn \bigskip \\
-    \today \\ % Date
-\end{tabular}
-
-\bigskip
-
-
-\bigskip
-
-%Dear Mrs.\ XXX,
-Dear Editor,
-
-\bigskip
 
 %-----------------------------------------------------
 %	Letter body
 %-----------------------------------------------------
+
+\opening{Dear Dr. John Smith,}
 
 Please find attached the manuscript ``PAPER TITLE" by Author A and Author B for consideration as a Research Article in XX.
 
@@ -86,16 +75,16 @@ We are convinced that this work will have implications for XXX. As such, the res
 
 We remain at your disposal for any further questions.
 
-\bigskip %
+\bigskip%
 
-Sincerely yours,
+\closing{Sincerely yours,}
 
-\includegraphics[height=1.5cm]{signature}
+%\ps{P.S. An additional note or description.}
 
-%\vspace{25pt} %
+%\encl{Curriculum vitae, employment form} 
 
-Andy
+\end{letter}
+
 
 \end{document}
-
 

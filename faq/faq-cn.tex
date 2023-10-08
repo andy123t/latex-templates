@@ -30,10 +30,27 @@
 
 %\linespread{1.5}
 
+% define new environments
 \newcounter{problemname}
-\newenvironment{problem}{\stepcounter{problemname}\par\noindent\textbf{问题 \arabic{problemname}.}}{\par\vspace{2ex}}
-\newenvironment{solution}{\par\noindent\textbf{回答：}}{\par\vspace{2ex}}
-\newenvironment{note}{\par\noindent\textbf{注：}}{\par\vspace{2ex}}
+\newenvironment{problem}{%
+  \stepcounter{problemname}\par%
+  \noindent\textbf{问题~\arabic{problemname}.}\enspace\ignorespaces%
+}{%
+  \par\medskip%
+}
+\newenvironment{solution}{%
+  \par%
+  \noindent\textbf{回答：}\ignorespaces%
+}{%
+  \par\medskip%
+}
+\newenvironment{note}{%
+  \par%
+  \noindent\textbf{注：}\ignorespaces%
+}{%
+  \par\medskip%
+}
+
 
 \title{常见问题与解答 (FAQ)}
 \author{某某某}
@@ -65,6 +82,9 @@
   在这里写答案.
 \end{solution}
 
+\begin{note}
+  注解环境.
+\end{note}
 
 
 \end{document}

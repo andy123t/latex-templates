@@ -2,13 +2,13 @@
 %%  This is file `homework.cls',
 %%
 %%  @author andy123t
-%%  @date 2023/07/01
+%%  @date 2023/10/08
 %%  @version v1.2
 %%
 
 %----- Identification -----%
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{homework}[2023/07/01]
+\ProvidesClass{homework}[2023/10/08]
 
 %----- New Options -----%
 \newif\ifhw@en
@@ -144,16 +144,16 @@
 
 %----- definition of problem environment -----%
 \newcounter{problemname}
-\newenvironment{problem}{
-    \stepcounter{problemname}
-    \par\noindent
-    \textbf{\problemname~\arabic{problemname}.}
+\newenvironment{problem}{%
+    \stepcounter{problemname}%
+    \par\noindent%
+    \textbf{\problemname~\arabic{problemname}.}\enspace\ignorespaces%
 }{
 \par %\medskip
 }
-\newenvironment{problem*}{
-    \par\noindent
-    \textbf{\problemname\,:}
+\newenvironment{problem*}{%
+    \par\noindent%
+    \textbf{\problemname\,:}\enspace\ignorespaces%
 }{
 \par %\medskip
 }
@@ -204,7 +204,7 @@
 \setlength{\belowcaptionskip}{3pt plus1pt minus2pt}
 
 %----- definition of theorem environment -----%
-\theoremstyle{plain} 
+\theoremstyle{plain}
 \newtheorem{definition}{\defnname}
 \newtheorem{proposition}{\propname}
 \newtheorem{lemma}{\lmmname}
@@ -251,63 +251,63 @@
 %----- matlab highlight style -----%
 \lstdefinestyle{matlab}
 {
-  language=matlab,
-  xleftmargin=23pt,
-  xrightmargin=5pt,
-  frame=tlbr,framesep=4pt,framerule=0.5pt,
-  framexleftmargin=17pt,
-  %frame=shadowbox,rulesepcolor=\color{red!20!green!20!blue!20},
-  basicstyle=\footnotesize\ttfamily,
-  %basicstyle=\footnotesize\fontspec{Consolas},
-  keywordstyle={\color{mKeyword}},
-  stringstyle={\color{mString}},
-  commentstyle={\color{mComment}},
-  backgroundcolor=\color{mBackground},
-  rulecolor=\color{mRule},
-  keywords={
-    break,case,catch,classdef,continue,else,
-    elseif,end,for,function,global,if,otherwise,parfor,
-    persistent,return,spmd,switch,try,while
-  },
-  showspaces=false,
-  showstringspaces=false,
-  showtabs=false,
-  tabsize=4,
-  captionpos=t,
-  breaklines=true,
-  numberstyle=\scriptsize\color{mNumber},
-  %numbersep=9pt,
-  numbers=left,
-  stepnumber=1,
+    language=matlab,
+    xleftmargin=23pt,
+    xrightmargin=5pt,
+    frame=tlbr,framesep=4pt,framerule=0.5pt,
+    framexleftmargin=17pt,
+    %frame=shadowbox,rulesepcolor=\color{red!20!green!20!blue!20},
+    basicstyle=\footnotesize\ttfamily,
+    %basicstyle=\footnotesize\fontspec{Consolas},
+    keywordstyle={\color{mKeyword}},
+    stringstyle={\color{mString}},
+    commentstyle={\color{mComment}},
+    backgroundcolor=\color{mBackground},
+    rulecolor=\color{mRule},
+    keywords={
+        break,case,catch,classdef,continue,else,
+        elseif,end,for,function,global,if,otherwise,parfor,
+        persistent,return,spmd,switch,try,while
+    },
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=4,
+    captionpos=t,
+    breaklines=true,
+    numberstyle=\scriptsize\color{mNumber},
+    %numbersep=9pt,
+    numbers=left,
+    stepnumber=1,
 }
 
 %----- python highlight style -----%
 \lstdefinestyle{python}{
-  language=python,
-  xleftmargin=23pt,
-  xrightmargin=5pt,
-  frame=tlbr,framesep=4pt,framerule=0.5pt,
-  framexleftmargin=18pt,
-  %frame=shadowbox,rulesepcolor=\color{red!20!green!20!blue!20},
-  basicstyle=\footnotesize\ttfamily,
-  %basicstyle=\footnotesize\fontspec{Consolas},
-  keywordstyle=\color{pKeyword},
-  stringstyle=\color{pString},
-  commentstyle=\color{pComment},
-  backgroundcolor=\color{pBackground},
-  rulecolor=\color{pRule},
-  emph={format_string,eff_ana_bf,permute,eff_ana_btr},
-  emphstyle=\color{pIdentifier}
-  showspaces=false,
-  showstringspaces=false,
-  showtabs=false,
-  tabsize=4,
-  captionpos=t,
-  breaklines=true,
-  numberstyle=\scriptsize\color{pNumber},
-  %numbersep=9pt,
-  numbers=left,
-  stepnumber=1,
+    language=python,
+    xleftmargin=23pt,
+    xrightmargin=5pt,
+    frame=tlbr,framesep=4pt,framerule=0.5pt,
+    framexleftmargin=18pt,
+    %frame=shadowbox,rulesepcolor=\color{red!20!green!20!blue!20},
+    basicstyle=\footnotesize\ttfamily,
+    %basicstyle=\footnotesize\fontspec{Consolas},
+    keywordstyle=\color{pKeyword},
+    stringstyle=\color{pString},
+    commentstyle=\color{pComment},
+    backgroundcolor=\color{pBackground},
+    rulecolor=\color{pRule},
+    emph={format_string,eff_ana_bf,permute,eff_ana_btr},
+    emphstyle=\color{pIdentifier}
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=4,
+    captionpos=t,
+    breaklines=true,
+    numberstyle=\scriptsize\color{pNumber},
+    %numbersep=9pt,
+    numbers=left,
+    stepnumber=1,
 }
 
 %----- end input -----%

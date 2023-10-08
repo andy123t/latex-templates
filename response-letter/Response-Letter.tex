@@ -38,20 +38,37 @@
 %\titleformat{\subsection}{\normalfont\bfseries}{\thesubsection}{}{}
 
 % command declarations for reviewer comments and our responses
-\newcommand{\reviewersection}{\stepcounter{reviewer}%
-\bigskip \hrule \section*{Reviewer~\thereviewer}}
+\newcommand{\reviewersection}{%
+\stepcounter{reviewer}\bigskip\hrule%
+\section*{Reviewer~\thereviewer}%
+}
 
-% comments to the author
-\newenvironment{comments}{\noindent%
-{\textbf{Comments}}:~\itshape}{\par\medskip}%
+% define the point environment
+\newenvironment{point}[1][Comment]{%
+  \refstepcounter{point}\noindent%
+  \textbf{#1~\arabic{point}}:\enspace%
+  \ignorespaces%
+}{%
+\par\smallskip%
+}
 
-\newenvironment{point}{\refstepcounter{point}\noindent%
-{\textbf{Comment~\arabic{point}}}:~\itshape}{\par\medskip}
+% define the point* environment
+\newenvironment{point*}[1][Reply]{%
+  \noindent\textbf{#1}:\enspace\ignorespaces%
+}{%
+  \par\medskip%
+}
 
-% author's reply
-\newenvironment{reply}{\noindent\textbf{Reply}:~}{\par\medskip}
+% define the block environment
+\newenvironment{block}[1][]{%
+  \noindent\textbf{#1}%
+  \par\smallskip%
+  \noindent\ignorespaces%
+}{%
+  \par\medskip%
+}
 
-% define maketitle
+% define maketitle environment
 \makeatletter
 \def\@maketitle{%
   \newpage
@@ -107,11 +124,11 @@
 The authors thank the reviewers for their critical assessment of our work.
 In the following we address their concerns point by point.
 
-% Let's start point-by-point with Reviewer 1
+% New reviewer section
 \reviewersection
 
-% Point one description
-\begin{comments}
+% Comments to the authors
+\begin{block}[Comments to the authors]\itshape
 This is comments of Reviewer \thereviewer. With some more words foo bar foo bar ...
 \begin{enumerate}
   \item Point one
@@ -119,11 +136,11 @@ This is comments of Reviewer \thereviewer. With some more words foo bar foo bar 
   %\item Point three
 \end{enumerate}
 Suggestion: it's better to test a case with ...
-\end{comments}
+\end{block}
 
 % Our reply
-\begin{reply}
-We agree with the reviewer on this important point. This is what we did to fix it.
+\begin{block}[Author response]
+We agree with the reviewer on this point. This is what we did to fix it.
 \begin{enumerate}
   \item Reply one
   \item Reply two
@@ -133,41 +150,41 @@ We agree with the reviewer on this important point. This is what we did to fix i
   a^2+b^2=c^2.
 \end{equation}
 Please see Page 5 line 10 of the revised version.
-\end{reply}
+\end{block}
 
 
-% Begin a new reviewer section
+% New reviewer section
 \reviewersection
 
 % comment 1
-\begin{point}
+\begin{point}[Comment]\itshape
 This is comment 1 of Reviewer \thereviewer.
 \end{point}
 
-\begin{reply}
+\begin{point*}[Reply]
 Our reply to This is comment 1 of Reviewer \thereviewer.
-\end{reply}
+\end{point*}
 
 % comment 2
-\begin{point}
+\begin{point}[Comment]\itshape
 This is comment 2 of Reviewer \thereviewer.
 \end{point}
 
-\begin{reply}
+\begin{point*}[Reply]
 Our reply to This is comment 2 of Reviewer \thereviewer.
-\end{reply}
+\end{point*}
 
 
-% Begin a new reviewer section
+% New reviewer section
 \reviewersection
 
-\begin{comments}
+\begin{point*}[Comments]\itshape
 This is comments of Reviewer \thereviewer. With some more words foo bar foo bar ...
-\end{comments}
+\end{point*}
 
-\begin{reply}
+\begin{point*}[Reply]
 Our reply to it with reference to one of our points above using the {\LaTeX}'s label/ref system (see also \ref{eq:abc}).
-\end{reply}
+\end{point*}
 
 
 \end{document}

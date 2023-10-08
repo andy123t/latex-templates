@@ -28,11 +28,26 @@
 %\linespread{1.5}
 
 \newcounter{problemname}
-\newenvironment{problem}{\stepcounter{problemname}\par
-\noindent\textbf{Problem~\arabic{problemname}.}}{\par\vspace{2ex}}
-\newenvironment{solution}{\par\noindent\textbf{Solution}:}{\par\vspace{2ex}}
-\newenvironment{note}{\par\noindent\textbf{Note}:}{\par\vspace{2ex}}
-%\newenvironment{note}{\par\noindent\textsc{Note.}}{\par}
+\newenvironment{problem}{%
+  \stepcounter{problemname}\par%
+  \noindent\textbf{Problem~\arabic{problemname}.}\enspace\ignorespaces%
+}{%
+  \par\medskip%
+}
+\newenvironment{solution}{
+  \par%
+  \noindent\textbf{Solution\hspace{1pt}:}\enspace\ignorespaces%
+}{%
+  \par\medskip%
+}
+\newenvironment{note}{%
+  \par%
+  %\noindent\textsc{Note}:\enspace\ignorespaces%
+  \noindent\textbf{Note\hspace{1pt}:}\enspace\ignorespaces%
+}{%
+  \par\medskip%
+}
+
 
 \title{\bfseries Frequently Asked Questions (FAQ)}
 \author{Author}
@@ -63,6 +78,10 @@
 \begin{solution}
   Write solution here.
 \end{solution}
+
+\begin{note}
+  Note environment.
+\end{note}
 
 
 \end{document}
