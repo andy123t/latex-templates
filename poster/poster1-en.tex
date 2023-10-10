@@ -42,10 +42,10 @@
   \nointerlineskip%
   \vskip0.4cm%
   \begin{beamercolorbox}[wd=\paperwidth,leftskip=.3cm,rightskip=.3cm plus1fil,vmode]{frametitle}%
-  \hspace*{4pt} \includegraphics[height=1.5cm]{\logopic} %Logo.png}
+  \hspace*{4pt} \includegraphics[height=1.5cm]{\logopic} %Logo.png
   \begin{center}
     \usebeamerfont{frametitle}
-	\insertframetitle
+    \insertframetitle
   \end{center}
   \end{beamercolorbox}%
   %\vskip-6pt
@@ -66,8 +66,8 @@
 }
 \makeatother
 
-\newlength\columnheight \columnheight=5cm % needed to define \columnheight,
-                                          % don't have it here
+% needed to define \columnheight
+\newlength\columnheight \columnheight=5cm%
 \def\postercolumn{
     \leavevmode
     \vtop to \columnheight\bgroup
@@ -75,12 +75,12 @@
     \noindent
     \ignorespaces
 }
-
 \def\endpostercolumn{
     \egroup
 }
 
 
+% set fonts
 \setbeamerfont{frametitle}{family=\rmfamily,size=\LARGE,series=\bfseries}
 \setbeamerfont{title in head/foot}{family=\rmfamily,size=\Large}
 \setbeamerfont{author in head/foot}{family=\rmfamily,size=\large,series=\bfseries}
@@ -99,7 +99,7 @@
 \AtBeginDocument{\usebeamerfont{normal text}}
 
 
-\def\logopic{UnivLogo.png}   %logo
+\def\logopic{UnivLogo.png}  % logo
 \title{This is a LaTeX template of poster}
 \author{Professor ~ John Smith}
 \institute{Department of Mathematics}
@@ -136,7 +136,6 @@ This is a brief introduction to the author.
 
 \end{columns}
 
-
 %\begin{postercolumn}
 %   hello world hello world hello world hello world
 %   hello world hello world hello world hello world
@@ -151,30 +150,31 @@ This is a brief introduction to the author.
 \vskip1em
 
 
-{\textbf{\large Date}:} October 28, 2022 (Friday)  \\[5pt]
+{\bfseries\large Date:} October 28, 2022 (Friday)
+\medskip
 
-{\textbf{\large Time}:} 9:00--10:00  \\[5pt]
+{\bfseries\large Time:} 9:00--10:00
+\medskip
 
-{\textbf{\large Venue}:} Room 001, Building 3  \\[5pt]
+{\bfseries\large Venue:} Room 001, Building 3
+\medskip
 
-{\textbf{\large Tencent Meeting}:} 111-222-333 \\[5pt]
+{\bfseries\large Tencent Meeting:} 111-222-333
+\medskip
 
-\vskip1em
-
+\vspace{1em}
 
 \begin{center}
 \LARGE\bfseries Welcome!
 \end{center}
 
-\vskip2em
+\vspace{1em}
 
 \begin{flushright}
 Department of Mathematics \\
 XX University  \\
 October 26, 2022
 \end{flushright}
-
-\vskip-2em
 
 \end{frame}
 

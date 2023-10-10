@@ -1,0 +1,174 @@
+%======================================================%
+%   Poster LaTeX Template
+%   compile using PDFLaTeX
+%======================================================%
+
+\documentclass[a4paper,14pt]{extarticle}
+
+% all kinds of packages needed
+%\usepackage[fontsize=14pt]{fontsize}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{color,xcolor}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{mathtools}
+\usepackage{geometry}
+\geometry{left=1.5cm,right=1.5cm,top=2cm,bottom=2cm}
+
+\usepackage{tikz}
+\pagenumbering{gobble} % No page numbering
+
+% command for line spacing
+\renewcommand{\baselinestretch}{1.15}
+
+% allow page breaks between multiline formulas
+\allowdisplaybreaks
+
+% package for header and footer
+\usepackage{fancyhdr}
+
+\fancypagestyle{main}{%
+	\fancyhf{} % Clear default header/footer
+	\renewcommand{\headrulewidth}{0pt} % No header rule
+	\renewcommand{\footrulewidth}{0.5pt} % Footer rule thickness
+}
+%\pagestyle{main}
+
+% command for listsep
+\setlist{nolistsep}
+\setlist[itemize]{itemsep=3pt}
+\setlist[enumerate]{itemsep=3pt}
+
+% define the point environment
+\newenvironment{point}[1][Reply]{%
+  {\noindent\bfseries #1:}\enspace\ignorespaces%
+}{%
+  \par\smallskip%
+}
+
+% define the block environment
+\newenvironment{block}[1][]{%
+  {\noindent\bfseries #1:}%
+  \par\smallskip%
+  \noindent\ignorespaces%
+}{%
+  \par\medskip%
+}
+
+% define maketitle environment
+\makeatletter
+\def\@maketitle{%
+  \newpage
+  \null
+  \tikz[remember picture,overlay]
+    \path (current page.north west) ++ (5.0,-1.2) node [opacity=1]%
+    {\includegraphics[height=1.6cm]{UnivLogo}};
+  \tikz[remember picture,overlay]
+    \path (current page.north east) ++ (-2.6,-1.2) node [opacity=1]%
+    {\includegraphics[height=1.6cm]{Logo}};
+  \vspace{-2.2em}
+  \begin{center}%
+  \let \footnote \thanks
+    {\huge\bfseries \@title \par}%
+    \vskip 1.0em%
+    {\large
+      \lineskip .5em%
+      \begin{tabular}[t]{c}%
+        \Large\@author
+      \end{tabular}\par}%
+      %\vskip 1em%
+      %{\large \@date}%
+  \end{center}%
+  \par
+  \vskip 1.0em}
+\makeatother
+
+%----------------------------------%
+
+\title{Title of Event}
+\author{Detailed Information}
+%\date{\today}
+
+\begin{document}
+
+% title page
+\maketitle
+
+%\bigskip
+\hrule
+\vspace{1.2em}
+
+\begin{point}[Title]
+  Title 1 of the report
+\end{point}
+
+\begin{point}[Author]
+  Author 1~ (Profession)
+\end{point}
+
+\begin{point}[Abstract]
+This is the abstract. This is the abstract. This is the abstract.
+This is the abstract. This is the abstract. This is the abstract.
+This is the abstract. This is the abstract. This is the abstract.
+This is the abstract. This is the abstract. This is the abstract.
+This is the abstract. This is the abstract. This is the abstract.
+This is the abstract. This is the abstract. This is the abstract.
+\end{point}
+
+\bigskip
+\hrule
+\vspace{1.5em}
+
+\begin{point}[Title]
+  Title 2 of the report
+\end{point}
+
+\begin{point}[Author]
+  Author 2~ (Profession)
+\end{point}
+
+\begin{block}[Abstract]
+This is the abstract. This is the abstract. This is the abstract.
+This is the abstract. This is the abstract. This is the abstract.
+This is the abstract. This is the abstract. This is the abstract.
+This is the abstract. This is the abstract. This is the abstract.
+This is the abstract. This is the abstract. This is the abstract.
+\end{block}
+
+\bigskip
+\hrule
+\vspace{1.5em}
+
+\begin{point}[Date]
+  October 13, 2023 (Friday)
+\end{point}
+
+\begin{point}[Place]
+  Room 001, Building 3
+\end{point}
+
+%\begin{point}[Tencent Meeting]
+%  111 222 333 \quad Password: 123456
+%\end{point}
+
+\begin{center}
+\LARGE\bfseries Welcome!
+\end{center}
+
+\begin{flushright}
+Department of Mathematics \\
+XX University  \\
+October 10, 2023
+\end{flushright}
+
+\tikz[remember picture,overlay]
+\path (current page.south west) ++ (10.5,2.0) node [xscale=-1,opacity=0.8]%
+{\includegraphics[width=1\paperwidth,height=4.0cm]{background}};
+
+
+\end{document}
+

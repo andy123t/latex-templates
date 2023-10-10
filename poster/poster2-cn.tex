@@ -1,0 +1,175 @@
+%======================================================%
+%   Poster LaTeX Template
+%   compile using XeLaTeX
+%======================================================%
+
+\documentclass[a4paper,AutoFakeBold]{ctexart}
+
+% all kinds of packages needed
+\usepackage[fontsize=14pt]{fontsize}
+
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{color,xcolor}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{mathtools}
+\usepackage{geometry}
+\geometry{left=1.5cm,right=1.5cm,top=2cm,bottom=2cm}
+
+\usepackage{tikz}
+\pagenumbering{gobble} % no page numbering
+
+%\usepackage{fontspec}
+%\setmainfont{Times New Roman}
+%%\setmonofont{Courier New}
+%%\setsansfont{Arial}
+%\setCJKfamilyfont{kai}[AutoFakeBold]{simkai.ttf}
+%\newcommand*{\kai}{\CJKfamily{kai}}
+%\setCJKfamilyfont{song}[AutoFakeBold]{SimSun}
+%\newcommand*{\song}{\CJKfamily{song}}
+
+% command for line spacing
+\renewcommand{\baselinestretch}{1.2}
+
+% allow page breaks between multiline formulas
+\allowdisplaybreaks
+
+% package for header and footer
+\usepackage{fancyhdr}
+
+\fancypagestyle{main}{%
+	\fancyhf{} % Clear default header/footer
+	\renewcommand{\headrulewidth}{0pt} % No header rule
+	\renewcommand{\footrulewidth}{0.5pt} % Footer rule thickness
+}
+%\pagestyle{main}
+
+% command for listsep
+\setlist{nolistsep}
+\setlist[itemize]{itemsep=3pt}
+\setlist[enumerate]{itemsep=3pt}
+
+% define the point environment
+\newenvironment{point}[1][]{%
+  {\noindent\kaishu\bfseries#1：}\ignorespaces%
+}{%
+  \par\smallskip%
+}
+
+% define the block environment
+\newenvironment{block}[1][]{%
+  {\noindent\kaishu\bfseries #1：}%
+  \par\smallskip%
+  \noindent\ignorespaces%
+}{%
+  \par\medskip%
+}
+
+
+% define maketitle environment
+\makeatletter
+\def\@maketitle{%
+  \newpage
+  \null
+  \tikz[remember picture,overlay]
+    \path (current page.north west) ++ (5.0,-1.2) node [opacity=1]%
+    {\includegraphics[height=1.6cm]{UnivLogo}};
+  \tikz[remember picture,overlay]
+    \path (current page.north east) ++ (-2.6,-1.2) node [opacity=1]%
+    {\includegraphics[height=1.6cm]{Logo}};
+  \vspace{-2.2em}
+  \begin{center}%
+  \let \footnote \thanks
+    {\huge\kaishu\bfseries \@title \par}%
+    \vskip 1.0em%
+    {\large
+      \lineskip .5em%
+      \begin{tabular}[t]{c}%
+        \Large\@author
+      \end{tabular}\par}%
+      %\vskip 1em%
+      %{\large \@date}%
+  \end{center}%
+  \par
+  \vskip 1.0em}
+\makeatother
+
+%----------------------------------%
+
+\title{活动名称}
+\author{具体信息}
+%\date{\today}
+
+\begin{document}
+
+% title page
+\maketitle
+
+%\bigskip
+\hrule
+\vspace{1.2em}
+
+\begin{point}[题目]
+  报告的题目 1
+\end{point}
+
+\begin{point}[报告人]
+  某某某~ (XX专业)
+\end{point}
+
+\begin{point}[摘要]
+摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容. 摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容.
+\end{point}
+
+\bigskip
+\hrule
+\vspace{1.5em}
+
+\begin{point}[题目]
+  报告的题目 2
+\end{point}
+
+\begin{point}[报告人]
+  某某某~ (XX专业)
+\end{point}
+
+\begin{block}[摘要]
+\indent 摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容. 摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容.
+\end{block}
+
+\bigskip
+\hrule
+\vspace{1.5em}
+
+\begin{point}[活动时间]
+  2023年XX月XX日 (周五)~ 13:30--15:30
+\end{point}
+
+\begin{point}[活动地点]
+  3号楼115室
+\end{point}
+
+%\begin{point}[会议号]
+%  111 222 333 \quad 会议密码： 123456
+%\end{point}
+
+\begin{center}
+\kaishu \Large  欢迎各位同学踊跃参与！
+\end{center}
+
+\begin{flushright}
+\kaishu %\large
+XX大学XX学院  \\
+2023年XX月XX日
+\end{flushright}
+
+\tikz[remember picture,overlay]
+\path (current page.south west) ++ (10.5,2.0) node [xscale=-1,opacity=0.8]%
+{\includegraphics[width=1\paperwidth,height=4.0cm]{background}};
+
+
+\end{document}
+

@@ -20,11 +20,6 @@
 \renewcommand{\baselinestretch}{1.15}
 
 
-%\usetheme{LLT-poster}
-%\usecolortheme{ComingClean}
-%\footimage{\includegraphics[width=.35\textwidth]{authors}}
-
-
 \setmainfont{Times New Roman}
 %\setmonofont{Courier New}
 \setsansfont{Arial}
@@ -33,15 +28,13 @@
 \setCJKfamilyfont{song}[AutoFakeBold]{SimSun}
 \newcommand*{\song}{\CJKfamily{song}}
 
-\newcommand*{\xinwei}{\CJKfamily{STXinwei}}
-
 
 \makeatletter
 \setbeamertemplate{frametitle}{%
   \nointerlineskip%
   \vskip0.4cm%
   \begin{beamercolorbox}[wd=\paperwidth,leftskip=.3cm,rightskip=.3cm plus1fil,vmode]{frametitle}%
-  \hspace*{4pt} \includegraphics[height=1.5cm]{\logopic}%SHNU_Logo2.png}%
+  \hspace*{4pt} \includegraphics[height=1.5cm]{\logopic} %Logo.png
   \begin{center}
     \usebeamerfont{frametitle}
 	\insertframetitle
@@ -65,8 +58,8 @@
 }
 \makeatother
 
-\newlength\columnheight \columnheight=5cm % needed to define \columnheight,
-                                          % don't have it here
+% needed to define \columnheight
+\newlength\columnheight \columnheight=5cm%
 \def\postercolumn{
     \leavevmode
     \vtop to \columnheight\bgroup
@@ -74,12 +67,11 @@
     \noindent
     \ignorespaces
 }
-
 \def\endpostercolumn{
     \egroup
 }
 
-
+% set font
 \setbeamerfont{frametitle}{family=\kai,size=\LARGE,series=\bfseries}
 \setbeamerfont{title in head/foot}{family=\rmfamily,size=\Large}
 \setbeamerfont{author in head/foot}{family=\kai,size=\large}
@@ -98,10 +90,10 @@
 \AtBeginDocument{\usebeamerfont{normal text}}
 
 
-\def\logopic{UnivLogo.png}   %logo
-\title{这是学术报告的题目这是学术报告的题目} %\\ This is a LaTeX template of poster
+\def\logopic{UnivLogo.png}  % logo
+\title{这是学术报告的题目这是学术报告的题目}
 
-\author{报告人~~~ 教授}
+\author{报告人 ~~ 教授}
 \institute{报告人所在单位}
 
 
@@ -151,28 +143,29 @@ This is a brief introduction to the author.
 \vskip1em
 
 
-{\kai \textbf{\large 报告时间：}} 2022年X月X日~(周五) ~~ 9:00--10:00   \\[5pt]
+{\kai\bfseries\large 报告时间：} 2022年X月X日~(周五) ~~ 9:00--10:00
+\medskip
 
-{\kai \textbf{\large 报告地点：}} X号楼X室   \\[5pt]
+{\kai\bfseries\large 报告地点：} X号楼X室 
+\medskip
 
-{\kai \textbf{\large 会\hspace{8.5pt}议\hspace{8.5pt}号：}} 111-222-333   \\[5pt]
+{\kai\bfseries\large 会\hspace{8.5pt}议\hspace{8.5pt}号：} 111-222-333   \medskip
 
-{\kai \textbf{\large 会议密码：}} 123456   \\[5pt]
+{\kai\bfseries\large 会议密码：} 123456 
+\medskip
 
-\vskip1em
-
+\vspace{1em}
 
 \begin{center}
 \kai\LARGE\bfseries 欢迎老师和同学们参加！
 \end{center}
 
-\vskip2em
+\vspace{1em}
 
 \begin{flushright}
 XX大学XX学院  \\
 2022年X月X日
 \end{flushright}
-\vskip-2em
 
 \end{frame}
 
