@@ -16,8 +16,9 @@ filecolor=blue,citecolor=black,urlcolor=cyan}
 
 \usepackage{enumitem}
 %\setlist{leftmargin=*} % noitemsep
-%\renewcommand{\labelenumi}{[\arabic{enumi}]}
-%\renewcommand{\labelenumii}{\alph{enumii}.}
+\setlist{nolistsep}
+%\setlist[itemize]{itemsep=3pt}
+%\setlist[enumerate]{itemsep=3pt}
 
 \usepackage{pifont}
 \DeclareRobustCommand{\textbigstar}{\texorpdfstring{\mbox{\ding{72}}}{★}}
@@ -29,6 +30,8 @@ filecolor=blue,citecolor=black,urlcolor=cyan}
 \setlength{\headheight}{18pt}
 \setlength{\headsep}{13pt}
 \setlength{\footskip}{25pt}
+
+%\renewcommand{\baselinestretch}{1.35}
 
 %--- define title page ---
 \makeatletter
@@ -52,37 +55,53 @@ filecolor=blue,citecolor=black,urlcolor=cyan}
   \vskip 1.5em}
 \makeatother
 
+% number style of equation
+%\numberwithin{equation}{section}
+
 %--- define color ---
 \definecolor{winered}{rgb}{0.6,0,0}
 \definecolor{deepblue}{rgb}{0,0,0.8}
 \definecolor{deepred}{rgb}{0.8,0,0}
 
-%--- counter of paper ---
+%--- paper env ---
 \makeatletter
 \newcommand{\twodigit}[1]{\two@digits{#1}}
 \makeatother
-\newcounter{papernum}
-\newenvironment{paper}[1][\unskip]{%
-\stepcounter{papernum}%
-\medskip \hrule \bigskip%
-\noindent {\bfseries\large 论文~\twodigit{\arabic{papernum}}}\quad #1%
-\par\vspace{8pt}%
-\noindent\ignorespaces%
-}{\par\medskip}
-%--- command of paper ---
-\newcommand{\titled}[1]{\noindent{\color{deepblue}\bfseries 题目:} {\bfseries #1} \par\medskip} %\hangpara{2.0em}{1}
-\newcommand{\info}[2]{\noindent{\color{deepblue}\bfseries 信息:} #1, {\bfseries ~#2} \par\medskip}
-\renewcommand{\abstract}[1]{\noindent{\bfseries\color{deepblue} 摘要:} #1 \par\medskip}
-\newcommand{\keywords}[1]{\noindent{\bfseries\color{deepblue} 关键词:} #1 \par\medskip}
-\newcommand{\summary}[1]{\noindent{\bfseries\color{deepred} 总结:} #1 \par\medskip}
-\newcommand{\problem}[1]{\noindent{\bfseries\color{deepblue} 问题:} #1 \par\medskip}
-\newcommand{\method}[1]{\noindent{\bfseries\color{deepblue} 方法:} #1 \par\medskip}
-\newcommand{\intro}[1]{\noindent{\bfseries\color{deepblue} 内容:} #1 \par\medskip}
-\newcommand{\conclusion}[1]{\noindent{\bfseries\color{deepblue} 结论:} #1 \par\medskip}
-\newcommand{\note}[1]{\noindent{\bfseries\color{deepred} 注:} #1 \par\medskip}
-\newcommand{\refs}[1]{\noindent{\bfseries\color{deepblue} 文献:} #1 \par\medskip}
-
-%\numberwithin{equation}{section}
+\newcounter{paper}
+\setcounter{paper}{0}
+\newcommand{\paper}[1][\unskip]{%
+\stepcounter{paper}\medskip\hrule\bigskip%
+\noindent{\bfseries\large 论文~\twodigit{\arabic{paper}}}~~#1%
+\par\medskip%
+}
+%--- command and envs of paper ---
+\newcommand{\titled}[1]{\noindent{\color{deepblue}\textbf{题目:}} \textbf{#1}\par\medskip}%
+\newcommand{\info}[1]{\noindent{\color{deepblue}\textbf{信息:}} #1 \par\medskip}%
+\newcommand{\keywords}[1]{\noindent{\bfseries\color{deepblue}关键词:} #1 \par\medskip}%
+\renewenvironment{abstract}{%
+\noindent{\bfseries\color{deepblue}摘要:}\enspace\ignorespaces%
+}{\par\medskip}%
+\newenvironment{summary}{%
+\noindent{\bfseries\color{deepblue}总结:}\enspace\ignorespaces%
+}{\par\medskip}%
+\newenvironment{problem}{%
+\noindent{\bfseries\color{deepblue}问题:}\enspace\ignorespaces%
+}{\par\medskip}%
+\newenvironment{method}{%
+\noindent{\bfseries\color{deepblue}方法:}\enspace\ignorespaces%
+}{\par\medskip}%
+\newenvironment{intro}{%
+\noindent{\bfseries\color{deepblue}内容:}\enspace\ignorespaces%
+}{\par\medskip}%
+\newenvironment{conclusion}{%
+\noindent{\bfseries\color{deepblue}结论:}\enspace\ignorespaces%
+}{\par\medskip}%
+\newenvironment{note}{%
+\noindent{\bfseries\color{deepred}注:}\enspace\ignorespaces%
+}{\par\medskip}%
+\newenvironment{refs}{%
+\noindent{\bfseries\color{deepblue}文献:}\enspace\ignorespaces%
+}{\par\medskip}%
 
 % define new command
 \newcommand{\red}[1]{{\color{red}#1}}
@@ -97,7 +116,7 @@ filecolor=blue,citecolor=black,urlcolor=cyan}
 % Information of Document
 \title{文献综述笔记}
 \author{某某某}
-\date{2022.11.08}
+\date{2023.10.25}
 
 
 \begin{document}
@@ -105,73 +124,95 @@ filecolor=blue,citecolor=black,urlcolor=cyan}
 \maketitle
 
 
-% main body of document
+% main body
 
 \section*{研究方向或主题}
 
-% Paper 1
+% new paper
 
-\begin{paper}
+\paper
 
 \titled{文章标题}
 
-\info{作者}{杂志和发表时间}
+\info{作者, \textbf{杂志和发表时间}}
 
-\abstract{摘要内容}
+\begin{abstract}
+  摘要内容
+\end{abstract}
 
 \keywords{关键词1; 关键词2. }
 
-\summary{写完笔记之后最后填, 概述文章的内容, 以后查阅笔记的时候先看这一段. 注: 写文章 summary 切记需要通过自己的思考, 用自己的语言描述. 忌讳直接 Ctrl + C 原文.}
+\begin{summary}
+  写完笔记之后最后填, 概述文章的内容, 以后查阅笔记的时候先看这一段. 注: 写文章 summary 切记需要通过自己的思考, 用自己的语言描述. 忌讳直接 Ctrl + C 原文.
+\end{summary}
 
-\problem{作者的研究目标, 需要解决的问题是什么 ?}
+\begin{problem}
+  作者的研究目标, 需要解决的问题是什么 ?
+\end{problem}
 
-\method{作者解决问题的方法算法是什么？是否基于前人的方法 ?}
+\begin{method}
+  作者解决问题的方法算法是什么？是否基于前人的方法 ?
+\end{method}
 
-\intro{论文的主要内容. 论文的主要内容. 论文的主要内容. 论文的主要内容. 论文的主要内容. 论文的主要内容. 论文的主要内容.
-}
+\begin{intro}
+  论文的主要内容. 论文的主要内容. 论文的主要内容. 论文的主要内容. 论文的主要内容. 论文的主要内容. 论文的主要内容.
+\end{intro}
 
-\conclusion{作者给了哪些结论, 哪些是 strong conclusions, 哪些又是weak的 conclusions ?}
+\begin{conclusion}
+  作者给了哪些结论, 哪些是 strong conclusions, 哪些又是weak的 conclusions ?
+\end{conclusion}
 
-\note{需要额外记录的笔记. 比如如何评估论文的方法, 有没有可以借鉴的地方.}
+\begin{note}
+  需要额外记录的笔记. 比如如何评估论文的方法, 有没有可以借鉴的地方.
+\end{note}
 
-\refs{列出相关性高的文献, 以便之后可以继续 track 下去.
+\begin{refs}
+列出相关性高的文献, 以便之后可以继续 track 下去.
 \begin{enumerate}[label={[\arabic*]}]
-\setlength{\itemsep}{0pt}
+\setlength{\itemsep}{3pt}
 \item 文献1
 \item 文献2
 \end{enumerate}
-}
-
-\end{paper}
+\end{refs}
 
 
-% Paper 2
+% new paper
 
-\begin{paper}[\textbigstar]
+\paper[\textbigstar]
 
 \titled{文章标题}
 
 \info{作者, 杂志和发表时间}
 
-\abstract{摘要内容}
+\begin{abstract}
+  摘要内容.
+\end{abstract}
 
-\keywords{关键词1; 关键词2. }
+\keywords{关键词1; 关键词2.}
 
-\summary{总结.}
+\begin{summary}
+  总结.
+\end{summary}
 
-\problem{作者的研究目标, 需要解决的问题是什么 ?}
+\begin{problem}
+  作者的研究目标, 需要解决的问题是什么 ?
+\end{problem}
 
-\method{作者解决问题的方法算法是什么 ? 是否基于前人的方法 ?}
+\begin{method}
+  作者解决问题的方法算法是什么 ? 是否基于前人的方法 ?
+\end{method}
 
-\intro{论文的主要内容.
-}
+\begin{intro}
+  论文的主要内容.
+\end{intro}
 
-\conclusion{作者给了哪些结论, 哪些是 strong conclusions, 哪些又是weak的 conclusions ?}
+\begin{conclusion}
+  作者给了哪些结论, 哪些是 strong conclusions, 哪些又是weak的 conclusions ?
+\end{conclusion}
 
-\note{需要额外记录的笔记.}
-
-\end{paper}
-
+\begin{note}
+  需要额外记录的笔记.
+\end{note}
 
 
 

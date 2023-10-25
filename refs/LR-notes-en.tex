@@ -16,8 +16,9 @@ filecolor=blue,citecolor=black,urlcolor=cyan}
 
 \usepackage{enumitem}
 %\setlist{leftmargin=*} % noitemsep
-%\renewcommand{\labelenumi}{[\arabic{enumi}]}
-%\renewcommand{\labelenumii}{\alph{enumii}.}
+\setlist{nolistsep}
+%\setlist[itemize]{itemsep=3pt}
+%\setlist[enumerate]{itemsep=3pt}
 
 \usepackage{pifont}
 \DeclareRobustCommand{\textbigstar}{\texorpdfstring{\mbox{\ding{72}}}{★}}
@@ -30,7 +31,7 @@ filecolor=blue,citecolor=black,urlcolor=cyan}
 \setlength{\headsep}{13pt}
 \setlength{\footskip}{25pt}
 
-%\renewcommand{\baselinestretch}{1.1}
+\renewcommand{\baselinestretch}{1.1}
 
 %--- define title page ---
 \makeatletter
@@ -54,36 +55,55 @@ filecolor=blue,citecolor=black,urlcolor=cyan}
   \vskip 1.5em}
 \makeatother
 
+% number style of equation
+%\numberwithin{equation}{section}
+
 %--- define color ---
 \definecolor{winered}{rgb}{0.6,0,0}
 \definecolor{deepblue}{rgb}{0,0,0.8}
 \definecolor{deepred}{rgb}{0.8,0,0}
 
-%--- counter of paper ---
+%--- paper env ---
 \makeatletter
 \newcommand{\twodigit}[1]{\two@digits{#1}}
 \makeatother
-\newcounter{papernum}
-\newenvironment{paper}[1][\unskip]{%
-\stepcounter{papernum}%
-\medskip \hrule \bigskip%
-\noindent {\bfseries\large Paper~\twodigit{\arabic{papernum}}}\quad #1%
-\par\vspace{8pt}%
-\noindent\ignorespaces%
-}{\par\medskip}
-%--- commands of paper ---
-\newcommand{\titled}[1]{\noindent{\large\color{deepblue}\sc Title:} {\bfseries #1} \par\medskip} %\hangpara{2.0em}{1}
-\newcommand{\info}[2]{\noindent{\large\color{deepblue}\sc Info:} #1, {\bfseries ~#2} \par\medskip}
-\renewcommand{\abstract}[1]{\noindent{\large\color{deepblue}\sc Abstract:} #1 \par\medskip}
-\newcommand{\keywords}[1]{\noindent{\large\color{deepblue}\sc Keywords:} #1 \par\medskip}
-\newcommand{\summary}[1]{\noindent{\large\color{deepred}\sc Summary:} #1 \par\medskip}
-\newcommand{\problem}[1]{\noindent{\large\color{deepblue}\sc Problem:} #1 \par\medskip}
-\newcommand{\method}[1]{\noindent{\large\color{deepblue}\sc Method:} #1 \par\medskip}
-\newcommand{\intro}[1]{\noindent{\large\color{deepblue}\sc Intro:} #1 \par\medskip}
-\newcommand{\conclusion}[1]{\noindent{\large\color{deepblue}\sc Conclusion:} #1 \par\medskip}
-\newcommand{\note}[1]{\noindent{\large\color{deepred}\sc Note:} #1 \par\medskip}
-\newcommand{\refs}[1]{\noindent{\large\color{deepblue}\sc References:} #1 \par\medskip}
+\newcounter{paper}
+\setcounter{paper}{0}
+\newcommand{\paper}[1][\unskip]{%
+\stepcounter{paper}\medskip\hrule\bigskip%
+\noindent{\bfseries\large Paper~\twodigit{\arabic{paper}}}~~#1%
+\par\medskip%
+}
+%--- commands envs of paper ---
+\newcommand{\titled}[1]{\noindent{\color{deepblue}\textsc{Title:}} \textbf{#1}\par\medskip}%
+\newcommand{\info}[1]{\noindent{\color{deepblue}\textsc{Info:}} #1 \par\medskip}%
+\newcommand{\keywords}[1]{\noindent{\color{deepblue}\textsc{Keywords:}} #1 \par\medskip}%
+\renewenvironment{abstract}{%
+\noindent{\color{deepblue}\textsc{Abstract:}}\enspace\ignorespaces%
+}{\par\medskip}%
+\newenvironment{summary}{%
+\noindent{\color{deepblue}\textsc{Summary:}}\enspace\ignorespaces%
+}{\par\medskip}%
+\newenvironment{problem}{%
+\noindent{\color{deepblue}\textsc{Problem:}}\enspace\ignorespaces%
+}{\par\medskip}%
+\newenvironment{method}{%
+\noindent{\color{deepblue}\textsc{Method:}}\enspace\ignorespaces%
+}{\par\medskip}%
+\newenvironment{intro}{%
+\noindent{\color{deepblue}\textsc{Intro:}}\enspace\ignorespaces%
+}{\par\medskip}%
+\newenvironment{conclusion}{%
+\noindent{\color{deepblue}\textsc{Conclusion:}}\enspace\ignorespaces%
+}{\par\medskip}%
+\newenvironment{note}{%
+\noindent{\color{deepred}\textsc{Remark:}}\enspace\ignorespaces%
+}{\par\medskip}%
+\newenvironment{refs}{%
+\noindent{\color{deepblue}\textsc{References:}}\enspace\ignorespaces%
+}{\par\medskip}%
 
+% number style of equation
 %\numberwithin{equation}{section}
 
 % define new command
@@ -99,7 +119,7 @@ filecolor=blue,citecolor=black,urlcolor=cyan}
 % Information of Document
 \title{Literature Review Notes}
 \author{Author XX}
-\date{Nov. 8, 2022}
+\date{Oct. 25, 2023}
 
 
 \begin{document}
@@ -107,78 +127,101 @@ filecolor=blue,citecolor=black,urlcolor=cyan}
 \maketitle
 
 
-% main body of document
+% main body
 
 \section*{Research Topic}
 
-% Paper 1
+% new paper
 
-\begin{paper}
+\paper
 
 \titled{Title of paper}
 
-\info{Author}{Journal (1998)}
+\info{Author, Journal (1998)}
 
-\abstract{Abstract here.}
+\begin{abstract}
+  Abstract here.
+\end{abstract}
 
 \keywords{Keyword 1, keyword 2.}
 
-\summary{Summary here. Note: When writing a summary, remember that you need to describe it in your own words through your own thinking. Ctrl + C is taboo.}
+\begin{summary}
+  Summary here. Note: When writing a summary, remember that you need to describe it in your own words through your own thinking. Ctrl + C is taboo.
+\end{summary}
 
-\problem{The objective of the paper and the problem studied in the paper.}
+\begin{problem}
+  The objective of the paper and the problem studied in the paper.
+\end{problem}
 
-\method{The method for solving the model problem.}
+\begin{method}
+  The method for solving the model problem.
+\end{method}
 
-\intro{Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+\begin{intro}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 Proin eu tempor velit. Fusce accumsan ultrices fringilla. Praesent
 sed odio mi. Mauris non ligula turpis. Duis posuere lacus nec diam
 interdum dictum suscipit magna molestie. Vestibulum nulla egestas aliquam.
-}
+\end{intro}
 
-\conclusion{Conclusion here.}
+\begin{conclusion}
+  Conclusion here.
+\end{conclusion}
 
-\note{Note here.}
+\begin{note}
+  Note here.
+\end{note}
 
-\refs{List the literature with high relevance.
+\begin{refs}
+List the literature with high relevance.
 \begin{enumerate}[label={[\arabic*]}]
-\setlength{\itemsep}{0pt}
+\setlength{\itemsep}{3pt}
   \item Literature 1
   \item Literature 2
 \end{enumerate}
-}
+\end{refs}
 
-\end{paper}
 
-% Paper 2
+% new paper
 
-\begin{paper}[\textbigstar]
+\paper[\textbigstar]
 
 \titled{Title of paper}
 
-\info{Author}{Journal (1998)}
+\info{Author, Journal (1998)}
 
-\abstract{Abstract here.}
+\begin{abstract}
+  Abstract here.
+\end{abstract}
 
 \keywords{Keyword 1, keyword 2.}
 
-\summary{Summary here. Note: When writing a summary, remember that you need to describe it in your own words through your own thinking. Ctrl + C is taboo.}
+\begin{summary}
+  Summary here. Note: When writing a summary, remember that you need to describe it in your own words through your own thinking. Ctrl + C is taboo.
+\end{summary}
 
-\problem{The objective of the paper and the problem studied in the paper.}
+\begin{problem}
+  The objective of the paper and the problem studied in the paper.
+\end{problem}
 
-\method{The method for solving the model problem.}
+\begin{method}
+  The method for solving the model problem.
+\end{method}
 
-\intro{Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+\begin{intro}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 Proin eu tempor velit. Fusce accumsan ultrices fringilla. Praesent
 sed odio mi. Mauris non ligula turpis. Duis posuere lacus nec diam
 interdum dictum suscipit magna molestie. Vestibulum nulla egestas aliquam.
-}
+\end{intro}
 
-\conclusion{Conclusion here.}
+\begin{conclusion}
+  Conclusion here.
+\end{conclusion}
 
-\note{Note here.}
-
-\end{paper}
-
+\begin{note}
+  Note here.
+\end{note}
 
 
 

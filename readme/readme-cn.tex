@@ -11,6 +11,10 @@
 \usepackage{color,xcolor}
 \usepackage{framed}
 \usepackage{enumitem}
+\usepackage{fontspec}
+
+% package for code highlighting
+\usepackage{codestyle}
 
 \usepackage{hyperref}
 \hypersetup{colorlinks=true,linkcolor=blue,
@@ -24,16 +28,29 @@ filecolor=blue,citecolor=black,urlcolor=cyan,}
 \setlength{\headheight}{15pt}
 \setlength{\headsep}{20pt}
 
+% section setting
+\usepackage{titlesec}
+\titleformat{\section}{\Large\bfseries}{\thesection}{1em}{}
+\titlespacing{\section}{0pt}{2.0ex plus .1ex minus .2ex}{1.5ex plus .1ex minus .2ex}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
+\titlespacing{\subsection}{0pt}{1.5ex plus .1ex minus .2ex}{1.5ex plus .1ex minus .2ex}
+
+% command for line spacing
+%\renewcommand{\baselinestretch}{1.35}
+
+% command for listsep
+\setlist{nolistsep}
+
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
-\chead{\textcolor{gray}{\defheader}}
-\cfoot{\thepage}
+\chead{\small\textcolor{gray}{\defheader}}
+\cfoot{\small\thepage}
 
 \fancypagestyle{plain}{%
 \fancyhf{}
-\chead{\textcolor{gray}{\defheader}}
-\cfoot{\thepage}
+\chead{\small\textcolor{gray}{\defheader}}
+\cfoot{\small\thepage}
 }
 
 \let\oldheadrule\headrule % Copy \headrule into \oldheadrule
@@ -66,13 +83,9 @@ filecolor=blue,citecolor=black,urlcolor=cyan,}
   \vskip 1.5em}
 \makeatother
 
+% number style of equation
 \numberwithin{equation}{section}
 
-\usepackage{titlesec}
-\titleformat{\section}{\Large\bfseries}{\thesection}{1em}{}
-\titlespacing{\section}{0pt}{2.0ex plus .1ex minus .2ex}{1.5ex plus .1ex minus .2ex}
-\titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
-\titlespacing{\subsection}{0pt}{1.5ex plus .1ex minus .2ex}{1.5ex plus .1ex minus .2ex}
 
 % define new command
 \newcommand{\red}[1]{{\color{red}#1}}
@@ -89,25 +102,22 @@ filecolor=blue,citecolor=black,urlcolor=cyan,}
 \title{XX程序文档}
 \author{作者}
 \version{Version 1.x}
-\date{2022年12月5日}
+\date{2023年10月25日}
 
 \begin{document}
 
 \maketitle
 
-
-% main body of document
+% main body
 
 \section{项目的第一部分}
 
 项目第一部分的简介 ...
 
-
 \subsection{问题 XX}
 
 \begin{itemize}
-%\setlength{\itemsep}{0pt}
-
+\setlength{\itemsep}{3pt}
 \item [$\spadesuit$] 考虑模型方程
 \begin{equation}\label{eq:NLPossion4}
 \left\{
@@ -120,21 +130,65 @@ filecolor=blue,citecolor=black,urlcolor=cyan,}
 \item \textcode{FDM\_Possion.m} 求解 Possion 方程的有限差分法.
 
 \item \textcode{FEM\_Possion.m} 求解 Possion 方程的有限元法.
-
 \end{itemize}
 
-
-% main body
 
 \section{项目的第二部分}
 
 项目第二部分的简介 ...
 
 \begin{enumerate}
+\setlength{\itemsep}{3pt}
   \item 第一项
   \item 第二项
   \item 第三项
 \end{enumerate}
+
+
+% examples
+
+\medskip
+\noindent $\spadesuit$ 考虑模型方程
+\begin{equation}\label{eq:NLPossion4}
+\left\{
+\begin{aligned}
+&-\nabla \cdot(a(u) \nabla u) = f,\quad \text{ in } ~\Omega, \\
+&~u = 0, \quad \text{ on } ~ \partial \Omega.
+\end{aligned}\right.
+\end{equation}
+
+
+\medskip
+\noindent 这是 MATLAB 程序代码高亮环境.
+
+\begin{lstlisting}[style=Matlab,basicstyle=\footnotesize\fontspec{Courier New},title={MATLAB code}]
+% Euler method for the ODEs
+clear all;  clf
+h=0.1; x=0:h:1;
+N=length(x)-1;
+u(1)=0;
+fun=@(t,u) t.^2+t-u;
+for n=1:N
+    u(n+1)=u(n)+h.*fun(x(n),u(n));
+end
+ue=-exp(-x)+x.^2-x+1;
+plot(x,ue,'b-',x,u,'r+','LineWidth',1)
+xlabel('x'), ylabel('u')
+\end{lstlisting}
+
+\medskip
+\noindent 这是 Python 程序代码高亮环境.
+
+\begin{lstlisting}[style=python,basicstyle=\footnotesize\fontspec{Consolas},title={Python code}]
+# Fibonacci series up to n
+def fib(n):
+    a, b = 0, 1
+    while a < n:
+        print(a, end=' ')
+        a, b = b, a+b
+    print()
+fib(1000)
+\end{lstlisting}
 
 
 
