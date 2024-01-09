@@ -38,7 +38,8 @@
 \usepackage{fancybox}
 
 % package for bibliography support
-\usepackage[numbers,sort&compress]{natbib}
+\usepackage{cite}
+%\usepackage[numbers,sort&compress]{natbib}
 
 % allow page breaks between multiline formulas
 \allowdisplaybreaks
@@ -129,25 +130,24 @@
 \maketitle
 
 \begin{abstract}
-  This is an example \LaTeX\ article. This can be used as a
-  template for new articles.  Abstracts must be able to stand alone
-  and so cannot contain citations to the paper's references,
-  equations, etc.  An abstract must consist of a single paragraph and
-  be concise. Because of online formatting, abstracts must appear as
-  plain as possible. Any equations should be inline.
+This is an example \LaTeX\ article. This can be used as a template for new articles.
+Abstracts must be able to stand alone and so cannot contain citations to the paper's references,equations, etc.
+An abstract must consist of a single paragraph and be concise.
+Because of online formatting, abstracts must appear as plain as possible.
+Any equations should be inline.
 
-  \medskip
-  \noindent{\bfseries Keywords}: Example, \LaTeX, numerical methods
+\medskip
+\noindent{\bfseries Keywords}: Example, \LaTeX, numerical methods
 
-  \medskip
-  \noindent{\bfseries Mathematics Subject Classification:}  65M60, 65M12.
+\medskip
+\noindent{\bfseries Mathematics Subject Classification:} 65M60, 65M12.
 \end{abstract}
 
 
 \section{Introduction}
-The introduction introduces the context and summarizes the
-manuscript. It is important to clearly state the contributions of
-this piece of work.
+
+The introduction introduces the context and summarizes the manuscript.
+It is important to clearly state the contributions of this piece of work.
 
 In this paper we present a new method for solving the model equation
 \begin{equation}\label{eq:mulequ}
@@ -175,10 +175,9 @@ The merits of our method are as follows:
 
 The outline is not required, but we show an example here.
 
-The paper is organized as follows. Our main results are in
-\ref{sec:main}, our new algorithm is in \ref{sec:alg}, experimental
-results are in \ref{sec:experiments}, discussion is in \ref{sec:discussion} and the conclusions follow in
-\ref{sec:conclusions}.
+The paper is organized as follows. Our main results are in \ref{sec:main},
+our new algorithm is in \ref{sec:alg}, experimental results are in \ref{sec:experiments},
+discussion is in \ref{sec:discussion} and the conclusions follow in \ref{sec:conclusions}.
 
 
 \section{Preliminaries}
@@ -220,13 +219,13 @@ This is a lemma environment
 \end{enumerate}
 \end{lemma}
 
-This is a citation example \cite{Adams2003}. This statement requires citation \cite{Shen1994,Tadmor2012,TreWei2014}.
+This is a citation example \cite{Adams2003,TreWei2014}.
+This statement requires citations \cite{Shen1994,Tadmor2012,TreWei2014}.
 
 Here we state our main result as \ref{thm:bigthm}.
 
 \begin{theorem}[$LDL^T$ Factorization \cite{GoVa2013}]\label{thm:bigthm}
-  If $A \in \mathbb{R}^{n \times n}$ is symmetric and the principal
-  submatrix $A(1:k,1:k)$ is nonsingular for $k=1:n-1$, then there
+  If $A \in \mathbb{R}^{n \times n}$ is symmetric and the principal submatrix $A(1:k,1:k)$ is nonsingular for $k=1:n-1$, then there
   exists a unit lower triangular matrix $L$ and a diagonal matrix
   \begin{equation*}
     D = \operatorname{diag}(d_1,\dots,d_n),  %\diag(d_1,\dots,d_n)
@@ -238,8 +237,7 @@ LaTeX is a high-quality typesetting system; it includes features designed for th
 LaTeX is based on the idea that it is better to leave document design to document designers, and to let authors get on with writing documents.
 
 \begin{theorem}[Mean Value Theorem]\label{thm:mvt}
-  Suppose $f$ is a function that is continuous on the closed interval
-  $[a,b]$.  and differentiable on the open interval $(a,b)$.
+  Suppose $f$ is a function that is continuous on the closed interval $[a,b]$ and differentiable on the open interval $(a,b)$.
   Then there exists a number $c$ such that $a < c < b$ and
   \begin{equation*}
     f'(c) = \frac{f(b)-f(a)}{b-a}.
@@ -251,8 +249,7 @@ LaTeX is based on the idea that it is better to leave document design to documen
 \end{theorem}
 
 \begin{remark}
-Observe that \ref{thm:bigthm}, \ref{thm:mvt} correctly mix references
-to multiple labels.
+Observe that \ref{thm:bigthm}, \ref{thm:mvt} correctly mix references to multiple labels.
 \end{remark}
 
 % command cref package cleveref
@@ -260,8 +257,8 @@ to multiple labels.
 %to multiple labels.
 
 \begin{corollary}\label{cor:a}
-  Let $f(x)$ be continuous and differentiable everywhere. If $f(x)$
-  has at least two roots, then $f'(x)$ must have at least one root.
+  Let $f(x)$ be continuous and differentiable everywhere.
+  If $f(x)$ has at least two roots, then $f'(x)$ must have at least one root.
 \end{corollary}
 \begin{proof}
   Let $a$ and $b$ be two distinct roots of $f$.
@@ -276,9 +273,16 @@ to show.
 
 Display matrices can be rendered using environments from \texttt{amsmath}:
 \begin{equation}\label{eq:matrices}
-S=\begin{bmatrix}1&0\\0&0\end{bmatrix}
+S=\begin{bmatrix}
+1 & 0 \\
+0 & 0
+\end{bmatrix}
 \quad\text{and}\quad
-C=\begin{pmatrix}1&1&0\\1&1&0\\0&0&0\end{pmatrix}.
+C=\begin{pmatrix}
+1 & 1 & 0 \\
+1 & 1 & 0 \\
+0 & 0 & 0
+\end{pmatrix}.
 \end{equation}
 Equation \ref{eq:matrices} shows some example matrices.
 
@@ -342,7 +346,9 @@ Adjust the width of the algorithm environment
 \section{Experimental results}
 \label{sec:experiments}
 
-Some experimental results here. Some experimental results here. Some experimental results here. Some experimental results here. Some experimental results here.Some experimental results here.
+Some experimental results here. Some experimental results here.
+Some experimental results here. Some experimental results here.
+Some experimental results here.Some experimental results here.
 
 \begin{example}
   This is example environment.
@@ -479,8 +485,8 @@ This is a equation in appendix.
 \end{equation}
 
 \section*{Acknowledgments}
-We would like to acknowledge the assistance of volunteers in putting
-together this example manuscript and supplement.
+
+We would like to acknowledge the assistance of volunteers in putting together this example manuscript and supplement.
 
 
 %\bibliographystyle{plain}
