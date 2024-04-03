@@ -1,0 +1,249 @@
+% LaTeX response letter template
+
+\documentclass[11pt]{article}
+
+% all kinds of packages needed
+\usepackage[utf8]{inputenc}
+\usepackage{charter}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{bm,mathrsfs}
+\usepackage{graphicx}
+\usepackage{color,xcolor}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{mathtools}
+\usepackage{geometry}
+\geometry{left=1.25in,right=1.25in,top=1in,bottom=1in}
+
+% allow page breaks between multiline formulas
+\allowdisplaybreaks
+
+% command for listsep
+\setlist{nolistsep}
+\setlist[itemize]{itemsep=3pt}
+\setlist[enumerate]{itemsep=3pt}
+
+% command for line spacing
+\renewcommand{\baselinestretch}{1.2}
+
+% define counters for reviewers and their points
+\newcounter{reviewer}
+\setcounter{reviewer}{0}
+\newcounter{point}[reviewer]
+\setcounter{point}{0}
+
+% package for section etc.
+%\usepackage{titlesec}
+%\titleformat{\section}{\large\bfseries}{\thesection}{}{}
+%\titleformat{\subsection}{\normalfont\bfseries}{\thesubsection}{}{}
+
+% command declarations for reviewer comments and our responses
+\newcommand{\reviewersection}{%
+\stepcounter{reviewer}\vskip 16pt \hrule height 0.6pt%
+\section*{Reviewer~\thereviewer}%
+}
+
+% define color
+\definecolor{lightred}{RGB}{216,144,144}
+\definecolor{slightred}{RGB}{251,243,243}
+\definecolor{slightgreen}{RGB}{243,248,243}
+
+% Referee Comments
+\usepackage[most]{tcolorbox}
+\tcbuselibrary{breakable,skins}
+%\newtcolorbox{commentbox}{
+%  blanker, breakable, left=1em,
+%  top=0.5em, bottom=0.5em,
+%  borderline west={2pt}{0pt}{gray!75!white},
+%  colback = {lightred}
+%}
+\newtcolorbox{commentbox}{
+  enhanced, frame hidden, breakable, sharp corners,%
+  leftrule=0pt, rightrule=0pt, toprule=0pt, bottomrule=0pt,%
+  boxsep=2pt, top=0.5em, bottom=0.5em, left=0.5em, right=0.5em,%
+  before skip=1.0em, after skip=1.0em,
+  borderline west={2pt}{0pt}{lightred}, %gray!75!white
+  colframe=gray, colback = {slightred}
+}
+
+\newtcolorbox{changebox}{
+  enhanced, frame hidden, breakable, sharp corners,%
+  leftrule=0pt, rightrule=0pt, toprule=0pt, bottomrule=0pt,%
+  boxsep=2pt, top=0.5em, bottom=0.5em, left=0.5em, right=0.5em,%
+  before skip=0.75em, after skip=0.75em,
+  colframe=gray, colback = {slightgreen}
+}
+
+% define the point environment
+\newenvironment{point}[1][Comment]{%
+  \refstepcounter{point}%
+  \noindent\textbf{#1~\arabic{point}}%
+  \begin{commentbox}
+  %\color{gray!40!black}
+}{%
+  \end{commentbox}
+}
+
+
+% define the block environment
+\newenvironment{block}[1][]{%
+  \noindent\textbf{#1}%
+  \begin{commentbox}
+  %\color{gray!40!black}
+}{%
+  \end{commentbox}
+}
+
+% package for underlining
+\usepackage[normalem]{ulem}
+\newcommand{\deleted}[1]{\textcolor{red}{\sout{#1}}}
+\newcommand{\added}[1]{\textcolor{blue}{\uwave{#1}}}
+
+% define maketitle environment
+\makeatletter
+\def\@maketitle{%
+  \newpage
+  \null
+  \vskip 0.5em%
+  \leftline{Reply to the review report on}
+  \vskip 1.5em%
+  \begin{center}%
+  \let \footnote \thanks
+    {\Large \bfseries \@title \par}%
+    \vskip 1.5em%
+    {\large
+      \lineskip .5em%
+      \begin{tabular}[t]{c}%
+        \@author
+      \end{tabular}\par}%
+    \vskip 1em%
+    {\large \@date}%
+  \end{center}%
+  \par
+  \vskip 1.0em}
+\makeatother
+
+% graphical path
+\graphicspath{{./figures/}}
+
+% differential operator
+\newcommand{\dif}{\mathop{}\!\mathrm{d}}
+
+% new command
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\dx}[1][x]{\mathop{}\!\mathrm{d}#1}
+\newcommand{\ii}{\mathrm{i}\mkern1mu}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+
+
+% information for title and author
+\title{Journal-001: The full title of the submitted paper}
+\author{by \quad Author A ~ and ~ Author B}
+\date{\today}
+
+
+\begin{document}
+
+\maketitle
+
+% Simple title
+%\begin{center}
+%{\bfseries\LARGE Response to Reviewers}
+%\end{center}
+%\section*{Response to Reviewer Comments}
+
+% General intro text goes here
+The authors thank the reviewers for their critical assessment of our work.
+In the following we address their concerns point by point.
+
+% New reviewer section
+\reviewersection
+
+% Comments to the authors
+\begin{block}[Comments to the authors]
+This is comments of Reviewer \thereviewer. With some more words foo bar foo bar ...
+\begin{enumerate}
+  \item Point one
+  \item Point two
+  %\item Point three
+\end{enumerate}
+Suggestion: it's better to test a case with ...
+\end{block}
+
+% Our reply
+\noindent\textbf{Author response}
+\par\smallskip%
+
+We agree with the reviewer on this point. This is what we did to fix it.
+\begin{enumerate}
+  \item Reply one
+  \item Reply two
+  %\item Reply three
+\end{enumerate}
+\begin{equation}\label{eq:abc}
+  a^2+b^2=c^2.
+\end{equation}
+Please see Page 5 line 10 of the revised version.
+
+\medskip
+
+\noindent\textbf{Changes}
+
+\begin{changebox}
+Changes made in the manuscript. Overkill if you also add track changes. To add a track-changes version of the two manuscripts, run \texttt{latexdiff} on the original + revised paper. Goolge latexdiff tutorial to see how that works. Once you do that, you can copy-paste code from the file highlighting difference directly in here. For instance:
+
+\begin{quotation}
+Our results indicate that \added{increasing} \deleted{decreasing} the temperature leads to a \added{significant} \deleted{negligible} increase in the growth rate of \added{E. coli} \deleted{bacteria}.
+\end{quotation}
+
+\end{changebox}
+
+\clearpage
+
+% New reviewer section
+\reviewersection
+
+% comment 1
+\begin{point}[Comment]
+This is comment 1 of Reviewer \thereviewer.
+\end{point}
+
+\noindent\textbf{Reply:} \\[3pt]
+Our reply to This is comment 1 of Reviewer \thereviewer.
+
+\medskip
+
+\noindent\textbf{Changes:}
+
+\begin{changebox}
+Lots of very important changes
+\end{changebox}
+
+\medskip
+
+% comment 2
+\begin{point}[Comment]
+This is comment 2 of Reviewer \thereviewer. With some more words foo bar foo bar ...
+\end{point}
+
+\noindent\textbf{Reply:} \\[3pt]
+Our reply to it with reference to one of our points above using the {\LaTeX}'s label/ref system (see also \ref{eq:abc}).
+
+\medskip
+
+\noindent\textbf{Changes:}
+
+\begin{changebox}
+So we did not change absolutely anything on this point.
+\end{changebox}
+
+% New reviewer section
+% \reviewersection
+
+
+
+\end{document}
+
