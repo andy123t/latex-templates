@@ -44,36 +44,54 @@
 \section*{Reviewer~\thereviewer}%
 }
 
-% comments to the author
-\newenvironment{comments}{%
-  \noindent\textbf{Comments to the authors}%
-  \par\smallskip%
-  \noindent\itshape\ignorespaces%
-}{%
-  \par\medskip%
-}
-
-\newenvironment{point}{%
+% define the point environment
+\newenvironment{point}[1][Comment]{%
   \refstepcounter{point}\noindent%
-  \textbf{Comment~\arabic{point}}:\enspace\itshape\ignorespaces%
+  \textbf{#1~\arabic{point}}:\enspace%
+  \ignorespaces%
+}{%
+  \par\smallskip%
+}
+
+% define the point* environment
+\newenvironment{point*}[1][Reply]{%
+  \noindent\textbf{#1}:\enspace\ignorespaces%
 }{%
   \par\medskip%
 }
 
-% author's response or reply
-\newenvironment{response}{%
-  \noindent\textbf{Author response}%
+% define the block environment
+\newenvironment{block}[1][]{%
+  \noindent\textbf{#1}%
   \par\smallskip%
   \noindent\ignorespaces%
 }{%
   \par\medskip%
 }
 
-\newenvironment{reply}{%
-  \noindent\textbf{Reply}:\enspace\ignorespaces%
-}{%
-  \par\medskip%
-}
+% define maketitle environment
+\makeatletter
+\def\@maketitle{%
+  \newpage
+  \null
+  \vskip 0.5em%
+  \leftline{Reply to the review report on}
+  \vskip 1.5em%
+  \begin{center}%
+  \let \footnote \thanks
+    {\Large \bfseries \@title \par}%
+    \vskip 1.5em%
+    {\large
+      \lineskip .5em%
+      \begin{tabular}[t]{c}%
+        \@author
+      \end{tabular}\par}%
+    \vskip 1em%
+    {\large \@date}%
+  \end{center}%
+  \par
+  \vskip 1.0em}
+\makeatother
 
 % graphical path
 \graphicspath{{./figures/}}
@@ -90,10 +108,17 @@
 \newcommand{\red}[1]{\textcolor{red}{#1}}
 
 
+% information for title and author
+\title{Journal-001: The full title of the submitted paper}
+\author{by \quad \textsc{Author A} ~ and ~ \textsc{Author B}}
+\date{}
+
+
 \begin{document}
 
+\maketitle
 
-\section*{Response to the reviewers}
+
 %\section*{Response to Reviewer Comments}
 
 % General intro text goes here
@@ -104,7 +129,7 @@ In the following we address their concerns point by point.
 \reviewersection
 
 % Comments to the authors
-\begin{comments}
+\begin{block}[Comments to the authors]\itshape
 This is comments of Reviewer \thereviewer. With some more words foo bar foo bar ...
 \begin{enumerate}
   \item Point one
@@ -112,10 +137,10 @@ This is comments of Reviewer \thereviewer. With some more words foo bar foo bar 
   %\item Point three
 \end{enumerate}
 Suggestion: it's better to test a case with ...
-\end{comments}
+\end{block}
 
 % Our reply
-\begin{response}
+\begin{block}[Author response]
 We agree with the reviewer on this point. This is what we did to fix it.
 \begin{enumerate}
   \item Reply one
@@ -126,41 +151,41 @@ We agree with the reviewer on this point. This is what we did to fix it.
   a^2+b^2=c^2.
 \end{equation}
 Please see Page 5 line 10 of the revised version.
-\end{response}
+\end{block}
 
 
 % New reviewer section
 \reviewersection
 
 % comment 1
-\begin{point}
+\begin{point}[Comment]\itshape
 This is comment 1 of Reviewer \thereviewer.
 \end{point}
 
-\begin{reply}
+\begin{point*}[Reply]
 Our reply to This is comment 1 of Reviewer \thereviewer.
-\end{reply}
+\end{point*}
 
 % comment 2
-\begin{point}
+\begin{point}[Comment]\itshape
 This is comment 2 of Reviewer \thereviewer.
 \end{point}
 
-\begin{reply}
+\begin{point*}[Reply]
 Our reply to This is comment 2 of Reviewer \thereviewer.
-\end{reply}
+\end{point*}
 
 
 % New reviewer section
 \reviewersection
 
-\begin{comments}
+\begin{point*}[Comments]\itshape
 This is comments of Reviewer \thereviewer. With some more words foo bar foo bar ...
-\end{comments}
+\end{point*}
 
-\begin{reply}
+\begin{point*}[Reply]
 Our reply to it with reference to one of our points above using the {\LaTeX}'s label/ref system (see also \ref{eq:abc}).
-\end{reply}
+\end{point*}
 
 
 \end{document}
