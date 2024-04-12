@@ -12,14 +12,19 @@
 %-----数学宏包-----
 \usepackage{amsmath,amsthm,amssymb}
 \usepackage{mathrsfs}
+
 %-----draft下 label提示-----
 %\usepackage[notcite,notref]{showkeys}
+
 %-----页面布局-----
 \usepackage{geometry}
 \geometry{left=2.5cm,right=2.5cm,top=3.0cm,bottom=3.0cm}
 %\geometry{left=1in,right=1in,top=1in,bottom=1in}
 %\geometry{left=2.5cm,right=2.1cm,top=1.7cm,bottom=2cm,includehead,includefoot}
 %\geometry{b5paper,text={125mm,195mm},centering,left=1in,right=1in,top=1in,bottom=1in}
+\setlength{\headheight}{18pt}
+\setlength{\headsep}{18pt}
+\setlength{\footskip}{25pt}
 
 %-----设置超链接-----
 \usepackage{hyperref}
@@ -37,7 +42,7 @@
 \usepackage{color,xcolor}
 % 插入图片
 \usepackage{graphicx}
-\usepackage{epsfig}
+%\usepackage{epsfig}
 %-----设置表格-----
 \usepackage{tabularx,array}
 \usepackage{longtable}
@@ -65,6 +70,8 @@
 \usepackage[numbered]{bookmark}
 %-----任意字体-----
 \usepackage{anyfontsize}
+%-----优化排版细节-----
+%\usepackage{microtype}
 
 %-----附录设置-----
 %\usepackage[title,titletoc]{appendix}
@@ -101,9 +108,9 @@
 %\usepackage[cleardoublepage=plain]{scrextend}
 \makeatletter
 \renewcommand{\cleardoublepage}{\clearpage
-    \clearpage\if@twoside\ifodd\c@page\else%
-    \thispagestyle{empty}%
-    \hbox{}\newpage\if@twocolumn\hbox{}\newpage\fi\fi\fi%
+  \clearpage\if@twoside\ifodd\c@page\else%
+  \thispagestyle{empty}%
+  \hbox{}\newpage\if@twocolumn\hbox{}\newpage\fi\fi\fi%
 }
 \makeatother
 
@@ -128,23 +135,18 @@
 \renewcommand{\thesubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}}
 \renewcommand{\thesubsubsection}{\arabic{subsubsection}.}
 
-
 \newcommand{\chpzihao}{\fontsize{20pt}{20pt}\selectfont}
 %%---------- 定义章节标题格式 ------------
-\titleformat{\chapter}[hang]{\bfseries \chpzihao \filcenter}
-    {\chpzihao \chaptername}{20pt}{}
+\titleformat{\chapter}[hang]{\bfseries \chpzihao \filcenter}{\chpzihao \chaptername}{20pt}{}
 \titlespacing{\chapter}{0pt}{-0.5ex  plus .1ex minus .2ex}{4.5ex plus .1ex minus .2ex}
 
-\titleformat{\section}[hang]{\bfseries \zihao{3}}
-    {\zihao{3} \thesection}{1em}{}
+\titleformat{\section}[hang]{\bfseries \zihao{3}}{\zihao{3} \thesection}{1em}{}
 \titlespacing{\section}{0pt}{2.5ex plus .1ex minus .2ex}{1.0ex plus .1ex minus .2ex}
 
-\titleformat{\subsection}[hang]{\bfseries \zihao{4}}
-    {\zihao{4} \thesubsection}{1em}{}
+\titleformat{\subsection}[hang]{\bfseries \zihao{4}}{\zihao{4} \thesubsection}{1em}{}
 \titlespacing{\subsection}{0pt}{1.5ex plus .1ex minus .2ex}{\wordsep}
 
-\titleformat{\subsubsection}[hang]{\bfseries}
-    {\thesubsubsection }{1em}{}{}
+\titleformat{\subsubsection}[hang]{\bfseries}{\thesubsubsection }{1em}{}{}
 \titlespacing{\subsubsection}{0pt}{1.2ex plus .1ex minus .2ex}{\wordsep}
 
 
@@ -216,16 +218,16 @@
 
 %-----设置公式间距-----
 \AtBeginDocument{
-    \setlength{\abovedisplayskip}{6pt plus 2pt minus 2pt}
-    \setlength{\belowdisplayskip}{6pt plus 2pt minus 2pt}
-    \setlength{\abovedisplayshortskip}{3pt plus 1pt minus 1pt}
-    \setlength{\belowdisplayshortskip}{3pt plus 1pt minus 1pt}
-    %\setlength{\arraycolsep}{2pt}
+  \setlength{\abovedisplayskip}{6pt plus 2pt minus 2pt}
+  \setlength{\belowdisplayskip}{6pt plus 2pt minus 2pt}
+  \setlength{\abovedisplayshortskip}{3pt plus 1pt minus 1pt}
+  \setlength{\belowdisplayshortskip}{3pt plus 1pt minus 1pt}
+  %\setlength{\arraycolsep}{2pt}
 }
 
 %-----定义新的目录页面 -----
 \usepackage{tocloft}
-\renewcommand{\cfttoctitlefont}{\hfill \bfseries \chpzihao}
+\renewcommand{\cfttoctitlefont}{\hfill\bfseries\chpzihao}
 \renewcommand{\cftchappresnum}{第}
 \renewcommand{\cftchapaftersnum}{章}
 \renewcommand{\cftchapaftersnumb}{\hspace{28pt}}
@@ -233,7 +235,7 @@
 \renewcommand{\cftaftertoctitle}{\hfill}
 \setlength{\cftbeforetoctitleskip}{8pt}
 \setlength{\cftaftertoctitleskip}{20pt}
-\setlength{\cftbeforechapskip}{12pt}
+\setlength{\cftbeforechapskip}{10pt plus 2pt minus 2pt}
 \setlength{\cftbeforesecskip}{3pt}
 \setlength{\cftbeforesubsecskip}{3pt}
 \renewcommand{\cftdot}{$\cdot$}

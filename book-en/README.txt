@@ -3,7 +3,7 @@
   English Book Template
   PDFLaTeX compilation
   
-  book-cover-en.tex
+  book-temp-en.tex
   English Book Template (Define cover page)
   PDFLaTeX compilation
 	

@@ -5,6 +5,7 @@
 
 \documentclass[a4paper,11pt]{article}
 
+% Required package
 \usepackage{latexsym}
 \usepackage{amsmath,amssymb}
 \usepackage{color,xcolor}
@@ -22,10 +23,23 @@
 \usepackage{fontawesome}
 \usepackage{multicol}
 \usepackage{graphicx}
+\usepackage{anyfontsize}
+%\usepackage{microtype}
 
-\usepackage[UTF8]{ctex}
+% Font setting
+\usepackage{ctex}
 \CJKsetecglue{\hskip0.15em plus0.05em minus 0.05em}
 
+%\usepackage[no-math]{fontspec} % XeLaTeX
+%\usepackage{newtxtext}  % New TX font for text
+%\setmainfont{TeX Gyre Termes}  % Times New Roman 的开源复刻版本
+%\setsansfont{TeX Gyre Heros}   % Helvetica 的开源复刻版本
+%\setmonofont{TeX Gyre Cursor}  % Courier New 的开源复刻版本
+%\setmainfont{Times New Roman}
+%\setsansfont{Arial}
+%\setmonofont{Courier New}
+
+% header and footer
 \pagestyle{fancy}
 \fancyhf{}
 \fancyfoot{}
@@ -56,7 +70,7 @@
 \newcommand{\cvsection}[2][]{%
   \bigskip%
   \ifstrequal{#1}{}{}{\marginpar{\vspace*{\dimexpr1pt-\baselineskip}\raggedright\input{#1}}}%
-  {\Large\bfseries\textsc{#2}}\\[-1.6ex]%
+  {\Large\bfseries #2}\\[-1.6ex]%
   {\rule{\linewidth}{0.5pt}\par}%
   \smallskip
 }

@@ -1,11 +1,12 @@
 % -*- coding: utf-8 -*-
 % !TEX program = xelatex
 
+\PassOptionsToPackage{no-math}{fontspec}
+
 \documentclass[zihao=-4,final]{ctexart}
 
 \usepackage{amsmath,amsthm,amssymb}
 \usepackage{mathrsfs}
-%\usepackage{bm}
 \usepackage{graphicx}
 \usepackage{subfig}
 %\usepackage[english]{babel}
@@ -20,6 +21,7 @@
 \usepackage{longtable}
 \usepackage{makecell}
 \usepackage{anyfontsize}
+\usepackage{microtype}
 \usepackage{geometry}
 %\geometry{left=1.25in,right=1.25in,top=1in,bottom=1in}
 \geometry{left=3cm,right=3cm,top=3cm,bottom=3cm}
@@ -71,9 +73,15 @@
 }
 \makeatother
 
-%-----设置英文字体 -----
-\usepackage{newtxtext}
-%\setmainfont{Times New Roman}
+%----- 设置英文字体 -----
+%\usepackage[no-math]{fontspec}
+%\usepackage{newtxtext}  % New TX font for text
+%\setmainfont{TeX Gyre Termes}  % Times New Roman 的开源复刻版本
+%\setsansfont{TeX Gyre Heros}   % Helvetica 的开源复刻版本
+%\setmonofont{TeX Gyre Cursor}  % Courier New 的开源复刻版本
+\setmainfont{Times New Roman}
+%\setsansfont{Arial}
+%\setmonofont{Courier New}
 
 %----- 设置数学字体 -----
 %\usepackage{newtxmath}
@@ -127,12 +135,12 @@
 \renewcommand{\proofname}{证明}
 \makeatletter
 \renewenvironment{proof}[1][\proofname]{\par
-    \pushQED{\qed}%
-    \normalfont \topsep6\p@\@plus6\p@\relax
-    \trivlist\item[\hskip\labelsep
-    \bfseries #1\@addpunct{\,:\,}]\ignorespaces
+  \pushQED{\qed}%
+  \normalfont \topsep6\p@\@plus6\p@\relax
+  \trivlist\item[\hskip\labelsep
+  \bfseries #1\@addpunct{\,:\,}]\ignorespaces
 }{%
-    \popQED\endtrivlist\@endpefalse
+  \popQED\endtrivlist\@endpefalse
 }
 \makeatother
 
@@ -582,26 +590,24 @@ LaTeX 的 table 环境是一个浮动体环境, 排版与 figure 环境类似. �
 \renewcommand\arraystretch{0.92} %定义表格高度
 \label{tab:heightweight}
 \begin{tabularx}{0.9\textwidth}{lCCC}
-   \toprule
+  \toprule
   序号 & 年龄 & 身高 & 体重 \\
   \midrule
   001 & 15 & 156 & 42 \\
   002 & 16 & 158 & 45 \\
   003 & 14 & 162 & 48 \\
   004 & 15 & 163 & 50 \\
-    \cmidrule{2-4}
+  \cmidrule{2-4}
   平均 & 15 & 159.75 & 46.25 \\
   \bottomrule
 \end{tabularx}
 \end{table}
 
-
 \begin{table}[htp!]
 \centering
 \caption{论文进度安排}
 %\renewcommand\arraystretch{1.1} %定义表格高度
-% PLCR前面已经定义
-\begin{tabularx}{0.9\textwidth}{|P{4cm}|C|}
+\begin{tabular}{|P{4cm}|P{8cm}|}
 \Xhline{2\arrayrulewidth}
 论文起止时间   &   论文筹备过程 \\
 \hline
@@ -617,7 +623,7 @@ LaTeX 的 table 环境是一个浮动体环境, 排版与 figure 环境类似. �
 \hline
 20xx.xx -- 20xx.xx   &  毕业论文答辩 \\
 \Xhline{2\arrayrulewidth}
-\end{tabularx}
+\end{tabular}
 \end{table}
 
 \clearpage
@@ -651,6 +657,7 @@ degree & step-size~$h$ & $L^2$-errors & order & $H^1$-errors & order & $L^\infty
 \begin{table}[htp!]
 \centering
 %\renewcommand\arraystretch{1.1} %定义表格高度
+% PLCR已经定义
 \caption{数值误差示例}
 \label{tab:error2}
 \begin{tabularx}{0.96\textwidth}{|P{0.8cm}|C|C|C|C|C|C|}
@@ -737,14 +744,14 @@ degree & step-size~$h$ & $L^2$-errors & order & $H^1$-errors & order & $L^\infty
 \caption{某校学生身高体重样本}
 \label{tab:heightweight2}
 \begin{tabularx}{0.9\textwidth}{lCCC}
-   \toprule
+  \toprule
   序号 & 年龄 & 身高 & 体重 \\
   \midrule
   001 & 15 & 156 & 42 \\
   002 & 16 & 158 & 45 \\
   003 & 14 & 162 & 48 \\
   004 & 15 & 163 & 50 \\
-    \cmidrule{2-4}
+  \cmidrule{2-4}
   平均 & 15 & 159.75 & 46.25 \\
   \bottomrule
 \end{tabularx}

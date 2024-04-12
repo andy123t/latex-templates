@@ -3,6 +3,8 @@
 % xelatex -> bibtex -> xelatex -> xelatex
 % 中文书籍 LaTeX 模板
 
+%\PassOptionsToPackage{no-math}{fontspec}
+
 \documentclass[UTF8,openany,twoside,12pt]{ctexbook}
 %\documentclass[UTF8,openany,twoside,zihao=-4]{ctexbook}
 %\documentclass[UTF8,twoside,12pt]{ctexbook}
@@ -32,6 +34,7 @@
 \usepackage{float}
 \usepackage[numbered]{bookmark}
 \usepackage{anyfontsize}
+%\usepackage{microtype}
 \usepackage{geometry}
 \geometry{left=2.5cm,right=2.5cm,top=3.0cm,bottom=3.0cm}
 %\geometry{left=1in,right=1in,top=1in,bottom=1in}
@@ -52,17 +55,21 @@
 }
 
 %----- 设置英文字体 -----
-%\sepackage{newtxtext}  % for text fonts
+%\usepackage[no-math]{fontspec}
+%\usepackage{newtxtext}  % New TX font for text
+%\setmainfont{TeX Gyre Termes}  % Times New Roman 的开源复刻版本
+%\setsansfont{TeX Gyre Heros}   % Helvetica 的开源复刻版本
+%\setmonofont{TeX Gyre Cursor}  % Courier New 的开源复刻版本
 %\setmainfont{Times New Roman}
-%\setmonofont{Courier New}
 %\setsansfont{Arial}
+%\setmonofont{Courier New}
 
 %----- 设置数学字体 -----
-% \usepackage{newtxmath}
-% \usepackage{mathptmx}
+%\usepackage{newtxmath}
+%\usepackage{mathptmx}
 
 %----- 直接插入 pdf 文件 -----
-% \usepackage{pdfpages}
+%\usepackage{pdfpages}
 
 %----- 算法宏包及设置 -----
 \usepackage{algorithm}
@@ -83,9 +90,9 @@
 %\usepackage[cleardoublepage=plain]{scrextend}
 \makeatletter
 \renewcommand{\cleardoublepage}{\clearpage
-    \clearpage\if@twoside\ifodd\c@page\else%
-    \thispagestyle{empty}%
-    \hbox{}\newpage\if@twocolumn\hbox{}\newpage\fi\fi\fi%
+  \clearpage\if@twoside\ifodd\c@page\else%
+  \thispagestyle{empty}%
+  \hbox{}\newpage\if@twocolumn\hbox{}\newpage\fi\fi\fi%
 }
 \makeatother
 
@@ -147,66 +154,66 @@
 
 %-----设置公式间距-----
 \AtBeginDocument{
-    \setlength{\abovedisplayskip}{6pt plus 2pt minus 2pt}
-    \setlength{\belowdisplayskip}{6pt plus 2pt minus 2pt}
-    \setlength{\abovedisplayshortskip}{3pt plus 1pt minus 1pt}
-    \setlength{\belowdisplayshortskip}{3pt plus 1pt minus 1pt}
-    %\setlength{\arraycolsep}{2pt}
+  \setlength{\abovedisplayskip}{6pt plus 2pt minus 2pt}
+  \setlength{\belowdisplayskip}{6pt plus 2pt minus 2pt}
+  \setlength{\abovedisplayshortskip}{3pt plus 1pt minus 1pt}
+  \setlength{\belowdisplayshortskip}{3pt plus 1pt minus 1pt}
+  %\setlength{\arraycolsep}{2pt}
 }
 
 %---------- 定义章节标题格式 ------------
 \newcommand{\chapfont}{\fontsize{20pt}{20pt}\selectfont}
 %--- chapter ---
 \ctexset{
-    chapter = {
-        format = \linespread{1.0}\bfseries\chapfont\centering,
-        nameformat = {},
-        titleformat = {},
-        number = \arabic{chapter},
-        numberformat = {},
-        aftername = \quad,
-        beforeskip = {4pt},
-        afterskip = {24pt},
-        pagestyle = plain,
-    }
+  chapter = {
+    format = \linespread{1.0}\bfseries\chapfont\centering,
+    nameformat = {},
+    titleformat = {},
+    number = \arabic{chapter},
+    numberformat = {},
+    aftername = \quad,
+    beforeskip = {4pt},
+    afterskip = {24pt},
+    pagestyle = plain,
+  }
 }
 %--- section ---
 \ctexset{
-    section = {
-        format = \linespread{1.0}\bfseries\zihao{-3}\raggedright,
-        numberformat = {},
-        aftername = \quad,
-        beforeskip = {24pt},
-        afterskip = {6pt},
-    }
+  section = {
+    format = \linespread{1.0}\bfseries\zihao{-3}\raggedright,
+    numberformat = {},
+    aftername = \quad,
+    beforeskip = {24pt},
+    afterskip = {6pt},
+  }
 }
 %--- subsection ---
 \ctexset{
-    subsection = {
-        format = \linespread{1.0}\bfseries\zihao{4}\raggedright,
-        numberformat = {},
-        aftername = \quad,
-        beforeskip = {12pt},
-        afterskip = {6pt},
-    }
+  subsection = {
+    format = \linespread{1.0}\bfseries\zihao{4}\raggedright,
+    numberformat = {},
+    aftername = \quad,
+    beforeskip = {12pt},
+    afterskip = {6pt},
+  }
 }
 %--- subsubsection ---
 \ctexset{
-    subsubsection = {
-        format = \linespread{1.0}\bfseries\zihao{-4}\raggedright,
-        numberformat = {},
-        aftername = \quad,
-        beforeskip = {12pt},
-        afterskip = {6pt},
-    }
+  subsubsection = {
+    format = \linespread{1.0}\bfseries\zihao{-4}\raggedright,
+    numberformat = {},
+    aftername = \quad,
+    beforeskip = {12pt},
+    afterskip = {6pt},
+  }
 }
 %--- appendix ---
 \ctexset{
-    appendix = {
-        name = {附录},
-        numbering = true,
-        number = \Alph{chapter},
-    }
+  appendix = {
+    name = {附录},
+    numbering = true,
+    number = \Alph{chapter},
+  }
 }
 
 %\ctexset{
@@ -225,7 +232,7 @@
 %\renewcommand{\cftchapaftersnumb}{\hspace{28pt}}
 \setlength{\cftbeforetoctitleskip}{5pt}
 \setlength{\cftaftertoctitleskip}{24pt}
-\setlength{\cftbeforechapskip}{12pt}
+\setlength{\cftbeforechapskip}{10pt plus 2pt minus 2pt}
 \setlength{\cftbeforesecskip}{3pt}
 \renewcommand{\cftdot}{$\cdot$}
 \renewcommand{\cftdotsep}{3}
@@ -671,9 +678,9 @@ XeLaTeX 环境下可以插入 EPS、PDF、PNG、JPEG、BMP 格式的图片, 也�
 \hfill
 \begin{minipage}[t]{0.48\linewidth}
 \centering
-   \includegraphics[width=0.9\linewidth]{image2}
-   \caption{图二的描述.}
-   \label{fig:B}
+  \includegraphics[width=0.9\linewidth]{image2}
+  \caption{图二的描述.}
+  \label{fig:B}
 \end{minipage}
 \end{figure}
 
@@ -716,14 +723,14 @@ LaTeX 的 table 环境是一个浮动体\index{浮动体}环境, 排版与 figur
 \caption{某校学生身高体重样本}
 \label{tab:heightweight}
 \begin{tabularx}{0.9\textwidth}{lCCC}
-   \toprule
+  \toprule
   序号 & 年龄 & 身高 & 体重 \\
   \midrule
   001 & 15 & 156 & 42 \\
   002 & 16 & 158 & 45 \\
   003 & 14 & 162 & 48 \\
   004 & 15 & 163 & 50 \\
-    \cmidrule{2-4}
+  \cmidrule{2-4}
   平均 & 15 & 159.75 & 46.25 \\
   \bottomrule
 \end{tabularx}
@@ -848,16 +855,16 @@ N  & A       & B    & C       & D      & E       & F   \\
 \caption{某校学生身高体重样本.}
 \label{tab:heightweight2}
 \begin{tabularx}{0.9\textwidth}{lCCC}
-   \toprule
-	序号 & 年龄 & 身高 & 体重\\
-	\midrule
-	001 & 14 & 156 & 42 \\
-	002 & 16 & 158 & 45 \\
-	003 & 14 & 162 & 48 \\
-	004 & 15 & 163 & 50 \\
-    \cmidrule{2-4}
-	平均 & 15 & 159.75 & 46.25 \\
-	\bottomrule
+  \toprule
+  序号 & 年龄 & 身高 & 体重\\
+  \midrule
+  001 & 14 & 156 & 42 \\
+  002 & 16 & 158 & 45 \\
+  003 & 14 & 162 & 48 \\
+  004 & 15 & 163 & 50 \\
+  \cmidrule{2-4}
+  平均 & 15 & 159.75 & 46.25 \\
+  \bottomrule
 \end{tabularx}
 \end{table}
 

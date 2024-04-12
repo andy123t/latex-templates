@@ -2,17 +2,21 @@
 
 \documentclass[11pt]{article}
 
-% all kinds of packages needed
-\usepackage[utf8]{inputenc}
-\usepackage{charter}
+% Font setting
+\usepackage{inputenc}
+\usepackage[T1]{fontenc}
+%\usepackage{charter}
+
+% Required packages
 \usepackage{amsmath,amsthm,amssymb}
-\usepackage{bm,mathrsfs}
+\usepackage{mathrsfs}
 \usepackage{graphicx}
 \usepackage{color,xcolor}
 \usepackage{mathtools}
 \usepackage{enumitem}
 \usepackage{caption}
 \usepackage{mathtools}
+\usepackage{microtype}
 \usepackage{geometry}
 \geometry{left=1.25in,right=1.25in,top=1in,bottom=1in}
 
@@ -40,8 +44,8 @@
 
 % command declarations for reviewer comments and our responses
 \newcommand{\reviewersection}{%
-\stepcounter{reviewer}\vskip 16pt \hrule height 0.6pt%
-\section*{Reviewer~\thereviewer}%
+  \stepcounter{reviewer}\vskip 16pt \hrule height 0.6pt%
+  \section*{Reviewer~\thereviewer}%
 }
 
 % Referee Comments

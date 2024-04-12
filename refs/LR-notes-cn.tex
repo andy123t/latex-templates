@@ -3,16 +3,27 @@
 
 \documentclass[11pt]{article}
 
-\usepackage{ctex}
+\usepackage[UTF8]{ctex}
+%\usepackage[english]{babel}
 \usepackage{amsmath,amssymb}
-\usepackage{graphicx,fancybox,multirow}
+\usepackage{graphicx}
 \usepackage{mathrsfs}
 \usepackage{color,xcolor}
 \usepackage{framed}
-\usepackage{caption}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multirow,multicol}
+\usepackage{makecell}
+\usepackage{anyfontsize}
+%\usepackage{microtype}
+\usepackage{fontspec}
 \usepackage{hyperref}
-\hypersetup{colorlinks=true,linkcolor=blue,
-filecolor=blue,citecolor=black,urlcolor=cyan}
+\hypersetup{
+  colorlinks=true,linkcolor=blue,
+  filecolor=blue,citecolor=black,
+  urlcolor=cyan
+}
 
 \usepackage{enumitem}
 %\setlist{leftmargin=*} % noitemsep
@@ -52,7 +63,8 @@ filecolor=blue,citecolor=black,urlcolor=cyan}
     {\large \@date}%
   \end{center}%
   \par
-  \vskip 1.5em}
+  \vskip 1.5em
+}
 \makeatother
 
 % number style of equation

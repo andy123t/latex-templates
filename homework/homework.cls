@@ -2,13 +2,13 @@
 %%  This is file `homework.cls',
 %%
 %%  @author andy123t
-%%  @date 2023/10/08
+%%  @date 2024/04/12
 %%  @version v1.2
 %%
 
 %----- Identification -----%
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{homework}[2023/10/08]
+\ProvidesClass{homework}[2024/04/12]
 
 %----- New Options -----%
 \newif\ifhw@en
@@ -23,7 +23,7 @@
 \ProcessOptions\relax
 
 %----- Load Class -----%
-\LoadClass[final]{article}
+\LoadClass{article}
 %\RequirePackage[UTF8,zihao=-4,heading=true]{ctex}
 
 %----- package for geometry -----%
@@ -149,32 +149,34 @@
     \par\noindent%
     \textbf{\problemname~\arabic{problemname}.}\enspace\ignorespaces%
 }{
-\par %\medskip
+    \par
+    %\medskip
 }
 \newenvironment{problem*}{%
     \par\noindent%
     \textbf{\problemname\,:}\enspace\ignorespaces%
 }{
-\par %\medskip
+    \par
+    %\medskip
 }
 
 %----- definition of hframe environment -----%
 \RequirePackage[framemethod=TikZ]{mdframed}
 \mdfdefinestyle{hframed}{%
     linecolor=black!68,backgroundcolor=gray!5,
-    outerlinewidth=0.6pt,roundcorner=4pt,
+    outerlinewidth=0.6pt,roundcorner=3pt,
     innertopmargin=0.5\baselineskip,
-    innerrightmargin=10pt,innerleftmargin=10pt,
+    innerrightmargin=8pt,innerleftmargin=8pt,
     innerbottommargin=0.5\baselineskip,
 }
 
 \newenvironment{hframe}{
 \begin{mdframed}[%
     linecolor=black!68,backgroundcolor=gray!5,
-    outerlinewidth=0.6pt,roundcorner=4pt,
+    outerlinewidth=0.6pt,roundcorner=3pt,
     innertopmargin=0.5\baselineskip,
     innerbottommargin=0.5\baselineskip,
-    innerrightmargin=10pt,innerleftmargin=10pt]%
+    innerrightmargin=8pt,innerleftmargin=8pt]%
 }{
 \end{mdframed}
 }

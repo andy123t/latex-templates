@@ -2,17 +2,21 @@
 
 \documentclass[11pt]{article}
 
-% all kinds of packages needed
-\usepackage[utf8]{inputenc}
+% Font setting
+\usepackage{inputenc}
+\usepackage[T1]{fontenc}
 %\usepackage{charter}
+
+% Required packages
 \usepackage{amsmath,amsthm,amssymb}
-\usepackage{bm,mathrsfs}
+\usepackage{mathrsfs}
 \usepackage{graphicx}
 \usepackage{color,xcolor}
 \usepackage{mathtools}
 \usepackage{enumitem}
 \usepackage{caption}
 \usepackage{mathtools}
+\usepackage{microtype}
 \usepackage{geometry}
 \geometry{left=1.25in,right=1.25in,top=1in,bottom=1in}
 
@@ -40,8 +44,8 @@
 
 % command declarations for reviewer comments and our responses
 \newcommand{\reviewersection}{%
-\stepcounter{reviewer}\bigskip\hrule height 0.5pt%
-\section*{Reviewer~\thereviewer}%
+  \stepcounter{reviewer}\bigskip\hrule height 0.5pt%
+  \section*{Reviewer~\thereviewer}%
 }
 
 % define the point environment

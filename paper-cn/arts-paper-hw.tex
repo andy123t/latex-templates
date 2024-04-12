@@ -29,14 +29,11 @@
   filecolor=blue,
   urlcolor=blue
 }
-
-%-----制作目录-----
-\usepackage{imakeidx}
 % 设置颜色
 \usepackage{color,xcolor}
 % 插入图片
 \usepackage{graphicx}
-\usepackage{epsfig}
+%\usepackage{epsfig}
 %-----设置表格-----
 \usepackage{tabularx,array}
 \usepackage{longtable}
@@ -63,18 +60,30 @@
 \usepackage[numbered]{bookmark}
 %-----设置页眉页脚格式-----
 \usepackage{fancyhdr}
+%-----完善排版细节-----
+%\usepackage{microtype}
 
 %-----设置行间距 -----
 \renewcommand*{\baselinestretch}{1.5}
 
 %----- 设置字体 -----
+%\usepackage[no-math]{fontspec}
+%\usepackage{newtxtext}  % New TX font for text
+%\setmainfont{TeX Gyre Termes}  % Times New Roman 的开源复刻版本
+%\setsansfont{TeX Gyre Heros}   % Helvetica 的开源复刻版本
+%\setmonofont{TeX Gyre Cursor}  % Courier New 的开源复刻版本
 %\setmainfont{Times New Roman}
-%\setmonofont{Courier New}
 %\setsansfont{Arial}
+%\setmonofont{Courier New}
+
 %\setCJKfamilyfont{kai}[AutoFakeBold]{simkai.ttf}
 %\newcommand*{\kai}{\CJKfamily{kai}}
 %\setCJKfamilyfont{song}[AutoFakeBold]{SimSun}
 %\newcommand*{\song}{\CJKfamily{song}}
+
+%----- 设置数学字体 -----
+%\usepackage{newtxmath}
+%\usepackage{mathptmx}
 
 %----- 定义引用格式 -----
 %\newcommand{\upcite}[1]{\textsuperscript{\textsuperscript{\cite{#1}}}}
@@ -111,11 +120,11 @@
 
 %----- 设置公式间距 -----
 \AtBeginDocument{
-	\setlength{\abovedisplayskip}{5pt plus1pt minus1pt}
-	\setlength{\belowdisplayskip}{5pt plus1pt minus1pt}
-	\setlength{\abovedisplayshortskip}{2pt}
-	\setlength{\belowdisplayshortskip}{2pt}
-	\setlength{\arraycolsep}{2pt}
+  \setlength{\abovedisplayskip}{5pt plus1pt minus1pt}
+  \setlength{\belowdisplayskip}{5pt plus1pt minus1pt}
+  \setlength{\abovedisplayshortskip}{2pt}
+  \setlength{\belowdisplayshortskip}{2pt}
+  \setlength{\arraycolsep}{2pt}
 }
 
 %----- 定义命令 -----
@@ -128,35 +137,29 @@
 \vspace*{1em}
 \begin{center}
 {\zihao{-2} \bfseries \@title }\\[1.5em]
-  姓名: \@author \quad 学号: \defstunum \\
+姓名: \@author \quad 学号: \defstunum \\
   班级: \defclass \\[10pt]
 \end{center}
 }
 %----- abstract -------
 \renewenvironment{abstract}{
-\phantomsection
-\addcontentsline{toc}{section}{摘要}
-\noindent\rule[0.1\baselineskip]{\textwidth}{0.5pt}
-\textbf{摘~要：}
-}{\par
-\noindent\rule[0.3\baselineskip]{\textwidth}{0.5pt}
+  \phantomsection
+  \addcontentsline{toc}{section}{摘要}
+  \hrule height 0.5pt%
+  \bigskip
+  \textbf{摘~要：}
+}{\bigskip
+  \hrule height 0.5pt%
 }
 \makeatother
 
 %----- 定义列表项的样式 -----
 \usepackage{enumitem}
 \setlist{nolistsep}
-% \setlength{\itemsep}{3pt plus1pt minus2pt}
+%\setlength{\itemsep}{3pt plus1pt minus2pt}
 
 %----- 证明结束黑框 ----
-% \renewcommand{\qedsymbol}{$\blacksquare$}
-
-%----- 设置英文字体 -----
-\usepackage{newtxtext}  % for text fonts
-
-%----- 设置数学字体 -----
-% \usepackage{newtxmath}
-% \usepackage{mathptmx}
+%\renewcommand{\qedsymbol}{$\blacksquare$}
 
 %----- 微分符号 -----
 \newcommand{\dif}{\mathop{}\!\mathrm{d}}
@@ -229,23 +232,23 @@
 
 这是一个计数的列表.
 \begin{enumerate}%[label={\rm (\arabic*)}]%\roman
-	\item 第一项
-		\begin{enumerate}
-			\item 第一项中的第一项
-			\item 第一项中的第二项
-		\end{enumerate}
-	\item 第二项
+  \item 第一项
+    \begin{enumerate}
+      \item 第一项中的第一项
+      \item 第一项中的第二项
+    \end{enumerate}
+  \item 第二项
 \end{enumerate}
 
 
 这是一个不计数的列表.
 \begin{itemize}%[label={$\bullet$}]
-	\item 第一项
-	\begin{itemize}
-		\item 第一项中的第一项
-		\item 第一项中的第二项
-	\end{itemize}
-	\item 第二项
+  \item 第一项
+  \begin{itemize}
+    \item 第一项中的第一项
+    \item 第一项中的第二项
+  \end{itemize}
+  \item 第二项
 \end{itemize}
 
 
@@ -281,7 +284,6 @@
 %\bibitem{Shen1994} Shen~J. Efficient spectral-Galerkin method I. Direct solvers of second- and fourth-order equations using Legendre polynomials\allowbreak[J]. SIAM J. Sci. Comput., 1994, 15(6): 1489-1505.
 %
 %\end{thebibliography}
-
 
 
 

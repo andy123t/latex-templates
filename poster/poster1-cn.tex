@@ -4,12 +4,14 @@
 %======================================================%
 
 \documentclass{beamer}
-%\usepackage[utf8]{inputenc}
+
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
-\usepackage[UTF8,indent]{ctex}
+\usepackage[UTF8]{ctex}
 \usepackage{indentfirst}
 \renewcommand{\indent}{\hspace*{2em}}
+
+\usepackage{microtype}
 
 \bibliographystyle{plain}
 \usepackage[orientation=portrait,size=a4,scale=2.3]{beamerposter} %1.68
@@ -19,10 +21,15 @@
 
 \renewcommand{\baselinestretch}{1.15}
 
-
+%----- 设置英文字体 -----
+%\usepackage[no-math]{fontspec}
+%\usepackage{newtxtext}  % New TX font for text
+%\setmainfont{TeX Gyre Termes}  % Times New Roman 的开源复刻版本
+%\setsansfont{TeX Gyre Heros}   % Helvetica 的开源复刻版本
+%\setmonofont{TeX Gyre Cursor}  % Courier New 的开源复刻版本
 \setmainfont{Times New Roman}
+%\setsansfont{Arial}
 %\setmonofont{Courier New}
-\setsansfont{Arial}
 \setCJKfamilyfont{kai}[AutoFakeBold]{simkai.ttf}
 \newcommand*{\kai}{\CJKfamily{kai}}
 \setCJKfamilyfont{song}[AutoFakeBold]{SimSun}
@@ -146,12 +153,12 @@ This is a brief introduction to the author.
 {\kai\bfseries\large 报告时间：} 2022年X月X日~(周五) ~~ 9:00--10:00
 \medskip
 
-{\kai\bfseries\large 报告地点：} X号楼X室 
+{\kai\bfseries\large 报告地点：} X号楼X室
 \medskip
 
 {\kai\bfseries\large 会\hspace{8.5pt}议\hspace{8.5pt}号：} 111-222-333   \medskip
 
-{\kai\bfseries\large 会议密码：} 123456 
+{\kai\bfseries\large 会议密码：} 123456
 \medskip
 
 \vspace{1em}

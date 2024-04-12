@@ -7,7 +7,8 @@
 
 % all kinds of packages needed
 %\usepackage[fontsize=14pt]{fontsize}
-\usepackage[utf8]{inputenc}
+\usepackage{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage{amsmath,amsthm,amssymb}
 \usepackage{mathrsfs}
 \usepackage{graphicx}
@@ -16,11 +17,17 @@
 \usepackage{enumitem}
 \usepackage{caption}
 \usepackage{mathtools}
+\usepackage{microtype}
 \usepackage{geometry}
 \geometry{left=1.5cm,right=1.5cm,top=2cm,bottom=2cm}
 
 \usepackage{tikz}
 \pagenumbering{gobble} % No page numbering
+
+% Default font family: sans serif
+%\usepackage[no-math]{fontspec}
+%\usepackage{helvet}
+%\renewcommand{\familydefault}{\sfdefault}
 
 % command for line spacing
 \renewcommand{\baselinestretch}{1.15}

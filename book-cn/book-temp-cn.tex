@@ -7,13 +7,15 @@
 %\documentclass[twoside,12pt]{book}
 
 %-----中文宏包-----
-\usepackage[UTF8]{ctex}
+\usepackage{ctex}
 
 %-----数学宏包-----
 \usepackage{amsmath,amsthm,amssymb}
 \usepackage{mathrsfs}
+
 %-----draft下 label提示-----
 %\usepackage[notcite,notref]{showkeys}
+
 %-----页面布局-----
 \usepackage{geometry}
 \geometry{left=2.5cm,right=2.5cm,top=3.0cm,bottom=3.0cm}
@@ -68,6 +70,8 @@
 \usepackage[numbered]{bookmark}
 %-----任意字体-----
 \usepackage{anyfontsize}
+%-----优化排版细节-----
+%\usepackage{microtype}
 
 %-----附录设置-----
 %\usepackage[title,titletoc]{appendix}
@@ -104,9 +108,9 @@
 %\usepackage[cleardoublepage=plain]{scrextend}
 \makeatletter
 \renewcommand{\cleardoublepage}{\clearpage
-    \clearpage\if@twoside\ifodd\c@page\else%
-    \thispagestyle{empty}%
-    \hbox{}\newpage\if@twocolumn\hbox{}\newpage\fi\fi\fi%
+  \clearpage\if@twoside\ifodd\c@page\else%
+  \thispagestyle{empty}%
+  \hbox{}\newpage\if@twocolumn\hbox{}\newpage\fi\fi\fi%
 }
 \makeatother
 
@@ -133,20 +137,16 @@
 
 \newcommand{\chpzihao}{\fontsize{20pt}{20pt}\selectfont}
 %%---------- 定义章节标题格式 ------------
-\titleformat{\chapter}[hang]{\bfseries \chpzihao \filcenter}
-    {\chpzihao \chaptername}{20pt}{}
+\titleformat{\chapter}[hang]{\bfseries \chpzihao \filcenter}{\chpzihao \chaptername}{20pt}{}
 \titlespacing{\chapter}{0pt}{-0.5ex  plus .1ex minus .2ex}{4.5ex plus .1ex minus .2ex}
 
-\titleformat{\section}[hang]{\bfseries \zihao{3}}
-    {\zihao{3} \thesection}{1em}{}
+\titleformat{\section}[hang]{\bfseries \zihao{3}}{\zihao{3} \thesection}{1em}{}
 \titlespacing{\section}{0pt}{2.5ex plus .1ex minus .2ex}{1.0ex plus .1ex minus .2ex}
 
-\titleformat{\subsection}[hang]{\bfseries \zihao{4}}
-    {\zihao{4} \thesubsection}{1em}{}
+\titleformat{\subsection}[hang]{\bfseries \zihao{4}}{\zihao{4} \thesubsection}{1em}{}
 \titlespacing{\subsection}{0pt}{1.5ex plus .1ex minus .2ex}{\wordsep}
 
-\titleformat{\subsubsection}[hang]{\bfseries}
-    {\thesubsubsection }{1em}{}{}
+\titleformat{\subsubsection}[hang]{\bfseries}{\thesubsubsection }{1em}{}{}
 \titlespacing{\subsubsection}{0pt}{1.2ex plus .1ex minus .2ex}{\wordsep}
 
 
@@ -217,16 +217,16 @@
 
 %-----设置公式间距-----
 \AtBeginDocument{
-    \setlength{\abovedisplayskip}{6pt plus 2pt minus 2pt}
-    \setlength{\belowdisplayskip}{6pt plus 2pt minus 2pt}
-    \setlength{\abovedisplayshortskip}{3pt plus 1pt minus 1pt}
-    \setlength{\belowdisplayshortskip}{3pt plus 1pt minus 1pt}
-    %\setlength{\arraycolsep}{2pt}
+  \setlength{\abovedisplayskip}{6pt plus 2pt minus 2pt}
+  \setlength{\belowdisplayskip}{6pt plus 2pt minus 2pt}
+  \setlength{\abovedisplayshortskip}{3pt plus 1pt minus 1pt}
+  \setlength{\belowdisplayshortskip}{3pt plus 1pt minus 1pt}
+  %\setlength{\arraycolsep}{2pt}
 }
 
 %-----定义新的目录页面 -----
 \usepackage{tocloft}
-\renewcommand{\cfttoctitlefont}{\hfill \bfseries \chpzihao}
+\renewcommand{\cfttoctitlefont}{\hfill\bfseries\chpzihao}
 \renewcommand{\cftchappresnum}{第}
 \renewcommand{\cftchapaftersnum}{章}
 \renewcommand{\cftchapaftersnumb}{\hspace{28pt}}
@@ -234,14 +234,14 @@
 \renewcommand{\cftaftertoctitle}{\hfill}
 \setlength{\cftbeforetoctitleskip}{8pt}
 \setlength{\cftaftertoctitleskip}{20pt}
-\setlength{\cftbeforechapskip}{12pt}
+\setlength{\cftbeforechapskip}{10pt plus 2pt minus 2pt}
 \setlength{\cftbeforesecskip}{3pt}
 \setlength{\cftbeforesubsecskip}{3pt}
 \renewcommand{\cftdot}{$\cdot$}
 \renewcommand{\cftdotsep}{3}
 \renewcommand{\cftchapdotsep}{\cftdotsep}
 \renewcommand\cftchapleader{\cftdotfill{\cftchapdotsep}}
-\renewcommand{\cftsecdotsep}{\cftdotsep}  % 设置Section引导点
+\renewcommand{\cftsecdotsep}{\cftdotsep}
 
 %-----设置附录在目录的格式-----
 \makeatletter
@@ -308,6 +308,7 @@
 %------- 自定义封面 -----------
 
 \begin{titlepage}
+  \makeatletter
   \pdfbookmark[0]{封~~面}{cover}
   \centering   % 将所有内容放在标题页的中心
   \scshape     % 对标题页上的所有文本使用小写字母
@@ -320,12 +321,11 @@
   \rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}  % 粗水平线
   \rule{\textwidth}{0.4pt}   % 细水平线
 
-  \vspace{0.75\baselineskip} % 标题上方的空白
+  \vspace{1.25\baselineskip} % 标题上方的空白
 
-  \makeatletter
-  {\LARGE\bfseries \@title \\} % 题目
+  {\LARGE\bfseries \@title} % 题目
 
-  \vspace{0.75\baselineskip} % 标题下方的空白
+  \vspace{0.5\baselineskip} % 标题下方的空白
 
   \rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} % 细水平线
   \rule{\textwidth}{1.6pt}  % 粗水平线
@@ -337,9 +337,11 @@
   %------------------------------------------------
 
   %{\scshape\Large 某某某  \quad 编著 \\}
-  {\fangsong\large \@author \\[10pt] }
+  {\fangsong\large \@author}
 
-  {\fangsong\large \@date \\}
+  \medskip
+
+  {\fangsong\large \@date}
 
   \makeatother
 
@@ -360,6 +362,7 @@
   202X % publication year
 
   {\large publisher} % publisher
+
 \end{titlepage}
 
 
@@ -804,14 +807,14 @@ LaTeX 的 table 环境是一个浮动体\index{浮动体}环境, 排版与 figur
 \caption{某校学生身高体重样本}
 \label{tab:heightweight}
 \begin{tabularx}{0.9\textwidth}{lCCC}
-   \toprule
+  \toprule
   序号 & 年龄 & 身高 & 体重 \\
   \midrule
   001 & 15 & 156 & 42 \\
   002 & 16 & 158 & 45 \\
   003 & 14 & 162 & 48 \\
   004 & 15 & 163 & 50 \\
-    \cmidrule{2-4}
+  \cmidrule{2-4}
   平均 & 15 & 159.75 & 46.25 \\
   \bottomrule
 \end{tabularx}
@@ -874,7 +877,7 @@ N  & A       & B    & C       & D      & E       & F   \\
 
 \clearpage
 \phantomsection
-\addcontentsline{toc}{section}{参考文献}
+\addcontentsline{toc}{chapter}{参考文献}
 
 % 生成参考文献, 两种方式任选一种
 
@@ -945,14 +948,14 @@ N  & A       & B    & C       & D      & E       & F   \\
 \caption{某校学生身高体重样本.}
 \label{tab:heightweight2}
 \begin{tabularx}{0.9\textwidth}{lCCC}
-   \toprule
+  \toprule
   序号 & 年龄 & 身高 & 体重\\
   \midrule
   001 & 14 & 156 & 42 \\
   002 & 16 & 158 & 45 \\
   003 & 14 & 162 & 48 \\
   004 & 15 & 163 & 50 \\
-    \cmidrule{2-4}
+  \cmidrule{2-4}
   平均 & 15 & 159.75 & 46.25 \\
   \bottomrule
 \end{tabularx}

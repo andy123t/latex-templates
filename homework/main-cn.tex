@@ -6,8 +6,14 @@
 % cn is for Chinese language
 
 %----- text fonts -----
-%\usepackage{newtxtext}
+%\usepackage[no-math]{fontspec}
+%\usepackage{newtxtext}  % New TX font for text
+%\setmainfont{TeX Gyre Termes}  % Times New Roman 的开源复刻版本
+%\setsansfont{TeX Gyre Heros}   % Helvetica 的开源复刻版本
+%\setmonofont{TeX Gyre Cursor}  % Courier New 的开源复刻版本
 %\setmainfont{Times New Roman}
+%\setsansfont{Arial}
+%\setmonofont{Courier New}
 
 %----- math font -----
 %\usepackage{newtxmath}
@@ -20,9 +26,9 @@
 \newcommand{\newcustomtheorem}[2]{%
   \newenvironment{#1}[1]
   {%
-   \renewcommand\customgenericname{#2}%
-   \renewcommand\theinnercustomgeneric{##1}%
-   \innercustomgeneric
+    \renewcommand\customgenericname{#2}%
+    \renewcommand\theinnercustomgeneric{##1}%
+    \innercustomgeneric
   }
   {\endinnercustomgeneric}
 }
