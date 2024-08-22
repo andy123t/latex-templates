@@ -164,12 +164,13 @@
 \section*{表格}
 这是一个表格示例, 如表~\ref{tab:foo}
 
-\begin{table}[ht!]
+\begin{table}[htp!]
 \centering
-% PLCR已经定义
+\setlength{\tabcolsep}{10pt}  % 6pt standard
+%\renewcommand{\arraystretch}{1.1}
 \caption{表格名字}
 \label{tab:foo}
-\begin{tabularx}{0.9\textwidth}{P{1cm}CCCCCC}
+\begin{tabular}{ccccccc}
 \toprule
 A & $N=3$ & $N=5$ & $N=7$ & $N=9$ & $N=11$ & $N=13$ \\
 \midrule
@@ -177,14 +178,15 @@ B & 1.5789 & 1.3478 &1.0645&0.8780 &0.7222 &0.5942  \\
 C &  1.0000 &1.0000 &1.0000 &1.0000 &1.0000 &1.0000  \\
 D &7.2632 &14.3913 &21.0323 &27.3171 &30.9630 &34.0870  \\
 \bottomrule
-\end{tabularx}
+\end{tabular}
 \end{table}
 
-%\begin{table}[ht!]
-%\caption{表格名字}
-%\label{tab:foo}
+%\begin{table}[htp!]
 %\centering
-%\begin{tabular}{lllllll}
+%% PLCR已经定义
+%\caption{表格名字}
+%\label{tab:foo2}
+%\begin{tabularx}{0.9\textwidth}{P{1cm}CCCCCC}
 %\toprule
 %A & $N=3$ & $N=5$ & $N=7$ & $N=9$ & $N=11$ & $N=13$ \\
 %\midrule
@@ -192,7 +194,7 @@ D &7.2632 &14.3913 &21.0323 &27.3171 &30.9630 &34.0870  \\
 %C &  1.0000 &1.0000 &1.0000 &1.0000 &1.0000 &1.0000  \\
 %D &7.2632 &14.3913 &21.0323 &27.3171 &30.9630 &34.0870  \\
 %\bottomrule
-%\end{tabular}
+%\end{tabularx}
 %\end{table}
 
 
