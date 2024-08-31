@@ -170,7 +170,7 @@
 
 %----- Book information -----
 
-\title{THE BOOK \\[8pt] \LaTeX ~TEMPLATES}
+\title{THE BOOK \\[8pt] \LaTeX{} TEMPLATES}
 \author{Edited by Andy}
 \date{\today}
 
@@ -289,7 +289,7 @@ The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the 
 
 \chapter{The first chapter}
 
-\section{The first section}\label{my label}
+\section{The first section}\label{sec:firstsec}
 LaTeX is a high-quality typesetting system; it includes features designed for the production of technical and scientific documentation. LaTeX is the de facto standard for the communication and publication of scientific documents.
 
 The unnumbered list
@@ -308,7 +308,7 @@ The numbered list
 
 \subsection{A sub section}
 LaTeX is not a word processor! Instead, LaTeX encourages authors not to worry too much about the appearance of their documents but to concentrate on getting the right content. For example consider this document:
-\begin{equation}\label{eqn:trifun}
+\begin{equation}\label{eq:trifun}
 \sin^2{\theta}+\cos^2{\theta}=1.
 \end{equation}
 
@@ -382,7 +382,7 @@ This is a proposition environment.
 
 \begin{lemma}
 This is a lemma environment
-\begin{enumerate}[label=\rm (\roman*)]
+\begin{enumerate}[label={\upshape(\roman*)}]
   \item item A
   \item item B
   \begin{equation}\label{eq:limite}
