@@ -44,9 +44,12 @@
 
 % command declarations for reviewer comments and our responses
 \newcommand{\reviewersection}{%
-  \stepcounter{reviewer}\vskip 16pt \hrule height 0.6pt%
+  \stepcounter{reviewer}%\bigskip\hrule height 0.5pt%
   \section*{Reviewer~\thereviewer}%
 }
+
+% section divider line
+\newcommand{\sectionline}{\bigskip\hrule height 0.5pt}
 
 % define color
 \definecolor{lightred}{RGB}{216,144,144}
@@ -164,6 +167,7 @@ The authors thank the reviewers for their critical assessment of our work.
 In the following we address their concerns point by point.
 
 % New reviewer section
+\sectionline
 \reviewersection
 
 % Comments to the authors
@@ -208,6 +212,7 @@ Our results indicate that \added{increasing} \deleted{decreasing} the temperatur
 \clearpage
 
 % New reviewer section
+\sectionline
 \reviewersection
 
 % comment 1
@@ -245,6 +250,7 @@ So we did not change absolutely anything on this point.
 \end{changebox}
 
 % New reviewer section
+% \sectionline
 % \reviewersection
 
 

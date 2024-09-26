@@ -44,9 +44,12 @@
 
 % command declarations for reviewer comments and our responses
 \newcommand{\reviewersection}{%
-  \stepcounter{reviewer}\bigskip\hrule height 0.5pt%
+  \stepcounter{reviewer}%\bigskip\hrule height 0.5pt%
   \section*{Reviewer~\thereviewer}%
 }
+
+% section divider line
+\newcommand{\sectionline}{\bigskip\hrule height 0.5pt}
 
 % define the point environment
 \newenvironment{point}[1][Comment]{%
@@ -130,6 +133,7 @@ The authors thank the reviewers for their critical assessment of our work.
 In the following we address their concerns point by point.
 
 % New reviewer section
+\sectionline
 \reviewersection
 
 % Comments to the authors
@@ -159,6 +163,7 @@ Please see Page 5 line 10 of the revised version.
 
 
 % New reviewer section
+\sectionline
 \reviewersection
 
 % comment 1
@@ -181,6 +186,7 @@ Our reply to This is comment 2 of Reviewer \thereviewer.
 
 
 % New reviewer section
+\sectionline
 \reviewersection
 
 \begin{point*}[Comments]\itshape

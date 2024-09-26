@@ -44,9 +44,12 @@
 
 % command declarations for reviewer comments and our responses
 \newcommand{\reviewersection}{%
-  \stepcounter{reviewer}\vskip 16pt \hrule height 0.6pt%
+  \stepcounter{reviewer}%\bigskip\hrule height 0.5pt%
   \section*{Reviewer~\thereviewer}%
 }
+
+% section divider line
+\newcommand{\sectionline}{\bigskip\hrule height 0.5pt}
 
 % Referee Comments
 \usepackage{tcolorbox}
@@ -132,6 +135,7 @@ The authors thank the reviewers for their critical assessment of our work.
 In the following we address their concerns point by point.
 
 % New reviewer section
+\sectionline
 \reviewersection
 
 % Comments to the authors
@@ -161,6 +165,7 @@ We agree with the reviewer on this point. This is what we did to fix it.
 Please see Page 5 line 10 of the revised version.
 
 % New reviewer section
+\sectionline
 \reviewersection
 
 % comment 1
@@ -181,6 +186,7 @@ This is comment 2 of Reviewer \thereviewer. With some more words foo bar foo bar
 
 
 % New reviewer section
+% \sectionline
 % \reviewersection
 
 
