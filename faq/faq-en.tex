@@ -1,4 +1,5 @@
-% homework template or FAQ
+% !Tex Program = pdflatex
+% FAQ template
 
 \documentclass[12pt]{article}
 
@@ -27,18 +28,20 @@
 %\numberwithin{figure}{section}
 %\numberwithin{table}{section}
 
-%\linespread{1.5}
+% line spacing
+\linespread{1.2}
 
-\newcounter{problemname}
-\newenvironment{problem}{%
-  \stepcounter{problemname}\par%
-  \noindent\textbf{Problem~\arabic{problemname}.}\enspace\ignorespaces%
+% define new environments
+\newcounter{questionname}
+\newenvironment{question}{%
+  \stepcounter{questionname}\par%
+  \noindent\textbf{Question~\arabic{questionname}.}\enspace\ignorespaces%
 }{%
   \par\medskip%
 }
-\newenvironment{solution}{
+\newenvironment{answer}{
   \par%
-  \noindent\textbf{Solution\hspace{1pt}:}\enspace\ignorespaces%
+  \noindent\textbf{Answer\hspace{1pt}:}\enspace\ignorespaces%
 }{%
   \par\medskip%
 }
@@ -56,6 +59,7 @@
 \date{\today}
 
 \begin{document}
+
 \maketitle
 
 %\begin{center}
@@ -64,22 +68,22 @@
 %\end{center}
 %\bigskip
 
-\begin{problem}
-  Write problem here.
-\end{problem}
+\begin{question}
+  Write question here.
+\end{question}
 
-\begin{solution}
-  Write solution here.
-\end{solution}
+\begin{answer}
+  Write answer here.
+\end{answer}
 
 
-\begin{problem}
-  Write problem here.
-\end{problem}
+\begin{question}
+  Write question here.
+\end{question}
 
-\begin{solution}
-  Write solution here.
-\end{solution}
+\begin{answer}
+  Write answer here.
+\end{answer}
 
 \begin{note}
   Note environment.

@@ -1,4 +1,5 @@
-% homework template or FAQ
+% !Tex Program = xelatex
+% FAQ template
 
 \documentclass[12pt]{article}
 
@@ -40,17 +41,18 @@
 %\numberwithin{figure}{section}
 %\numberwithin{table}{section}
 
-%\linespread{1.5}
+% line spacing
+\linespread{1.35}
 
 % define new environments
-\newcounter{problemname}
-\newenvironment{problem}{%
-  \stepcounter{problemname}\par%
-  \noindent\textbf{问题~\arabic{problemname}.}\enspace\ignorespaces%
+\newcounter{questionname}
+\newenvironment{question}{%
+  \stepcounter{questionname}\par%
+  \noindent\textbf{问题~\arabic{questionname}.}\enspace\ignorespaces%
 }{%
   \par\medskip%
 }
-\newenvironment{solution}{%
+\newenvironment{answer}{%
   \par%
   \noindent\textbf{回答：}\ignorespaces%
 }{%
@@ -64,35 +66,36 @@
 }
 
 
-\title{常见问题与解答 (FAQ)}
+\title{常见问题解答 (FAQ)}
 \author{某某某}
 \date{\today}
 
 \begin{document}
+
 \maketitle
 
 %\begin{center}
-%\Large \bfseries 常见问题与解答
+%\Large \bfseries 常见问题解答
 %\vskip 1em
 %\end{center}
 %\bigskip
 
-\begin{problem}
+\begin{question}
   在此处写出问题.
-\end{problem}
+\end{question}
 
-\begin{solution}
+\begin{answer}
   在这里写答案.
-\end{solution}
+\end{answer}
 
 
-\begin{problem}
+\begin{question}
   在此处写出问题.
-\end{problem}
+\end{question}
 
-\begin{solution}
+\begin{answer}
   在这里写答案.
-\end{solution}
+\end{answer}
 
 \begin{note}
   注解环境.
