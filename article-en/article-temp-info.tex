@@ -190,6 +190,11 @@
 % graphic path
 \graphicspath{{./figures/}}
 
+% package for line number
+%\usepackage[pagewise,mathlines]{lineno}
+%\linenumbers
+%\modulolinenumbers[5]
+
 % differential operator
 \newcommand{\dif}{\mathop{}\!\mathrm{d}}
 
@@ -202,22 +207,24 @@
 \newcommand{\red}[1]{\textcolor{red}{#1}}
 
 
-% Information for title and author
-\title{An Example Article\tfootnote{This is a title footnote}}
+% Full Title of the paper
+\title{Academic Article Template for Manuscript or Preprint\tfootnote{This is a title footnote}}
 
 % Short title for running heads:
 \shorttitle{Short Title of the Article}
 
+% Authors and their affiliations
 \author[1]{Author A}
 \author[2]{Author B}
 \author[1,\cormark]{Author C}
-\affil[1]{Department of Mathematics, \LaTeX\ University}
-\affil[2]{Department of Mechanical Engineering, \LaTeX\ University}
+\affil[1]{Department of Mathematics, \LaTeX{} University}
+\affil[2]{Department of Mechanical Engineering, \LaTeX{} University}
 \cortext{Corresponding author. Email address: \texttt{xyz@math.univ.edu}}
 
 % Short list of authors for running heads:
 \shortauthor{Author A, Author B, and Author C}
 
+% Date is editable
 \date{Date: \today}
 
 \begin{document}
@@ -225,36 +232,38 @@
 \maketitle
 
 \begin{abstract}
-This is an example \LaTeX\ article. This can be used as a template for new articles.
-Abstracts must be able to stand alone and so cannot contain citations to the paper's references,equations, etc.
+This is an example \LaTeX{} article. This can be used as a template for new articles.
+Abstracts must be able to stand alone and so cannot contain citations to the paper's references, equations, etc.
 An abstract must consist of a single paragraph and be concise.
 Because of online formatting, abstracts must appear as plain as possible.
 Any equations should be inline.
 
 \medskip
-\noindent{\bfseries Keywords}: Example, \LaTeX, numerical methods
+\noindent{\bfseries Keywords}: Academic article, Example, \LaTeX{} template
 
 \medskip
 \noindent{\bfseries Mathematics Subject Classification:} 65M60, 65M12.
 \end{abstract}
 
 
+%%%%%%%%%% main body %%%%%%%%%%
+
 \section{Introduction}
 
 The introduction introduces the context and summarizes the manuscript.
 It is important to clearly state the contributions of this piece of work.
 
-In this paper we present a new method for solving the model equation
+In this paper, we present a new method for solving the model equation
 \begin{equation}\label{eq:mulequ}
 \left\{\begin{aligned}
   & \partial_{t} u-\varepsilon^{2} \Delta u+u^{3}-u=0, \quad \text{in} ~\Omega\times\mathcal{T}, \\
-  &\, u(x,y,t) = g(t), \quad \text{on} ~ \partial \Omega, \\
-  &\, u(x,y,0)=\varphi(x, y), \quad \text{on} ~\Omega.
+  & u(x,y,t) = g(t), \quad \text{on} ~ \partial \Omega \times \mathcal{T},, \\
+  & u(x,y,0)=\varphi(x, y), \quad \text{on} ~\Omega,
 \end{aligned}\right.
 \end{equation}
 where $\varepsilon$ is a small parameter.
 
-This is an example of quoting an equation \eqref{eq:mulequ}.
+This is an example of referencing the equation \eqref{eq:mulequ}.
 
 The merits of our method are as follows:
 \begin{itemize}
@@ -595,7 +604,7 @@ The contents of the appendix are here.
 Test Lemma.
 \end{lemma}
 
-This is a equation in appendix.
+This is an equation in the appendix.
 \begin{equation}\label{eq:A1}
   a^2+b^2=c^2.
 \end{equation}
