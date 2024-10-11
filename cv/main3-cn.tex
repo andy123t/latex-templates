@@ -57,7 +57,7 @@
 
 % define color for cv
 \definecolor{deepgreen}{RGB}{0,111,104}
-\definecolor{darkblue}{RGB}{0,51,102}
+\definecolor{deepblue}{RGB}{0,111,190}
 
 % command for listsep
 \setlist{nolistsep}
@@ -69,36 +69,33 @@
 \makeatletter
 \newcommand{\cvsection}[2][]{%
   \bigskip%
-  {\color{darkblue}
   \ifstrequal{#1}{}{}{\marginpar{\vspace*{\dimexpr1pt-\baselineskip}\raggedright\input{#1}}}%
-  {\Large\bfseries #2}\\[-1.6ex]%
+  {\large\bfseries\color{deepblue} #2}\\[-1.6ex]%
   {\rule{\linewidth}{0.5pt}\par}%
-  }
   \smallskip
 }
 \newcommand{\cvevent}[4][]{%
-  {#1 \large\textbf{#2}}%
+  {#1 #2}%
   \hangpara{1em}{1}{\ifstrequal{#3}{}{}{#3}}%
   {\hfill\ifstrequal{#4}{}{}{#4}}\par
   %\smallskip
 }
 \newcommand{\cvstate}[2]{%
-  {\large\textbf{#1}}%
+  {#1}%
   {\ifstrequal{#2}{}{}{#2}}\par%
   %\smallskip
 }
 \makeatother
 
-\newcommand{\cvbullet}{\thinspace\raisebox{1.5pt}{\footnotesize$\bullet$}}%
-\newcommand{\cvast}{\thinspace\raisebox{1.0pt}{\scalebox{1.1}{\boldmath$\ast$}}}%
-\newcommand{\cvstar}{\thinspace\raisebox{2.2pt}{\scalebox{0.6}{$\bigstar$}}}%
+\newcommand{\cvbullet}{\thinspace\raisebox{1.5pt}{\footnotesize\color{deepblue}$\bullet$}}%
+\newcommand{\cvast}{\thinspace\raisebox{1.0pt}{\color{deepblue}\scalebox{1.1}{\boldmath$\ast$}}}%
+\newcommand{\cvstar}{\thinspace\raisebox{2.2pt}{\color{deepblue}\scalebox{0.6}{$\bigstar$}}}%
 
 % new list for cv
 %\newlist{cvlist}{itemize}{2}
 %\setlist[cvlist,1]{leftmargin=2em,label={--}}
 
 \newcommand{\green}[1]{{\color{deepgreen}#1}}
-\newcommand{\blue}[1]{{\color{darkblue}#1}}
 
 %-------------------------------------------%
 
@@ -108,31 +105,30 @@
 
 %------------------HEADING------------------%
 
-% Left side of heading
-\begin{minipage}{\dimexpr\linewidth-4cm}%
-\raggedright%
+\begin{center}
 % TYPE 1
-{\LARGE\textbf{你的姓名}\par}
-{\Large\textbf{你的职业}\par}
+{\LARGE\bfseries\textbf{你的姓名}}\par%
+\bigskip
+你的职业或职位 $\diamond$ 你所在的公司或大学 \\
+你的地址 $\diamond$ 你的其他信息 \\
+{\color{blue}\texttt{https://univ.edu.com/name}} $\diamond$ (021)-1234-5678 \\
 \smallskip
-{\blue{\footnotesize\faEnvelope} \texttt{xxx@univ.edu.com} \quad \blue{\small\faPhone} 123456789 \par}%
-{\blue{\small\faMapMarker} 你的地址 \quad \blue{\small\faChain} \href{mailto:https://univ.edu.com/name}{\texttt{https://univ.edu.com/name}} \par}%
-{\blue{\small\faGithub} \texttt{https://github.com/name} }
 % TYPE 2
+%{\green{\footnotesize\faEnvelope} \texttt{xxx@univ.edu.com} \quad \green{\small\faPhone} 123456789 \par}%
+%{\green{\small\faMapMarker} 你的地址 \quad \green{\small\faChain} \texttt{https://univ.edu.com/name} \par}%
+%{\green{\small\faGithub} \texttt{https://github.com/name} }%
+% TYPE 3
 %{邮箱: \texttt{xxx@univ.edu.com} \quad 手机: 123456789 \par}%
-%{地址: 你的地址 \quad 主页: \texttt{https://univ.edu.com/name} \par}%
+%{地址: 你的地址  \quad 主页: \texttt{https://univ.edu.com/name} \par}%
 %{其他: Bala Bala\par}%
-\end{minipage}\hfill%
-% Right side of heading
-\begin{minipage}{3cm}%
-\centering
-\includegraphics[width=0.9\linewidth]{photo}
-\end{minipage}
-\par%
+\end{center}
 \medskip
 
 
 %--------------------BODY-------------------%
+
+\cvsection{研究领域}
+\cvindent{机器学习和计算机视觉 (CV)}
 
 %-------------------------------------------%
 \cvsection{教育经历}

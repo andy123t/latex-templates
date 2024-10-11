@@ -53,7 +53,7 @@
 
 % define color for cv
 \definecolor{deepgreen}{RGB}{0,111,104}
-\definecolor{darkblue}{RGB}{0,51,102}
+\definecolor{deepblue}{RGB}{0,111,190}
 
 % command for listsep
 \setlist{nolistsep}
@@ -65,36 +65,33 @@
 \makeatletter
 \newcommand{\cvsection}[2][]{%
   \bigskip%
-  {\color{darkblue}
   \ifstrequal{#1}{}{}{\marginpar{\vspace*{\dimexpr1pt-\baselineskip}\raggedright\input{#1}}}%
-  {\Large\bfseries\textsc{#2}}\\[-1.6ex]%
+  {\large\bfseries\color{deepblue}\MakeUppercase{#2}}\\[-1.6ex]%
   {\rule{\linewidth}{0.5pt}\par}%
-  }
   \smallskip
 }
 \newcommand{\cvevent}[4][]{%
-  {#1 \large\textbf{#2}}%
+  {#1 #2}%
   \hangpara{1em}{1}{\ifstrequal{#3}{}{}{#3}}%
   {\hfill\ifstrequal{#4}{}{}{#4}}\par
   %\smallskip
 }
 \newcommand{\cvstate}[2]{%
-  {\large\textbf{#1}}%
+  {#1}%
   {\ifstrequal{#2}{}{}{#2}}\par%
   %\smallskip
 }
 \makeatother
 
-\newcommand{\cvbullet}{\thinspace\raisebox{1.5pt}{\footnotesize$\bullet$}}%
-\newcommand{\cvast}{\thinspace\raisebox{1.0pt}{\scalebox{1.1}{\boldmath$\ast$}}}%
-\newcommand{\cvstar}{\thinspace\raisebox{2.2pt}{\scalebox{0.6}{$\bigstar$}}}%
+\newcommand{\cvbullet}{\thinspace\raisebox{1.5pt}{\footnotesize\color{deepblue}$\bullet$}}%
+\newcommand{\cvast}{\thinspace\raisebox{1.0pt}{\color{deepblue}\scalebox{1.1}{\boldmath$\ast$}}}%
+\newcommand{\cvstar}{\thinspace\raisebox{2.2pt}{\color{deepblue}\scalebox{0.6}{$\bigstar$}}}%
 
 % new list for cv
 %\newlist{cvlist}{itemize}{2}
 %\setlist[cvlist,1]{leftmargin=2em,label={--}}
 
 \newcommand{\green}[1]{{\color{deepgreen}#1}}
-\newcommand{\blue}[1]{{\color{darkblue}#1}}
 
 %-------------------------------------------%
 
@@ -105,30 +102,29 @@
 %------------------HEADING------------------%
 
 % Left side of heading
-\begin{minipage}{\dimexpr\linewidth-4cm}%
-\raggedright%
-{\LARGE\bfseries\MakeUppercase{Your Name}\par}%
-{\Large\textbf{Your occupation}\par}%
-\smallskip
+\begin{center}%
 % TYPE 1
-{\blue{\footnotesize\faEnvelope} \texttt{xxx@univ.edu.com} \quad \blue{\small\faPhone} 123456789 \par}%
-{\blue{\small\faMapMarker} xxx Street, City \quad \blue{\small\faChain} \href{mailto:https://univ.edu.com/name}{\texttt{https://univ.edu.com/name}} \par}%
-{\blue{\small\faGithub} \texttt{https://github.com/name} }
+{\LARGE\bfseries\MakeUppercase{Your Name}}\par%
+\bigskip
+Your occupation or position $\diamond$ Your company or university \\
+Your address $\diamond$ Your other information \\
+{\color{blue}\texttt{https://univ.edu.com/name}} $\diamond$ (021)-1234-5678 \\
+\smallskip
 % TYPE 2
+%{\green{\footnotesize\faEnvelope} \texttt{xxx@univ.edu.com} \quad \green{\small\faPhone} 123456789 \par}%
+%{\green{\small\faMapMarker} xxx Street, City \quad \green{\small\faChain} \texttt{https://univ.edu.com/name} \par}%
+%{\green{\small\faGithub} \texttt{https://github.com/name} }%
+% TYPE 3
 %{Email: \texttt{xxx@univ.edu.com} \quad Phone: 123456789 \par}%
 %{Address: xxx Street, City \quad Homepage: \texttt{https://univ.edu.com/name} \par}%
 %{Other: Bala Bala\par}
-\end{minipage}\hfill%
-% Right side of heading
-\begin{minipage}{3cm}%
-\centering
-\includegraphics[width=0.9\linewidth]{photo}
-\end{minipage}
-\par%
+\end{center}
 \medskip
 
-
 %--------------------BODY-------------------%
+
+\cvsection{Research Interests}
+\cvindent{Machine learning and computer vision (CV).}
 
 %-------------------------------------------%
 \cvsection{Education}
